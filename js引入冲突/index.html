@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js引入冲突</title>
+</head>
+<body>
+	<h3>两个js文件同时有的function调用</h3>
+	<p>将文件都引入进来后，同名方法会覆盖。</p>
+
+	<script src="js/jquery-1.11.1.js"></script>
+	<script src="js/first.js"></script>
+	<script src="js/second.js"></script>
+	<script type="text/javascript">
+		
+	$(function(){
+		alert1();
+		tishi();
+	});
+		
+	</script>
+</body>
+</html>

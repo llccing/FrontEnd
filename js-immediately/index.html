@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js立即执行</title>
+</head>
+
+<body>
+
+	<div>
+		<p>非常详细的解析blog：<span>http://dengo.org/archives/1004</span></p>
+	</div>
+
+    <script type="text/javascript">
+    
+    // 函数表达式
+    (function(){
+       return alert("js立即执行");
+    })();
+
+
+    var re = function(){
+       return alert("js立即执行");
+    }();
+    
+
+
+    </script>
+</body>
+
+</html>

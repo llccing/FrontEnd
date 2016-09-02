@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*
+		var n = 999;
+		function f1(){
+			alert(n);
+		}
+		f1(); // 999
+		*/
+
+		/*
+		function f1(){
+			var n = 999;
+		}
+		alert(n); // n is not define
+		*/
+
+		/*
+		function f1(){
+			n = 999; // 没有var 关键字 相当于声明全局变量
+		}
+		f1();
+		alert(n);
+		*/
+
+		/*
+		function f1(){
+			n = 999;
+			function f2(){
+				alert(n);
+			}
+
+			return f2;
+		}
+
+		var result = f1(); // 赋值时，f1()会被调用。
+		result();
+		---------------------------
+		函数f2，就是闭包
+		*/
+
+		/*
+		function f1(){
+			var n = 999;
+			nAdd = function(){
+				n+=1;
+			}
+
+			function f2(){
+				alert(n);
+			}
+
+			return f2;
+		}
+
+		var result = f1();
+		result();
+		nAdd();
+		result();
+		--------------------
+		result实际上是闭包f2函数。
+		nAdd的值是一个匿名函数，这个匿名函数本身也是一个闭包。
+		*/
+
+		/*
+			结果不太理解
+
+		var name = "this window";
+		var object = {
+			name:"my Object",
+			getNameFunc : function(){
+				return function(){
+					return this.name; //this指向调用函数的对象, 所以这里的this指的是object吗？,但是结果为什么是 this window
+				}
+			}
+		};
+		alert(object.getNameFunc()()); //结果是this window
+		*/
+
+		function outerFun(){
+			var a = 0;
+			function innerFun(){
+				a++;
+				alert(a);
+			}
+			return innerFun;
+		}
+
+		var obj = outerFun();
+		obj(); 
+		obj();
+
+		var obj2 = outerFun();
+		obj2();
+		obj2();
+		obj2();
+
+
+
+	</script>
+</body>
+</html>

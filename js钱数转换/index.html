@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>钱数转换</title>
+</head>
+
+<body>
+    <button type="button">转换</button>
+    <div>
+        <input type="text" id="in">
+        <p>显示转换金额:<span id="out"></span></p>
+    </div>
+    <script src="../static/jquery-1.12.3.min.js"></script>
+    <script>
+    Number.prototype.formatMoney1 = function(places, symbol, thousand, decimal) {
+        places = !isNaN(places = Math.abs(places)) ? places : 2;
+        symbol = symbol !== undefined ? symbol : "￥";
+        thousand = thousand || ",";
+        decimal = decimal || ".";
+        var number = this,
+            negative = number < 0 ? "-" : "",
+            i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+            j = (j = i.length) > 3 ? j % 3 : 0;
+        return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+    };
+
+	// defaults: (number, 2, "$", ",", ".")
+    // function formatMoney(number, places, symbol, thousand, decimal) {
+    //     number = parseFloat(number/100) || 0;
+    //     places = !isNaN(places = Math.abs(places)) ? places : 2;
+    //     symbol = symbol !== undefined ? symbol : "￥";
+    //     thousand = thousand || ",";
+    //     decimal = decimal || ".";
+    //     var negative = number < 0 ? "-" : "",
+    //         i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+    //         j = (j = i.length) > 3 ? j % 3 : 0;
+    //     return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+    // }
+
+function formatMoney(number, places, symbol, thousand, decimal) {
+            number = parseFloat(number/100) || 0;
+            places = !isNaN(places = Math.abs(places)) ? places : 2;
+            symbol = symbol !== undefined ? symbol : "￥";
+            thousand = thousand || ",";
+            decimal = decimal || ".";
+            var negative = number < 0 ? "-" : "",
+                i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+                k = i.length,
+                j = k > 3 ? k % 3 : 0;
+            return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+        }
+
+
+    $('button').on('click', function() {
+        var s = parseFloat($("#in").val());
+
+        setTimeout(function() {
+            $('#out').text(formatMoney(s));
+        }, 1000);
+        setTimeout(function() {
+            s += 100;
+            $('#out').text(s.formatMoney1());
+        }, 2000);
+        setTimeout(function() {
+            s += 100;
+            $('#out').text(Number(s).formatMoney1());
+        }, 3000);
+        setTimeout(function() {
+            $('#out').text('try again！');
+        }, 4000);
+    });
+/*
+
+		// Default usage and custom precision/symbol :
+	    var revenue = 12345678;
+	    alert(revenue.formatMoney()); // $12,345,678.00
+	    alert(revenue.formatMoney(0, "HK$ ")); // HK$ 12,345,678
+
+	    // European formatting:
+	    var price = 4999.99;
+	    alert(price.formatMoney(2, "€", ".", ",")); // €4.999,99
+
+	    // It works for negative values, too:
+	    alert((-500000).formatMoney(0, "£ ")); // £ -500,000
+
+	    });
+*/
+
+    </script>
+</body>
+
+</html>

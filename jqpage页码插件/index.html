@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jqPagination分页页码</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="page">
+        <a href="#" class="first" data-action="first">首页</a>
+        <a href="#" class="previous" data-action="previous">上页</a>
+        <input type="text" readonly="readonly" data-max-page="40" />
+        <a href="#" class="next" data-action="next">下页</a>
+        <a href="#" class="last" data-action="last">末页</a>
+    </div>
+
+
+
+    <button id="changePage">改变页码</button>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jqpagination.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('.page').jqPagination({
+            link_string: "/page={page_number}",
+            current_page: 5,
+            max_page: 40,
+            page_string: "当前第{current_page}页，共{max_page}页",
+            paged: function(page) {
+              alert("向后台发送ajax请求");
+
+            }
+        });
+    });
+
+    // current_page 当前页 limit 每页数量
+    function initPage(limit, max_page) {
+
+        $('.page').jqPagination({
+            link_string: "/page={page_number}",
+            current_page: 1,
+            max_page: max_page,
+            page_string: "当前第{current_page}页，共{max_page}页",
+            paged: function(page) {
+                // alert("向后台发送ajax请求");
+                getPageData(page, limit,false);
+            }
+        });
+    }
+
+	// page 当前页 limit 每页数量 isFirst 是否为初始化查询
+    function getPageData(page, limit,isFirst) {
+        if(isFirst){
+       		let max_page = 0;
+        }
+
+        let _data = {
+            page: page,
+            limit: limit
+        };
+
+        $.ajax({
+            type: "GET",
+            url: sessionStorage.URL + "",
+            contentType: "text/html;charset=utf-8",
+            data: JSON.stringify(_data),
+            success: function(data) {
+                if (data.data.length > 0) {
+                		// max_page = data.data.totalPage; //总页数，每次赋值，防止数据改变，页数没变。
+
+                	if(isFirst){
+                		max_page = data.data.totalPage; //总页数，每次赋值，防止数据改变，页数没变。
+                		initPage(limit,max_page);
+                	}
+
+                    let trs = "";
+                    for (let i = 0; i < limit; i++) {
+                        let each = "";
+                        trs += "<tr>" +
+                            "<td>" + i + "</td>" +
+                            "<td>" + data.data[i].name + "</td>" +
+                            "<td>" + data.data[i].jglx + "</td>" +
+                            "<td>" + data.data[i].lxr + "</td>" +
+                            "<td>" + data.data[i].lxdh + "</td>" +
+                            "<td>" + data.data[i].fzr + "</td>" +
+                            "<td>" + data.data[i].address + "</td>" +
+                            "<td>" + data.data[i].area + "</td>" +
+                            "</tr>"
+                    }
+                    $("#deptTable").html(trs);
+
+                } else {
+                    $("#deptTable").html("<tr><td colspan='8'>无记录</td></tr>");
+                }
+                $("#deptTable").show();
+
+            }
+        });
+    }
+
+    // 查询按钮点击事件
+    $("#changePage").on('click',function(){
+    	// let page = 1;
+    	// let limit =5;
+     //    getPageData(page, limit,true);
+     // $('.page').jqPagination('option','max_page','30'); // 参数须为字符串。
+
+     if (deptCount >= 2) { // 按钮点击两次及以上则destroy
+                $('#pageDept').jqPagination('destroy'); 
+                $('#pageDept').jqPagination('option', 'current_page', current_page);
+                $('#pageDept').jqPagination('option', 'max_page', max_page);
+            }
+
+     // $('.page').jqPagination('option','current_page','1'); // 参数须为字符串。
+    });
+    </script>
+</body>
+
+</html>
+
+

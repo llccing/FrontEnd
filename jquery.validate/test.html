@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery.validate</title>
+</head>
+
+<body>
+
+    <form action="" method="get" id="login">
+        <label for="uesrName">用户名</label>
+        <input type="text" name="userName" id="userName" minlength="4" maxlength="20">
+        <br>
+        <label for="pwd">密码</label>
+        <input type="password" name="pwd" id="pwd" required equalTo="userName">
+        <br>
+        <!-- <input type="submit" value="提交"> -->
+        <button id="add">提交</button>
+    </form>
+
+
+
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/messages_zh.js"></script>
+
+
+    <script type="text/javascript">
+    $("#add").on("click", function() {
+        $("#login").validate({
+            // debug:true,
+            submitHandler: function(form) {
+                debugger;
+                var $form = $(form),
+                    data = $form.serialize(); // 序列化表单
+
+                $.ajax({
+                    url: ".html",
+                    type: json,
+                    data: {
+                        serialize: data
+                    },
+                    success: function(data) {
+                        alert(data);
+                    }
+                });
+            }
+        });
+    })
+    </script>
+</body>
+
+</html>

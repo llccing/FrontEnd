@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example"></div>
+
+    <script src="../static/react.min.js"></script>
+    <script src="../static/react-dom.min.js"></script>
+    <script src="../static/browser.min.js"></script>
+    <script type="text/babel">
+        var arr = [
+            <h2>我是题目二</h2>,
+            <h1>我是题目一</h1>
+        ];
+
+        ReactDOM.render(
+            <div>{arr}</div>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

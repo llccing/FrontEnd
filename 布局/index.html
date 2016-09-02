@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>布局</title>
+    <style>
+    .top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: yellow;
+        border: 1px solid #0f0;
+    }
+    
+    .left {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        bottom: 0;
+        width: 200px;
+        background: #f00;
+        border: 1px solid #fff;
+    }
+    
+    .right {
+        position: absolute;
+        top: 50px;
+        left: 200px;
+        right: 0;
+        bottom: 0;
+        background: #f0f;
+        border: 1px solid #0ff;
+    }
+    
+    #top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: #0275D7;
+    }
+    
+    #left {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        bottom: 0;
+        width: 200px;
+        background-color: #2b2d2f;
+        border-top: 1px solid rgba(42, 171, 210, 0.36);
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 100;
+    }
+    
+    #right {
+        position: absolute;
+        top: 50px;
+        left: 200px;
+        bottom: 0;
+        right: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="top" class="top1"></div>
+    <div id="left" class="left1"></div>
+    <div id="right" class="right1"></div>
+</body>
+
+</html>

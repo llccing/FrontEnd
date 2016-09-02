@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id ='a'>aaaaaaaaaaaaa</textarea>
+</body>
+</html>
+<script src="../static/jquery-1.12.3.min.js"></script>
+<script type="text/javascript">
+	var arr = [0,1]
+	setInterval(function(){
+		var a = $('#a').val();
+		var b = arr[arr.length-1];
+		if(a != b){
+			console.log("a:"+a);
+			console.log("b:"+b);
+			arr.push(a);
+			console.log(arr);
+		}else{
+			console.log('1');
+		}
+	},1000)
+</script>

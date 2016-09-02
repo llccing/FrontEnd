@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象复制</title>
+</head>
+
+<body>
+    <h1>对象复制</h1>
+
+
+<script src="jquery-1.12.3.min.js"></script>
+    <script>
+    	$(function () {
+    		// console.log('adsf');
+
+    		var o  = {name:'123',sex:'man'};
+    		var res = clone(o);
+    		console.log(res);
+    	});
+
+    	function clone(obj) {
+    		var r = {};
+    		for(var key in obj){
+    			r[key] = obj[key];
+    		}
+    		r.tel = '123123';
+    		return r;
+    	}
+
+    </script>
+</body>
+</html>

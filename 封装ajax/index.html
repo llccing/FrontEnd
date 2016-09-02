@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mAjax</title>
+</head>
+<body>
+<button type="button" id="get">send get</button>
+
+<script src="../js/jquery-1.7.2.min.js"></script>
+<script>
+    $(function () {
+        /**
+         * 封装ajax
+         * @param url 发送请求的地址，必填;
+         * @param data 参数 json object{};
+         * @param type 请求方式:GET/POST/PUT/DELETE,默认值:'GET';
+         * @param successfn 请求成功后的回调函数;
+         * @param errorfn 请求失败后的回调函数;
+         * @param async 是否异步:true/false,默认值:true;
+         */
+        jQuery.mAjax = function (url, data, type, successfn, errorfn) {
+            type = (type === null || type === '' || typeof type === 'undefined') ? 'GET' : type.toUpperCase();
+
+            let defaults = {
+                url: url,
+                type: 'GET',
+                contentType: 'text/html;charset=utf-8',
+                data: data,
+                async: true,
+                cache: false,
+                dataType: 'json',
+                success: function (data) {
+                    successfn(data);
+                },
+                error: function (e) {
+                    errorfn(e);
+                }
+            };
+
+            if (type === 'POST' || type === 'PUT') {
+                defaults.contentType = 'application/json';
+            }
+
+//            $.ajax(defaults);
+            if (url === 1) {
+                successfn('asdf ')
+            }
+        };
+    });
+
+    let mAjax = {
+        get: function (url, data) {
+//                $.ajax({
+//                    url:url,
+//                    type:'GET',
+//                    contentType:'text/html;charset=utf-8',
+//                    data:data,
+//                    dataType:'json',
+//                    success:function(resData){
+//                        return resData;
+//                    },
+//                    error:function(msg){
+//                        console.log('error');
+//                    }
+//                });
+
+            if (url !== undefined) {
+                return url;
+            }
+        },
+        post: function () {
+            alert('post');
+        },
+        put: function () {
+            alert('put');
+        },
+        delete: function () {
+            alert('delete');
+        }
+
+    };
+
+    // ajax处理
+    let ajaxProcess = {
+        send: function () {
+            $.mAjax(1, {}, '', ajaxProcess.success, ajaxProcess.error);
+        },
+        success: function (data) {
+            alert(data);
+        },
+        error: function (e) {
+            alert(e);
+        }
+    };
+
+    // ajax处理
+    let ajaxProcess1 = function () {
+        this.send = function () {
+            $.mAjax(1, {}, '', ajaxProcess.success, ajaxProcess.error);
+        };
+        this.success = function (data) {
+            alert(data);
+        };
+        this.error = function (e) {
+            alert(e);
+        }
+    };
+
+    ajaxProcess1.prototype.get = function(){
+      alert("ajaxProcess1.prototype.get !!");
+    };
+
+
+    $('#get').on('click', function () {
+        ajaxProcess.send();
+        new ajaxProcess1().get();
+    });
+
+
+</script>
+</body>
+</html>

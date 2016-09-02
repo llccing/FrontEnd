@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>资料二</title>
+
+</head>
+
+<body>
+    <textarea id="Textarea" style="width:100%; height:100px;"></textarea>
+    <span>还能输入<em id="Num">10</em>字</span>
+    
+
+
+
+
+
+
+
+
+
+    <script src="../static/jquery-1.12.3.min.js"></script>
+    <script>
+    var numLast = 10;
+    var numNow = 0;
+    var textLong;
+
+    function addListener(element, e, fn) {
+        if (element.addEventListener) {
+            element.addEventListener(e, fn, false);
+        } else {
+            element.attachEvent("on" + e, fn);
+        }
+    }
+    var Textarea = document.getElementById("Textarea");
+    addListener(Textarea, "keyup", function() {
+        textValue();
+        plus();
+    })
+
+    // addListener(Textarea, "change", function() {
+    //     textValue();
+    //     plus();
+    // })
+
+    function textValue() {
+        var Value = document.getElementById("Textarea").value;
+        if (Value.length >= 10) {
+            document.getElementById("Textarea").value = document.getElementById("Textarea").innerHTML = Value.substr(0, 10);
+        }
+    }
+
+    function plus() {
+        if (numNow >= 0 && numNow <= 10) {
+            textLong = document.getElementById("Textarea").value.length;
+            numNow = numLast - textLong;
+            document.getElementById("Num").innerHTML = numNow;
+        }
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>照片显示原图和缩略图或者放大图</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+<style>
+
+/*图片遮罩层*/
+.img-back{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #000;
+    filter:alpha(opacity=70);       /* IE */
+	-moz-opacity:0.7;              /* 老版Mozilla */
+	-khtml-opacity:0.7;              /* 老版Safari */
+	opacity: 0.7;
+}
+
+
+.photos-box {
+    position: absolute;
+    background: #fff;
+    /*background: wheat;*/
+    width: 600px;
+    height: 600px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1001;
+}
+
+.photos-box .close {
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.photos-box .img-list {
+	position: relative;
+	width: 560px;
+	height: 560px;
+	margin: 20px;
+	padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+.photos-box .img-list li {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.photos-box .img-list li img {
+	position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+/*默认显示第一张照片*/
+
+.photos-box .img-list li:first-child {
+    display: inline-block;
+}
+
+.photos-box .left {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.photos-box .right {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+</style>
+
+<body>
+    <div id="photos" class="wrap-photos">
+        <img class="img-small" src="img/workAccording.png" width="132" height="164" alt="证件照片">
+        <img class="img-small" src="img/workAccording.png" alt="证件照片">
+        <img class="img-small" src="img/workAccording.png" alt="证件照片">
+        
+        <div class="img-back"></div>
+        <div class="photos-box">
+            <i class="fa fa-close close fa-2x"></i>
+            <div class="img-content">
+                <ul class="img-list">
+                    <li><img class="" src="img/workAccording.png" alt="证件照片"></li>
+                    <li><img class="img-origin" src="img/workAccording.png" alt="证件照片"></li>
+                    <li><img class="img-origin" src="img/workAccording.png" alt="证件照片"></li>
+                </ul>
+                <i class="fa fa-angle-left left fa-5x"></i>
+                <i class="fa fa-angle-right right fa-5x"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-1.12.3.min.js"></script>
+    <script>
+    $(function() {
+    	var arrPhotos = ['img/workAccording.png','img/workAccording.png'];
+
+        $('#photos').on('click', '.img-small'.function() {
+
+        });
+    });
+    </script>
+</body>
+
+</html>

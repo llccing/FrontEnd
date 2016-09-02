@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="example"></div>
+    <script src="../static/react.min.js"></script>
+    <script src="../static/react-dom.min.js"></script>
+    <script src="../static/browser.min.js"></script>
+    <script type="text/babel">
+        //var helloWorld = React.createClass({ 小写字母会报错！注意大小写
+        var HelloWorld = React.createClass({
+            render:function(){
+                return <h1>
+                hello, name={this.props.name},
+                    class={this.props.className},
+                    for={this.props.htmlFor}
+                </h1>;
+            }
+        });
+
+        ReactDOM.render(
+            //<helloWorld name="xz" className="classTest" htmlFor="for" />, 小写字母会报错！
+            <HelloWorld name="xz" className="classTest" htmlFor='for' />,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

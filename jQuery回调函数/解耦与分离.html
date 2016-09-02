@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>解耦与分离</title>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var Observable = {
+        callbacks: [],
+        add: function(fn) {
+            this.callbacks.push(fn);
+        },
+        fire: function(data) {
+            this.callbacks.forEach(function(fn) {
+                fn(data);
+            })
+        }
+    }
+
+    function ajax(arg) {
+        setTimeout(function() {
+            arg.successful(arg.data + ',返回获取到后台的数据')
+        }, 1000)
+    }
+
+    function show(s) {
+    	alert(s);
+    }
+
+    //使用add开始订阅：
+    Observable.add(function(data) {
+        show('执行动作一 ' + data)
+    })
+    Observable.add(function(data) {
+            show('执行动作二'+data)
+        })
+        //一段ajax请求，成功后处理
+    ajax({
+        data: '请求数据',
+        successful: function(data) {
+            Observable.fire(data); //触发动作
+        }
+    })
+    </script>
+</body>
+
+</html>

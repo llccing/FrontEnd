@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/video-js.css">
+    <!-- <link rel="stylesheet" href="videoStyle.css"> -->
+    <script src="static/video.js"></script>
+    <script src="static/videojs-ie8.js"></script>
+    <script src="jquery-1.12.3.min.js"></script>
+    <title>video.js 后台赋值</title>
+    <style>
+    .wrap-clear {
+        position: relative;
+        width: 50px;
+    }
+    
+    .wrap-clear ul {
+        display: none;
+        position: absolute;
+        bottom: 36px;
+        left: 6px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    .wrap-clear ul li {
+        border-radius: 8px;
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+        line-height: 15px;
+        padding: 3px 5px;
+        cursor: pointer;
+        background: #616161;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    .wrap-clear ul li:hover {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    
+    .wrap-clear .show {
+        position: absolute;
+        /*margin-top: 90px;*/
+        margin: 9px 8px;
+        /*video上*/
+        padding: 3px 5px;
+        border-radius: 8px;
+        background: #616161;
+        color: #fff;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap-video">
+        <!--width="595" height="350"-->
+        <video id="video" class="video-js vjs-default-skin video-player" controls preload="auto" data-setup='{"example_option":true}'></video>
+        <!-- <video id="video" class="video-js vjs-default-skin video-player" controls preload="auto" poster="img/poster.png" data-setup='{"example_option":true}'>
+            <source src="static/ggyh.mp4" type='video/mp4' />
+        </video> -->
+    </div>
+    <h3>分辨率</h3>
+    <!-- <div class="wrap-clear">
+        <ul id="clear-list" class="clear-list">
+            <li>720P</li>
+            <li>高清</li>
+            <li>流畅</li>
+            <li>极速</li>
+        </ul>
+        <span class="show">720P</span>
+    </div> -->
+    <script>
+    $(function() {
+
+        let initVideo = function(videoId, srcs) {
+            let player = videojs(videoId);
+            
+            /**
+            * 添加设置清晰度的按钮
+            */
+            let addClear = function(){
+                let clear = '<div class="wrap-clear"><ul id="clear-list" class="clear-list"><li>原画</li><li>高清</li><li>标清</li><li>流畅</li></ul><span id="clear" class="show">流畅</span></div>';
+                $('.vjs-fullscreen-control').before(clear);
+
+                $('.show').on('click', function() {
+                    if ($('#clear-list').is(':visible')) {
+                        $('#clear-list').hide();
+                    } else {
+                        $('#clear-list').show();
+                    }
+                });
+
+                $('#clear-list').on('click', 'li', function() {
+                    let s = $(this).text(),
+                        old = $('#clear').text(),
+                        time = player.currentTime();//切换前时间（秒）
+                    
+                    if(old!=s){//清晰度已改变
+                        $('#clear').text(s);
+                        if(s=='原画'){
+                            player.src({src:srcs.ORIGINAL.url,type:srcs.ORIGINAL.type});
+                        }else if(s=='高清'){
+                            player.src({src:srcs.HIGH.url,type:srcs.HIGH.type});
+                        }else if(s=='标清'){
+                            player.src({src:srcs.STANDARD.url,type:srcs.STANDARD.type});
+                        }else if(s=='流畅'){
+                            player.src({src:srcs.SMOOTH.url,type:srcs.SMOOTH.type});
+                        }
+                        player.currentTime(time);
+                        player.play();
+                    }
+                    $('#clear-list').hide();
+                });
+            }
+
+            player.ready(function() {
+                addClear();
+                player.src({src:'http://wsp360-output-test.oss-cn-hangzhou.aliyuncs.com/vod/595c0a15bc034527b4f9ea0e26314016/MP4/SMOOTH/0e4ae7fe71321b023a1154b21e4e2be1--.mp4?Expires=1472477006&OSSAccessKeyId=8078zo0Yx82VoUi0&Signature=YeLoRkGCQXymAxsv%2BArOZl/4644%3D',type:'video/mp4'});
+                
+                // player.src({src:'static/ggyh.mp4',type:'video/mp4'});
+                player.play();
+            });
+        };
+
+        // initVideo('video','static/ggyh.mp4');
+        initVideo('video',{
+            ORIGINAL:{url:"static/ggyh.mp4",type:'video/mp4'},
+            HIGH:{url:"static/ggyh.mp4",type:'video/mp4'},
+            STANDARD:{url:"static/ggyh.mp4",type:'video/mp4'},
+            SMOOTH:{url:"static/ggyh.mp4",type:'video/mp4'}
+            });
+    });
+    </script>
+</body>
+
+</html>
