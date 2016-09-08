@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>时间选择</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="input-group col-xs-2 col-lg-2 pull-left date form_date ">
+            <input class="form-control" type="text" id="timeEnd" readonly="readonly">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+    </div>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+    <script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script>
+    // 时间控件
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        // weekStart: 1,
+        // todayBtn: 1,
+        
+        autoclose: true,
+        // minView: 2,
+        forceParse: 0,
+        // pickerPosition: 'bottom-left',
+        format: 'yyyy-mm-dd hh:ii:ss'
+    });
+    </script>
+</body>
+
+</html>
