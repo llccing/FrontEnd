@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo 05</title>
+</head>
+<body>
+	<div id="example"></div>
+	<script src="../static/react.min.js"></script>
+	<script src="../static/react-dom.min.js"></script>
+	<script src="../static/browser.min.js"></script>
+	<script type="text/babel">
+		var Not
+		eList = React.createClass({
+			render:function(){
+				return (
+					<ol>
+						{
+							React.Children.map(this.props.children,function(child){
+								return <li>{child}</li>;
+							})
+						}
+					</ol>
+				);
+			}
+		});
+
+		ReactDOM.render(
+			<NoteList>
+				<span>hello</span>
+				<span>world</span>
+			</NoteList>,
+			document.body
+		);
+	</script>
+</body>
+</html>

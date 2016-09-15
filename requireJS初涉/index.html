@@ -10,7 +10,10 @@
 	
 	<script data-main="js/config" src="js/requireJS/require.min.js"></script>
 	<script>
-		require(['a']);
+		require(['a'],function(t){
+			console.log(t);
+			
+		});
 	</script>
 </body>
 </html>
