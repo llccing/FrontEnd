@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>each vs map</title>
+</head>
+
+<body>
+    <!--补充资料-->
+    <div id="addInfo" class="row-wrap add-wrap">
+        <label>补充资料：</label>
+        <ol class="add-info">
+            <li>
+                <span>1.耕地增减变动细分指标：</span>
+                <div class="m-l-12">
+                    土地综合整治增加
+                    <input type="text" name="tdzhzj" />公顷，农业结构调整增加
+                    <input type="text" name="nyjgtzzj" />公顷； 建设占用
+                    <input type="text" name="jszy" />公顷，灾害损毁
+                    <input type="text" name="zhsh" />公顷， 生态退耕
+                    <input type="text" name="sttg" />公顷，农业结构调整减少
+                    <input type="text" name="nyjgtzjs" />公顷。
+                </div>
+            </li>
+            <li>
+                <span class="pull-left">2.</span>
+                <div class="m-l-12">
+                    表中年末林地面积之外，按照《林地分类》（LY/T1812-2009）属于林地的面积为
+                    <input type="text" name="ldmj" /> 公顷, 其中天然林面积为
+                    <input type="text" name="trlmj" />公顷，人工林面积为
+                    <input type="text" name="rglmj" />公顷， 其他林地面积为
+                    <input type="text" name="qtldmj" />公顷；年末森林面积为
+                    <input type="text" name="nmslmj" />公顷。
+                </div>
+            </li>
+            <li>
+                <span class="pull-left">3.</span>
+                <div class="m-l-12">
+                    表中各项草地数据之外，按照农牧部门调查属于草地的年末面积为
+                    <input type="text" name="cdnmmj" />公顷。
+                </div>
+            </li>
+        </ol>
+        <div class="person-info m-l-12">
+            单位负责人：
+            <input type="text" name="dwfzr" /> 填表人：
+            <input type="text" name="tbr" /> 联系电话：
+            <input type="text" name="lxdh" /> 报出日期：2016年6月28日
+            <!--<input type="text" class=""/>-->
+        </div>
+    </div>
+
+    <button type="button">getData</button>
+    <script>
+    
+    $('#addInfo input').each(function() {
+        data[$(this).attr('name')] = $(this).val();
+    });
+
+    $('#addInfo input').map(function() {
+        data[this.name] = this.value;
+    });
+    </script>
+</body>
+
+</html>

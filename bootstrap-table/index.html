@@ -29,23 +29,40 @@
                 };
                 return param;
             },
+            // columns: [{
+            //     field: 'auditorResult',
+            //     title: '审核结果',
+            //     align: 'center'
+            // }, {
+            //     field: 'refuseReason',
+            //     title: '审核意见',
+            //     align: 'center'
+            // }, {
+            //     field: 'administratorName',
+            //     title: '审核人',
+            //     align: 'center'
+            // }, {
+            //     field: 'auditorTime',
+            //     title: '审核时间',
+            //     align: 'center'
+            // }]
             columns: [{
-                field: 'auditorResult',
-                title: '审核结果',
-                align: 'center'
-            }, {
-                field: 'refuseReason',
-                title: '审核意见',
-                align: 'center'
-            }, {
-                field: 'administratorName',
-                title: '审核人',
-                align: 'center'
-            }, {
-                field: 'auditorTime',
-                title: '审核时间',
-                align: 'center'
-            }]
+                        field: 'copyrightPersonType',
+                        title: '版权人类型',
+                        align: 'center'
+                    }, {
+                        field: 'copyrightPerson',
+                        title: '版权人姓名/单位',
+                        align: 'center'
+                    }, {
+                        field: 'certificateType',
+                        title: '证件类型',
+                        align: 'center'
+                    }, {
+                        field: 'accountId',
+                        title: '操作',
+                        align: 'center'
+                    }]
         });
 
         function responseHandler(e) {

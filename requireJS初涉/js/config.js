@@ -2,7 +2,8 @@ require.config({
 	paths:{
 		"a":"a",
 		"jquery":"jquery/jquery.min",
-		"b":"b"
+		"b":"b",
+		'module':'module'
 	}
 });
 
