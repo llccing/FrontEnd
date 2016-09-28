@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo 08</title>
+</head>
+<body>
+	
+	<script src="../static/react.min.js"></script>
+	<script src="../static/react-dom.min.js"></script>
+	<script src="../static/browser.min.js"></script>
+
+	<script type="text/babel">
+		var LinkButton = React.createClass({
+			getInitialState:function(){
+				return {liked:false};
+			},
+
+			handleClick:function(){
+				this.setState({liked: !this.state.liked});
+			},
+
+			render:function(){
+				var text = this.state.liked?'like':'haven\'t liked';
+				return (
+					<p onClick={this.handleClick}>
+						You {text} this. Click to toggle.
+					</p>
+					);
+			}
+		});
+
+		ReactDOM.render(<LinkButton />,document.body);
+	</script>
+</body>
+</html>
