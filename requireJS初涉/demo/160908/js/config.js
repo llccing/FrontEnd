@@ -1,6 +1,6 @@
 require.config({
 	paths:{
-		"module":"module",
+		"module":"module"
 	}
 
 });

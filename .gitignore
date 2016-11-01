@@ -6,6 +6,5 @@ target/
 bin/
 .idea/
 *.iml
-.DS_Store
 disconf/
 temp/
