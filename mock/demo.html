@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mock Demo</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.top,.left,.right{
+			margin: 2px 0;
+			padding: 18px 0;
+		}
+		.left{
+			width: 200px;
+			float: left;
+			border-right: 1px solid #ccc;
+		}
+		.left ul{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="top">
+			<h2>Mock demo</h2>
+		</div>
+		<div class="left">
+			<ul>
+				<li><a href="#">GET</a></li>
+				<li><a href="#">POST</a></li>
+				<li><a href="#">PUT</a></li>
+				<li><a href="#">DELETE</a></li>
+			</ul>
+		</div>
+		<div class="right">
+			<h3>请求响应</h3>
+			<div id="result" class="response">
+				
+			</div>
+		</div>
+	</div>
+	
+	<script data-main="js/app" src="../static/require.js/require.min.js"></script>
+
+</body>
+</html>
