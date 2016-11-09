@@ -1,9 +1,28 @@
 'use strict';
 
-// demo2 yield
-// 惰性求值
-function* gen(){
-    yield 123+456;
+
+// demo4 不用写回调函数
+function showLoadingScreen() {
+    console.log('show loading Screen');
 }
-console.log(gen().next());
-console.log(gen().next());
+
+function loadUIDataAsynchronously() {
+    setTimeout(()=> {
+        console.log('loadUIDataAsynchronously');
+        loader.next();
+    },2000);
+}
+
+function hideLoadingScreen() {
+    console.log('hideLoadingScreen');
+}
+
+function* loadUI(){
+    showLoadingScreen();
+    yield loadUIDataAsynchronously();
+    hideLoadingScreen();
+}
+var loader = loadUI();
+// 加载UI
+loader.next();
+
