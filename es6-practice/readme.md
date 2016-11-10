@@ -11,3 +11,4 @@
 9. Set和Map数据结构
 10. Iterator和for...of循环
 11. Promise对象
+12. Generator函数
