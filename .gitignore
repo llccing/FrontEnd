@@ -8,3 +8,4 @@ bin/
 *.iml
 disconf/
 temp/
+node_modules/
