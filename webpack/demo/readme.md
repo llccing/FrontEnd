@@ -53,6 +53,10 @@
     };
 ```
 
+- 新建main.js
+
+main.js就是要被打包或者编译的js文件，可以在这里面写es6等等js内容。
+
 - 在index.html中引入bundle.js
 
 ```
