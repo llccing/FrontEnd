@@ -1,9 +1,9 @@
 module.exports = {
-    //entry: './main.js',
-    entry: {
-        tjbb: './js/tjbb',
-        login: './js/login'
-    },
+    entry: './main.js',
+    //entry: {
+    //    tjbb: './js/tjbb',
+    //    login: './js/login'
+    //},
     output: {
         //path: __dirname+'/dist',
         //filename: 'bundle.js'
