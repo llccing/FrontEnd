@@ -11,5 +11,10 @@
 
 ## 阮一峰老师的demo
 
-1. entry file
-2. multiple entry files
+1. Entry file
+2. Multiple entry files
+3. Babel-loader
+4. CSS-loader
+5. Image loader
+6. CSS Module
+7. UglifyJs Plugin
