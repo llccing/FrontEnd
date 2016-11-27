@@ -318,13 +318,13 @@
 	    // 工作台账 初始化指导中心下拉列表
 	    model.getZdzxWork = function (bm) {
 	        if (bm === "") {
-	            $('#w_zdzx').html('<option value="">全部</option>');
+	            $('#workZdzx').html('<option value="">全部</option>');
 	            return;
 	        }
 	        common.ajaxGet(URL.GET_FWZDZX, { bm: bm }).done(function (data) {
 	            var options = '<option value="">全部</option>';
 	            options += model.getOps(data.data, ['bm', 'name']);
-	            $('#w_zdzx').html(options);
+	            $('#workZdzx').html(options);
 	        });
 	    };
 
@@ -1132,7 +1132,7 @@
 	                type: type, // 台账类型
 	                date: $('#year').val() + mon + '01',
 	                area: $('#w_district').val(),
-	                street: $('#w_zdzx').val()
+	                street: $('#workZdzx').val()
 	            };
 	            model.workSearch(_data, type);
 	        });

@@ -1,7 +1,7 @@
 require.config({
 	paths:{
 		"a":"a",
-		"jquery":"jquery/jquery.min",
+		"jquery":"jquery-1.12.3.min",
 		"b":"b",
 		'module':'module'
 	}

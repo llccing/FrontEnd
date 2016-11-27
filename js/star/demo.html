@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>javascript星级评分</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .wrapper-lzx {
+        height: 20px;
+        padding: 5px;
+        width: 130px;
+        margin: 100px auto 10px;
+    }
+    
+    .wrapper-lzx a {
+        float: left;
+        width: 26px;
+        height: 20px;
+        background: url(star.png) 0 -20px no-repeat;
+    }
+    
+    .wrapper-lzx p {
+        font: 24px SimSun;
+        width: 130px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 吻合度 -->
+    <div id="whd" class="wrapper-lzx">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <input type="text">
+    </div>
+    <!-- 质量 -->
+    <div id="zl" class="wrapper-lzx">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <input type="text">
+    </div>
+    <!-- 需求时效 -->
+    <div id="xqsj" class="wrapper-lzx">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <input type="text">
+    </div>
+    <!-- 综合评价 -->
+    <div id="zhpj" class="wrapper-lzx">
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <input type="text" hidden>
+    </div>
+</body>
+
+</html>
+<script src="../../static//jquery/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+$(function() {
+
+    (function() {
+        var temp = 0;
+        $('.wrapper-lzx a').mouseover( function() {
+            var id = $(this).parent().attr('id');
+            clear(id);
+
+            $(this).css('background-position', '0 0');
+            $(this).prevAll().css('background-position', '0 0');
+        });
+
+        $('.wrapper-lzx').on('mouseout', 'a', function() {
+            var id = $(this).parent().attr('id');
+            var index = $(this).index();
+            clear(id);
+            current(id, temp);
+        });
+
+        $('.wrapper-lzx').on('click', 'a', function(event) {
+            var id = $(this).parent().attr('id');
+
+            $(this).css('background-position', '0 0');
+            $(this).prevAll().css('background-position', '0 0');
+            var index = $(this).index();
+
+            $('#' + id).children('input').val(index + 1);
+            temp = index + 1;
+            current(id, temp);
+        });
+
+        //清除所有
+        function clear(parents) {
+            var stars = $('#' + parents).children('a');
+            $(stars).css('background-position', '0 -20px');
+        }
+
+        //显示当前第几颗星
+        function current(id, index) {
+            var stars = $('#' + id).children('a');
+            for (var i = 0; i < index; i++) {
+                console.log(i);
+                $(stars[i]).css('background-position', '0 0');
+            }
+        }
+    })();
+});
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>input-textarea-demo</title>
+    <style>
+        .form {
+            width: 200px;
+        }
+        
+        .form textarea,
+        .form input {
+            /*float: left;*/
+        }
+
+        table,
+        table td,
+        table th {
+            border: 1px solid #aaa;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <textarea name="" cols="30" rows="10"></textarea>
+        <textarea name="" cols="30" rows="10"></textarea>
+        <textarea name="" cols="30" rows="10"></textarea>
+        <textarea name="" cols="30" rows="10"></textarea>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>head 1</th>
+                <th>head 2</th>
+                <th>head 3</th>
+                <th>head 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text"></td>
+                <td class="td-class"><textarea name=""></textarea></td>
+                <td class="td-class"><textarea name="" cols="30" rows="10"></textarea></td>
+                <td class="td-class"><textarea name="" cols="30" rows="10"></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="../../static/jquery/jquery-1.12.3.min.js"></script>
+
+    <script>
+        $('.form input,.form textarea,.td-class input,.td-class textarea').each(function(){
+            $(this).change(function(){
+                alert($(this).val());
+            });
+        });
+
+        $('.td-class textarea').each(function(){
+            $(this).click(function(){
+                alert($(this).val());
+            });
+        });
+    </script>
+</body>
+
+</html>

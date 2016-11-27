@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var addCount;
+    function s1() {
+        var count = 0;
+        function s12() {
+            console.log(count)
+        }
+
+        addCount = function() {
+            count++;
+        };
+
+        return s12
+    }
+    var result1 = s1();
+    var result2 = s1();
+    addCount();
+    result1();
+    result2();
+
+</script>
+</body>
+</html>

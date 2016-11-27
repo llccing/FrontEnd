@@ -2,10 +2,11 @@ define(['jquery'], function($) {
     // $(document).ready(function(){
     //    	fun2();
     //    });
-
-    // function fun2(){
-    // 	alert("fun222222222");
-    // }
+    alert("fun222222222");
+    
+    function fun2(){
+    	alert("fun222222222");
+    }
 
     var module = {},
         urls = { update: 'fadf' };
