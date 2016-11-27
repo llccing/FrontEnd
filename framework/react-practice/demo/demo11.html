@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>demo 11</title>
 </head>
+
 <body>
-	
-	<script src="../static/react.min.js"></script>
-	<script src="../static/react-dom.min.js"></script>
-	<script src="../static/browser.min.js"></script>
-	<script src="../../js/jquery-1.12.3.min.js"></script>
+
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser-5.8.38.min.js"></script>
+	<script src="../../../static/jquery/jquery-1.12.3.min.js"></script>
 	<script type="text/babel">
 		var UserGist = React.createClass({
 			getInitialState:function(){
@@ -29,6 +31,16 @@
 						});
 					}
 				}.bind(this));
+
+				/*
+				这样才是正确的注释方式
+				if(this.isMounted()){
+					this.setState({
+						username:'张三',
+						lastGistUrl:'http://www.baidu.com/api'
+					});
+				}
+				*/
 			},
 
 			render:function(){
@@ -44,4 +56,5 @@
 		ReactDOM.render(<UserGist source="https://api.github.com/users/octocat/gists"/>,document.body);
 	</script>
 </body>
+
 </html>
