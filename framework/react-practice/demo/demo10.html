@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>demo 10</title>
 </head>
+
 <body>
-	
-	<script src="../static/react.min.js"></script>
-	<script src="../static/react-dom.min.js"></script>
-	<script src="../static/browser.min.js"></script>
+
+	<script src="js/react.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser-5.8.38.min.js"></script>
 	<script type="text/babel">
 		var Hello = React.createClass({
 			getInitialState:function(){
@@ -32,7 +34,7 @@
 			render:function(){
 				return (
 						<div style={{opacity:this.state.opacity}}>
-							Hello {this.props.name}
+							Hello {this.props.name}v
 						</div>
 					);
 			}
@@ -41,4 +43,5 @@
 		ReactDOM.render(<Hello name="world"/>,document.body);
 	</script>
 </body>
+
 </html>
