@@ -1,0 +1,40 @@
+{
+  "name": "es6-angular",
+  "version": "1.0.0",
+  "description": "this is demo for es6-angular",
+  "scripts": {
+    "release": "rm -rf build; webpack --config webpack.config.prod.js",
+    "start": "webpack-dev-server --content-base build/ --history-api-fallback --hot --inline"
+  },
+  "files": [
+    "css",
+    "etc",
+    "img",
+    "js",
+    "index.html",
+    "webpack.config.js",
+    "webpack.config.prod.js"
+  ],
+  "author": "llccing <xx>",
+  "license": "MIT",
+  "dependencies":{
+    "angular": "^1.5.6",
+    "angular-route": "^1.5.6",
+    "splash-screen": "^3.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "ng-annotate-loader": "^0.1.0",
+    "postcss-loader": "^0.9.1",
+    "html-loader": "^0.4.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
