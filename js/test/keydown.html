@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>keydown</title>
+</head>
+
+<body>
+    <input id="kz" type="text" maxlength="20" value="chunfengshadiao"><span id="num"></span>/<span>20</span>
+    <script>
+        var input = document.getElementById('kz');
+        var span = document.getElementById('num');
+        input.addEventListener('keyup',function(){
+            span.innerHTML = 20 - this.value.length;
+        });
+    </script>
+</body>
+
+</html>
