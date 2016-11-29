@@ -1,7 +1,7 @@
 {
   "name": "es6-angular-home",
   "version": "1.0.0",
-  "description": "angular es6 webpack demo",
+  "description": "angular es6 webpack demo in home",
   "scripts": {
     "release": "rm -rf build; webpack --config webpack.config.prod.js",
     "start": "webpack-dev-server --content-base build/ --history-api-fallback --hot --inline"

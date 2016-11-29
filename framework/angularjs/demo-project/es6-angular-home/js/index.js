@@ -2,7 +2,7 @@
  *  index.js launch the application.
  *
  *  @author  llccing
- *  @date    Nov 28, 2016
+ *  @date    Nov 29, 2016
  *
  */
 require.ensure(['splash-screen/dist/splash.min.css', 'splash-screen'], function(require) {

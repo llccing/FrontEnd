@@ -3,7 +3,7 @@
  *  This module used to override the original `autofocus` attribute since it doesn't work properly with ngRoute
  *
  *  @author  llccing
- *  @date    Nov 28, 2016
+ *  @date    Nov 29, 2016
  *
  */
 

@@ -4,7 +4,8 @@
   "description": "this is demo for es6-angular",
   "scripts": {
     "release": "rm -rf build; webpack --config webpack.config.prod.js",
-    "start": "webpack-dev-server --content-base build/ --history-api-fallback --hot --inline"
+    "start": "webpack-dev-server --content-base build/ --history-api-fallback --hot --inline",
+    "dev":"webpack --config webpack.config.js"
   },
   "files": [
     "css",

@@ -12,7 +12,7 @@ import tpl from './partials/home.html';
 export default [
     {
         id: 'home',
-        isDefault: true,
+        isDefault: false,
         when: '/home',
         controller: 'HomeController',
         controllerAs: 'home',

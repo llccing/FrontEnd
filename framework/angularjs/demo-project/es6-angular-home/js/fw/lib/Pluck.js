@@ -2,7 +2,7 @@
  *  Gets the property value of path from all elements in collection.
  *
  *  @author  llccing
- *  @date    Nov 28, 2016
+ *  @date    Nov 29, 2016
  *
  */
 

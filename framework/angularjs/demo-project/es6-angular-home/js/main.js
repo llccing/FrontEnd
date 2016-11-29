@@ -2,7 +2,7 @@
  *  main.js manage the whole application.
  *
  *  @author  llccing
- *  @date    Nov 28, 2016
+ *  @date    Nov 29, 2016
  *
  */
 import angular from 'angular';

@@ -3,7 +3,7 @@
  *  config.js which contains the configuration of app, and it should never be cached
  *
  *  @author  llccing
- *  @date    Nov 28, 2016
+ *  @date    Nov 29, 2016
  *
  **/
 
