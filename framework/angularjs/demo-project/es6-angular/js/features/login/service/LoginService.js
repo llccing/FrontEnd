@@ -27,8 +27,8 @@ class LoginService{
             // .error((e)=>{console.log(e)});
             
             // try 2
-            // this.$http.jsonp("http://192.168.0.47:8080/ycsf/api/user/login?jsonp=JSON_CALLBACK&siteid=137bd406")
-            // .success(function(data){resolve(data)});
+            this.$http.jsonp("http://192.168.0.47:8080/ycsf/api/user/login?jsonp=JSON_CALLBACK&siteid=137bd406&format=json&jsoncallback=?")
+            .success(function(data){resolve(data)});
 
         });
     }
