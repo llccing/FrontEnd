@@ -1,0 +1,1 @@
+function f(){alert("asdf")}function f(){alert("asdf")}

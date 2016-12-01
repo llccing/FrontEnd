@@ -11,7 +11,7 @@ gulp.task('minify-css', function () {
 });
 //
 gulp.task('script', function () {
-    gulp.src(['src/a.js',"src/b.js"])
+    gulp.src(['src/*.js'])
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
