@@ -1,32 +1,30 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>rem demo</title>
 
     <style>
-        h1{
+        h1 {
             font-size: 20rem;
         }
-
-        h2{
-
-        }
-
-        p{
-
-        }
+        
+        h2 {}
+        
+        p {}
     </style>
 </head>
+
 <body>
-<h1>this is "h1" element</h1>
+    <h1>this is "h1" element</h1>
 
-<h2>this is "h2" element</h2>
+    <h2>this is "h2" element</h2>
 
-<p>
-    this is "p" element
-</p>
-<script>
+    <p>
+        this is "p" element
+    </p>
+    <script>
     (function (doc, win) {
         var docEl = doc.documentElement,
                 resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -41,4 +39,5 @@
     })(document, window);
 </script>
 </body>
+
 </html>
