@@ -1,0 +1,554 @@
+.statistical-report {
+    overflow: hidden;
+    height: 100%;
+    margin-top: .04rem;
+    padding-left: .04rem;
+    font-size: .14rem;
+}
+
+.statistical-report .btn {
+    display: inline-block;
+    padding: .06rem .12rem;
+    margin-bottom: 0;
+    font-size: .14rem;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.statistical-report .buttonC {
+    width: 0.8rem
+    background: #0099CC;
+    color: #FFF;
+    margin-left: 0;
+}
+
+.statistical-report input,
+.statistical-report select {
+    padding: .06rem .09rem;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.statistical-report input:focus,
+.statistical-report select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.statistical-report .input-normal,
+.statistical-report .select-normal {
+    margin: 0 .3rem;
+    padding: .05rem .1rem;
+    background-color: #fff;
+}
+
+.statistical-report .nav-wrapper {
+    background: #cdd4dc;
+    height: 34px;
+    /*height: .4rem;*/
+}
+
+/*TODO 防止css冲突，待jcxx页修改好后，可删除*/
+.statistical-report .nav-header li:first-child {
+     margin-right: 0rem;
+}
+
+.statistical-report .row {
+    padding: 0;
+    margin: 0;
+}
+
+.statistical-report .row:before,
+.statistical-report .row:after {
+    display: table;
+    content: " ";
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.statistical-report .row:after {
+    clear: both;
+}
+
+.statistical-report .table-thead {
+    background: #CDD4DC;
+}
+
+.statistical-report .nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.statistical-report .nav-header {
+    float: left;
+}
+
+.statistical-report .nav-header li {
+    float: left;
+}
+
+.statistical-report .nav-wrapper .nav-header li a,
+.statistical-report .nav-wrapper .nav-header li a:link,
+.statistical-report .nav-wrapper .nav-header li a:visited,
+.statistical-report .nav-wrapper .nav-header li a:hover {
+    text-align: center;
+}
+
+.statistical-report .nav-wrapper .nav-first li a,
+.statistical-report .nav-wrapper .nav-first li a:link,
+.statistical-report .nav-wrapper .nav-first li a:visited {
+    background: #6c7c8f;
+    margin: 0 .01rem;
+    width: 1.38rem;
+}
+
+.statistical-report .nav-wrapper .nav-first li.active a {
+    background: #0099CC;
+}
+
+.statistical-report .nav-second {
+    display: inline-block;
+    width: 100%;
+}
+
+.statistical-report .nav-second li {
+    width: 50%;
+}
+
+.statistical-report .nav-second li a,
+.statistical-report .nav-second li a:link,
+.statistical-report .nav-second li a:hover,
+.statistical-report .nav-second li a:visited,
+.statistical-report .nav-second li a:active {
+    width: 100%;
+    background: #97a6b9;
+}
+
+.statistical-report .nav-second li.active a {
+    background: #394456;
+}
+
+/* search  */
+.statistical-report .search {
+    margin-top: .04rem;
+}
+
+.statistical-report .search .row {
+    margin: .18rem .16rem;
+}
+
+.statistical-report .search .people {
+    margin-top: .02rem
+}
+
+.statistical-report .search p.header {
+    background: #6D7C8F;
+    color: #fff;
+    padding: .1rem
+    margin: .05rem .05rem .05rem 0;
+    text-align: center;
+}
+
+.statistical-report .search select,
+.statistical-report .search input {
+    margin-right: .3rem
+}
+
+/*表示人员查询的内容隐藏*/
+.statistical-report .search .people {
+    display: none;
+}
+
+.statistical-report .search .label-size {
+    color: #333;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+
+.statistical-report .search .people .label-size {
+    width: .85rem;
+    text-align: left;
+}
+
+.statistical-report .row .selectSize,
+.statistical-report .row .inputSize,
+.statistical-report .row .form-control {
+    display: inline-block;
+}
+
+.statistical-report .search .select-default {
+    background: url("../img/chevron-down.png") no-repeat .97rem center #fff;
+}
+
+.statistical-report .search .queryBtn {
+    margin: .14rem 0 .09rem .5rem;
+}
+
+.statistical-report .search .inputSize,
+.statistical-report .search .selectSize {
+    display: inline;
+    margin-right: .3rem
+}
+
+.statistical-report .row .queryBtn {
+    margin-top: .1rem
+    margin-bottom: .12rem;
+}
+
+.statistical-report .row .table,
+.statistical-report .table{
+    background: #fff;
+}
+
+/* work  */
+.statistical-report .work {
+    display: none;
+    padding-top: .16rem;
+    border-top: .05rem solid #fff;
+}
+
+.statistical-report .work label {
+    color: #333;
+}
+
+.statistical-report .work .td-label {
+    cursor: pointer;
+}
+
+.statistical-report .work .btn {
+    margin-left: .3rem;
+}
+
+.statistical-report .work select {
+    background: url(../img/chevron-down.png) no-repeat 90% center #fff;
+    padding: .06rem .5rem .06rem .09rem;
+    margin: 0 .1rem 0 .1rem;
+}
+
+.statistical-report .time {
+    display: inline-block;
+    margin-right: .5rem;
+}
+
+.statistical-report .area {
+    display: inline-block;
+}
+
+.statistical-report .radio {
+    color: #fff;
+    margin: 0 0 .2rem 0;
+}
+
+.statistical-report .radio label {
+    padding: 0 .4rem 0 0;
+    margin-top: .15rem
+}
+
+.statistical-report .radio input {
+    cursor: pointer;
+}
+
+.statistical-report .infoBtn {
+    margin-left: .9rem;
+}
+
+.statistical-report .warningBtn {
+    margin-left: 3.6rem;
+}
+
+.statistical-report .work .table {
+    display: none;
+}
+
+.statistical-report .work .search-area {
+    margin-left: .22rem;
+}
+
+.statistical-report .work .search-result > div {
+    height: 5rem;
+    overflow: auto;
+}
+
+/* report  */
+.statistical-report .report {
+    display: none;
+    padding: .05rem 0 0 .02rem;
+    overflow: hidden;
+    height: 100%;
+}
+
+.statistical-report .report .count {
+    float: left;
+    color: #000;
+    background: #EAEDF2;
+    width: 4.17rem;
+    height: 100%;
+    margin-right: 10px;
+    padding: .2rem .1rem 0 0;
+}
+
+.statistical-report .count label {
+    color: #000;
+    width: .87rem;
+    text-align: right;
+    line-height: .33rem;
+}
+
+.statistical-report .count .center {
+    text-align: center;
+}
+
+.statistical-report .count .buttonC {
+    margin-left: .8rem;
+}
+
+.statistical-report .count .btn-reset {
+    margin-left: .1rem;
+    background: #afc6ce;
+}
+
+.statistical-report .m-l-0 {
+    margin-left: 0;
+}
+
+.statistical-report .count .selectSize {
+    width: 2.9rem;
+    background: url("../img/chevron-down.png") no-repeat 263px center #fff;
+}
+
+.statistical-report .count .count-select-1 {
+    width: 2.87rem;
+}
+
+.statistical-report .count .dateSize {
+    float: left;
+}
+
+.statistical-report .count .input-date {
+    width: 1rem;
+    height: 36px;
+    background: #eee;
+    border: 1px solid #ccc;
+}
+
+.statistical-report .count .calendarSize {
+    padding: .09rem;
+}
+
+.statistical-report .count .form-group {
+    height: 40px;
+    overflow: hidden;
+}
+
+.statistical-report .count .zhi {
+    float: left;
+    width: .2rem;
+    padding: 0;
+    line-height: .33rem;
+    text-align: center;
+    color: #000;
+}
+
+.statistical-report .count .radio-inline {
+    padding: .1rem 0 .1rem .2rem;
+}
+
+.statistical-report .report .count-result {
+    background: #EAEDF2;
+    height: 100%;
+    color: #fff;
+    padding:  .1rem .1rem .8rem;
+    overflow: auto;
+}
+
+.statistical-report .fr-wrapper {
+    display: none;
+}
+
+.statistical-report .report .navHeader {
+    width: 2rem;
+    margin: -.1rem 0 .1rem -.1rem;
+}
+
+.statistical-report .report .navHeader li,
+.statistical-report .report .navHeader li a {
+    width: 1rem;
+    background: #97A6B9;
+}
+
+.statistical-report .report .navHeader li.active a {
+    background: #394456;
+}
+
+.statistical-report .report .table {
+    display: none;
+    background: #fff;
+    color: #000;
+}
+
+.statistical-report .report .select-small {
+    width: 1.42rem;
+    height: 35px;
+    padding-left: .06rem;
+    background: url("../img/chevron-down.png") no-repeat 1.21rem center #fff;
+}
+
+.statistical-report .report .chart {
+    display: none;
+    background: #394456;
+    margin-right: 0;
+    height: 541px;
+    width: 100%;
+}
+
+.statistical-report .shadow {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #ccc;
+    z-index: 1000;
+    opacity: .2;
+}
+
+.statistical-report .t-dialog {
+    display: none;
+    position: absolute;
+    background: #fff;
+    overflow: hidden;
+    width: 10rem;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin-left: -5rem;
+    margin-top: -3rem;
+    z-index: 1001;
+    padding-bottom: .1rem;
+    border: 1px solid #536478;
+}
+
+.statistical-report .t-dialog .header {
+    padding: .05rem;
+    margin: 0;
+    font-size: .15rem;
+    background: #536478;
+    color: #fff;
+}
+
+.statistical-report .t-dialog .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: .3rem;
+    height: 30px;
+    line-height: .28rem;
+    text-align: center;
+    font-size: .18rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.statistical-report .info-content .td-length {
+    width: 1.3rem;
+}
+
+.statistical-report .dialog-info .info-content {
+    width: 9.9rem;
+    margin: .05rem;
+    height: 570px;
+    overflow: auto;
+}
+
+/*走访统计 dialog*/
+.statistical-report .visit-dialog ul li a {
+    padding: .03rem .19rem;
+    color: #666;
+}
+
+.statistical-report .visit-dialog ul li.active a {
+    color: #fff;
+    background: #29a4cc;
+}
+
+.statistical-report .visit-dialog .tab-pane {
+    padding: .1rem .01rem;
+}
+
+/*去掉table的圆角*/
+.statistical-report .visit-dialog .tab-pane .fixed-table-container,
+.statistical-report .visit-dialog .tab-pane .table-style thead th:first-child {
+    border-radius: 0;
+}
+
+.statistical-report .visit-dialog .tab-pane .table-style thead {
+    background: #cdd3d9;
+}
+
+.statistical-report .pagination {
+    position: relative;
+    bottom: initial;
+    display: inline-block;
+    border: none;
+}
+
+.statistical-report .tdJson {
+    display: none;
+}
+
+.statistical-report .wgtj {
+    display: none;
+}
+
+.statistical-report .wgtj table tbody tr {
+    cursor: pointer;
+}
+
+.statistical-report .wgtj table:last-child tbody tr {
+    cursor: default;
+}
+
+/*控制方向键*/
+.statistical-report .wgtj .back {
+    display: block;
+    float: right;
+    line-height: .3rem;
+}
+
+.statistical-report .wgtj .chart {
+    display: none;
+}
+
+.statistical-report .clear-fix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.statistical-report .width-height {
+    width: 100%;
+    height: 200px;
+}
