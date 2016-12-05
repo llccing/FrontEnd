@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.onbeforeunload=function(e){
+            var msg='您网页上有东西未保存';
+            e=e||window.event;
+            e.returnValue=msg;
+            alert(e)
+            return msg;
+        }
+    </script>
+</body>
+
+</html>

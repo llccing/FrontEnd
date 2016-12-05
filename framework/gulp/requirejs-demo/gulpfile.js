@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var minifyCss = require("gulp-minify-css");
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var amdOptimize = require('amd-optimize');
 //压缩
 gulp.task('minify-css', function () {
     gulp.src('css/*.css')
@@ -11,7 +12,16 @@ gulp.task('minify-css', function () {
 });
 //
 gulp.task('script', function () {
-    gulp.src(['src/*.js'])
+    gulp.src(['js/**/*.js'])
+        .pipe(amdOptimize('js/a',{
+            //require config
+            paths:{
+                "a":"a",
+                "jquery":"jquery-1.12.3.min",
+                "b":"b",
+                'module':'module'
+            }
+        }))
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
