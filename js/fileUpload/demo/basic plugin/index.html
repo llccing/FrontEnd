@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery File Upload Basic Plugin demo</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <input id="fileupload" type="file" name="files[]" multiple>
+
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/vendor/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+    <script>
+        $(function(){
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                done:function(e,data){
+                    $.each(data.result.files,function(index,file){
+                        $('</p>').text(file.name).appendTo(document.body);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
