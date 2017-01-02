@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>导航(基础样式)</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <p>标签型导航 nav-tabs</p>
+    <ul class="nav nav-tabs">
+        <li><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <br>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <br>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li><a href="##">jQuery</a></li>
+        <li class="disabled"><a href="##">Responsive</a></li>
+    </ul>
+
+
+
+    <hr>
+    <p>胶囊型导航 nav-pills</p>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li><a href="##">jQuery</a></li>
+        <li class="disabled"><a href="##">Responsive</a></li>
+    </ul>
+
+    <br>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li class="disabled"><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <br>
+    <p>胶囊导航垂直堆叠 nav-stacked</p>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li class="disabled"><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <p>胶囊导航垂直堆叠 分隔线nav-divider</p>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li class="nav-divider"></li>
+        <li class="disabled"><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <p>自适应胶囊型导航 横排</p>
+    意外发现：当宽度过小时，会自动竖排显示，体现自适应特性。
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="##">Home</a></li>
+        <li><a href="##">CSS3</a></li>
+        <li><a href="##">Sass</a></li>
+        <li class="disabled"><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <p>二级导航</p>
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="##">Home</a></li>
+        <li class="dropdown">
+            <a href="##" class="dropdown-toggle" data-toggle="dropdown">教程<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="##">CSS3</a></li>
+                <li><a href="##">Sass</a></li>
+                <!-- 三级菜单的问题 -->
+                <!--<li class="dropdown">
+                    <a href="##" class="dropdown-toggle" data-toggle="dropdown">子教程<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="##">CSS3</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="##">Sass</a></li>
+                    </ul>
+                </li>-->
+            </ul>
+        </li>
+        <li class="disabled"><a href="##">jQuery</a></li>
+        <li><a href="##">Responsive</a></li>
+    </ul>
+
+    <br>
+    <p>面包屑导航</p>
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">我的书</a></li>
+        <li class="active">《图解CSS3》</li>
+    </ol>
+    <script src="jquery-1.12.3.min.js"></script>
+    <script src="bootstrap.js"></script>
+</body>
+
+</html>
