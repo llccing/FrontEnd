@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>apply和call的使用</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        var a = {
+          b:function(){
+            console.log(this);
+          }
+        };
+
+        var c = ()=>{
+          console.log(this);
+        }
+
+        a.b();
+        c();
+    </script>
+  </body>
+</html>
