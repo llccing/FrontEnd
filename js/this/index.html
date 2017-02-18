@@ -1,30 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>this的指向</title>
+    <title>apply和call的使用</title>
   </head>
   <body>
     <script type="text/javascript">
-      function cat() {
-      }
-      cat.prototype.food = 'fish';
-      cat.prototype.show = function () {
-        return this.food;
-      };
-      // cat.prototype = {
-      //   food:'fish',
-      //   show:function () {
-      //     alert(this.food);
-      //   }
-      // };
+        var a = {
+          b:function(){
+            console.log(this);
+          }
+        };
 
-      var cat1 = new cat();
-      alert(cat1.show());
+        var c = ()=>{
+          console.log(this);
+        }
 
-      var dog = {food:'stone'};
-      alert(cat1.show.apply(dog));
-      alert(cat1.show.call(dog));
+        a.b();
+        c();
     </script>
   </body>
 </html>

@@ -2,22 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>apply和call的使用</title>
+    <title>this的指向</title>
   </head>
   <body>
     <script type="text/javascript">
-        var a = {
-          b:function(){
-            console.log(this);
-          }
-        };
+      function cat() {
+      }
+      cat.prototype.food = 'fish';
+      cat.prototype.show = function () {
+        return this.food;
+      };
+      // 这种方式也可以
+      // cat.prototype = {
+      //   food:'fish',
+      //   show:function () {
+      //     alert(this.food);
+      //   }
+      // };
 
-        var c = ()=>{
-          console.log(this);
-        }
+      var cat1 = new cat();
+      alert(cat1.show());
 
-        a.b();
-        c();
+      var dog = {food:'stone'};
+      alert(cat1.show.apply(dog));
+      alert(cat1.show.call(dog));
     </script>
   </body>
 </html>
