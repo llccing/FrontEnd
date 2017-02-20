@@ -63,5 +63,51 @@
   ```
 addEventListener不兼容低版本IE，普通事件无法取消，addEventListener还支持事件冒泡和事件捕获
 
-5.
+6. IE和DOM事件流的区别
+```
+IE采用冒泡型事件，Netscape使用捕获型事件，DOM采用先捕获后冒泡型事件。
+<body>
+  <div>
+    <button>click</button>
+  </div>
+</body>
+冒泡型事件：button div body(IE事件流)
+捕获型事件：body div button(Netscape事件流)
+DOM事件类型：body div button button div body(先捕获后冒泡)
+```
+7. 事件监听函数的区别
+```
+IE使用：
+[Object].attachEvent('name_of_event', fnHandler); // 绑定函数
+[Object].detachEvent('name_of_event', fnHandler); // 移除绑定
+
+DOM使用：
+[Object].addEventListener('name_of_event', fnHandler, bCapture); // 绑定函数
+[Object].removeEventListener('name_of_event', fnHandler, bCapture); // 移除绑定
+bCapture参数用于设置事件的绑定阶段，true为捕获阶段，false为冒泡阶段。
+
+```
+8. IE和标准下的兼容性的写法(先将这点列在这，具体的用法不太理解)
+```
+var ev = ev||window.event;
+document.documentElement.clientWidth || document.clientWidth;
+var target = ev.srcElement||ev.target;
+```
+9. call()和apply()的区别
+```
+call()方法：
+语法：call(thisObj,object1,object2...);
+定义：调用一个对象的一个方法，以另一个对象替换当前对象。
+说明：call方法可以代替一个对象调用一个方法。call()方法可以将一个函数的上下文从初始的
+上下文改变为thisObj指定的新对象的上下文。
+如果没有提供thisObj参数，那么Global对象将被用作thisObj。
+
+apply()方法：
+语法：apply(thisObj,[argArray])
+定义：调用某个对象的一个方法，用另一个对象替换当前对象。
+说明：如果argArray不是一个有效数组或者不是arguments对象，那么将导致一个typeError
+如果没有提供一个argArray和thisObj任何一个参数，那么Global对象将被用作thisObj,并且无法被传递任何参数。
+```
+
+
 # 高级
