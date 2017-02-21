@@ -108,6 +108,42 @@ apply()方法：
 说明：如果argArray不是一个有效数组或者不是arguments对象，那么将导致一个typeError
 如果没有提供一个argArray和thisObj任何一个参数，那么Global对象将被用作thisObj,并且无法被传递任何参数。
 ```
+10. b继承a的方法
+```
+function A(age, name){
+  this.age = age;
+  this.name = name;
+}
 
+A.prototype.show = function(){
+  alert('父级方法');
+}
+
+function B(age,name,job){
+  A.apply(this,arguments);
+  this.job = job;
+}
+B.prototype = new A();
+var b = new A(14,'侠客行');
+var a = new B(14,'狼侠','侠客');
+a.show();
+b.show();
+console.log(b);
+console.log(a);
+```
+11. 如何阻止事件冒泡
+```
+IE cancelBubble();
+其他 stopPropagation();
+阻止默认事件 preventDefault();
+
+return false;
+```
+12. JavaScript的本地对象，内置对象和宿主对象
+```
+本地对象：Array Object Regexp等可以new实例化
+内置对象：global Math等不可以实例化
+宿主对象：浏览器自带的 document window等
+```
 
 # 高级
