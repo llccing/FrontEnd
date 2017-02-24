@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>this的指向</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function cat() {
+      }
+      cat.prototype.food = 'fish';
+      cat.prototype.show = function () {
+        return this.food;
+      };
+      // 这种方式也可以
+      // cat.prototype = {
+      //   food:'fish',
+      //   show:function () {
+      //     alert(this.food);
+      //   }
+      // };
+
+      var cat1 = new cat();
+      alert(cat1.show());
+
+      var dog = {food:'stone'};
+      alert(cat1.show.apply(dog));
+      alert(cat1.show.call(dog));
+    </script>
+  </body>
+</html>
