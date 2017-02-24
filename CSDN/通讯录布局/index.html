@@ -10,30 +10,107 @@
                 margin:0;
                 padding:0;
             }
+            .left{
+              width: 100px;
+              background: #20364f;
+              float: left;
+              position:absolute;;
+              bottom: 0;
+              top: 0;
+              color: #fff;
+            }
+            .right{
+              background: #265180;
+              position: absolute;
+              top: 0;
+              bottom:0;
+              left: 100px;
+              right: 0;
+              box-sizing: border-box;
+            }
+            .left-top img{
+              height: 100px;
+            }
+            .nav{
+              margin-top: 10px;
+              list-style: none;
+            }
+            .nav li{
+              text-align: center;
+            }
+            .nav li.current a img{
+              background-color: #fff;
+            }
+            .nav li.current a:link,
+            .nav li.current a:visited,
+            .nav li.current a:hover,
+            .nav li.current a:active{
+              font-weight: bold;
+              padding: 20px 0px;
+              background-color: #265180;
+              color:#fff;
+            }
+            /*未访问时的状态*/
+            .nav li a:link,
+            /*已访问过的状态*/
+            .nav li a:visited,
+            /*鼠标到链接时的状态*/
+            .nav li a:hover,
+            /*鼠标按下时的状态*/
+            .nav li a:active{
+              display: block;
+              color: #F3EDED;
+              text-decoration: none;
+            }
+            .nav li a img{
+              width: 30px;
+              height: 30px;
+            }
+            .left-bottom{
+              position: absolute;
+              bottom: 0;
+              margin: 5px 32px;
+              font-weight: 600;
+              color: #a6afb9;
+            }
         </style>
     </head>
     <body>
         <div class="con">
             <div class="left">
-                <div class="left-top"></div>
-                <ul>
-                    <li><a href="#">通讯录</a></li>
-                    <li><a href="#">短信</a></li>
-                    <li><a href="#">其他</a></li>
-                    <li><a href="#">设置  </a></li>
+                <div class="left-top">
+                  <img src="1.jpg" alt="头像">
+                </div>
+                <ul id="navs" class="nav">
+                    <li><a href="#"><img src="21.png" alt="通讯录"><br>通讯录</a></li>
+                    <li><a href="#"><img src="22.png" alt="短信"><br>短信</a></li>
+                    <li><a href="#"><img src="23.png" alt="其他"><br>其他</a></li>
+                    <li><a href="#"><img src="24.png" alt="设置"><br>设置</a></li>
                 </ul>
                 <div class="left-bottom">
-                    <ul>
+                    <ul class="nav">
                         <li><a href="#">退出</a></li>
                     </ul>
                 </div>
             </div>
             <div class="right">
-                <div class="part part-txl"></div>
-                <div class="part part-dx"></div>
-                <div class="part part-qt"></div>
-                <div class="part part-sz"></div>
+                <div class="part part-txl">part1</div>
+                <div class="part part-dx">part2</div>
+                <div class="part part-qt">part3</div>
+                <div class="part part-sz">part4</div>
             </div>
         </div>
+        <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+          $(function () {
+            $('#navs a').each(function (index,item) {
+              $(this).click(function () {
+                $(this).parent('li').addClass('current').siblings('li').removeClass('current');
+                $($('.right div')[index]).show().siblings().hide();
+              });
+            });
+            $($('#navs a')[0]).click();
+          });
+        </script>
     </body>
 </html>

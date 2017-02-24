@@ -145,5 +145,6 @@ return false;
 内置对象：global Math等不可以实例化
 宿主对象：浏览器自带的 document window等
 ```
+13.
 
 # 高级
