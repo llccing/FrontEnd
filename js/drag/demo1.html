@@ -1,0 +1,46 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title> 页面名称 </title>
+<style type="text/css">
+#div {
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	width: 200px;
+	height: 200px;
+	background-color: #f60;
+}
+</style>
+</head>
+<body>
+<div id="div"></div>
+<script type="text/javascript">
+var div = document.getElementById("div");
+var dragFlag = false;
+var x,y;
+
+div.onmousedown = function (e) {
+	e = e || window.event;
+	x = e.clientX - div.offsetLeft;
+	y = e.clientY - div.offsetTop;
+	dragFlag = true;
+};
+
+document.onmousemove = function (e) {
+	if (dragFlag) {
+		e = e || window.event;
+		div.style.left = e.clientX - x + "px";
+		div.style.top  = e.clientY - y + "px";
+	}
+};
+
+document.onmouseup = function (e) {
+	dragFlag = false;
+};
+
+</script>
+</body>
+</html>
