@@ -145,6 +145,61 @@ return false;
 内置对象：global Math等不可以实例化
 宿主对象：浏览器自带的 document window等
 ```
-13.
+13. 添加、插入、替换、删除某个节点的方法
+  ```
+    btn.appendChild(btnNew);
+    target.insertBefore(newNode,indexElement);
+    btn.replaceChild(newNode, oldNode);
+    btn.removeChild(childNode);
+  ```
+
+14. window.onload 和 document ready 的区别
+  ```
+    window.onload是在DOM文档树都加载完和所有文件加载完之后执行的函数。
+    document ready在原生js中没有这种写法，jQuery中有
+    $(document).ready(function(){});
+    $().ready(function(){});
+    $(function(){});
+    以上3种写法相同。
+
+    jQuery的方法会在DOM文档树加载完之后执行的一个函数(这里的文档树加载完不表示全部资源加载完)。
+    $(function(){});要比window.onload先执行，window.onload只能执行一次，$(function(){});可以出现多次。
+  ```
+    [$(function(){});和window.onload的区别](http://www.php100.com/html/program/jquery/2013/0905/5954.html)
+
+15. "=="和"==="
+  ```
+    == 会进行类型转换
+    === 直接比较，不会转换类型
+  ```
+16. JavaScript是一门什么样的语言，它有哪些特点？
+  ```
+    javaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML网页上使用，用来给HTML网页增加动态功能。JavaScript兼容于ECMA标准，因此也称为ECMAScript。
+    基本特点
+    1．是一种解释性脚本语言（代码不进行预编译）。
+    2．主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。
+    3．可以直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。
+    跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。
+  ```
+17. JavaScript的数据类型都有什么？
+  ```
+    基本数据类型：string、number、boolean、null、undefined
+    引用数据类型：Object Array Date Regexp Function
+
+    如何判断是否为数组类型：
+    1. slice();数组专有的方法。但是要是变量有该方法，则会失效。
+    2. obj instanceof Array ,在IE中不正确？
+    3. ECMA Script5中新方法。Array.isArray();但是兼容性不好。
+
+    为了兼容性
+    if(typeof Array.isArray === 'undefined'){
+      Array.isArray == function(arg){
+        return Object.prototype.toString.call(arg) ===  '[Object Array]';
+      };
+    }
+  ```
+
+
+
 
 # 高级

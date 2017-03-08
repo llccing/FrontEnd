@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>原生js操作DOM节点</title>
+  </head>
+  <body>
+    <button type="button" name="button">I'm a button</button>
+
+    <hr>
+    <button type="button" name="button">I'm a button B</button>
+
+    <hr>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <hr>
+    <button type="button" name="button">I'm a Control button,click me</button>
+
+
+    <script type="text/javascript">
+      var btn = document.getElementsByTagName('button')[0];
+      var btnB = document.getElementsByTagName('button')[1];
+      var btnCtl = document.getElementsByTagName('button')[2];
+      var ul = document.getElementsByTagName('ul')[0];
+      var ul2 = document.getElementsByTagName('ul')[1];
+
+      var i = 1;
+      btnCtl.addEventListener('click',function(){
+        if(i==1){
+          btn.appendChild(btnB); // 作为子节点加入。
+        }else if(i==2){
+          var last = ul.lastChild;
+          ul2.insertBefore(last,ul2.childNodes[0]);
+          // ul2.childNodes[0].insertBefore(last);
+        }else if(i==3){
+          btn.replaceChild(ul2,btnB); // replaceChild(newNode,oldNode);
+        }else if(i==4){
+
+          i=0;
+        }
+        i++;
+      });
+
+
+
+    </script>
+  </body>
+</html>

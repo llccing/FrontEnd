@@ -9,3 +9,4 @@ bin/
 disconf/
 temp/
 node_modules/
+*.log
