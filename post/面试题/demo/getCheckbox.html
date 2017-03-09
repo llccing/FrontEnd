@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>getCheckbox</title>
+  </head>
+  <body>
+    <input type="text" name="" value="">
+    <input type="checkbox" name="" value="">
+    <input type="checkbox" name="" value="">
+    <input type="checkbox" name="" value="">
+    <input type="checkbox" name="" value="">
+    <input type="checkbox" name="" value="">
+    <input type="radio" name="" value="">
+    <input type="submit" name="" value="submit">
+
+
+    <script type="text/javascript">
+      var domList = document.getElementsByTagName('input');
+      var len = domList.length;
+      var checkboxs = [];
+      while (len--) {
+        console.log(len);
+        if(domList[len].type === 'checkbox'){
+          checkboxs.push(domList[len])
+        }
+      }
+      console.log(checkboxs);
+    </script>
+  </body>
+</html>

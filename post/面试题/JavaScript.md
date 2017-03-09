@@ -193,13 +193,33 @@ return false;
 
     为了兼容性
     if(typeof Array.isArray === 'undefined'){
-      Array.isArray == function(arg){
-        return Object.prototype.toString.call(arg) ===  '[Object Array]';
+      Array.isArray = function(arg){
+        return Object.prototype.toString.call(arg) ===  '[object Array]';
       };
     }
   ```
+  [Object.prototype.toString.call(arg) 理解](http://www.zhufengpeixun.cn/JavaScriptmianshiti/2014-02-28/271.html)
 
-
-
+18. 已知id的input输入框，希望获取这个输入框的输入值，用原生js实现。
+  ```
+    var value = document.getElementById('id').value;
+  ```
+19. 原生js获取页面所有的checkbox
+  ```
+    var domList = document.getElementsByTagName('input');
+    var len = domList.length;
+    var checkboxs = [];
+    while (len--) {
+      if(domList[len].type === 'checkbox'){
+        checkboxs.push(domList[len])
+      }
+    }
+  ```
+  20. 设置一个已知id的div的html内容为xxxx，字体颜色为黑色，用原生js实现。
+    ```
+      var dom = document.getElementById('id');
+      dom.innerHTML = 'xxxx';
+      dom.style.color = '#000';
+    ```
 
 # 高级
