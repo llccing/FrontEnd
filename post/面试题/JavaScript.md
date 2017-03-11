@@ -215,11 +215,17 @@ return false;
       }
     }
   ```
-  20. 设置一个已知id的div的html内容为xxxx，字体颜色为黑色，用原生js实现。
-    ```
-      var dom = document.getElementById('id');
-      dom.innerHTML = 'xxxx';
-      dom.style.color = '#000';
-    ```
+20. 设置一个已知id的div的html内容为xxxx，字体颜色为黑色，用原生js实现。
+  ```
+    var dom = document.getElementById('id');
+    dom.innerHTML = 'xxxx';
+    dom.style.color = '#000';
+  ```
+21. 当一个DOM节点被点击时，我们希望其能够执行一个函数，如何实现。
+  ```
+    1. 直接在DOM里绑定事件：<div onclick="test()"></div>
+    2. js中通过onclick绑定：xxx.onclick = test
+    3. 通过事件添加进行绑定：xxx.addEventListener('click',test);
+  ```
 
 # 高级
