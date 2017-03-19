@@ -226,6 +226,244 @@ return false;
     1. 直接在DOM里绑定事件：<div onclick="test()"></div>
     2. js中通过onclick绑定：xxx.onclick = test
     3. 通过事件添加进行绑定：xxx.addEventListener('click',test);
-  ```
 
+    JavaScript事件流模型有什么？
+    1.事件冒泡：事件开始有最具体的元素开始接受，然后逐级向上传播。
+    2.事件捕获，事件由最不具体的节点先接收，然后逐级向下，一直到最具体的。
+    3.DOM事件流，三个阶段：事件捕获、目标阶段、事件冒泡
+  ```
+22. 下面代码输出为何？解释原因
+  ```
+    var a;
+    alert(typeof a); //undefined
+    alert(b); // Uncaught ReferenceError: b is not defined
+
+    undefined是一个只有一个值的数据类型，这个值就是undefined，在使用var变量声明变量但未对其进行赋值初始化时，这个变量的值就是
+    undefined。而b由于未声明将报错。注意未声明的变量和声明了但未赋值的变量是不一样的。
+  ```
+23. 下面代码输出为何？解释原因
+  ```
+    var a = null;
+    alert(typeof a); // object
+
+    null是只有一个值的数据类型，这个值就是null。表示一个空指针对象，所以用typeof检测会返回"object";
+  ```
+24. 下面代码输出为何？解释原因
+  ```
+    var undefined;
+    undefined == null; // true
+    1 == true; // true
+    2 == true; // false
+    0 == false; // false
+    0 == ''; // true
+    NaN == NaN; // false
+    [] == false; // true
+    [] == []; // false
+    [] == ![]; // true 
+
+    undefined与null相等，但不恒等（===）
+    一个是number一个是string时，会尝试将string转换为number，
+    尝试将boolean转换成number，0或1
+    在将Object转换为number或string时，取决于另外一个对比量的类型，
+    所以，对于0、空字符串的判断，建议用"==="，"==="会先判断两边的值类型，类型不匹配时为false。
+
+    下面代码输出什么？
+    console.log(typeof foo);
+    var foo = '11'+2-'1';
+    console.log(foo); 
+    console.log(typeof foo);
+
+    执行完后，foo的值为111，但是foo的值为number，不是string
+  ```
+25. 看代码给答案。
+  ```
+    var a = new Object();
+    a.value = 1;
+    b = a;
+    b.value = 2;
+    alert(a.value); // 2
+    引用类型细节
+  ```
+26. 已知数组 var stringArray = ['this', 'is', 'Baidu', 'Campus'];alert()出"this is Baidu Campus".
+  ```
+    alert(stringArray.join(' '));
+  ```
+27. 已知有字符串foo = "get-element-by-id"; 写一个function将其转化成驼峰表示法"getElementById".
+  ```
+    function split(str){
+       var strArr = str.split('-');
+       for(var i=1;i<strArr.length;i++){
+         strArr[i] = strArr[i].charAt(0).toUpperCase()+strArr[i].substr(1,strArr[i].length-1);
+       }
+       return strArr.join('');
+    }
+  ```
+28. var numberArray = [3,6,2,4,1,5];
+  ```
+    1.实现对该数组的倒序，输出[5,1,4,2,6,3];
+    numberArray.reverse();
+    2.实现对数组的降序排列：输出[6,5,4,3,2,1]
+    numberArray.sort(function(a,b){
+      return b-a;
+    });
+  ```
+29. 输出今天的日期，以YYYY-MM-DD的形式，比如今天是2017年3月19日，则输出2017-03-19
+  ```
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = d.getMonth()+1;          
+    m = m.toString().length==2?m:'0'+m;
+    // m = m<10?'0'+m:m; // 换个角度
+    var day = d.getDate();
+    day = day.toString().length == 2 ? day:'0'+day;
+    var res = y+'-'+m+'-'+day;
+    console.log(res);
+  ```
+30. 将字符串"<tr><td>{$id}</td><td>{$name}</td></tr>"中的{$id}换成10，{$name}换成Tony(使用正则表达式)
+  ```
+    "<tr><td>{$id}</td><td>{$name}</td></tr>".replace(/{\$id}/g,10).replace(/{\$name}/g,'Tony');
+
+    g 表示全局替换
+    i 表示忽略大小写
+    m 表示多行匹配
+  ```
+31. 为了保证页面输出安全，我们经常需要对一些特殊字符进行转义，请写一个函数escapeHtml, 将<,>,&,"进行转义。
+  ```
+    function escapeHtml(){
+      return str.replace(/[<>"&]/g,function(match){
+          console.log(match);
+          switch(match){
+            case '<':
+              return '&lt;';
+            case '>':
+              return '&gt;';
+            case '\"':
+              return '&quot;'
+            case '&':
+              return '&amp;';
+          }
+        });
+    }
+  ```
+32. foo = foo||bar， 这行代码是什么意思？为什么要这样写？
+  ```
+  if(!foo)foo = bar; // 如何foo存在，值不变，否则把bar的值赋给foo。
+
+  短路表达式，作为 "&&" 和 "||" 操作符的操作数表达式，这些表达式在进行求值时，只要最终的结果已经可以确定是真或者假，求值过程便告终止，
+  这称之为短路求值。
+  ```
+33. 看下列代码，将会输出什么？
+  ```
+    var foo = 1;
+    (function(){
+      console.log(foo);  // undefined
+      var foo = 2;
+      console.log(foo); // 2
+    })();
+
+    // 上面的代码相当于
+    var foo = 1;
+    (function(){
+      var foo;
+      console.log(foo);
+      foo = 2;
+      console.log(foo);
+    })();
+
+    函数声明与变量声明会被JavaScript引擎隐式的提升到当前作用域的顶部，但是只提升名称，不会提升赋值部分。
+  ```
+34. 用js实现随机选取10-100之间的10个数字，存入一个数组，并排序。
+  ```
+    var arr = [];
+    for(var i=0;i<10;i++){
+      arr.push(Math.random()*90+10);
+    }
+    console.log(arr.sort());
+
+    // 上面的考虑不完善，可以更加周全，细致。
+
+  ```
+35. 把两个数组合并，并删除第二个元素。
+  ```
+    var a = [2,3,4];
+    var b = [9,5,4];
+    var c = a.concat(b);
+    // console.log(c.shift());
+    console.log(c.splice(0,1));
+    console.log(c);
+  ```
+36. 怎样添加、移除、复制、创建和查找节点（原生js）
+  ```
+    1.创建新节点
+      createDocumentFragment();
+      createElement();
+      createTextNode();
+    2.添加、移除、替换、插入
+      appendChild();
+      removeChild();
+      replaceChild();
+      insertBefore();
+    3.查找
+      getElementsByTagName(); // 标签名
+      getElementsByName(); // 通过元素name
+      getElementById(); // 通过id，唯一
+
+  ```
+37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e, 
+请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，
+如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
+  ```
+    function randomNum(url){
+        var arr = url.substr(url.indexOf('?')+1,url.length).split('&');
+        console.log(arr);
+        var obj = {};
+        for(var i=0;i<arr.length;i++){
+          var subArr = arr[i].split('=');
+          obj[subArr[0]] = subArr[1];
+        }
+        console.log(obj);
+    }
+
+    // 有可以完善的地方
+  ```
+38. 正则表达式构造函数var reg = new Regexp('xxx)与正则表达式字面量var reg = //有什么不同，匹配邮箱的正则表达式？
+  ```
+    使用RegExp()构造函数时，不仅需要转义引号(即 \" 表示 "), 还需要双反斜杠 (即\\ 表示一个\)。使用正则表达式字面量的效率更高。
+
+    匹配邮箱的正则：
+    var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+  ```
+39. 看下面的代码，给输出结果。
+  ```
+    for(var i=1;i<=3;i++){
+      setTimeout(function(){
+        console.log(i);
+      },0);
+    }
+    // 结果输出 4,4,4
+    原因：JavaScript事件处理程序在线程空闲之前不会运行。如何让上述代码输出1,2,3
+
+    for(var i=1;i<=3;i++){
+      setTimeout((function(){
+        console.log(i);
+      })(i),0);
+    }
+    改成立即执行函数
+        
+  ```
+40. 写一个function, 清除字符串前后的空格(兼容所有浏览器)
+  ```
+    if(!String.prototype.trim){
+        String.prototype.trim = function(){
+            return this.replace(/^\s+/,'').replace(/\s+&/,'');
+        }
+    }
+
+    var str = " \t\n test string ";
+    console.log(str);
+    var str = " \t\n test string ".trim(); 
+    console.log(str);
+        
+    alert(str == "test string"); // alerts "true"
+  ```
 # 高级

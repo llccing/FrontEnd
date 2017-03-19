@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,17 +7,33 @@
       window.onload = function () {
         var btn = document.getElementById('button');
         btn.addEventListener('click',function () {
-            var win = window.open('test2.html','name','width=600,height=500');
-            // win.onload = function () {
-            //   alert('test2')
-            // };
+         // start
+        if(!String.prototype.trim){
+          String.prototype.trim = function(){
+            return this.replace(/^\s+/,'').replace(/\s+&/,'');
+          }
+        }
 
-
+        var str = " \t\n test string ";
+        console.log(str);
+        var str = " \t\n test string ".trim(); 
+        console.log(str);
+        
+        alert(str == "test string"); // alerts "true"
+         
+         // end
         },false);
       }
 
-      function show() {
-        alert('parent show');
+      function randomNum(url){
+        var arr = url.substr(url.indexOf('?')+1,url.length).split('&');
+        console.log(arr);
+        var obj = {};
+        for(var i=0;i<arr.length;i++){
+          var subArr = arr[i].split('=');
+          obj[subArr[0]] = subArr[1];
+        }
+        console.log(obj);
       }
     </script>
   </head>
