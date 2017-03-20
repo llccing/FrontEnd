@@ -259,7 +259,7 @@ return false;
     NaN == NaN; // false
     [] == false; // true
     [] == []; // false
-    [] == ![]; // true 
+    [] == ![]; // true
 
     undefined与null相等，但不恒等（===）
     一个是number一个是string时，会尝试将string转换为number，
@@ -270,7 +270,7 @@ return false;
     下面代码输出什么？
     console.log(typeof foo);
     var foo = '11'+2-'1';
-    console.log(foo); 
+    console.log(foo);
     console.log(typeof foo);
 
     执行完后，foo的值为111，但是foo的值为number，不是string
@@ -409,7 +409,7 @@ return false;
       getElementById(); // 通过id，唯一
 
   ```
-37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e, 
+37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e,
 请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，
 如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
   ```
@@ -449,7 +449,7 @@ return false;
       })(i),0);
     }
     改成立即执行函数
-        
+
   ```
 40. 写一个function, 清除字符串前后的空格(兼容所有浏览器)
   ```
@@ -461,9 +461,62 @@ return false;
 
     var str = " \t\n test string ";
     console.log(str);
-    var str = " \t\n test string ".trim(); 
+    var str = " \t\n test string ".trim();
     console.log(str);
-        
+
     alert(str == "test string"); // alerts "true"
+  ```
+41. JavaScript中callee和caller的作用？
+  ```
+    caller是返回一个对函数的引用，该函数调用了当前函数；
+    callee是返回正在被执行的function函数，也就是所指定的function对象的正文。
+
+    那么问题来了？如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；
+    假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成）
+
+    var result=[];
+    function fn(n){  //典型的斐波那契数列
+       if(n==1){
+            return 1;
+       }else if(n==2){
+               return 1;
+       }else{
+            if(result[n]){ // 此处不是很理解
+                    return result[n];
+            }else{
+                    //argument.callee()表示fn()
+                    result[n]=arguments.callee(n-1)+arguments.callee(n-2);
+                    return result[n];
+            }
+       }
+    }
+  ```
+42. JavaScript中，以下哪条语一定会产生运行错误？
+  ```
+    A. var _变量 = NaN;
+    B. var 0bj = [];
+    C. var obj = //;
+    D. var obj = {};
+
+    BC
+  ```
+43. 以下两个变量a和b，a+b的哪个结果是NaN？
+  ```
+    A. var a = undefined,b = NaN;
+    B. var a = '123',b = NaN;
+    C. var a = undefined, b = NaN;
+    D. var a = NaN, b = 'undefined';
+
+    AC
+  ```
+44. var a= 10; b=20;c =4; ++b+c+a++ 等于()
+  ```
+    A. 34
+    B. 35
+    C. 36
+    D. 37
+
+    21+4+10 = 35
+    B
   ```
 # 高级

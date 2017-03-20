@@ -8,19 +8,14 @@
         var btn = document.getElementById('button');
         btn.addEventListener('click',function () {
          // start
-        if(!String.prototype.trim){
-          String.prototype.trim = function(){
-            return this.replace(/^\s+/,'').replace(/\s+&/,'');
-          }
-        }
+        // var a = undefined,b = NaN;
+        //  var a = '123',b = NaN;
+        //  var a = undefined, b = NaN;
+         var a = NaN, b = 'undefined';
 
-        var str = " \t\n test string ";
-        console.log(str);
-        var str = " \t\n test string ".trim(); 
-        console.log(str);
-        
-        alert(str == "test string"); // alerts "true"
-         
+         console.log(a+b);
+
+
          // end
         },false);
       }
