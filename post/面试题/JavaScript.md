@@ -519,4 +519,148 @@ return false;
     21+4+10 = 35
     B
   ```
+45. 下面的JavaScript语句中，（D）实现检索当前页面中的表单元素中的所有文本框，并将他们全部清空。
+  ```
+  // A
+   for(var i=0;i<form1.elements.length;i++){
+     if(form1.elements.type == 'text'){
+       form1.elements.value = '';
+     }
+   }
+
+   // B
+   for (var i = 0; i < document.form1.length; i++) {
+     if(forms[0].elements.type== 'text'){
+       forms[0].elements.value = '';
+     }
+   }
+
+   // C
+   if(document.form.elements.type == 'text'){
+     form.elements.value = '';
+   }
+
+   // D
+   for (var i = 0; i < document.forms.length; i++) {
+     for (var j = 0; j < document.forms[i].elements.length; j++) {
+       if(document.forms[i].elements[j].type == 'text'){
+         document.forms[i].elements[j].value  = '';
+       }
+     }
+   }
+
+   // D选项，修改后，经验证是正确的。
+  ```
+46. 要将页面的状态栏中显示"已经选中该文本框"，下列JavaScript语句正确的是（A）
+  ```
+    A. window.status = '已经选中';
+    B. document.status = '已经选中';
+    C. window.screen = '已经选中';
+    D. document.screen = '已经选中';
+
+    未验证，没有找到合适的验证方法。
+  ```
+47. 以下哪条语句会产生运行错误：AC
+  ```
+    A. var obj = ();
+    B. var obj = [];
+    C. var obj = {};
+    D. var obj = //;
+
+    和之前的42类似
+  ```
+48. 以下哪个单词不属于JavaScript保留字 B
+  ```
+    A. with
+    B. parent
+    C. class
+    D. void
+  ```
+49. 选择结果为真的表达式：C
+  ```
+    A. null instanceof Object
+    B. null === undefined
+    C. null == undefined
+    D. NaN == NaN
+  ```
+51. typeof运算符返回值中返回值有一个跟JavaScript数据类型不一致，它是什么？
+  ```
+    function
+  ```
+52. 定义了一个变量，但未赋值，alert该变量，对话框中显示什么？
+  ```
+    undefined
+  ```
+53. 分析代码，得出正确结果。
+  ```
+    var a =10,b =20,c= 30;
+    ++a;
+    a++;  
+         //13+21+30+13
+    e = ++a+(++b)+(c++)+a++;
+    alert(e);
+
+    e = 77
+  ```
+54. 写出函数DateDemo的返回结果，系统时间假定为今天
+  ```
+    function DateDemo() {
+      var d,s = '日期是：';
+      d = new Date();
+      s+= d.getMonth()+1+'/';
+      s+= d.getDate()+'/';
+      s+= d.getFullYear();
+      return s;
+    }
+    // '日期是：3/21/2017'
+  ```
+55. 写出程序的运行结果
+  ```
+    for (var i = 0,j=0; i < 10,j<6; i++,j++) {
+      k = i+j;
+    }
+
+    console.log(k)
+
+    // k = 10, i,j 循环结束前=5，结束后为6，不满足条件，循环结束。
+  ```
+56. 阅读以下代码，请分析出结果：
+  ```
+    var arr = new Array(1,3,5);
+    //  arr = [1,3,5,,'z'];
+    arr[4] = 'z';
+
+    //  arr2 = ['z',,5,3,1];
+    var arr2 = arr.reverse();
+    // arr.reverse()方法，已经改变了arr的顺序
+    //  arr3 = [1,3,5,,'z','z',,5,3,1]; 错误的
+    //  arr3= [z',,5,3,1,z',,5,3,1];
+    arr3 = arr.concat(arr2);
+    alert(arr3);
+    //  arr3 = [z',,5,3,1,z',,5,3,1];
+  ```
+57. 补充按钮点击事件函数，确认用户是否退出当前页面，确认之后关闭窗口。
+  ```
+    function closeWin(){
+      // 此处为问题答案
+      if(confirm('确定要退出吗？')){
+        window.close();
+      }
+    }
+  ```
+58. 写出简单描述html标签(不带属性的开始标签和结束标签)的正则表达式，
+并将以下字符串中的html标签去除掉。
+  ```
+    var str = '<div>这里是div<p>里面的段落</p></div>';
+
+    var reg = /<\/?\w+\/?>/gi;
+
+    alert(str.replace(reg," "));
+  ```
+
+
+
+
+
+
 # 高级
