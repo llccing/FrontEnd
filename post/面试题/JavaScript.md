@@ -657,8 +657,24 @@ return false;
 
     alert(str.replace(reg," "));
   ```
+59. 完成foo()函数的内容，要求能够弹出对话框，提示当前选中的是第几个单选框。
+  ```
+    <form class="" action="index.html" method="post" name="form1">
+      <input type="radio" name="name" value="123">
+      <input type="radio" name="name" value="1wer">
+      <input type="radio" name="name" value="asdf">
+    </form>
 
-
+    function foo(){
+      // var radios = document.form1.name;
+      var radios = document.getElementsByName('name');
+      for(var i = 0;i<radios.length;i++){
+        if(radios[i].checked){
+          return i+1;
+        }
+      }
+    }
+  ```
 
 
 

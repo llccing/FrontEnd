@@ -9,33 +9,27 @@
         var btn = document.getElementById('button');
         btn.addEventListener('click',function () {
          // start
-         var str = '<div>这里是div<p>里面的段落</p></div>';
-
-         var reg = /<\/?\w+\/?>/gi;
-
-         alert(str.replace(reg," "));
-
+         console.log(foo());
          // end
         },false);
       }
 
-      function randomNum(url){
-        var arr = url.substr(url.indexOf('?')+1,url.length).split('&');
-        console.log(arr);
-        var obj = {};
-        for(var i=0;i<arr.length;i++){
-          var subArr = arr[i].split('=');
-          obj[subArr[0]] = subArr[1];
+      function foo(){
+        var radios = document.getElementsByName('name');
+        for(var i = 0;i<radios.length;i++){
+          if(radios[i].checked){
+            return i+1;
+          }
         }
-        console.log(obj);
       }
+
     </script>
   </head>
   <body>
-    <form class="" action="index.html" method="post" id="form1">
-      <input type="text" name="name1" value="123">
-      <input type="text" name="name2" value="1wer">
-      <input type="text" name="name3" value="asdf">
+    <form class="" action="index.html" method="post" name="form1">
+      <input type="radio" name="name" value="123">
+      <input type="radio" name="name" value="1wer">
+      <input type="radio" name="name" value="asdf">
     </form>
     <button id="button" type="button" name="button">open test2.html</button>
   </body>
