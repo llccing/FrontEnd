@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>_.after</title>
+</head>
+<body>
+    <script src="../js/lodash.js"></script>
+    <script>
+        var saves = ['profile', 'settings'];
+
+        var done = _.after(saves.length, function() {
+            console.log('done saving!');
+        });
+
+        // 
+        _.forEach(saves, function(type) {
+            setTimeout(function(){
+                console.log("setTimeout type " + type);
+            },2000);
+            // asyncSave({ 'type': type, 'complete': done });
+        });
+    </script>
+</body>
+</html>
