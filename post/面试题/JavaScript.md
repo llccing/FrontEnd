@@ -259,7 +259,7 @@ return false;
     NaN == NaN; // false
     [] == false; // true
     [] == []; // false
-    [] == ![]; // true 
+    [] == ![]; // true
 
     undefined与null相等，但不恒等（===）
     一个是number一个是string时，会尝试将string转换为number，
@@ -270,7 +270,7 @@ return false;
     下面代码输出什么？
     console.log(typeof foo);
     var foo = '11'+2-'1';
-    console.log(foo); 
+    console.log(foo);
     console.log(typeof foo);
 
     执行完后，foo的值为111，但是foo的值为number，不是string
@@ -409,7 +409,7 @@ return false;
       getElementById(); // 通过id，唯一
 
   ```
-37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e, 
+37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e,
 请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，
 如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
   ```
@@ -449,7 +449,7 @@ return false;
       })(i),0);
     }
     改成立即执行函数
-        
+
   ```
 40. 写一个function, 清除字符串前后的空格(兼容所有浏览器)
   ```
@@ -461,9 +461,222 @@ return false;
 
     var str = " \t\n test string ";
     console.log(str);
-    var str = " \t\n test string ".trim(); 
+    var str = " \t\n test string ".trim();
     console.log(str);
-        
+
     alert(str == "test string"); // alerts "true"
   ```
+41. JavaScript中callee和caller的作用？
+  ```
+    caller是返回一个对函数的引用，该函数调用了当前函数；
+    callee是返回正在被执行的function函数，也就是所指定的function对象的正文。
+
+    那么问题来了？如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；
+    假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成）
+
+    var result=[];
+    function fn(n){  //典型的斐波那契数列
+       if(n==1){
+            return 1;
+       }else if(n==2){
+               return 1;
+       }else{
+            if(result[n]){ // 此处不是很理解
+                    return result[n];
+            }else{
+                    //argument.callee()表示fn()
+                    result[n]=arguments.callee(n-1)+arguments.callee(n-2);
+                    return result[n];
+            }
+       }
+    }
+  ```
+42. JavaScript中，以下哪条语一定会产生运行错误？
+  ```
+    A. var _变量 = NaN;
+    B. var 0bj = [];
+    C. var obj = //;
+    D. var obj = {};
+
+    BC
+  ```
+43. 以下两个变量a和b，a+b的哪个结果是NaN？
+  ```
+    A. var a = undefined,b = NaN;
+    B. var a = '123',b = NaN;
+    C. var a = undefined, b = NaN;
+    D. var a = NaN, b = 'undefined';
+
+    AC
+  ```
+44. var a= 10; b=20;c =4; ++b+c+a++ 等于()
+  ```
+    A. 34
+    B. 35
+    C. 36
+    D. 37
+
+    21+4+10 = 35
+    B
+  ```
+45. 下面的JavaScript语句中，（D）实现检索当前页面中的表单元素中的所有文本框，并将他们全部清空。
+  ```
+  // A
+   for(var i=0;i<form1.elements.length;i++){
+     if(form1.elements.type == 'text'){
+       form1.elements.value = '';
+     }
+   }
+
+   // B
+   for (var i = 0; i < document.form1.length; i++) {
+     if(forms[0].elements.type== 'text'){
+       forms[0].elements.value = '';
+     }
+   }
+
+   // C
+   if(document.form.elements.type == 'text'){
+     form.elements.value = '';
+   }
+
+   // D
+   for (var i = 0; i < document.forms.length; i++) {
+     for (var j = 0; j < document.forms[i].elements.length; j++) {
+       if(document.forms[i].elements[j].type == 'text'){
+         document.forms[i].elements[j].value  = '';
+       }
+     }
+   }
+
+   // D选项，修改后，经验证是正确的。
+  ```
+46. 要将页面的状态栏中显示"已经选中该文本框"，下列JavaScript语句正确的是（A）
+  ```
+    A. window.status = '已经选中';
+    B. document.status = '已经选中';
+    C. window.screen = '已经选中';
+    D. document.screen = '已经选中';
+
+    未验证，没有找到合适的验证方法。
+  ```
+47. 以下哪条语句会产生运行错误：AC
+  ```
+    A. var obj = ();
+    B. var obj = [];
+    C. var obj = {};
+    D. var obj = //;
+
+    和之前的42类似
+  ```
+48. 以下哪个单词不属于JavaScript保留字 B
+  ```
+    A. with
+    B. parent
+    C. class
+    D. void
+  ```
+49. 选择结果为真的表达式：C
+  ```
+    A. null instanceof Object
+    B. null === undefined
+    C. null == undefined
+    D. NaN == NaN
+  ```
+51. typeof运算符返回值中返回值有一个跟JavaScript数据类型不一致，它是什么？
+  ```
+    function
+  ```
+52. 定义了一个变量，但未赋值，alert该变量，对话框中显示什么？
+  ```
+    undefined
+  ```
+53. 分析代码，得出正确结果。
+  ```
+    var a =10,b =20,c= 30;
+    ++a;
+    a++;  
+         //13+21+30+13
+    e = ++a+(++b)+(c++)+a++;
+    alert(e);
+
+    e = 77
+  ```
+54. 写出函数DateDemo的返回结果，系统时间假定为今天
+  ```
+    function DateDemo() {
+      var d,s = '日期是：';
+      d = new Date();
+      s+= d.getMonth()+1+'/';
+      s+= d.getDate()+'/';
+      s+= d.getFullYear();
+      return s;
+    }
+    // '日期是：3/21/2017'
+  ```
+55. 写出程序的运行结果
+  ```
+    for (var i = 0,j=0; i < 10,j<6; i++,j++) {
+      k = i+j;
+    }
+
+    console.log(k)
+
+    // k = 10, i,j 循环结束前=5，结束后为6，不满足条件，循环结束。
+  ```
+56. 阅读以下代码，请分析出结果：
+  ```
+    var arr = new Array(1,3,5);
+    //  arr = [1,3,5,,'z'];
+    arr[4] = 'z';
+
+    //  arr2 = ['z',,5,3,1];
+    var arr2 = arr.reverse();
+    // arr.reverse()方法，已经改变了arr的顺序
+    //  arr3 = [1,3,5,,'z','z',,5,3,1]; 错误的
+    //  arr3= [z',,5,3,1,z',,5,3,1];
+    arr3 = arr.concat(arr2);
+    alert(arr3);
+    //  arr3 = [z',,5,3,1,z',,5,3,1];
+  ```
+57. 补充按钮点击事件函数，确认用户是否退出当前页面，确认之后关闭窗口。
+  ```
+    function closeWin(){
+      // 此处为问题答案
+      if(confirm('确定要退出吗？')){
+        window.close();
+      }
+    }
+  ```
+58. 写出简单描述html标签(不带属性的开始标签和结束标签)的正则表达式，
+并将以下字符串中的html标签去除掉。
+  ```
+    var str = '<div>这里是div<p>里面的段落</p></div>';
+
+    var reg = /<\/?\w+\/?>/gi;
+
+    alert(str.replace(reg," "));
+  ```
+59. 完成foo()函数的内容，要求能够弹出对话框，提示当前选中的是第几个单选框。
+  ```
+    <form class="" action="index.html" method="post" name="form1">
+      <input type="radio" name="name" value="123">
+      <input type="radio" name="name" value="1wer">
+      <input type="radio" name="name" value="asdf">
+    </form>
+
+    function foo(){
+      // var radios = document.form1.name;
+      var radios = document.getElementsByName('name');
+      for(var i = 0;i<radios.length;i++){
+        if(radios[i].checked){
+          return i+1;
+        }
+      }
+    }
+  ```
+
+
+
+
 # 高级
