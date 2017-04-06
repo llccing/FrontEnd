@@ -9,28 +9,31 @@
         var btn = document.getElementById('button');
         btn.addEventListener('click',function () {
          // start
-         console.log(foo());
+        var s = 'abcdefg';
+        console.log(s.substr(4));
          // end
         },false);
       }
 
-      function foo(){
-        var radios = document.getElementsByName('name');
-        for(var i = 0;i<radios.length;i++){
-          if(radios[i].checked){
-            return i+1;
-          }
-        }
+      function showImg(src){
+        var img = document.getElementById('img');
+        img.src = 'img/'+src;
       }
 
     </script>
   </head>
   <body>
-    <form class="" action="index.html" method="post" name="form1">
-      <input type="radio" name="name" value="123">
-      <input type="radio" name="name" value="1wer">
-      <input type="radio" name="name" value="asdf">
-    </form>
+
+    <img src="img/1.jpg" alt="" id="img">
+
+    <select class="" name="selectImg" id="select">
+      <option value="1.jpg">img1</option>
+      <option value="2.jpg">img2</option>
+      <option value="3.jpg">img3</option>
+      <option value="4.jpg">img4</option>
+      <option value="5.jpg">img5</option>
+    </select>
+
     <button id="button" type="button" name="button">open test2.html</button>
   </body>
 </html>

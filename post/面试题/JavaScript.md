@@ -675,6 +675,45 @@ return false;
       }
     }
   ```
+60. 完成showImg(),要求能够动态根据下拉列表的选项变化，更新图片的显示
+  ```
+    var select = document.getElementById('select');
+    select.addEventListener('change',function () {
+      showImg(this.value);
+      console.log(this.value);
+    },false);
+
+    function showImg(src){
+      var img = document.getElementById('img');
+      img.src = 'img/'+src;
+    }
+
+    <img src="img/1.jpg" alt="" id="img">
+
+    <select class="" name="selectImg" id="select">
+      <option value="1.jpg">img1</option>
+      <option value="2.jpg">img2</option>
+      <option value="3.jpg">img3</option>
+      <option value="4.jpg">img4</option>
+      <option value="5.jpg">img5</option>
+    </select>
+  ```
+61. 截取字符串abcdefg的efg
+  ```
+    var s = 'abcdefg';
+    console.log(s.substr(4));
+
+    // substr(start,[length]);
+    // substring(start,[stop]);
+  ```
+62. 列举浏览器对象模型BOM里常用的至少4个对象，并列举window对象的常用方法至少5个
+  ```
+    对象：window，document，location, screen,history,navigator
+
+    方法：alert(), comfirm(), prompt(),open(), close()
+  ```
+
+
 
 
 
