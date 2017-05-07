@@ -1,0 +1,17 @@
+{
+  "additionalFeatures": "Contour Display, Near Field Communications (NFC),...",
+  "android": {
+    "os": "Android 2.3",
+    "ui": "Android"
+  },
+  "images": [
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg"
+  ],
+  "storage": {
+    "flash": "16384MB",
+    "ram": "512MB"
+  }
+}
