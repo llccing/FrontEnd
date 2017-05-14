@@ -1,0 +1,222 @@
+.box{
+    width: 375px;
+    font-family: '微软雅黑';
+}
+
+.box-header {
+    position: relative;
+}
+
+.header-bg{
+    width:100%;
+}
+
+.nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix::after{
+    content: '.';
+    clear: both;
+    display: block;
+    height:0;
+    visibility: hidden;
+}
+
+.header-nav{
+    border-radius: 4px;
+    border: 2px solid #777;
+    position: absolute;
+    bottom: 0;
+    left: 65px;
+}
+
+.header-nav li{
+    float: left;
+    width: 50%;
+    position: relative;
+    text-align: center;
+    background: #9c9c9c;
+    color: #fff;
+}
+
+.header-nav li.active{
+    background: #fa5534;
+}
+
+
+
+.header-title{
+    display: block;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.icon{
+    background: url("../img/icon.png") no-repeat;
+    display: block;
+}
+
+.i-top-left{
+    background-position: -55px -7px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 21px;
+    width: 32px;
+}
+
+.i-bottom--right{
+    background-position: -6px -5px;
+    position: absolute;
+    bottom:0;
+    right:0;
+    height: 21px;
+    width: 32px;
+}
+
+.top{
+    margin: 30px 0 0;
+}
+
+.three-wrap{
+    border-bottom: 1px solid #f7f7f7;
+    padding: 3px 0;
+}
+.top-three-nav li:last-child .three-wrap{
+    border-bottom: 5px solid #f7f7f7;
+}
+
+.top-left{
+    float: left;
+    margin: 64px 20px 0 20px;
+}
+.three-icon-first{
+    width: 100px;
+    height: 100px;
+    background-position: -79px -103px;
+}
+
+.three-icon-second{
+    width: 100px;
+    height: 100px;
+    background-position: -270px -167px;
+}
+
+.three-icon-third{
+    width: 100px;
+    height: 100px;
+    background-position: -125px -4px;
+}
+
+.top-right{
+    float: left;
+}
+
+
+.icon-huangguan{
+    position: absolute;
+    top: 0;
+    left: 65px;
+    width: 67px;
+    height: 32px;
+    background-position: -6px -123px;
+    z-index: 1;
+}
+
+.top-head{
+    position: relative;
+}
+
+.top-head .head{
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: relative;
+    left: 40px;
+    top: 24px;
+    z-index: 0;
+}
+
+.icon-hudiejie{
+    width: 153px;
+    height: 47px;
+    background-position: -269px -9px;
+    position: relative;
+    z-index: -1;
+    bottom: 15px;
+    left: 24px;
+}
+
+.icon-level{
+    width: 125px;
+    height: 28px;
+    background-position: -9px -207px;
+    position: absolute;
+    left: 38px;
+    bottom: 15px;
+}
+
+.name-wrap .name{
+    font-size: 18px;
+}
+
+ .guanzhu{
+    font-size: 14px;
+    padding: 1px 3px;
+    background: #fd7e08;
+    color: #fff;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+ .yiguanzhu{
+    font-size: 14px;
+    padding: 1px 3px;
+    background: #aaa;
+    color: #fff;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.number{
+    color: #aaa;
+    font-size: 16px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.other-left{
+    float: left;
+    width: 84px;
+    height: 56px;
+    text-align: center;
+    margin-top: 46px;
+}
+
+.other-right{
+    float: left;
+}
+
+.other-head .head{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.other-head .name{
+    vertical-align: top;
+    margin-top: 30px;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.ib{
+    display: inline-block;
+}
