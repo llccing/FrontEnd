@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ol>
+        <todo-item v-for="item in todos" v-bind:todo="item"></todo-item>
+    </ol>
+</div>
+
+
+<script src="https://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+
+<script>
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{todo.text}}</li>'
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      todos: [
+        {text: '1'},
+        {text: '1123'},
+        {text: '90809'}
+      ]
+    }
+  });
+</script>
+</body>
+</html>
