@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+    function Animal(){
+    	this.name = 'animal';
+    }
+
+    Animal.prototype.say=function(){
+    	console.log('my name is ' + this.name);
+    }
+
+    function Bird(name,weight){
+    	this.weight = weight;
+    	return this;
+    }
+
+    Bird.prototype.fly = function(){
+    	console.log('I am a Bird, I can fly');
+    }
+
+    // Bird.prototype = new Animal();
+    // 等价
+	Bird.prototype.__proto__ = Animal.prototype;
+	Animal.call(Bird.prototype);
+
+	console.dir(Bird);
+    var bird = new Bird('bird',123);
+    console.dir(bird);
+    bird.say()
+
+
+    var obj = {};
+    console.dir(obj);
+
+
+    </script>
+</body>
+
+</html>
