@@ -10,3 +10,4 @@ disconf/
 temp/
 node_modules/
 *.log
+.vscode/
