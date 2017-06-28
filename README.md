@@ -25,6 +25,8 @@ ES6(ECMAScript 6) 于2015年6月发布，它的目标，是使得JavaScript语�
 	12. [Symbol](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Symbol)
 	13. [Variable-destructor-assignment](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/variable-destructor-assignment)
 
+对于开发中用到的插件，了解其原理。
+
 - [插件使用总结](https://github.com/llccing/FrontEnd-demo/tree/master/plugins-summary)
 
 	1.  [jQuery](https://github.com/llccing/FrontEnd-demo/tree/master/plugins-summary/jQuery)
