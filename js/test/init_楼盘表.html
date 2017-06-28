@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可编辑表格</title>
+</head>
+<body>
+	
+	<script src="../../static/jquery/jquery-1.12.3.min.js"></script>
+	<script>
+		 // 候选颜色
+		 let arrProjectType = [{
+							 	categoryName:'回迁房',
+							 	category:1,
+							},
+							 {
+							 	categoryName:'保障房',
+							 	category:2
+							 },
+							 {
+							 	categoryName:'租赁房',
+							 	category:3
+							 }];
+
+                let colors = ['#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                    '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                    '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'];
+
+                // 生成图例
+                let arrLi = arrProjectType.map((data, index) => {
+                    return `<li><span class="legend-img" style="background:${colors[index]}"></span><span class="legend-title" data="${data.category}">${data.categoryName}</span></li>`;
+                });
+                arrLi.unshift(`<li><span class="legend-img" style='background-color:#fff;border: 1px solid #ccc;'></span><span data="0" class="legend-title">非保障房(未维护房屋性质)</span></li>`);
+              
+                            // todo 楼盘表 生成
+                            let data = {
+                                unitNumber: 3, // 单元数量
+                                totalFloor: 12, // 总层数
+                                houseNums: [
+                                    {
+                                        unitNumber: 1, // 单元号
+                                        houseNum: 3 // 每层房屋数量
+                                    }, {
+                                        unitNumber: 2,
+                                        houseNum: 4
+                                    }, {
+                                        unitNumber: 3,
+                                        houseNum: 3
+                                    }
+                                ],
+                                houses: [
+                                    {
+                                        unitNumber: 1,  // 单元号
+                                        floorNumber: 3, // 楼层号
+                                        roomNumber: 3, // 房间号
+                                        houseType: 2 // 房间类型
+                                    },{
+                                        unitNumber: 2,  // 单元号
+                                        floorNumber: 3, // 楼层号
+                                        roomNumber: 4, // 房间号
+                                        houseType: 3 // 房间类型
+                                    },{
+                                        unitNumber: 3,  // 单元号
+                                        floorNumber: 2, // 楼层号
+                                        roomNumber: 1, // 房间号
+                                        houseType: 1 // 房间类型
+                                    }
+                                ]
+                            };
+
+                            // 渲染页面
+                            $('body').append(arrLi.join(''));
+                            // $('#xmglHouseListUL').html(initUnitTable(getUnits(data.data)));
+                            $('body').append(initUnitTable(getUnits(data)));
+
+                            // 给房子添加类型
+                            // setHouseType(data.data);
+                            if(data.houses.length>0){
+                            	setHouseType(data.houses);
+                            }else{
+                            	console.log('没有房子类型信息');
+                            }
+
+
+                // 找到指定房子，并且赋值相应类型
+                function setHouseType(data) {
+
+                    data.map((item, index) => {
+                        // 楼盘表 table
+                        let $table = $(`body li[data-unit="${item.unitNumber}"] table`);
+                        // 楼层数
+                        let trLen = $table.find('tr').length;
+                        // 所在层
+                        let $tr = $($table.find('tr')[trLen - 2 - item.floorNumber]);
+                        // 所在门
+                        let $td = $($tr.children('td')[item.roomNumber]);
+                        // 设置颜色
+                        $('body .legend-title').map((legendIndex, legendItem) => {
+                            if (parseInt($(legendItem).attr('data')) === item.houseType) {
+                                // 找到兄弟span 取得颜色，赋值给td
+                                $td.css({
+                                    'background-color': $(legendItem).prev().css('background-color'),
+                                    color: '#fff'
+                                });
+                            }
+                        });
+                    });
+                }
+
+                // 生成楼盘对象
+                function initUnitTable(unitsObj) {
+                    let UnitHtml = '';
+                    for (let i = 0; i <= unitsObj.maxUnit - unitsObj.minUnit; i++) {
+
+                        let minFloor = unitsObj.unitObjArr[i].minFloor;
+                        let maxFloor = unitsObj.unitObjArr[i].maxFloor;
+                        let minRoom = unitsObj.unitObjArr[i].minRoom;
+                        let maxRoom = unitsObj.unitObjArr[i].maxRoom;
+                        let unitNum = unitsObj.unitObjArr[i].unitNumber;
+                        let trs = '';
+                        for (let floorNum = minFloor; floorNum <= maxFloor; floorNum++) {
+                            let tr = '';
+                            tr += `<td>${maxFloor - floorNum + 1}层</td>`;
+                            for (let roomNum = minRoom; roomNum <= maxRoom; roomNum++) {
+                                tr += `<td>${maxFloor - floorNum + 1 + '0' + roomNum}</td>`;
+                            }
+                            trs += `<tr>${tr}</tr>`;
+                        }
+
+                        let tds = ''; // 楼盘表的倒数第二行生成
+                        for (let roomNum = minRoom; roomNum <= maxRoom; roomNum++) {
+                            tds += `<td>${'0' + roomNum}</td>`;
+                        }
+
+                        trs += `<tr><td rowspan="2">层次/单元</td>${tds}</tr>`;
+                        // 楼盘表 倒数第一行生成
+                        trs += `<tr><td colspan="${maxRoom - minRoom + 1}">${unitNum}单元</td></tr>`;
+
+                        // 拼接单元信息
+                        UnitHtml += `<li data-unit="${unitNum}"><div class="list-item"><table class="table table-bordered">${trs}</table></div></li>`;
+                    }
+                    return UnitHtml;
+                }
+
+                // 获得一个楼盘表对象
+                function getUnits(data) {
+
+                	if(data.unitNumber<1){
+                		cosole.log('没有单元信息');
+                		return ;
+                	}
+
+                	if(data.totalFloor<1){
+                		console.log('没有楼层信息');
+                		return ;
+                	}
+
+                	if(data.houseNums.length<1){
+                		console.log('没有单层层信息');
+                		return ;
+                	}
+
+                    let unitObjArr = [];
+                    for (let i = 0, l = data.houseNums.length; i <l; i++) {
+                        // unitObjArr.push(getUnitModel(unitArr[i], data))
+                        unitObjArr.push({
+                        	unitNumber: data.houseNums[i].unitNumber,
+	                        maxFloor: data.totalFloor,
+	                        minFloor: 1,
+	                        maxRoom: data.houseNums[i].houseNum,
+	                        minRoom: 1
+                        });
+                    }
+
+                    return {
+                        minUnit: 1,
+                        maxUnit: data.houseNums.length,
+                        unitObjArr: unitObjArr
+                    }
+                }
+	</script>
+</body>
+</html>

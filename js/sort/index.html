@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sort</title>
+</head>
+
+<body>
+    <button type="button">send request</button>
+    <script>
+    
+        (function () {
+            // 此方法存在问题
+            var a = [4, 5, 3, 21, 4, 23, 2, 3, 123, 123, 2, 3, 0, 1];
+
+            for (var i = 0; i < a.length; i++) {
+                var temp = a[i];
+                for (var j = i + 1; j < a.length; j++) {
+                    if (a[j] < temp) {
+                        a[j] = temp;
+                        a[i] = a[j];
+                    }
+                }
+            }
+
+            console.log(a);
+        })();
+
+
+        (function () {
+            // 正确方法之一
+            var a = [1, 40, 30, 10, 22, 11, 9, 8, 4, 20, 0];
+            function sortarr(arr) {
+                for (i = 0; i < arr.length - 1; i++) {
+                    for (j = 0; j < arr.length - 1 - i; j++) {
+                        if (arr[j] > arr[j + 1]) {
+                            var temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
+                        }
+                    }
+                }
+                return arr;
+            }
+
+            sortarr(a);
+            console.log(a);
+        })();
+
+    </script>
+</body>
+
+</html>

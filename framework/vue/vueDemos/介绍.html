@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <hr>
+    <p v-bind:title="title">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </p>
+    <hr>
+
+    <div>
+        <div v-if="ifShow">我来了</div>
+        <div v-if="!ifShow">我走了</div>
+        <button type="button" v-on:click="toggle">切换</button>
+    </div>
+    <hr>
+    <p>{{value}}</p>
+    <input type="text" v-model="value">
+    <hr>
+    <div>
+        <select>
+            <option v-for="item in todos" v-bind:value="item.value">{{item.text}}</option>
+        </select>
+    </div>
+
+</div>
+
+
+<script src="https://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      msg: '123',
+      title: '页面加载时间' + new Date(),
+      ifShow: true,
+      value: '123123',
+      todos: [
+        {
+          value: 1,
+          text: 'wqeroi'
+        },
+        {
+          value: 2,
+          text: '赤尾'
+        },
+        {
+          value: 3,
+          text: '调试oi'
+        },
+        {
+          value: 4,
+          text: '盒子oi'
+        }
+      ]
+    },
+    methods: {
+      toggle: function () {
+        this.ifShow = !this.ifShow;
+        console.log(this.ifShow)
+      }
+    }
+  });
+</script>
+</body>
+</html>
