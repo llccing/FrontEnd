@@ -16,39 +16,40 @@ Fun.prototype.val = 3;				// 原型基本属性
 Fun.prototype.arr = [3];			// 原型引用属性
 Fun.prototype.fun = function(){};	// 原型函数（引用属性）
 
-// 3. 组合继承
+// 5. 寄生式（是一种模式，并不只能用来实现继承）
+
+function beget(obj){
+	var F = function(){};
+	F.prototype = obj;
+	return new F();
+}
 
 function Animal(name){
 	this.name = name;
 	this.skill = [1];
-
-	// this.fun = function(){};
 }
 
-Animal.prototype.fun = function(){
-	console.log(this.name);
-};
+Animal.prototype.fun1 = function(){};
 
-function Cat(name,age){
-	Animal.call(this, name); // 核心
-	this.age = age;
+function getSubObject(obj){
+	// 创建新对象
+	var clone = beget(obj); // 核心
+	// 增强
+	clone.age = 1;
+
+	return clone;
 }
 
-Cat.prototype = new Animal(); // 核心
+var sub = getSubObject(new Animal('zfd'));
 
-var cat1 = new Cat('asdf', 10);
+console.dir(sub);
+console.log(sub.name);
+console.log(sub.age);
 
-var cat2 = new Cat('xxx', 23);
 
-console.dir(cat1);
-
-console.dir(cat2);
-
-cat1.fun();
-cat2.fun();
 
 // 核心
 
-// 将实例函数放在原型对象上，来实现函数复用。同时保留借用构造函数方式的优点。
-// Animal.call(this, name); 继承父类的基本属性，并且向父类构造函数传参。
-// Cat.prototype = new Animal(); 继承父类函数，实现函数复用。
+// 优点：
+
+// 缺点：
