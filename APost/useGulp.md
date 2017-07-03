@@ -1,4 +1,4 @@
-# 前端基础设施
+# 前端基础设施(gulp)
 
 ### 目录
 
@@ -25,8 +25,9 @@ windows环境node安装,
 [教程一](http://www.jianshu.com/p/bef810c33721),
 [教程二](https://blog.gtwang.org/web-development/install-node-js-in-windows-mac-os-x-linux/)
 
-如果node下载速度过慢，可以考虑使用国内的[node下载站](http://nodejs.cn/download/)。
+### 注意事项
 
+如果node下载速度过慢，可以考虑使用国内的[node下载站](http://nodejs.cn/download/)。
 
 ## <a name="gulp">gulp</a>
 
@@ -252,17 +253,30 @@ gulp.task('default', ['server']);
 
 ## <a name="开发流程">开发部署流程</a>
 
+
+
+配置好package.json和gulpfile.js文件后。执行
+
+```
+npm install 
+```
+
+### 注意事项
+
+如果 npm install 时速度过慢，可以翻墙，或者可以用cnpm，（cnpm需要安装，自行Google）。
+
+
+
+
+### 开发：
+
 所有的修改都是在app文件夹内，build后生成编译后的文件。
-
-
-开发：
-
 
 ```
 gulp // gulp default
 ```
 
-部署：
+### 部署：
 ```
 // 此处可以优化。
 gulp clean
