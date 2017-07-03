@@ -311,4 +311,6 @@ gulp build
 	- [requirejs-example-gulpfile](https://github.com/phated/requirejs-example-gulpfile)
 
 
-### 2. less, sass等的使用，（大小，色调、字体控制）
+### 3. babel转码，默认打包的文件都是转换过的，所有浏览器加载同样的逻辑文件。
+
+### 3. less, sass等的使用，（大小，色调、字体控制）
