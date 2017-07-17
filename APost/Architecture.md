@@ -8,8 +8,36 @@
 
 	还是说不要纠结这个问题，又有点庸人自扰了。只记得前端架构不就可以了吗。(!_!)/懊恼
 
-## mvc
+## MVC(Model-View-Controller)
 
+- View(视图): 用户界面
+
+- Controller(控制器)：业务逻辑
+
+- model(模型)：数据保存
+
+各部分通信方式：
+
+![igm](./imgs/architecture/mvc1.png)
+
+## MVP(Model-View-Presenter)
+
+MVP将Controller改名为Presenter，同时改变了通信方向。
+
+![mvp](./imgs/architecture/mvp.png)
+
+1. 各部分的通信都是双向的。
+2. View与model不发生联系，通过Presenter传递。
+3. View非常薄，不部署业务逻辑，称为被动视图（Passive View），即没有任何主动性，而presenter非常厚，所有逻辑都部署在那里。
+
+
+## MVVM(Model-ViewModel-View)
+
+MVVM模式将presenter改名为ViewModel，基本上与MVP模式完全一致。
+
+![mvvm](./imgs/architecture/mvvm.png)
+
+唯一区别是，他用了双向数据绑定（data-binding）:View的变动，自动反应到ViewModel，反之亦然。
 
 
 
