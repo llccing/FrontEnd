@@ -22,3 +22,7 @@
 constructor是一个属性，当创建一个函数时都会为其创建一个原型对象prototype，在prototype对象中又会像函数中创建this一样创建一个constructor属性,那么constructor属性指向的就是拥有整个原型对象的函数或者对象
 
 在这个例子中 Book prototype中的constructors属性指向的就是Book类对象。
+
+## 属性与方法封装
+
+JavaScript是函数级作用域，声明在函数内部的变量和方法在外界是访问不到的,通过特性可以可以创建类的私有变量和私有方法。
