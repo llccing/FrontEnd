@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <style>
+        .wrap {
+            display: flex;
+            display: -webkit-flex;
+            /* border: 1px solid red; */
+            flex-direction: row;
+            flex-wrap: nowrap;
+            flex-flow: row nowrap;
+            /* justify-content: center; */
+        }
+
+        .child{
+            flex: 1;
+        }
+
+        .child-head {
+            display: flex;
+            justify-content: center;
+            border: 1px solid gold;
+        }
+
+        .child-body {
+            border: 1px solid green;
+        }
+
+        .child-footer {
+            border: 1px solid blue;
+            display: -webkit-box;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .child-footer div{
+            border-right: 1px solid red;
+            text-align: center;
+        }
+        .child-footer div:last-child{
+            border-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="child child-head">
+            1
+        </div>
+
+        <div class="child child-body">
+            2
+        </div>
+
+        <div class="child child-footer">
+            <div>1. 目录一 ，，，，</div>
+            <div>2. 目录一 ，，，，</div>
+            <div>3. 目录一 ，，，，</div>
+            <div>4. 目录一 ，，，，</div>
+        </div>
+    </div>
+</body>
+
+</html>
