@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+</head>
+
+<body>
+    <script>
+        var button = document.createElement('button');
+        var body = document.getElementsByTagName('body')[0];
+        body.appendChild(button);
+        button.innerText = 'click';
+        button.onclick = function () {
+            ajax();
+        }
+
+        function ajax() {
+            var request = new XMLHttpRequest();
+            var url =
+                'http://localhost:3000/';
+                request.open('GET', url, true);
+                request.onreadystatechange = function (data) {
+                console.log(data);
+            }
+            request.send();
+        }
+    </script>
+</body>
+
+</html>
