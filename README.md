@@ -1,7 +1,5 @@
 # FontEnd-demo
 
-![font-structure](http://7xst43.com1.z0.glb.clouddn.com//github/imgfront-structure.png)
-
 ![1](./front-structure.png)
 
 ## List
