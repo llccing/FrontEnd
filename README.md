@@ -1,8 +1,8 @@
 # FontEnd-demo
 
-开发过程中遇到的问题，尝试写个demo解决。
-在以后的工作中遇到类似的问题也有一个参考的作用，同时也是作为blog的素材。
+![font-structure](http://7xst43.com1.z0.glb.clouddn.com//github/imgfront-structure.png)
 
+![1](./front-structure.png)
 
 ## List
 
