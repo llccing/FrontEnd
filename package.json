@@ -22,11 +22,13 @@
     "react-router": "2.x",
     "style-loader": "~0.12.3",
     "url-loader": "~0.5.6",
+    "vuepress": "^0.12.0",
     "webpack": "~1.13.0",
     "webpack-dev-server": "^1.14.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
