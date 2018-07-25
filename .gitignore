@@ -11,3 +11,4 @@ temp/
 node_modules/
 *.log
 .vscode/
+docs/.vuepress/dist/
