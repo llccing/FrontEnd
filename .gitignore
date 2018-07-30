@@ -12,3 +12,7 @@ node_modules/
 *.log
 .vscode/
 docs/.vuepress/dist/
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
