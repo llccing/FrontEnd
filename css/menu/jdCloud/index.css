@@ -1,0 +1,114 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#wrapper {
+    width: auto;
+    max-width: 1200px;
+    background: rgba(34, 34, 34, .8);
+    text-align: center;
+    margin: 0 auto;
+}
+
+div.logo {
+    display: inline-block;
+}
+
+.logo-img:hover, .logo-img:visited, .logo-img:link, .logo-img:active {
+    text-decoration: none;
+}
+
+div.logo .logo-img {
+    background-image: url(./jdc-logo.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: transparent;
+    display: inline-block;
+    width: 112px;
+    height: 34px;
+    position: relative;
+    top: -10px;
+    margin-right: 23px;
+}
+
+div.menu {
+    display: inline-block;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+    cursor: pointer;
+}
+
+ul li a:hover, ul li a:visited, ul li a:link, ul li a:active {
+    text-decoration: none;
+}
+
+/* 顶级菜单的样式 */
+
+ul.parent {
+    width: 100%;
+}
+
+ul.parent>li {
+    padding: 0 16px;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+}
+
+ul.parent>li:hover {
+    background: orange;
+    color: #fff;
+}
+
+ul.parent>li>a:hover, ul.parent>li>a:visited, ul.parent>li>a:link, ul.parent>li>a:active {
+    color: #fff;
+}
+
+ul.parent>li:hover .sub-menu{
+    display: block;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    background: #42464a;
+    margin-left: -16px;
+    padding-right: 10px;
+    text-align: left;
+    width: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sub-menu h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: initial;
+}
+
+.sub li {
+    display: block;
+    padding-left: 20px;
+    line-height: 40px;
+}
+
+.sub li>a {
+    color: #fff;
+    display: block;
+}
+
+.sub li>a:hover {
+    color: #549cff;
+}
