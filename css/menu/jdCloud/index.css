@@ -7,9 +7,11 @@ html, body {
 #wrapper {
     width: auto;
     max-width: 1200px;
-    background: rgba(34, 34, 34, .8);
+    background: #4e4e4e;
     text-align: center;
     margin: 0 auto;
+    position: relative;
+    font-size: 14px;
 }
 
 div.logo {
@@ -74,7 +76,7 @@ ul.parent>li>a:hover, ul.parent>li>a:visited, ul.parent>li>a:link, ul.parent>li>
     color: #fff;
 }
 
-ul.parent>li:hover .sub-menu{
+ul.parent>li:hover .sub-menu {
     display: block;
 }
 
@@ -90,14 +92,6 @@ ul.parent>li:hover .sub-menu{
     padding-bottom: 20px;
 }
 
-.sub-menu h3 {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: initial;
-}
-
 .sub li {
     display: block;
     padding-left: 20px;
@@ -111,4 +105,43 @@ ul.parent>li:hover .sub-menu{
 
 .sub li>a:hover {
     color: #549cff;
+}
+
+.water-full {
+    display: none;
+    position: absolute;
+    background: #4e4e4e;
+    left: 0;
+    right: 0;
+    text-align: left;
+    padding: 20px 0 10px 222px;
+}
+.parent>li:hover >.water-full{
+    display: block;
+}
+.water-full h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: initial;
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.water-full>ul>li>a:hover, .water-full>ul>li>a:visited, .water-full>ul>li>a:link, .water-full>ul>li>a:active {
+    color: #999;
+    display: block;
+    padding-left: 20px;
+}
+
+.water-full > ul >li {
+    width: 208px;
+    line-height: 40px;
+    vertical-align: top;
+}
+
+.water-full > ul > li>a:hover{
+    color: #549cff;
+    background: #5e5e5e;
 }
