@@ -4,10 +4,18 @@ html, body {
     width: 100%;
 }
 
+#menu-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #585555;
+}
+
 #wrapper {
     width: auto;
     max-width: 1200px;
-    background: #4e4e4e;
+    /* background: #4e4e4e; */
     text-align: center;
     margin: 0 auto;
     position: relative;
@@ -116,9 +124,11 @@ ul.parent>li:hover .sub-menu {
     text-align: left;
     padding: 20px 0 10px 222px;
 }
-.parent>li:hover >.water-full{
+
+.parent>li:hover>.water-full {
     display: block;
 }
+
 .water-full h3 {
     margin: 0;
     padding: 0;
@@ -135,13 +145,116 @@ ul.parent>li:hover .sub-menu {
     padding-left: 20px;
 }
 
-.water-full > ul >li {
+.water-full>ul>li {
     width: 208px;
     line-height: 40px;
     vertical-align: top;
 }
 
-.water-full > ul > li>a:hover{
+.water-full>ul>li>a:hover {
     color: #549cff;
     background: #5e5e5e;
+}
+
+.menu-right {
+    float: right;
+    line-height: 60px;
+}
+
+.menu-right>a, .menu-right>.user-info {
+    display: inline-block;
+}
+
+.menu-right a:link, .menu-right a:visited, .menu-right a:hover, .menu-right a>:active {
+    /* line-height: 60px; */
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-right-monitor {
+    border: 1px solid #ccc;
+    line-height: 24px;
+    padding: 0 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.menu-right-monitor:hover {
+    color: #549cff !important;
+    /* border-color: #549cff; */
+}
+
+.menu-right-backup {
+    padding: 0 15px;
+    line-height: 24px;
+}
+
+.menu-right-backup:hover {
+    color: #549cff !important;
+}
+
+.user-info {
+    padding: 0 30px 0 20px;
+    position: relative;
+}
+
+.user-info:hover {
+    background: orange;
+}
+
+.user-info:hover .menu-drop{
+    display: block;
+}
+
+.user-info>a {
+    cursor: default;
+}
+
+.user-info img {
+    height: 26px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.user-info .down {
+    position: absolute;
+    top: 29px;
+    right: 18px;
+    border-style: solid;
+    border-width: 4px 4px 0;
+    border-color: #fff transparent transparent;
+}
+
+.menu-drop {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 185px;
+    padding: 16px 16px 0;
+    background: #191b1d;
+}
+
+.menu-drop-list>li {
+    line-height: 24px;
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    line-height: 33px;
+}
+
+.menu-drop-list>li>a{
+    display: block;
+}
+
+.menu-drop-list > li > a:hover{
+    color: #549cff;
+}
+
+.no-read-count{
+    float: right;
+    margin-top: 7px;
+    border-radius: 8px;
+    background-color: orange;
+    padding: 0 7px;
+    line-height: 18px;
 }
