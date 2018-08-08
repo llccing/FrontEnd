@@ -234,6 +234,38 @@ ul.parent>li:hover .sub-menu {
     background: #191b1d;
 }
 
+.menu-drop-show{
+    line-height: 24px;
+    font-size: 12px;
+}
+
+.menu-drop-show .count{
+    text-align: left;
+    color: #cccccc7d;
+}
+
+.menu-drop-show .money{
+    height: 26px;
+}
+
+.menu-drop-show .money span{
+    float: left;
+    color: orange;
+}
+
+.menu-drop-show .money a{
+    float: right;
+    border: 1px solid orange;
+    padding: 0 8px;
+    border-radius: 4px;
+    line-height: 24px;
+}
+
+.menu-drop-show .money a:hover{
+    color: #fff;
+    background: orange;
+}
+
 .menu-drop-list>li {
     line-height: 24px;
     display: block;
@@ -257,4 +289,17 @@ ul.parent>li:hover .sub-menu {
     background-color: orange;
     padding: 0 7px;
     line-height: 18px;
+    color: #fff;;
+}
+
+.menu-drop-footer{
+    font-size: 12px;
+    text-align: right;
+    border-top: 1px solid #8a8888;
+    margin-top: 15px;
+    line-height: 40px;
+}
+
+.menu-drop-footer a:hover{
+    color: #549cff;
 }
