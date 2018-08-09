@@ -20,6 +20,18 @@ html, body {
     margin: 0 auto;
     position: relative;
     font-size: 14px;
+    z-index: 2;
+}
+
+.mock {
+    display: block;
+    position: absolute;
+    background: #000000;
+    background: #42464a;
+    /* opacity: .7; */
+    width: 100%;
+    height: 300px;
+    z-index: 1;
 }
 
 div.logo {
@@ -118,7 +130,7 @@ ul.parent>li:hover .sub-menu {
 .water-full {
     display: none;
     position: absolute;
-    background: #4e4e4e;
+    /* background: #4e4e4e; */
     left: 0;
     right: 0;
     text-align: left;
@@ -202,8 +214,10 @@ ul.parent>li:hover .sub-menu {
     background: orange;
 }
 
-.user-info:hover .menu-drop{
+.user-info:hover .menu-drop {
     display: block;
+    /* height: 230px; */
+    /* transition: height 1s; */
 }
 
 .user-info>a {
@@ -226,6 +240,7 @@ ul.parent>li:hover .sub-menu {
 }
 
 .menu-drop {
+    /* height: 0; */
     display: none;
     position: absolute;
     right: 0;
@@ -234,26 +249,26 @@ ul.parent>li:hover .sub-menu {
     background: #191b1d;
 }
 
-.menu-drop-show{
+.menu-drop-show {
     line-height: 24px;
     font-size: 12px;
 }
 
-.menu-drop-show .count{
+.menu-drop-show .count {
     text-align: left;
     color: #cccccc7d;
 }
 
-.menu-drop-show .money{
+.menu-drop-show .money {
     height: 26px;
 }
 
-.menu-drop-show .money span{
+.menu-drop-show .money span {
     float: left;
     color: orange;
 }
 
-.menu-drop-show .money a{
+.menu-drop-show .money a {
     float: right;
     border: 1px solid orange;
     padding: 0 8px;
@@ -261,7 +276,7 @@ ul.parent>li:hover .sub-menu {
     line-height: 24px;
 }
 
-.menu-drop-show .money a:hover{
+.menu-drop-show .money a:hover {
     color: #fff;
     background: orange;
 }
@@ -274,25 +289,26 @@ ul.parent>li:hover .sub-menu {
     line-height: 33px;
 }
 
-.menu-drop-list>li>a{
+.menu-drop-list>li>a {
     display: block;
 }
 
-.menu-drop-list > li > a:hover{
+.menu-drop-list>li>a:hover {
     color: #549cff;
 }
 
-.no-read-count{
+.no-read-count {
     float: right;
     margin-top: 7px;
     border-radius: 8px;
     background-color: orange;
     padding: 0 7px;
     line-height: 18px;
-    color: #fff;;
+    color: #fff;
+    ;
 }
 
-.menu-drop-footer{
+.menu-drop-footer {
     font-size: 12px;
     text-align: right;
     border-top: 1px solid #8a8888;
@@ -300,6 +316,6 @@ ul.parent>li:hover .sub-menu {
     line-height: 40px;
 }
 
-.menu-drop-footer a:hover{
+.menu-drop-footer a:hover {
     color: #549cff;
 }
