@@ -69,7 +69,7 @@ package.json下的eslintConfig
 
 初期修复时，可以使用
 ```
-// 制定目录，非常方便
+// 指定目录，非常方便
 npm run lint src/views/index/
 
 ```
