@@ -5,14 +5,14 @@
 ### 新原因：
 
 - vue-cli3 已经升级到 webpack4，性能优化、构件速度提升。
-- 将 webpack 的  复杂配置隐藏到依赖中，减少复杂配置。
-- eslint 配置，cli3 中加入了 Airbnb 等规则，这次构建使用了 Airbnb 的规则，使代码更加规范，同时  会提升 js 的编写能力。
+- 将 webpack 的复杂配置隐藏到依赖中，减少复杂配置。
+- eslint 配置，cli3 中加入了 Airbnb 等规则，这次构建使用了 Airbnb 的规则，使代码更加规范，同时会提升 js 的编写能力。
 - 引入了 test，但是这个还是根据项目情况，酌情使用。
 
 ### 历史遗留问题：
 
-- IdcUI 项目建立初期，eslint 手动去除了，后期发现代码混乱、不可控，所以  恰逢 cli3 升级这个契机，可以矫正之前的问题。
-- IdcUI 项目建立初期，引入了 bootstrap 和 angle.css， 但是后期发现 angle.css 使用的较少，但是 angle.css，这个 css 库是 bootstrap+angle 自己的部分内容， 所以是没有必要的，并且占用空间较大、样式反复  覆盖，影响页面加载，这次会删除。
+- IdcUI 项目建立初期，eslint手动去除了，后期发现代码混乱、不可控，所以恰逢 cli3 升级这个契机，可以矫正之前的问题。
+- IdcUI 项目建立初期，引入了bootstrap 和 angle.css, 但是后期发现 angle.css 使用的较少，但是 angle.css，这个 css 库是 bootstrap+angle自己的部分内容，所以是没有必要的，并且占用空间较大、样式反复覆盖，影响页面加载，这次会删除。
 
 ## 迁移过程
 
@@ -92,7 +92,7 @@ npm run lint src/views/index/
 
 
 
-##eslint问题汇总
+## eslint问题汇总
 1. (array-callback-return)
 [forEach/map](https://www.zhihu.com/question/24927450)
 
