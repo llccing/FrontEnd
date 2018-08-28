@@ -4,7 +4,7 @@
 
 ### 新原因：
 
-- vue-cli3 已经升级到 webpack4，性能优化、构件速度提升。
+- vue-cli3 已经升级到 webpack4，性能优化、构建速度提升。
 - 将 webpack 的复杂配置隐藏到依赖中，减少复杂配置。
 - eslint 配置，cli3 中加入了 Airbnb 等规则，这次构建使用了 Airbnb 的规则，使代码更加规范，同时会提升 js 的编写能力。
 - 引入了 test，但是这个还是根据项目情况，酌情使用。
@@ -21,6 +21,7 @@
 3. 调整 eslint 规则，虽然 Airbnb 大部分规则是合适的，但是少部分还是可以去掉的。
 4. 调整 IDE 的配置，VS Code 的配置。
 5. 调整静态资源的路径。
+6. 根据eslint规则，修改业务代码。
 
 ## 迁移问题解决
 
@@ -77,15 +78,17 @@ npm run lint src/views/index/
 ### VS Code 配置
 ```
 {
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.arrowParens": "always",
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.formatOnType": true,
 
   "prettier.tabWidth": 2,
   "prettier.printWidth": 100,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
+  "editor.detectIndentation": true,
+  "vetur.validation.template": false,
 }
 
 ```
