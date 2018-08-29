@@ -99,3 +99,7 @@ npm run lint src/views/index/
 1. (array-callback-return)
 [forEach/map](https://www.zhihu.com/question/24927450)
 
+
+
+注意： 
+1. 不能热更新，解决（ npm config set registry https://registry.npm.taobao.org）
