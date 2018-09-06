@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, address=no">
+    <meta name="author" content="Storm">
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.js"></script>
+    <title>人气排行榜</title>
+</head>
+<body>
+<div class="box">
+    <!-- start 头部-->
+    <div class="box-header">
+        <img class="header-bg" src="img/header.jpg" alt="head">
+        <ul class="nav header-nav clearfix">
+            <li class="active">
+                <i class="icon i-top-left"></i>
+                <span class="header-title">主播人气榜</span>
+            </li>
+            <li>
+                <i class="icon i-bottom--right"></i>
+                <span class="header-title">主播魅力榜</span>
+            </li>
+        </ul>
+    </div>
+    <!-- end 头部-->
+    <!-- start 身体-->
+    <div class="box-body">
+        <!--start 前三名-->
+        <div class="top">
+            <ul class="nav top-three-nav">
+                <li>
+                    <div class="three-wrap clearfix">
+                        <div class="top-left">
+                            <!--<img src="" alt="第一">-->
+                            <i class="icon three-icon-first"></i>
+                        </div>
+                        <div class="top-right">
+                            <div class="top-head">
+                                <!--皇冠-->
+                                <!--<img src="" alt="">-->
+                                <i class="icon icon-huangguan"></i>
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!---->
+                                <i class="icon icon-hudiejie"></i>
+                                <!--第几名-->
+                                <i class="icon icon-level"></i>
+                            </div>
+                            <div class="name-wrap">
+                                <span class="name">昵称最多只有九个字</span>
+                                <!--是否关注-->
+                                <span class="guanzhu">关注</span>
+                            </div>
+                            <div class="number">
+                                <span>瞄号</span><span>12345678</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="three-wrap clearfix">
+                        <div class="top-left">
+                            <!--<img src="" alt="第一">-->
+                            <i class="icon three-icon-second"></i>
+                        </div>
+                        <div class="top-right">
+                            <div class="top-head">
+                                <!--皇冠-->
+                                <!--<img src="" alt="">-->
+                                <i class="icon icon-huangguan"></i>
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!---->
+                                <i class="icon icon-hudiejie"></i>
+                                <!--第几名-->
+                                <i class="icon icon-level"></i>
+                            </div>
+                            <div class="name-wrap">
+                                <span class="name">昵称最多只有九个字</span>
+                                <!--是否关注-->
+                                <span class="guanzhu">关注</span>
+                            </div>
+                            <div class="number">
+                                <span>瞄号</span><span>12345678</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="three-wrap clearfix">
+                        <div class="top-left">
+                            <!--<img src="" alt="第一">-->
+                            <i class="icon three-icon-third"></i>
+                        </div>
+                        <div class="top-right">
+                            <div class="top-head">
+                                <!--皇冠-->
+                                <!--<img src="" alt="">-->
+                                <i class="icon icon-huangguan"></i>
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!---->
+                                <i class="icon icon-hudiejie"></i>
+                                <!--第几名-->
+                                <i class="icon icon-level"></i>
+                            </div>
+                            <div class="name-wrap">
+                                <span class="name">昵称最多只有九个字</span>
+                                <!--是否关注-->
+                                <span class="yiguanzhu">已关注</span>
+                            </div>
+                            <div class="number">
+                                <span>瞄号</span><span>12345678</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+        <!-- end 前三名-->
+        <!-- start 第三名以后-->
+        <div class="other">
+            <ul class="nav">
+                <li>
+                   <div class="other-wrap clearfix">
+                        <div class="other-left">
+                            <span>4</span>
+                        </div>
+                        <div class="other-right">
+                            <div class="other-head">
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!--昵称-->
+
+                                <div class="ib">
+                                    <span class="name">昵称最多只有九个字</span>
+                                    <span class="guanzhu">关注</span>
+                                    <div class="number">
+                                        <span>瞄号</span><span>12345678</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                   </div>
+                </li>
+                <li>
+                   <div class="other-wrap clearfix">
+                        <div class="other-left">
+                            <span>4</span>
+                        </div>
+                        <div class="other-right">
+                            <div class="other-head">
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!--昵称-->
+
+                                <div class="ib">
+                                    <span class="name">昵称最多只有九个字</span>
+                                    <span class="yiguanzhu">已关注</span>
+                                    <div class="number">
+                                        <span>瞄号</span><span>12345678</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                   </div>
+                </li>
+                <li>
+                   <div class="other-wrap clearfix">
+                        <div class="other-left">
+                            <span>4</span>
+                        </div>
+                        <div class="other-right">
+                            <div class="other-head">
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!--昵称-->
+
+                                <div class="ib">
+                                    <span class="name">昵称最多只有九个字</span>
+                                    <span class="guanzhu">关注</span>
+                                    <div class="number">
+                                        <span>瞄号</span><span>12345678</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                   </div>
+                </li>
+                <li>
+                   <div class="other-wrap clearfix">
+                        <div class="other-left">
+                            <span>4</span>
+                        </div>
+                        <div class="other-right">
+                            <div class="other-head">
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!--昵称-->
+
+                                <div class="ib">
+                                    <span class="name">昵称最多只有九个字</span>
+                                    <span class="yiguanzhu">已关注</span>
+                                    <div class="number">
+                                        <span>瞄号</span><span>12345678</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                   </div>
+                </li>
+                <li>
+                   <div class="other-wrap clearfix">
+                        <div class="other-left">
+                            <span>4</span>
+                        </div>
+                        <div class="other-right">
+                            <div class="other-head">
+                                <!--头像-->
+                                <img class="head" src="img/head.jpg" alt="">
+                                <!--昵称-->
+
+                                <div class="ib">
+                                    <span class="name">昵称最多只有九个字</span>
+                                    <span class="guanzhu">关注</span>
+                                    <div class="number">
+                                        <span>瞄号</span><span>12345678</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                   </div>
+                </li>
+            </ul>
+        </div>
+        <!-- end 第三名以后-->
+    </div>
+    <!-- end 身体-->
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .input1{
+
+        }
+
+        .input-wrapper{
+            display: inline-block;
+        }
+        .input-wrapper input{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>normal input</h1>
+    <input class="input1" type="text"/>
+
+    <h2>div wrapper input</h2>
+    <div class="input-wrapper">
+        <input type="text"/>
+        <label>label1111111111111111111111111111111</label>
+    </div>
+
+    <script src="../../../../static/jquery/jquery-1.12.3.min.js"></script>
+    <script>
+        $('input').keyup(function(){
+//           $(this).css('width',$(this).val().length);
+           this.size(this.value.length+2)
+        });
+    </script>
+
+</body>
+</html>

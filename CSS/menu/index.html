@@ -1,0 +1,164 @@
+<html lang="en">
+
+<head>
+    <title>bootstrap menu</title>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+    <style type="text/css">
+        <!-- .nn {
+            font-size: 20px;
+            background-color: yellow;
+            height: 80px;
+            color: red;
+        }
+        
+        -->
+    </style>
+
+<script src="./jquery-3.1.1.min.js"></script>
+<script src="./bootstrap.min.js"></script>
+<link href="./bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl">
+            <div class="container-fluid">
+                <div class="navbar-collapse" id="example-navbar-collapse">
+
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" 
+                            data-submenu="" aria-expanded="true">Dropdown <span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a tabindex="0">Action</a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="0">Sub action</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="0">Another sub action</a>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a tabindex="0">Sub action</a></li>
+                                            <li><a tabindex="0">Another sub action</a></li>
+                                            <li><a tabindex="0">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a tabindex="0">Something else here</a></li>
+                                    <li class="disabled"><a tabindex="-1">Disabled action</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="0">Another action</a>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a tabindex="0">Sub action</a></li>
+                                            <li><a tabindex="0">Another sub action</a></li>
+                                            <li><a tabindex="0">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">Dropdown header</li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="0">Another action</a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="0">Sub action</a></li>
+                                    <li><a tabindex="0">Another sub action</a></li>
+                                    <li><a tabindex="0">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li><a tabindex="0">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="0">Separated link</a></li>
+                        </ul>
+                    </div>
+
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">查看使用说明</a></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    账号分配管理 <b class="caret"></b>
+                </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 			   分配账号 <b class="caret"></b>
+                		</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">分配基层账号</a></li>
+                                        <li><a href="#">分配县区科协账号</a></li>
+                                        <li><a href="#">分配市科协账号</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    		管理账号 <b class="caret"></b>
+                		</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">控制账号使用</a></li>
+                                        <li><a href="#">处理权限申请</a></li>
+                                        <li><a href="#">管理账号权限</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    项目评审管理 <b class="caret"></b>
+                </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">经费额度设置</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 			   科普惠农兴村计划 <b class="caret"></b>
+                		</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">农村科普示范基地</a></li>
+                                        <li><a href="#">农村科普带头人</a></li>
+                                        <li><a href="#">农村专业技术协会</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    		社区科普益民行动计划 <b class="caret"></b>
+                		</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">社区示范性科普活动</a></li>
+                                        <li><a href="#">社区综合性科普设施</a></li>
+                                        <li><a href="#">社区科普志愿者队伍</a></li>
+                                        <li><a href="#">社区科普共建先进单位</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 			   统计 <b class="caret"></b>
+                		</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">总体情况设计</a></li>
+                                        <li><a href="#">获奖情况统计</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">经费预算汇总</a></li>
+                        <li><a href="#">项目填录进度</a></li>
+                        <li><a href="#">维护账号密码</a></li>
+                        <li><a href="#">查看操作日志</a></li>
+                        <li><a href="#">安全退出系统</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: relative
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: #f06060;
+            color: #fff;
+        }
+
+        .cn-wrapper {
+            font-size: 1em;
+            width: 26em;
+            height: 26em;
+            overflow: hidden;
+            position: fixed;
+            z-index: 10;
+            /*bottom: -13em;*/
+            left: 50%;
+            top: 20%;
+            border-radius: 50%;
+            margin-left: -13em;
+            -webkit-transform: scale(0.1);
+            -ms-transform: scale(0.1);
+            -moz-transform: scale(0.1);
+            transform: scale(0.1);
+            pointer-events: none;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        .opened-nav {
+            border-radius: 50%;
+            pointer-events: auto;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .cn-overlay {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            transition: all .3s ease;
+            z-index: 2;
+        }
+
+        .cn-overlay.on-overlay {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .cn-button {
+            border: none;
+            color: #f06060;
+            text-align: center;
+            font-size: 1.8em;
+            height: 3.5em;
+            width: 3.5em;
+            background-color: #fff;
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            margin-left: -1.75em;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        .cn-button:hover,
+        .cn-button:active,
+        .cn-button:focus {
+            color: #aa1010;
+        }
+
+        .cn-wrapper li {
+            position: absolute;
+            font-size: 1.5em;
+            width: 10em;
+            height: 10em;
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+            overflow: hidden;
+            left: 50%;
+            top: 50%;
+            margin-top: -1.3em;
+            margin-left: -10em;
+            -webkit-transition: border .3s ease;
+            -moz-transition: border .3s ease;
+            transition: border .3s ease;
+        }
+
+        .csstransforms .cn-wrapper li a {
+            display: block;
+            font-size: 1.18em;
+            height: 14.5em;
+            width: 14.5em;
+            position: absolute;
+            bottom: -7.25em;
+            right: -7.25em;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #fff;
+            padding-top: 1.8em;
+            text-align: center;
+            /*-webkit-transform: skew(-50deg) rotate(-70deg) scale(1);*/
+            /*-ms-transform: skew(-50deg) rotate(-70deg) scale(1);*/
+            /*-moz-transform: skew(-50deg) rotate(-70deg) scale(1);*/
+            transform: skew(-50deg) rotate(-70deg) scale(1);
+            -webkit-backface-visibility: hidden;
+            -webkit-transition: opacity 0.3s, color 0.3s;
+            -moz-transition: opacity 0.3s, color 0.3s;
+            transition: opacity 0.3s, color 0.3s;
+        }
+
+        .csstransforms .cn-wrapper li a span {
+            font-size: 1.1em;
+            opacity: 0.7;
+        }
+
+        /* for a central angle x, the list items must be skewed by 90-x degrees
+        in our case x=40deg so skew angle is 50deg
+        items should be rotated by x, minus (sum of angles - 180)2s (for this demo) */
+
+        .csstransforms .cn-wrapper li:first-child {
+            /*-webkit-transform: rotate(-10deg) skew(50deg);*/
+            /*-ms-transform: rotate(-10deg) skew(50deg);*/
+            /*-moz-transform: rotate(-10deg) skew(50deg);*/
+            transform: rotate(-10deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(2) {
+            /*-webkit-transform: rotate(30deg) skew(50deg);*/
+            /*-ms-transform: rotate(30deg) skew(50deg);*/
+            /*-moz-transform: rotate(30deg) skew(50deg);*/
+            transform: rotate(30deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(3) {
+            /*-webkit-transform: rotate(70deg) skew(50deg);*/
+            /*-ms-transform: rotate(70deg) skew(50deg);*/
+            /*-moz-transform: rotate(70deg) skew(50deg);*/
+            transform: rotate(70deg) skew(50deg)
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(4) {
+            /*-webkit-transform: rotate(110deg) skew(50deg);*/
+            /*-ms-transform: rotate(110deg) skew(50deg);*/
+            /*-moz-transform: rotate(110deg) skew(50deg);*/
+            transform: rotate(110deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(5) {
+            /*-webkit-transform: rotate(150deg) skew(50deg);*/
+            /*-ms-transform: rotate(150deg) skew(50deg);*/
+            /*-moz-transform: rotate(150deg) skew(50deg);*/
+            transform: rotate(150deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(6) {
+            /*-webkit-transform: rotate(150deg) skew(50deg);*/
+            /*-ms-transform: rotate(150deg) skew(50deg);*/
+            /*-moz-transform: rotate(150deg) skew(50deg);*/
+            transform: rotate(180deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(7) {
+            /*-webkit-transform: rotate(150deg) skew(50deg);*/
+            /*-ms-transform: rotate(150deg) skew(50deg);*/
+            /*-moz-transform: rotate(150deg) skew(50deg);*/
+            transform: rotate(210deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(8) {
+            /*-webkit-transform: rotate(150deg) skew(50deg);*/
+            /*-ms-transform: rotate(150deg) skew(50deg);*/
+            /*-moz-transform: rotate(150deg) skew(50deg);*/
+            transform: rotate(240deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(9) {
+            /*-webkit-transform: rotate(150deg) skew(50deg);*/
+            /*-ms-transform: rotate(150deg) skew(50deg);*/
+            /*-moz-transform: rotate(150deg) skew(50deg);*/
+            transform: rotate(270deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(10) {
+            /*-webkit-transform: rotate(150deg) skew(50deg);*/
+            /*-ms-transform: rotate(150deg) skew(50deg);*/
+            /*-moz-transform: rotate(150deg) skew(50deg);*/
+            transform: rotate(310deg) skew(50deg);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(odd) a {
+            background-color: #a11313;
+            background-color: hsla(0, 88%, 63%, 1);
+        }
+
+        .csstransforms .cn-wrapper li:nth-child(even) a {
+            background-color: #00b3e4;
+            background-color: hsla(0, 88%, 65%, 1);
+        }
+
+        /* active style */
+        .csstransforms .cn-wrapper li.active a {
+            background-color: #00b3e4;
+            background-color: hsla(0, 88%, 70%, 1);
+        }
+    </style>
+</head>
+<body>
+<button class="cn-button" id="cn-button">+</button>
+<div class="cn-wrapper" id="cn-wrapper">
+    <ul>
+        <li><a href="#"><span class="icon-picture"></span></a></li>
+        <li><a href="#"><span class="icon-headphones"></span></a></li>
+        <li><a href="#"><span class="icon-home"></span></a></li>
+        <li><a href="#"><span class="icon-facetime-video"></span></a></li>
+        <li><a href="#"><span class="icon-envelope-alt"></span></a></li>
+        <li><a href="#"><span class="icon1"></span></a></li>
+        <li><a href="#"><span class="icon2"></span></a></li>
+        <li><a href="#"><span class="icon3"></span></a></li>
+        <li><a href="#"><span class="icon4"></span></a></li>
+        <li><a href="#"><span class="icon5"></span></a></li>
+    </ul>
+</div>
+<div id="cn-overlay" class="cn-overlay"></div>
+</body>
+</html>
+<script src="modernizr-2.6.2.min.js"></script>
+<script>
+    (function (window) {
+        'use strict';
+        function classReg(className) {
+            return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+        }
+        var hasClass, addClass, removeClass;
+        if ('classList' in document.documentElement) {
+            hasClass = function (elem, c) {
+                return elem.classList.contains(c);
+            };
+            addClass = function (elem, c) {
+                elem.classList.add(c);
+            };
+            removeClass = function (elem, c) {
+                elem.classList.remove(c);
+            };
+        }
+        else {
+            hasClass = function (elem, c) {
+                return classReg(c).test(elem.className);
+            };
+            addClass = function (elem, c) {
+                if (!hasClass(elem, c)) {
+                    elem.className = elem.className + ' ' + c;
+                }
+            };
+            removeClass = function (elem, c) {
+                elem.className = elem.className.replace(classReg(c), ' ');
+            };
+        }
+
+        function toggleClass(elem, c) {
+            var fn = hasClass(elem, c) ? removeClass : addClass;
+            fn(elem, c);
+        }
+
+        var classie = {
+            // full names
+            hasClass: hasClass,
+            addClass: addClass,
+            removeClass: removeClass,
+            toggleClass: toggleClass,
+            // short names
+            has: hasClass,
+            add: addClass,
+            remove: removeClass,
+            toggle: toggleClass
+        };
+
+// transport
+        if (typeof define === 'function' && define.amd) {
+            // AMD
+            define(classie);
+        } else {
+            // browser global
+            window.classie = classie;
+        }
+
+    })(window);
+    // EventListener | @jon_neal | //github.com/jonathantneal/EventListener
+    !window.addEventListener && window.Element && (function () {
+        function addToPrototype(name, method) {
+            Window.prototype[name] = HTMLDocument.prototype[name] = Element.prototype[name] = method;
+        }
+
+        var registry = [];
+
+        addToPrototype("addEventListener", function (type, listener) {
+            var target = this;
+
+            registry.unshift({
+                __listener: function (event) {
+                    event.currentTarget = target;
+                    event.pageX = event.clientX + document.documentElement.scrollLeft;
+                    event.pageY = event.clientY + document.documentElement.scrollTop;
+                    event.preventDefault = function () {
+                        event.returnValue = false
+                    };
+                    event.relatedTarget = event.fromElement || null;
+                    event.stopPropagation = function () {
+                        event.cancelBubble = true
+                    };
+                    event.relatedTarget = event.fromElement || null;
+                    event.target = event.srcElement || target;
+                    event.timeStamp = +new Date;
+
+                    listener.call(target, event);
+                },
+                listener: listener,
+                target: target,
+                type: type
+            });
+
+            this.attachEvent("on" + type, registry[0].__listener);
+        });
+
+        addToPrototype("removeEventListener", function (type, listener) {
+            for (var index = 0, length = registry.length; index < length; ++index) {
+                if (registry[index].target == this && registry[index].type == type && registry[index].listener == listener) {
+                    return this.detachEvent("on" + type, registry.splice(index, 1)[0].__listener);
+                }
+            }
+        });
+
+        addToPrototype("dispatchEvent", function (eventObject) {
+            try {
+                return this.fireEvent("on" + eventObject.type, eventObject);
+            } catch (error) {
+                for (var index = 0, length = registry.length; index < length; ++index) {
+                    if (registry[index].target == this && registry[index].type == eventObject.type) {
+                        registry[index].call(this, eventObject);
+                    }
+                }
+            }
+        });
+    })();
+</script>
+<script>
+    (function(){
+        var button = document.getElementById('cn-button'),
+                wrapper = document.getElementById('cn-wrapper'),
+                overlay = document.getElementById('cn-overlay');
+        var a = wrapper.getElementsByTagName('a');
+        for(var i=0;i<a.length;i++){
+            a[i].addEventListener('click',aHandler,false);
+        }
+        
+        function aHandler(e){
+            console.log(e.target.childNodes[0].className);
+            closeNav();
+            // e.stopPropagation();
+        }
+                
+
+        //open and close menu when the button is clicked
+        var open = false;
+        button.addEventListener('click', handler, false);
+        wrapper.addEventListener('click', cnhandle, false);
+
+        function cnhandle(e){
+            e.stopPropagation();
+        }
+
+        function handler(e){
+            if (!e) var e = window.event;
+            e.stopPropagation();//so that it doesn't trigger click event on document
+
+            if(!open){
+                openNav();
+            }
+            else{
+                closeNav();
+            }
+        }
+        function openNav(){
+            open = true;
+            button.innerHTML = "-";
+            classie.add(overlay, 'on-overlay');
+            classie.add(wrapper, 'opened-nav');
+        }
+        function closeNav(){
+            open = false;
+            button.innerHTML = "+";
+            classie.remove(overlay, 'on-overlay');
+            classie.remove(wrapper, 'opened-nav');
+        }
+        document.addEventListener('click', closeNav);
+    })();
+</script>
