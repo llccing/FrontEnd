@@ -15,7 +15,18 @@ module.exports = {
             text: 'About', link: '/about/'
         }],
         sidebar: {
-            '/knowledge/': ['', 'JS-basic']
+            '/knowledge/': ['', 'JS-basic'],
+            '/read/': [
+                // ''空字符串表示当前目录的README文件
+                '',
+                {
+                    title: 'CSS世界',
+                    children: [
+                        './css-world/01-overview',
+                        './css-world/02-terminology-concept',
+                    ]
+                },
+            ]
         }
     },
     configureWebpack: {
