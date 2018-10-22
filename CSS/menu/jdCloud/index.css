@@ -24,13 +24,13 @@ html, body {
 }
 
 .mock {
-    display: block;
+    display: none;
     position: absolute;
     background: #000000;
     background: #42464a;
     /* opacity: .7; */
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
     z-index: 1;
 }
 
@@ -96,10 +96,6 @@ ul.parent>li>a:hover, ul.parent>li>a:visited, ul.parent>li>a:link, ul.parent>li>
     color: #fff;
 }
 
-ul.parent>li:hover .sub-menu {
-    display: block;
-}
-
 .sub-menu {
     display: none;
     position: absolute;
@@ -135,10 +131,6 @@ ul.parent>li:hover .sub-menu {
     right: 0;
     text-align: left;
     padding: 20px 0 10px 222px;
-}
-
-.parent>li:hover>.water-full {
-    display: block;
 }
 
 .water-full h3 {
@@ -216,8 +208,6 @@ ul.parent>li:hover .sub-menu {
 
 .user-info:hover .menu-drop {
     display: block;
-    /* height: 230px; */
-    /* transition: height 1s; */
 }
 
 .user-info>a {
