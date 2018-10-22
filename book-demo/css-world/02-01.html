@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>02-01</title>
+  <style>
+    .active-btn{
+      padding: 8px 16px;
+      color: #fff;
+      display: inline-block;
+      text-decoration: none;
+
+      background-color: green;
+    }
+
+    .active-btn:active{
+      background-color: #3aa;
+    }
+  </style>
+</head>
+<body>
+  <div class="description">
+    <h1>CSS世界中的未定义行为</h1>
+    加入点击事件后，id为button的a标签的表现在Firefox下，active效果没有生效。
+  </div>
+
+  <div class="demo">
+    <a href="javascript:" class="active-btn" id="button">按下</a>
+
+    <a href="javascript:" class="active-btn">按下</a>
+  </div>
+
+  <script>
+    var button = document.getElementById('button')
+    button.addEventListener('mousedown', function(event){
+      event.preventDefault();
+    })
+  </script>
+</body>
+</html>
