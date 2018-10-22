@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>03-01 clear</title>
+  <style>
+    .wrapper {
+      border: 10px solid #099;
+      width: 200px;
+    }
+
+    img {
+      float: left;
+    }
+
+    /* 
+    
+    伪类: :active, :visited, :hover
+    伪元素：:after, :before
+
+    单冒号，用于CSS3的伪类，双冒号用于CSS3的伪元素。
+    伪元素由双冒号和元素名称组成。双冒号是在CSS3规范中引入的，用于区分伪类和伪元素。
+    但是伪类兼容现存样式，浏览器需要同时支持旧的伪类，比如:first-line, :first-letter, :before, :after
+    
+    对于CSS2之前的伪元素，用双冒号和单冒号作用一样。
+    
+    但是如果网站要兼容IE,还是用CSS2的单冒号写比较安全。如果针对webkit, firefox, opera则可以使用双冒号。
+
+     */
+    .clear:after {
+      clear: both;
+      content: '';
+    }
+
+    .clear-block:after {
+      display: block;
+      clear: both;
+      content: '';
+    }
+
+    .clear-table:after {
+      display: table;
+      clear: both;
+      content: '';
+    }
+
+    .clear-list-item:after {
+      display: list-item;
+      clear: both;
+      content: '';
+    }
+
+    .clear-inline:after {
+      display: inline;
+      clear: both;
+      content: '';
+    }
+  </style>
+</head>
+
+<body>
+  <div class="description">
+    <h1>清除浮动</h1>
+    使用块级元素的特性，来清除浮动。
+
+    <p>
+      remark：这个例子里面，使用原生来绑定change事件、使用原生来动态的操作类，是平常比较少涉及的方面。
+    </p>
+  </div>
+  <div class="demo">
+    img-wrapper -> display:
+    <select id="control">
+      <option value="''">请选择</option>
+      <option value="'table'">table</option>
+      <option value="'list-item'">list-item</option>
+      <option value="'block'">block</option>
+      <option value="'inline'">inline</option>
+    </select>
+
+    <div class="wrapper clear">
+      <img src="./images/head.jpeg" alt="头像">
+    </div>
+  </div>
+
+  <script>
+    var select = document.getElementById('control');
+    var wrapper = document.getElementsByClassName('wrapper')[0]
+    select.addEventListener('change', function (value) {
+      var selectValue = value.srcElement.selectedOptions[0].innerText;
+
+      wrapper.setAttribute('class', 'wrapper')
+      wrapper.classList.add('clear-' + selectValue)
+    })
+  </script>
+</body>
+
+</html>
