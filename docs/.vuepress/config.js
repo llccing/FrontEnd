@@ -8,13 +8,16 @@ module.exports = {
         nav: [{
             text: 'Home', link: '/',
         }, {
+            text: 'Blog', link: '/blog/',
+        },{
             text: 'Knowledge', link: '/knowledge/',
-        }, {
+        },  {
             text: 'Read', link: '/read/',
         }, {
             text: 'About', link: '/about/'
         }],
         sidebar: {
+            '/blog/': ['why'],
             '/knowledge/': ['', 'JS-basic'],
             '/read/': [
                 // ''空字符串表示当前目录的README文件
