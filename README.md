@@ -1,7 +1,5 @@
 # FontEnd-demo
 
-![1](./front-structure.png)
-
 ## List
 
 ES6(ECMAScript 6) 于2015年6月发布，它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业
@@ -30,3 +28,15 @@ ES6(ECMAScript 6) 于2015年6月发布，它的目标，是使得JavaScript语�
 	1.  [jQuery](https://github.com/llccing/FrontEnd-demo/tree/master/plugins-summary/jQuery)
 
 - [Canvas](https://github.com/llccing/FrontEnd-demo/tree/master/canvas)
+
+
+
+# what 
+
+## 分类标题
+
+* [x]  计划1
+* [ ]  计划中
+
+
+
