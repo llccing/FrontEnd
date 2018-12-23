@@ -1,7 +1,6 @@
 # 二、术语、概念
 
-## 脑图
-![术语、概念](http://pgyedbbhr.bkt.clouddn.com//FrontEnd/css%20world/01+%E6%A6%82%E8%BF%B0.svg)
+![术语、概念](http://qiniu.llccing.cn//FrontEnd/css%20world/02+%E6%9C%AF%E8%AF%AD%E3%80%81%E6%A6%82%E5%BF%B5.svg)
 
 ## demo
 [我的演示https://jsfiddle.net/lcf33123/5b4p17h6/2/](https://jsfiddle.net/lcf33123/5b4p17h6/8/)

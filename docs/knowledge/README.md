@@ -1,7 +1,7 @@
 # 在专精的路上走的一发不可收拾
 
 ## [梁启超](https://zh.wikipedia.org/wiki/%E6%A2%81%E5%90%AF%E8%B6%85)
-![梁启超](./assets/liangqichao.jpg)
+![梁启超](http://qiniu.llccing.cn//FrontEnd/knowledge/liangqichao.jpg)
 
 梁启超（1873年2月23日－1929年1月19日，署名作梁𠷠超），字卓如、任甫，别号任公、饮冰室主人，广东省新会县潮居都茶坑乡人，人称梁新会，清朝末年、民国初年的中国近代思想家、政治家、教育家、史学家、文学家、社会活动家、书法家及发明家。
 
