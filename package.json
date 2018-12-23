@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "vuepress": "^0.12.0"
+    "vuepress": "^0.12.0",
+    "webpack": "^4.28.2"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
