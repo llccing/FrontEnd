@@ -7,8 +7,10 @@
 - [ ] **增加docker实践文档**
     - [ ] 基本操作
     - [ ] docker nginx
-    - [x] docker Jenkins
+    - [ ] docker Jenkins
 - [ ] **shell文档整理**
+- [ ] **接入Jenkins自动部署**
+		- [*] FrontEnd项目
 
 ## List
 
