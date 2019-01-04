@@ -50,6 +50,16 @@ module.exports = {
             './ECMAScript6/variable-destructor-assignment',
           ]
         },
+        {
+          title: 'Three.js journey',
+          children: [
+            './threejs-demo/',
+            './threejs-demo/01-hello-world/',
+            './threejs-demo/02-basic-component/',
+            './threejs-demo/03-light/',
+            './threejs-demo/04-material/',
+          ]
+        }
       ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
