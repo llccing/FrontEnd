@@ -58,6 +58,10 @@ module.exports = {
             './threejs-demo/02-basic-component/',
             './threejs-demo/03-light/',
             './threejs-demo/04-material/',
+            './threejs-demo/05-geometry/',
+            './threejs-demo/06-high-geometry/',
+            './threejs-demo/07-praticle/',
+            './threejs-demo/08-import-high/geometry',
           ]
         }
       ],
