@@ -61,7 +61,7 @@ module.exports = {
             './threejs-demo/05-geometry/',
             './threejs-demo/06-high-geometry/',
             './threejs-demo/07-praticle/',
-            './threejs-demo/08-import-high/geometry',
+            './threejs-demo/08-import-high-geometry/',
           ]
         }
       ],
