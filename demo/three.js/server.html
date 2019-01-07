@@ -45,11 +45,16 @@
         renderer.shadowMap.enabled = true;
 
         // 地板
+        var texture = new THREE.TextureLoader().load('./assets/floor.jpg');
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(20, 20)
+
         var planeGeometry = new THREE.PlaneGeometry(60, 20, 2);
-        var planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+        var planeMaterial = new THREE.MeshLambertMaterial({ map: texture, side: THREE.DoubleSide});
         var plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.rotation.x = -0.5 * Math.PI;
-        plane.position.x = 15;
+        plane.position.x = 0;
         plane.position.y = 0;
         plane.position.z = 0;
         plane.receiveShadow = true;
@@ -64,17 +69,14 @@
 
         //设置立方体的位置
         cube.position.x = -4;
-        cube.position.y = 3;
-        cube.position.z = 20;
+        cube.position.y = 2.01;
+        cube.position.z = 0;
 
         scene.add(cube);
 
          // 添加光源
-         var spotLight = new THREE.SpotLight(0xffffff);
-        spotLight.position.set(-40, 60, -10);
-        spotLight.castShadow = true;
+         var spotLight = new THREE.AmbientLight(0xffffff);
         scene.add(spotLight);
-
 
         container.appendChild(renderer.domElement);
 
@@ -86,9 +88,6 @@
         container.appendChild(stats.dom);
 
         window.addEventListener('resize', onWindowResize, false);
-
-        // $('#webgl-output').append(renderer.domElement);
-        // renderer.render(scene, camera);
       }
 
       function onWindowResize(){
@@ -107,6 +106,14 @@
 
       function render() {
         renderer.render(scene, camera);
+      }
+
+      function createMesh(geom, imgFile){
+        var mat = new THREE.MeshPhongMaterial();
+        mat.map = texture;
+
+        var mesh = new THREE.Mesh(geom, mat)
+        return mesh
       }
     </script>
   </body>
