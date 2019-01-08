@@ -10,6 +10,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.7.0/Tween.js"></script>
     <script src="./js/OrbitControls.js"></script>
     <script src="./js/ThreeBSP.js"></script>
     <script src="./js/stats.min.js"></script>
@@ -17,11 +18,13 @@
 
     <script>
       var renderer, stats, scene, camera;
-      
+      const C_ROOM_WIDTH = 10000;
+      const C_ROOM_HEIGHT = 8000;
+      const C_WALL_HEIGHT = 1000;
+
       // 内墙
       var matArrayA = [];
-      // 外墙
-      var matArrayB = [];
+
       init();
       animate();
       createWallMaterial();
@@ -32,21 +35,23 @@
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0xb0b0b0);
 
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-        camera.position.set(-1000, 300, 800);
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, C_ROOM_WIDTH * 10);
+        camera.position.set(-C_ROOM_WIDTH, C_ROOM_WIDTH * 0.8, C_ROOM_WIDTH * 0.5);
         camera.lookAt(scene.position);
 
-        var helper = new THREE.GridHelper(1600, 160);
+        var helper = new THREE.GridHelper(C_ROOM_WIDTH, 20);
         helper.rotation.x = Math.PI / 2;
-        // scene.add(helper)
+        scene.add(helper);
 
-        renderer = new THREE.WebGLRenderer();
+        renderer = new THREE.WebGLRenderer({
+          antialias: true,
+        });
         renderer.setClearColor(new THREE.Color(0xeeeeee), 1);
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.shadowMap.enabled = true;
 
         // show axes in the screen
-        var axes = new THREE.AxesHelper(800);
+        var axes = new THREE.AxesHelper(C_ROOM_WIDTH);
         scene.add(axes);
 
         // 地板
@@ -55,7 +60,7 @@
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(50, 50);
 
-        var planeGeometry = new THREE.PlaneGeometry(1600, 1100, 1);
+        var planeGeometry = new THREE.PlaneGeometry(C_ROOM_WIDTH, C_ROOM_HEIGHT, 1);
         var planeMaterial = new THREE.MeshLambertMaterial({ map: texture, side: THREE.DoubleSide });
         var plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.rotation.x = -0.5 * Math.PI;
@@ -68,67 +73,45 @@
         // 创建墙
         scene.add(
           createWall({
-            width: 1600,
-            height: 200,
+            width: C_ROOM_WIDTH,
+            height: C_WALL_HEIGHT,
             depth: 20,
-            posZ: -540,
-            posY: 100,
+            posZ: -C_ROOM_HEIGHT / 2,
+            posY: C_WALL_HEIGHT / 2,
           }),
         );
 
         scene.add(
           createWall({
-            width: 1600,
-            height: 200,
+            width: C_ROOM_WIDTH,
+            height: C_WALL_HEIGHT,
             depth: 20,
-            posZ: 540,
-            posY: 100,
+            posZ: C_ROOM_HEIGHT / 2,
+            posY: C_WALL_HEIGHT / 2,
           }),
         );
 
         scene.add(
           createWall({
-            width: 1100,
-            height: 200,
+            width: C_ROOM_HEIGHT,
+            height: C_WALL_HEIGHT,
             depth: 20,
-            posY: 100,
-            posX: 800,
+            posY: C_WALL_HEIGHT / 2,
+            posX: C_ROOM_WIDTH / 2,
             rotationY: 0.5 * Math.PI,
           }),
         );
 
-        scene.add(
-          createWall({
-            width: 1100,
-            height: 200,
-            depth: 20,
-            posY: 100,
-            posX: -800,
-            rotationY: 0.5 * Math.PI,
-          }),
-        );
+        createWallForDoor({
+          width: C_ROOM_HEIGHT,
+          height: C_WALL_HEIGHT,
+          depth: 20,
+          posY: C_WALL_HEIGHT / 2,
+          posX: -C_ROOM_WIDTH / 2,
+          rotationY: 0.5 * Math.PI,
+        });
 
-        //创建一个立方体
-        var cubeGeometry = new THREE.BoxGeometry(80, 200, 100);
-        //将线框（wireframe）属性设置为true，这样物体就不会被渲染为实物物体
-        var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xffaa00, wireframe: true });
-        var materials = [
-          new THREE.MeshBasicMaterial({ color: 0x000000 }),
-          new THREE.MeshBasicMaterial({ color: 0x000000 }),
-          new THREE.MeshBasicMaterial({ color: 0x000000 }),
-          new THREE.MeshBasicMaterial({ color: 0x000000 }),
-          new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('./assets/server-front.jpg') }),
-          new THREE.MeshBasicMaterial({ color: 0x000000 }),
-        ];
-        var cube = new THREE.Mesh(cubeGeometry, materials);
-        cube.castShadow = true;
-
-        //设置立方体的位置
-        cube.position.x = -4;
-        cube.position.y = 100;
-        cube.position.z = 0;
-
-        scene.add(cube);
+        createCabinet();
 
         // 添加光源
         var spotLight = new THREE.AmbientLight(0xffffff);
@@ -153,7 +136,8 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
       }
 
-      function animate() {
+      function animate(time) {
+        TWEEN.update(time);
         requestAnimationFrame(animate);
 
         render();
@@ -192,49 +176,86 @@
         return wall;
       }
 
-      function createWallForDoor({ width, height, depth, posX, posY, posZ, rotationX, rotationY, rotationZ }){
+      // 创建有门的墙
+      function createWallForDoor({ width, height, depth, posX, posY, posZ, rotationX, rotationY, rotationZ }) {
         var wallGeometry = new THREE.BoxGeometry(width, height, depth);
         var wallMaterial = new THREE.MeshBasicMaterial({ color: 0xafc0ca });
         var wall = new THREE.Mesh(wallGeometry, matArrayA);
 
-        var innerGeometry = new THREE.BoxGeometry(width/2, height/2, depth);
-        var innerMaterial = new THREE.MeshBasicMaterial({color: 0x000000});
-        var inner = new THREE.Mesh(innerGeometry, matArrayA);
+        const C_DOOR_WIDTH = width / 8;
+        const C_DOOR_HEIGHT = 1000;
 
-        var wallBSP = new ThreeBSP(wall)
+        var innerGeometry = new THREE.BoxGeometry(C_DOOR_WIDTH / 2, C_DOOR_HEIGHT, depth);
+        var innerMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        var inner = new THREE.Mesh(innerGeometry, innerMaterial);
+        inner.position.y = -C_DOOR_HEIGHT * 0.1;
+
+        var wallBSP = new ThreeBSP(wall);
         var innerBSP = new ThreeBSP(inner);
-
-        console.log(innerBSP)
-        var resultBSP = wallBSP.union(innerBSP);
+        var resultBSP = wallBSP.subtract(innerBSP);
 
         var result = resultBSP.toMesh();
-        
-        // 更新模型的面和定点数据
-        result.geometry.computeFaceNormals();
-        result.geometry.computeVertexNormals();
 
-        if (posX) {
-          wall.position.x = posX;
-        }
-        if (posY) {
-          wall.position.y = posY;
-        }
-        if (posZ) {
-          wall.position.z = posZ;
-        }
-        if (rotationX) {
-          wall.rotation.x = rotationX;
-        }
-        if (rotationY) {
-          wall.rotation.y = rotationY;
-        }
-        if (rotationZ) {
-          wall.rotation.z = rotationZ;
+        result.material = matArrayA;
+        result.position.y = height / 2;
+        result.position.x = posX;
+        result.rotation.y = 0.5 * Math.PI;
+
+        scene.add(result);
+
+        const sideDoorWidth = C_DOOR_WIDTH / 2;
+        const sideDoorHeight = C_DOOR_HEIGHT * 0.9;
+        // var doorGeometry = new THREE.BoxGeometry(256, 512, depth);
+        var doorGeometry = new THREE.BoxGeometry(sideDoorWidth, sideDoorHeight, depth);
+        doorGeometry.translate(sideDoorWidth / 2, 0, 0);
+        var doorMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('./assets/door.jpg') });
+
+        var rightDoor = new THREE.Mesh(doorGeometry, doorMaterial);
+        rightDoor.name = 'rightDoor';
+
+        //声明raycaster和mouse变量
+        var raycaster = new THREE.Raycaster();
+        var mouse = new THREE.Vector2();
+
+        function onMouseClick(event) {
+          //通过鼠标点击的位置计算出raycaster所需要的点的位置，以屏幕中心为原点，值的范围为-1到1.
+
+          mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+          // 通过鼠标点的位置和当前相机的矩阵计算出raycaster
+          raycaster.setFromCamera(mouse, camera);
+
+          // 获取raycaster直线和所有模型相交的数组集合
+          var intersects = raycaster.intersectObjects(scene.children);
+
+          var degToRad = Math.PI / 180;
+
+          //将所有的相交的模型的颜色设置为红色，如果只需要将第一个触发事件，那就数组的第一个模型改变颜色即可
+          for (var i = 0; i < intersects.length; i++) {
+            let mesh = intersects[i].object;
+            if (mesh.name === 'rightDoor') {
+              let targetAngle = mesh.rotation.y === 200 * degToRad ? 90 * degToRad : 200 * degToRad;
+              new TWEEN.Tween(mesh.rotation)
+                .easing(TWEEN.Easing.Circular.Out)
+                .to({ y: targetAngle }, 500)
+                .start();
+            }
+          }
         }
 
-        return result; 
+        window.addEventListener('click', onMouseClick, false);
+
+        rightDoor.position.y = sideDoorHeight / 2;
+        rightDoor.position.x = posX;
+        rightDoor.position.z = C_DOOR_WIDTH / 2 - sideDoorWidth / 2;
+
+        rightDoor.rotation.y = 0.5 * Math.PI;
+
+        scene.add(rightDoor);
       }
 
+      // 创建墙的材质
       function createWallMaterial() {
         matArrayA.push(new THREE.MeshPhongMaterial({ color: 0xafc0ca }));
         //前  0xafc0ca :灰色
@@ -263,38 +284,72 @@
             color: 0xafc0ca,
           }),
         ); //右
+      }
 
-        matArrayB.push(
-          new THREE.MeshPhongMaterial({
-            color: 0xafc0ca,
-          }),
-        ); //前  0xafc0ca :灰色
-        matArrayB.push(
-          new THREE.MeshPhongMaterial({
-            color: 0x9cb2d1,
-          }),
-        ); //后  0x9cb2d1：淡紫
-        matArrayB.push(
-          new THREE.MeshPhongMaterial({
-            color: 0xd6e4ec,
-          }),
-        ); //上  0xd6e4ec： 偏白色
-        matArrayB.push(
-          new THREE.MeshPhongMaterial({
-            color: 0xd6e4ec,
-          }),
-        ); //下
-        matArrayB.push(
-          new THREE.MeshPhongMaterial({
-            color: 0xafc0ca,
-          }),
-        );
-        //左   0xafc0ca :灰色
-        matArrayB.push(
-          new THREE.MeshPhongMaterial({
-            color: 0xafc0ca,
-          }),
-        );
+      // 创建机柜
+      function createCabinet() {
+        //创建一个立方体
+        const serverWidth = C_ROOM_WIDTH / 20;
+        const serverHeight = C_WALL_HEIGHT * 0.7;
+        const serverDepth = C_ROOM_WIDTH / 20;
+
+        for (let i = 0; i < 8; i++) {
+          let cube = createCabinetOne(serverWidth, serverHeight, serverDepth);
+          //设置立方体的位置
+          cube.position.y = serverHeight / 2;
+          cube.position.x = serverWidth / 2 + i*(serverWidth+100) ;
+          cube.position.z = serverDepth / 2;
+          scene.add(cube);
+        }
+
+        for (let i = 0; i < 8; i++) {
+          let cube = createCabinetOne(serverWidth, serverHeight, serverDepth);
+          //设置立方体的位置
+          cube.position.y = serverHeight / 2;
+          cube.position.x = serverWidth / 2 + i*(serverWidth+100) ;
+          cube.position.z = serverDepth / 2 + serverDepth*2;
+          scene.add(cube);
+        }
+
+        for (let i = 0; i < 8; i++) {
+          let cube = createCabinetOne(serverWidth, serverHeight, serverDepth);
+          //设置立方体的位置
+          cube.position.y = serverHeight / 2;
+          cube.position.x = serverWidth / 2 + i*(serverWidth+100) ;
+          cube.position.z = serverDepth / 2 + serverDepth*4;
+          scene.add(cube);
+        }
+
+
+        for (let i = 0; i < 8; i++) {
+          let cube = createCabinetOne(serverWidth, serverHeight, serverDepth);
+          //设置立方体的位置
+          cube.position.y = serverHeight / 2;
+          cube.position.x = serverWidth / 2 + i*(serverWidth+100) ;
+          cube.position.z = serverDepth / 2 + serverDepth*6;
+          scene.add(cube);
+        }
+
+      }
+
+      function createCabinetOne(serverWidth, serverHeight, serverDepth) {
+        let cube;
+        var cubeGeometry = new THREE.BoxGeometry(serverWidth, serverHeight, serverDepth);
+        //将线框（wireframe）属性设置为true，这样物体就不会被渲染为实物物体
+        var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xffaa00, wireframe: true });
+        var materials = [
+          new THREE.MeshBasicMaterial({ color: 0x000000 }),
+          new THREE.MeshBasicMaterial({ color: 0x000000 }),
+          new THREE.MeshBasicMaterial({ color: 0x000000 }),
+          new THREE.MeshBasicMaterial({ color: 0x000000 }),
+          new THREE.MeshBasicMaterial({ color: 0x000000 }),
+          // new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('./assets/server-front.jpg') }),
+          new THREE.MeshBasicMaterial({ color: 0x000000 }),
+        ];
+        cube = new THREE.Mesh(cubeGeometry, materials);
+        cube.castShadow = true;
+
+        return cube;
       }
     </script>
   </body>
