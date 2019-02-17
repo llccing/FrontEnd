@@ -50,9 +50,13 @@ $ umi build
 - elm概念，通过reducers、effects、subscriptions组织model，简化redux和redux-saga引入的概念。
 - 插件机制，比如dva-loading可以自动处理loading状态，不用一遍遍写showLoading和hideLoading。
 
+
+
+
 **资料**
 
 dva.js说明文档
 [https://dvajs.com/guide/#%E7%89%B9%E6%80%A7](https://dvajs.com/guide/#%E7%89%B9%E6%80%A7)
 
-
+**what is dva**
+dva = React-Router + Redux + Redux-saga
