@@ -17,8 +17,7 @@
       <slot name="page-top" slot="top"/>
       <slot name="page-bottom" slot="bottom"/>
     </Page>
-    
-    <Valine></Valine>
+    <Valine v-if="!$page.frontmatter.home"></Valine>
   </div>
 </template>
 
