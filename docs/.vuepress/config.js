@@ -41,7 +41,7 @@ const blogVue = {
     '15-createElement',
     '16-update',
     '20-components',
-  ].map((item) => `./vue/${item}`),
+  ].map((item) => `./vue-analysis/${item}`),
 };
 
 const blogReact = {
@@ -61,7 +61,7 @@ const blogFramework = {
   children: ['', 'jQuery'].map(item => `./framework/${item}`)
 }
 
-const blogOther = ['for', 'why'].map(item => `./other/${item}`)
+const blogOther = ['for', 'why', 'vueComponent'].map(item => `./other/${item}`)
 
 module.exports = {
   title: '千里',
