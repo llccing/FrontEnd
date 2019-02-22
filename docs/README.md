@@ -11,14 +11,13 @@ features:
 - title: 业内信息
   details: 前端领域内的最新消息，了解趋势。
 
-footer: llccing Copyright © 2018
+footer: llccing Copyright © 2019
 ---
 
 
 # 推荐文章
 
-* [about me](/about/) 编写简单代码的系列好帖，必读！
-* [ajax跨域完全详解视频](https://www.imooc.com/learn/947) 由浅入深，抽丝剥茧，好评如潮
+* [我的经历](/about/) 菜鸟程序员，挣扎求生路。
 
 
 

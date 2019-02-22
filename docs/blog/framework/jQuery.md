@@ -1,6 +1,6 @@
-## jQuery一个在JavaScript基础之上封装的函数库。
+# jQuery一个在JavaScript基础之上封装的函数库。
 
-### 简介
+## 简介
 
 最开始用jQuery是在第一份实习工作时，那个时候感觉jQuery非常nb，$()选择器简直不要特别方便。
 
@@ -24,7 +24,7 @@ jQuery的处境不得不说有点尴尬了。虽然说大趋势可能是去jQuer
 
 
 
-### 参考资料
+## 参考资料
 
 1. [jQuery发布1.9正式版，最后支持ie6/7/8](http://www.zreading.cn/ican/2013/01/jquery-1-9/)
 2. [ie8兼容经验小结](http://www.cnblogs.com/ruomeng/p/5332814.html)

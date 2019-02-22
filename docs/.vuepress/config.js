@@ -1,3 +1,68 @@
+const blogEcmascript = {
+  title: 'ES2015',
+  children: [
+    '',
+    'Async',
+    'function-extension',
+    'Generator',
+    'Iterator-for...of',
+    'let-const',
+    'number-extension',
+    'object-extension',
+    'Promise',
+    'Proxy-Reflect',
+    'Set-Map',
+    'String-extension',
+    'Symbol',
+    'variable-destructor-assignment',
+  ].map((item) => `./ECMAScript6/${item}`),
+};
+
+const blogThreejs = {
+  title: 'threejs journey',
+  children: ['00-start', '01-hello-world', '02-basic-component', '03-light', '04-material', '05-geometry', '06-high-geometry', '07-praticle', '08-import-high-geometry', 'webgl'].map(
+    (item) => `./threejs/${item}/`,
+  ),
+};
+
+const blogVue = {
+  title: 'vue 源码被解读',
+  children: [
+    '00-vue',
+    '01-flow',
+    '02-src-structure',
+    '03-compile',
+    '04-entry',
+    '10-data-driven',
+    '11-new-Vue',
+    '12-vue-mounted',
+    '13-render',
+    '14-virtual-DOM',
+    '15-createElement',
+    '16-update',
+    '20-components',
+  ].map((item) => `./vue/${item}`),
+};
+
+const blogReact = {
+  title: 'react journey',
+  children: ['00-react', '01-start-project'].map((item) => {
+    return `./react/${item}`;
+  }),
+};
+
+const blogVuepress = {
+  title: 'vuepress',
+  children: ['01-remark'].map(item => `./vuepress/${item}`)
+}
+
+const blogFramework = {
+  title: 'framework',
+  children: ['', 'jQuery'].map(item => `./framework/${item}`)
+}
+
+const blogOther = ['for', 'why'].map(item => `./other/${item}`)
+
 module.exports = {
   title: '千里',
   description: 'just do it! ',
@@ -15,10 +80,6 @@ module.exports = {
         link: '/blog/',
       },
       {
-        text: 'Knowledge',
-        link: '/knowledge/',
-      },
-      {
         text: 'Read',
         link: '/read/',
       },
@@ -28,43 +89,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/blog/': ['why'],
-      '/knowledge/': [
-        '',
-        {
-          title: 'ECMAScript6',
-          children: [
-            './ECMAScript6/',
-            './ECMAScript6/Async',
-            './ECMAScript6/function-extension',
-            './ECMAScript6/Generator',
-            './ECMAScript6/Iterator-for...of',
-            './ECMAScript6/let-const',
-            './ECMAScript6/number-extension',
-            './ECMAScript6/object-extension',
-            './ECMAScript6/Promise',
-            './ECMAScript6/Proxy-Reflect',
-            './ECMAScript6/Set-Map',
-            './ECMAScript6/String-extension',
-            './ECMAScript6/Symbol',
-            './ECMAScript6/variable-destructor-assignment',
-          ]
-        },
-        {
-          title: 'Three.js journey',
-          children: [
-            './threejs-demo/',
-            './threejs-demo/01-hello-world/',
-            './threejs-demo/02-basic-component/',
-            './threejs-demo/03-light/',
-            './threejs-demo/04-material/',
-            './threejs-demo/05-geometry/',
-            './threejs-demo/06-high-geometry/',
-            './threejs-demo/07-praticle/',
-            './threejs-demo/08-import-high-geometry/',
-          ]
-        }
-      ],
+      '/blog/': ['', ...blogOther, blogEcmascript, blogThreejs, blogVue, blogReact, blogVuepress, blogFramework],
       '/read/': [
         // ''空字符串表示当前目录的README文件
         '',
@@ -82,4 +107,4 @@ module.exports = {
       },
     },
   },
-}
+};
