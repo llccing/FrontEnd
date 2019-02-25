@@ -16,11 +16,11 @@ UI：“这个按钮太大了，改小一点。”
 
 怼回去：“这个组件有bug，等他升级了，我们更新下依赖就行。”
 
-## 事情的进展
+ 事情的进展
 虽然通过上面的沟通可以暂时将问题压下去，但是这毕竟不是一个好的解决问题的方式。所以还是需要去解决。
 针对样式问题，组件库的官方其实会给出一个解决解决方案。
 
-### iview组件库的样式覆盖
+## iview组件库的样式覆盖
 
 环境：**vue@2.6.6 iview@3.2.2**
 
@@ -58,7 +58,7 @@ module.exports = {
 ...
 ```
 
-### element-ui组件库的样式覆盖
+## element-ui组件库的样式覆盖
 创建vue项目时记得选择scss就可以
 
 做如下修改
@@ -91,9 +91,30 @@ $--color-primary: #409EFF !default;
 
 从修改上来看还是element-ui是个正经的组件库。
 
-### iview的组件逻辑调整
+## iview的组件逻辑调整
 
+这个idea不是我，来自华为云的开发！感谢！
 
-### element-ui的组件逻辑调整
+show you code!
+```js
+<template>
+  // template将iview源码的中的Table.vue的template复制过来就可以。
+  // 当然如果你想自定义那么也可以做更改
+</template>
+<script>
+import {Table} from 'iview'
+export default {
+  mixins:[Table],
+    mounted () {
+        console.log('do what you want to do in mounted!')
+    },
+}
+</script>
+```
+
+## element-ui的组件逻辑调整
+
+修改的方式和iview的组件类似，不过element-ui中，el-table-column暂时没有做修改。
+
 
 
