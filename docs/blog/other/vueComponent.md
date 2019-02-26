@@ -119,6 +119,6 @@ export default {
 修改的方式和iview的组件类似，不过element-ui中，el-table-column暂时没有做修改。
 
 
-##
+## 源码
 1. [component-style-override-element](https://github.com/llccing/FrontEnd/tree/master/demo/component-style-override-element)
 2. [component-style-override-iview](https://github.com/llccing/FrontEnd/tree/master/demo/component-style-override-iview)
