@@ -57,6 +57,7 @@ module.exports = {
 
 ...
 ```
+完整代码在下方
 
 ## element-ui组件库的样式覆盖
 创建vue项目时记得选择scss就可以
@@ -111,10 +112,13 @@ export default {
 }
 </script>
 ```
+完整代码在下方
 
 ## element-ui的组件逻辑调整
 
 修改的方式和iview的组件类似，不过element-ui中，el-table-column暂时没有做修改。
 
 
-
+##
+1. [component-style-override-element](https://github.com/llccing/FrontEnd/tree/master/demo/component-style-override-element)
+2. [component-style-override-iview](https://github.com/llccing/FrontEnd/tree/master/demo/component-style-override-iview)
