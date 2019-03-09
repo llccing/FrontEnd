@@ -132,10 +132,70 @@ created钩子中能够拿到data、props、methods属性，mounted钩子中能�
 ## 组件注册
 
 ### 全局注册
+```js
+Vue.component('my-component',{
+
+})
+```
 
 ### 局部注册
+```js
+import HelloWorld from './components/HelloWorld';
+
+export default {
+  components: {
+    HelloWorld,
+  }
+}
+
+```
 
 ### 总结
 通用基础组件一般全局注册，业务组件局部注册。
 
 ## 异步组件
+
+### 普通异步组件
+```js
+Vue.components('async-example', function(resole, reject) {
+  // 特殊的 require 语法告诉webpack
+  // 自动将编译后的代码分割成不同的块
+  // 这些块将通过 Ajax 请求自动下载
+  require(['./my-async-component'], resolve)
+})
+
+```
+webpack 2+ 支持了异步加载的语法糖：() => import('./my-async-component')
+
+
+### 此外还支持两种方式，```Promise```创建组件
+```js
+Vue.component(
+  'async-webpack-example',
+  () => import('./my-async-component')
+)
+
+```
+
+### 高级异步组件
+```js
+const AsyncComp = () => ({
+  // 需要加载的组件 promise
+  component: import('./async-component.vue'),
+  // 加载中应当渲染的组件 同步载入进来的
+  loading: LoadingComp,
+  // 出错时渲染的组件 
+  error: ErrorComp,
+  // 渲染加载中组件前的等待时间。 默认: 200ms。
+  delay: 200,
+  // 最长等待时间。超出此时间则渲染错误组件。默认：Infinity
+  timeout: 3000,
+})
+
+Vue.component('async-example', AsyncComp)
+```
+
+### 总结
+异步组件实现有3种方式，高级异步组件实现了loading、resolve、reject、timeout4种状态。
+异步组件的实现本质是2次渲染，除了0 delay的高级异步组件会渲染loading外，
+其他第一次都是渲染生成注释节点，当异步组件获取成功后，再通过```forceRender```强制重新渲染
