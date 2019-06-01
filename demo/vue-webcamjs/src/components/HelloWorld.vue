@@ -4,6 +4,7 @@
     <button class="play">拍照</button>
     <div id="status">倒计时</div>
     <div id="webcam"></div>
+    <div id="results"></div>
   </div>
 </template>
 
@@ -42,6 +43,10 @@ export default {
         }
       },
       onSave: function(data) {
+
+        document.getElementById('results').innerHTML = '<h2>Here is your image:</h2>'+'<img src="'+data+'"/>';
+      
+
         //保存图像
         var col = data.split(";");
         var img = image;
