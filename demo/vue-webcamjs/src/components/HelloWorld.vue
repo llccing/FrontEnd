@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <button class="delayPlay">延时拍照</button>
     <button class="play">拍照</button>
     <div id="status">倒计时</div>
     <div id="webcam"></div>
@@ -39,7 +40,6 @@ export default {
         } else {
           $("#status").text("倒计时" + remain + "秒钟...");
         }
-        $("#status").text("倒计时" + remain + "秒钟...");
       },
       onSave: function(data) {
         //保存图像
@@ -80,6 +80,10 @@ export default {
 
     $(".play").click(function() {
       webcam.capture();
+    });
+
+    $(".delayPlay").click(function() {
+      webcam.capture(3);
     });
   }
 };
