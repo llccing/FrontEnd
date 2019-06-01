@@ -1,41 +1,91 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <button class="play">拍照</button>
+    <div id="status">倒计时</div>
+    <div id="webcam"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: String
+  },
+  methods: {},
+  mounted() {
+    var w = 320,
+      h = 240; //摄像头配置,创建canvas
+    var pos = 0,
+      ctx = null,
+      saveCB,
+      image = [];
+    var canvas = document.createElement("canvas");
+    $("body").append(canvas);
+    canvas.setAttribute("width", w);
+    canvas.setAttribute("height", h);
+    ctx = canvas.getContext("2d");
+    image = ctx.getImageData(0, 0, w, h);
+
+    $("#webcam").webcam({
+      width: w,
+      height: h,
+      mode: "callback", //stream,save，回调模式,流模式和保存模式
+      swffile: "jscam_canvas_only.swf",
+      onTick: function(remain) {
+        console.log(remain)
+        if (0 == remain) {
+          $("#status").text("拍照成功!");
+        } else {
+          $("#status").text("倒计时" + remain + "秒钟...");
+        }
+          $("#status").text("倒计时" + remain + "秒钟...");
+      },
+      onSave: function(data){
+        console.log(data)
+        //保存图像
+        // var col = data.split(";");
+        // var img = image;
+        // for (var i = 0; i < w; i++) {
+        //   var tmp = parseInt(col[i]);
+        //   img.data[pos + 0] = (tmp >> 16) & 0xff;
+        //   img.data[pos + 1] = (tmp >> 8) & 0xff;
+        //   img.data[pos + 2] = tmp & 0xff;
+        //   img.data[pos + 3] = 0xff;
+        //   pos += 4;
+        // }
+        // if (pos >= 4 * w * h) {
+        //   ctx.putImageData(img, 0, 0); //转换图像数据，渲染canvas
+        //   pos = 0;
+        //   Imagedata = canvas.toDataURL().substring(22); //上传给后台的图片数据
+        // }
+      },
+      onCapture: function() {
+        console.log(111)
+        //捕获图像
+        webcam.onSave();
+      },
+      debug: function(type, string) {
+        //控制台信息
+        console.log(type + ": " + string);
+      },
+      onLoad: function() {
+        //flash 加载完毕执行
+        console.log("加载完毕！");
+        var cams = webcam.getCameraList();
+        for (var i in cams) {
+          $("body").append("<p>" + cams[i] + "</p>");
+        }
+      }
+    });
+
+    $(".play").click(function() {
+      console.log(333)
+      webcam.onCapture(5); //拍照，参数5是倒计时
+      // webcam.save();        //拍照，参数5是倒计时
+    });
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
