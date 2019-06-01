@@ -33,37 +33,36 @@ export default {
       mode: "callback", //stream,save，回调模式,流模式和保存模式
       swffile: "jscam_canvas_only.swf",
       onTick: function(remain) {
-        console.log(remain)
+        console.log(remain);
         if (0 == remain) {
           $("#status").text("拍照成功!");
         } else {
           $("#status").text("倒计时" + remain + "秒钟...");
         }
-          $("#status").text("倒计时" + remain + "秒钟...");
+        $("#status").text("倒计时" + remain + "秒钟...");
       },
-      onSave: function(data){
-        console.log(data)
+      onSave: function(data) {
         //保存图像
-        // var col = data.split(";");
-        // var img = image;
-        // for (var i = 0; i < w; i++) {
-        //   var tmp = parseInt(col[i]);
-        //   img.data[pos + 0] = (tmp >> 16) & 0xff;
-        //   img.data[pos + 1] = (tmp >> 8) & 0xff;
-        //   img.data[pos + 2] = tmp & 0xff;
-        //   img.data[pos + 3] = 0xff;
-        //   pos += 4;
-        // }
-        // if (pos >= 4 * w * h) {
-        //   ctx.putImageData(img, 0, 0); //转换图像数据，渲染canvas
-        //   pos = 0;
-        //   Imagedata = canvas.toDataURL().substring(22); //上传给后台的图片数据
-        // }
+        var col = data.split(";");
+        var img = image;
+        for (var i = 0; i < w; i++) {
+          var tmp = parseInt(col[i]);
+          img.data[pos + 0] = (tmp >> 16) & 0xff;
+          img.data[pos + 1] = (tmp >> 8) & 0xff;
+          img.data[pos + 2] = tmp & 0xff;
+          img.data[pos + 3] = 0xff;
+          pos += 4;
+        }
+
+        if (pos >= 4 * w * h) {
+          ctx.putImageData(img, 0, 0); //转换图像数据，渲染canvas
+          pos = 0;
+          Imagedata = canvas.toDataURL().substring(22); //上传给后台的图片数据
+        }
       },
       onCapture: function() {
-        console.log(111)
         //捕获图像
-        webcam.onSave();
+        webcam.save();
       },
       debug: function(type, string) {
         //控制台信息
@@ -80,9 +79,7 @@ export default {
     });
 
     $(".play").click(function() {
-      console.log(333)
-      webcam.onCapture(5); //拍照，参数5是倒计时
-      // webcam.save();        //拍照，参数5是倒计时
+      webcam.capture();
     });
   }
 };
