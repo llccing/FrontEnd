@@ -275,6 +275,225 @@ console.log(it.next(123123))
 
 
 throw()是将yield表达式替换成一个throw语句。
+```js
+var it2 = foo();
 
+console.log(it2.next())
+console.log(it2.throw(new Error('又错了！')))
+```
 
 return()是将yield表达式替换成一个return语句。
+```js
+
+var it3 = foo();
+console.log(it3.next())
+console.log(it3.return(666))
+```
+
+## yield* 表达式
+
+在一个Generator函数内部，调用另一个Generator函数，需要在前者的函数体内，手动完成遍历
+```js
+function* foo() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+function* bar() {
+  yield 'x';
+  for (let i of foo()) {
+    console.log(i)
+  }
+}
+
+for (let i of bar()) {
+  console.log(i)
+}
+```
+
+如果在bar函数内部调用多个Generator函数，处理就会变得特别麻烦，所以出现了yield*表达式。
+```js
+// yield*版本
+function* bar2() {
+  yield 'x'
+  yield* foo()
+  yield 'y'
+  return 'zzz';
+}
+
+let it2 = bar2();
+console.log(it2.next())
+console.log(it2.next())
+console.log(it2.next())
+console.log(it2.next())
+console.log(it2.next())
+
+
+// 等同于
+function* bar3() {
+  yield 'x';
+  yield 1;
+  yield 2
+  yield 'y'
+  return 'zzz'
+}
+console.log('\n')
+
+// 等同于
+function* bar4() {
+  yield 'x';
+  for (let v of foo()) {
+    yield v
+  }
+
+  yield 'y'
+  return 'zzz'
+}
+
+for (let v of bar4()) {
+  console.log(v)
+}
+```
+
+再看下面的一个例子，outer2用了yield*, outer1没用，结果是outer1返回了一个遍历器对象，outer2返回了遍历器对象内部的值。
+从语法的角度看，如果yield后面跟着一个遍历器对象，那么需要在yield后加星号，表明它返回的是遍历器对象。这称为yield*表达式
+
+```js
+function* inner() {
+  yield 'hello';
+}
+
+function* outer1() {
+  yield 'open';
+  yield inner()
+  yield 'close';
+}
+
+var it1 = outer1();
+console.log(it1.next())
+console.log(it1.next())
+console.log(it1.next())
+console.log(it1.next())
+
+
+console.log(`\n outer2 `)
+function* outer2() {
+  yield 'open';
+  yield* inner()
+  yield 'close'
+}
+
+var it2 = outer2();
+console.log(it2.next())
+console.log(it2.next())
+console.log(it2.next())
+console.log(it2.next())
+```
+
+再看下面这段代码，delegratingIterator是代理者，delegratedIterator是被代理者。由yield* delegratedIterator语句得到的是一个遍历器，所以要用星号表示。
+运行结果就是使用了一个遍历器，遍历了多个Generator函数，有递归的效果。
+```js
+let delegratedIterator = (function* () { 
+  yield 'hello';
+  yield 'bye'
+}())
+
+let delegratingIterator = (function* () {
+  yield 'Greeting';
+  yield* delegratedIterator;
+  yield 'ok, bye'
+}())
+
+for (let value of delegratingIterator) {
+  console.log(value)
+}
+```
+
+## 作为对象属性的Generator函数
+
+```js
+let obj = {
+  *myGeneratorMethods() {
+    yield 3
+    yield 4
+    return 5
+  }
+}
+
+for (let value of obj.myGeneratorMethods()) {
+  console.log(value)
+}
+
+console.log(`\n 另一种方式声明对象方法`)
+
+// 上面的写法等同于下面
+let obj2 = {
+  myGeneratorMethods: function* () {
+    yield 1;
+    return 2;
+  }
+}
+
+for (let value of obj2.myGeneratorMethods()) {
+  console.log(value)
+}
+```
+
+## Generator函数的this
+
+Generator函数总是返回一个遍历器，ES6规定这个遍历器是Generator函数的实例，也继承了Generator函数的prototype对象上的方法。
+```js
+function* foo() {
+  
+}
+
+foo.prototype.hello = function () {
+  return 'hello'
+}
+
+let obj = foo();
+console.log(obj instanceof foo)
+
+console.log(obj.hello())
+
+```
+上述代码表明，Generator函数foo返回的遍历器obj，是foo的实例，同时也继承了foo.prototype。
+
+
+## 含义
+
+### Generator与状态机
+```js
+var ticking = true;
+
+var clock = function () {
+  if (ticking) {
+    console.log('tick')
+  } else {
+    console.log('tock')
+  }
+  ticking = !ticking
+}
+
+clock()
+clock()
+clock()
+
+// Generator版本
+function* clock2() {
+  while (true) {
+    console.log('tick')
+    yield
+    console.log('tock')
+    yield
+  }
+}
+
+var it = clock2();
+console.log(it.next())
+console.log(it.next())
+console.log(it.next())
+```
+Generator实现与ES5的实现相比，少了外部保存状态的ticking变量，更简洁、安全。Generator之所以不用保存状态，是因为它本身就包含了一个状态信息，
+即目前是否出于暂停状态。
