@@ -1,8 +1,8 @@
-### Set
+# Set/Map
 
 ES6新提供的数据结构Set。类似数组，但是所有成员都是唯一的，没有重复值。
 
-#### Set实例的属性和方法
+## Set
 
 属性
 
@@ -23,6 +23,25 @@ ES6新提供的数据结构Set。类似数组，但是所有成员都是唯一�
 - entries()
 - forEach()
 
+```js
+var s = new Set();
+[2,3,5,4,3,4,1,7].map(x=>s.add(x));
+console.log(s);
+
+for(let i of s){
+    console.log(i);
+}
+```
+
+```js
+
+// 初始化 demo2
+var set = new Set([1,2,3,1,2,3,4,5,5,6]);
+[...set]
+set.size();
+
+```
+
 ### WeakSet
 
 > WeakSet结构和Set类似，也是不重复的值的集合。WeakSet和Set的两个区别。
@@ -32,7 +51,7 @@ ES6新提供的数据结构Set。类似数组，但是所有成员都是唯一�
 所以无法引用WeakSet的成员，WeakSet是不可遍历的。
 
 
-### Map
+## Map
 
 JavaScript的对象（Object），本质上是键值对的集合（Hash结构），但是传统上只能用字符串当做键。这给它的使用带来了很大的限制。
 而Map可以做到用各种类型的值（包括对象）来做键。
@@ -59,3 +78,16 @@ JavaScript的对象（Object），本质上是键值对的集合（Hash结构）
 ### WeakMap
 
 WeakMap结构与Map结构类似，唯一的区别是它只接受对象作为键名（null除外），而且所有键名所指的对象，不计入垃圾回收机制。
+
+
+```js
+// Map
+var m = new Map();
+var o = {p:'Hello World'};
+m.set(o,'content');
+m.get(o);
+
+m.has(o);
+m.delete(o);
+m.has(o);
+```
