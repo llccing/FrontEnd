@@ -1,4 +1,4 @@
-### Iterator(遍历器)
+# Iterator(遍历器)
 
 JavaScript原有的表示集合的数据结构，有Array和Object，ES6又添加了Map和Set
 

@@ -1,4 +1,4 @@
-### 数值的扩展
+# 数值的扩展
 
 - 二进制和八进制表示法
 - Number.isFinite(), Number.isNaN()
