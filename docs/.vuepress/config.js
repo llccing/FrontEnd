@@ -3,10 +3,11 @@ const blogEcmascript = {
   children: [
     '',
     // 'Async',
+    'let-const',
     'function-extension',
+    'Generator-async',
     'Generator',
     'Iterator-for...of',
-    'let-const',
     'number-extension',
     'object-extension',
     'Promise',
