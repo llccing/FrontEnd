@@ -2,7 +2,7 @@ const blogEcmascript = {
   title: 'ES2015',
   children: [
     '',
-    'Async',
+    // 'Async',
     'function-extension',
     'Generator',
     'Iterator-for...of',
