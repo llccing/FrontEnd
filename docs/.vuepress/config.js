@@ -54,15 +54,15 @@ const blogReact = {
 
 const blogVuepress = {
   title: 'vuepress',
-  children: ['01-remark'].map(item => `./vuepress/${item}`)
-}
+  children: ['01-remark'].map((item) => `./vuepress/${item}`),
+};
 
 const blogFramework = {
   title: 'framework',
-  children: ['', 'jQuery'].map(item => `./framework/${item}`)
-}
+  children: ['', 'jQuery'].map((item) => `./framework/${item}`),
+};
 
-const blogOther = ['for', 'why', 'vueComponent'].map(item => `./other/${item}`)
+const blogOther = ['for', 'why', 'vueComponent'].map((item) => `./other/${item}`);
 
 module.exports = {
   title: '千里',
@@ -72,25 +72,16 @@ module.exports = {
   // theme: 'vue',
   themeConfig: {
     nav: [
-      {
-        text: 'Home',
-        link: '/',
-      },
-      {
-        text: 'Blog',
-        link: '/blog/',
-      },
-      {
-        text: 'Read',
-        link: '/read/',
-      },
-      {
-        text: 'About',
-        link: '/about/',
-      },
+      { text: 'Home', link: '/' },
+      { text: 'Blog', link: '/blog/' },
+      { text: 'CSS', link: '/css/' },
+      { text: 'JS', link: '/js/' },
+      { text: 'lib', link: '/lib/' },
+      { text: 'Read', link: '/read/' },
+      { text: 'About', link: '/about/' },
     ],
     sidebar: {
-      '/blog/': ['', ...blogOther, blogEcmascript, blogThreejs, blogVue, blogReact, blogVuepress, blogFramework],
+      '/blog/': ['', ...blogOther],
       '/read/': [
         // ''空字符串表示当前目录的README文件
         '',
@@ -99,6 +90,16 @@ module.exports = {
           children: ['./css-world/01-overview', './css-world/02-terminology-concept'],
         },
       ],
+      '/css/': ['', 'flex'],
+      '/js/': [
+        '',
+        blogEcmascript,
+        {
+          title: 'basic',
+          children: ['./basic/apply-call'],
+        },
+      ],
+      '/lib/': ['', blogVue, blogThreejs, blogReact, blogVuepress, blogFramework, { title: 'egg', children: ['./egg/init'] }],
     },
   },
   configureWebpack: {
