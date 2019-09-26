@@ -57,11 +57,6 @@ const blogVuepress = {
   children: ['01-remark'].map((item) => `./vuepress/${item}`),
 };
 
-const blogFramework = {
-  title: 'framework',
-  children: ['', 'jQuery'].map((item) => `./framework/${item}`),
-};
-
 const blogOther = ['for', 'why', 'vueComponent'].map((item) => `./other/${item}`);
 
 module.exports = {
@@ -99,7 +94,7 @@ module.exports = {
           children: ['./basic/apply-call'],
         },
       ],
-      '/lib/': ['', blogVue, blogThreejs, blogReact, blogVuepress, blogFramework, { title: 'egg', children: ['./egg/init'] }],
+      '/lib/': ['', blogVue, blogThreejs, blogReact, blogVuepress, { title: 'egg', children: ['./egg/init'] }],
     },
   },
   configureWebpack: {
