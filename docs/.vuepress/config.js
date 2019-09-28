@@ -5,6 +5,7 @@ module.exports = {
   serviceWorker: true,
   // theme: 'vue',
   themeConfig: {
+    lastUpdated: 'Last Updated',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
@@ -15,7 +16,9 @@ module.exports = {
       { text: 'About', link: '/about/' },
     ],
     sidebar: {
-      '/blog/': ['', ...['for', 'why', 'vueComponent'].map(item => `./other/${item}`)],
+      '/blog/': ['',
+        ...['for', 'why', 'vueComponent'].map(item => `./other/${item}`),
+      'ci'],
       '/read/': [
         // ''空字符串表示当前目录的README文件
         '',
@@ -112,7 +115,7 @@ module.exports = {
         {
           title: 'egg',
           collapsable: false,
-          children: ['./egg/init']
+          children: ['./egg/init'],
         },
       ],
     },
