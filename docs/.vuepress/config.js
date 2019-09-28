@@ -84,6 +84,10 @@ module.exports = {
           title: 'CSS世界',
           children: ['./css-world/01-overview', './css-world/02-terminology-concept'],
         },
+        {
+          title: '深入浅出Webpack',
+          children: ['./webpack/', './webpack/01']
+        }
       ],
       '/css/': ['', 'flex'],
       '/js/': [
