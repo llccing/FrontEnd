@@ -1,6 +1,6 @@
 # 基础
 
-#### 1.JavaScript的typeof返回的数据类型
+## 1.JavaScript的typeof返回的数据类型
 
 ```
   a(typeof[1,2]); // object
@@ -17,7 +17,7 @@
   }
 ```  
 
-#### 2.例举3种强制类型转换和2种隐式类型转护
+## 2.例举3种强制类型转换和2种隐式类型转护
 
 ```
   强制: parseInt() parseFloat() Number()
@@ -26,13 +26,13 @@
 
 [两个叹号的使用](http://blog.csdn.net/qq_27093465/article/details/50628283)
 
-#### 3.split()和join()的区别
+## 3.split()和join()的区别
 
 ```
   split()是将字符串拆成数组，join()是将数组转成字符串的形式。
 ```
 
-#### 4.数组方法 pop() push() unshift() shift()
+## 4.数组方法 pop() push() unshift() shift()
 ```
   push()向数组尾部添加元素。
   pop()从数组尾部删除元素。
@@ -40,7 +40,7 @@
   shift()从数组头部删除元素。
 ```
 
-#### 5.事件绑定和普通事件有什么区别
+## 5.事件绑定和普通事件有什么区别
 
 ```
   普通事件的添加方法：
@@ -68,7 +68,7 @@
 
 addEventListener不兼容低版本IE，普通事件无法取消，addEventListener还支持事件冒泡和事件捕获
 
-#### 6. IE和DOM事件流的区别
+## 6. IE和DOM事件流的区别
 ```
 IE采用冒泡型事件，Netscape使用捕获型事件，DOM采用先捕获后冒泡型事件。
 <body>
@@ -81,7 +81,7 @@ IE采用冒泡型事件，Netscape使用捕获型事件，DOM采用先捕获后�
 DOM事件类型：body div button button div body(先捕获后冒泡)
 ```
 
-#### 7. 事件监听函数的区别
+## 7. 事件监听函数的区别
 ```
 IE使用：
 [Object].attachEvent('name_of_event', fnHandler); // 绑定函数
@@ -94,7 +94,7 @@ bCapture参数用于设置事件的绑定阶段，true为捕获阶段，false为
 
 ```
 
-#### 8. IE和标准下的兼容性的写法(先将这点列在这，具体的用法不太理解)
+## 8. IE和标准下的兼容性的写法(先将这点列在这，具体的用法不太理解)
 
 ```
 var ev = ev||window.event;
@@ -102,7 +102,7 @@ document.documentElement.clientWidth || document.clientWidth;
 var target = ev.srcElement||ev.target;
 ```
 
-#### 9. call()和apply()的区别
+## 9. call()和apply()的区别
 
 ```
 call()方法：
@@ -119,7 +119,7 @@ apply()方法：
 如果没有提供一个argArray和thisObj任何一个参数，那么Global对象将被用作thisObj,并且无法被传递任何参数。
 ```
 
-#### 10. b继承a的方法
+## 10. b继承a的方法
 ```
 function A(age, name){
   this.age = age;
@@ -143,7 +143,7 @@ console.log(b);
 console.log(a);
 ```
 
-#### 11. 如何阻止事件冒泡
+## 11. 如何阻止事件冒泡
 ```
 IE cancelBubble();
 其他 stopPropagation();
@@ -152,14 +152,14 @@ IE cancelBubble();
 return false;
 ```
 
-#### 12. JavaScript的本地对象，内置对象和宿主对象
+## 12. JavaScript的本地对象，内置对象和宿主对象
 ```
 本地对象：Array Object Regexp等可以new实例化
 内置对象：global Math等不可以实例化
 宿主对象：浏览器自带的 document window等
 ```
 
-#### 13. 添加、插入、替换、删除某个节点的方法
+## 13. 添加、插入、替换、删除某个节点的方法
 
 ```
   btn.appendChild(btnNew);
@@ -168,7 +168,7 @@ return false;
   btn.removeChild(childNode);
 ```
 
-#### 14. window.onload 和 document ready 的区别
+## 14. window.onload 和 document ready 的区别
 
 ```
   window.onload是在DOM文档树都加载完和所有文件加载完之后执行的函数。
@@ -184,13 +184,13 @@ return false;
 
 [$(function(){});和window.onload的区别](http://www.php100.com/html/program/jquery/2013/0905/5954.html)
 
-#### 15. "=="和"==="
+## 15. "=="和"==="
 
 ```
   == 会进行类型转换
   === 直接比较，不会转换类型
 ```
-#### 16. JavaScript是一门什么样的语言，它有哪些特点？
+## 16. JavaScript是一门什么样的语言，它有哪些特点？
   
 ```
   javaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML网页上使用，用来给HTML网页增加动态功能。JavaScript兼容于ECMA标准，因此也称为ECMAScript。
@@ -201,7 +201,7 @@ return false;
   跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。
 ```
 
-#### 17. JavaScript的数据类型都有什么？
+## 17. JavaScript的数据类型都有什么？
   
 ```
     基本数据类型：string、number、boolean、null、undefined
@@ -222,13 +222,13 @@ return false;
 
 [Object.prototype.toString.call(arg) 理解](http://www.zhufengpeixun.cn/JavaScriptmianshiti/2014-02-28/271.html)
 
-#### 18. 已知id的input输入框，希望获取这个输入框的输入值，用原生js实现。
+## 18. 已知id的input输入框，希望获取这个输入框的输入值，用原生js实现。
 
   ```
     var value = document.getElementById('id').value;
   ```
 
-#### 19. 原生js获取页面所有的checkbox
+## 19. 原生js获取页面所有的checkbox
 
 ```
     var domList = document.getElementsByTagName('input');
@@ -241,7 +241,7 @@ return false;
     }
 ```
 
-#### 20. 设置一个已知id的div的html内容为xxxx，字体颜色为黑色，用原生js实现。
+## 20. 设置一个已知id的div的html内容为xxxx，字体颜色为黑色，用原生js实现。
 
 ```
     var dom = document.getElementById('id');
@@ -249,7 +249,7 @@ return false;
     dom.style.color = '#000';
 ```
 
-#### 21. 当一个DOM节点被点击时，我们希望其能够执行一个函数，如何实现。
+## 21. 当一个DOM节点被点击时，我们希望其能够执行一个函数，如何实现。
 
 ```
     1. 直接在DOM里绑定事件：<div onclick="test()"></div>
@@ -262,7 +262,7 @@ return false;
     3.DOM事件流，三个阶段：事件捕获、目标阶段、事件冒泡
 ```
 
-#### 22. 下面代码输出为何？解释原因
+## 22. 下面代码输出为何？解释原因
 
 ```
     var a;
@@ -273,7 +273,7 @@ return false;
     undefined。而b由于未声明将报错。注意未声明的变量和声明了但未赋值的变量是不一样的。
 ```
 
-#### 23. 下面代码输出为何？解释原因
+## 23. 下面代码输出为何？解释原因
 
 ```
     var a = null;
@@ -282,7 +282,7 @@ return false;
     null是只有一个值的数据类型，这个值就是null。表示一个空指针对象，所以用typeof检测会返回"object";
 ```
 
-#### 24. 下面代码输出为何？解释原因
+## 24. 下面代码输出为何？解释原因
 ```
     var undefined;
     undefined == null; // true
@@ -310,7 +310,7 @@ return false;
     执行完后，foo的值为111，但是foo的值为number，不是string
 ```
 
-#### 25. 看代码给答案。
+## 25. 看代码给答案。
 ```
     var a = new Object();
     a.value = 1;
@@ -320,7 +320,7 @@ return false;
     引用类型细节
 ```
 
-#### 26. 已知数组 var stringArray = ['this', 'is', 'Baidu', 'Campus'];alert()出"this is Baidu Campus".
+## 26. 已知数组 var stringArray = ['this', 'is', 'Baidu', 'Campus'];alert()出"this is Baidu Campus".
 ```
     alert(stringArray.join(' '));
 ```
@@ -336,7 +336,7 @@ return false;
     }
 ```
 
-#### 28. var numberArray = [3,6,2,4,1,5];
+## 28. var numberArray = [3,6,2,4,1,5];
 ```
     1.实现对该数组的倒序，输出[5,1,4,2,6,3];
     numberArray.reverse();
@@ -346,7 +346,7 @@ return false;
     });
 ```
 
-#### 29. 输出今天的日期，以YYYY-MM-DD的形式，比如今天是2017年3月19日，则输出2017-03-19
+## 29. 输出今天的日期，以YYYY-MM-DD的形式，比如今天是2017年3月19日，则输出2017-03-19
 
 ```
     var d = new Date();
@@ -360,7 +360,7 @@ return false;
     console.log(res);
 ```
 
-#### 30. 将字符串"<tr><td>{$id}</td><td>{$name}</td></tr>"中的{$id}换成10，{$name}换成Tony(使用正则表达式)
+## 30. 将字符串"<tr><td>{$id}</td><td>{$name}</td></tr>"中的{$id}换成10，{$name}换成Tony(使用正则表达式)
 
 ```
     "<tr><td>{$id}</td><td>{$name}</td></tr>".replace(/{\$id}/g,10).replace(/{\$name}/g,'Tony');
@@ -370,7 +370,7 @@ return false;
     m 表示多行匹配
 ```
 
-#### 31. 为了保证页面输出安全，我们经常需要对一些特殊字符进行转义，请写一个函数escapeHtml, 将<,>,&,"进行转义。
+## 31. 为了保证页面输出安全，我们经常需要对一些特殊字符进行转义，请写一个函数escapeHtml, 将<,>,&,"进行转义。
   
 ```
     function escapeHtml(){
@@ -390,7 +390,7 @@ return false;
     }
 ```
 
-#### 32. foo = foo||bar， 这行代码是什么意思？为什么要这样写？
+## 32. foo = foo||bar， 这行代码是什么意思？为什么要这样写？
 
 ```
   if(!foo)foo = bar; // 如何foo存在，值不变，否则把bar的值赋给foo。
@@ -399,7 +399,7 @@ return false;
   这称之为短路求值。
 ```
 
-#### 33. 看下列代码，将会输出什么？
+## 33. 看下列代码，将会输出什么？
 
 ```
     var foo = 1;
@@ -421,7 +421,7 @@ return false;
     函数声明与变量声明会被JavaScript引擎隐式的提升到当前作用域的顶部，但是只提升名称，不会提升赋值部分。
 ```
 
-#### 34. 用js实现随机选取10-100之间的10个数字，存入一个数组，并排序。
+## 34. 用js实现随机选取10-100之间的10个数字，存入一个数组，并排序。
 
 ```
     var arr = [];
@@ -434,7 +434,7 @@ return false;
 
 ```
 
-#### 35. 把两个数组合并，并删除第二个元素。
+## 35. 把两个数组合并，并删除第二个元素。
 
 ```
     var a = [2,3,4];
@@ -445,7 +445,7 @@ return false;
     console.log(c);
 ```
 
-#### 36. 怎样添加、移除、复制、创建和查找节点（原生js）
+## 36. 怎样添加、移除、复制、创建和查找节点（原生js）
 
 ```
     1.创建新节点
@@ -464,7 +464,7 @@ return false;
 
 ```
 
-#### 37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e,请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
+## 37. 解析url中的参数。url: URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e,请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
   
 ```
     function randomNum(url){
@@ -481,7 +481,7 @@ return false;
     // 有可以完善的地方
 ```
 
-#### 38. 正则表达式构造函数var reg = new Regexp('xxx)与正则表达式字面量var reg = //有什么不同，匹配邮箱的正则表达式？
+## 38. 正则表达式构造函数var reg = new Regexp('xxx)与正则表达式字面量var reg = //有什么不同，匹配邮箱的正则表达式？
 
 ```
     使用RegExp()构造函数时，不仅需要转义引号(即 \" 表示 "), 还需要双反斜杠 (即\\ 表示一个\)。使用正则表达式字面量的效率更高。
@@ -490,7 +490,7 @@ return false;
     var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
 ```
 
-#### 39. 看下面的代码，给输出结果。
+## 39. 看下面的代码，给输出结果。
 
 ```
     for(var i=1;i<=3;i++){
@@ -510,7 +510,7 @@ return false;
 
 ```
 
-#### 40. 写一个function, 清除字符串前后的空格(兼容所有浏览器)
+## 40. 写一个function, 清除字符串前后的空格(兼容所有浏览器)
   
 ```
     if(!String.prototype.trim){
@@ -527,7 +527,7 @@ return false;
     alert(str == "test string"); // alerts "true"
 ```
 
-#### 41. JavaScript中callee和caller的作用？
+## 41. JavaScript中callee和caller的作用？
 
 ```
     caller是返回一个对函数的引用，该函数调用了当前函数；
@@ -554,7 +554,7 @@ return false;
     }
 ```
 
-#### 42. JavaScript中，以下哪条语一定会产生运行错误？
+## 42. JavaScript中，以下哪条语一定会产生运行错误？
 ```
     A. var _变量 = NaN;
     B. var 0bj = [];
@@ -564,7 +564,7 @@ return false;
     BC
 ```
 
-#### 43. 以下两个变量a和b，a+b的哪个结果是NaN？
+## 43. 以下两个变量a和b，a+b的哪个结果是NaN？
 ```
     A. var a = undefined,b = NaN;
     B. var a = '123',b = NaN;
@@ -574,7 +574,7 @@ return false;
     AC
 ```
 
-#### 44. var a= 10; b=20;c =4; ++b+c+a++ 等于()
+## 44. var a= 10; b=20;c =4; ++b+c+a++ 等于()
 ```
     A. 34
     B. 35
@@ -585,7 +585,7 @@ return false;
     B
 ```
 
-#### 45. 下面的JavaScript语句中，（D）实现检索当前页面中的表单元素中的所有文本框，并将他们全部清空。
+## 45. 下面的JavaScript语句中，（D）实现检索当前页面中的表单元素中的所有文本框，并将他们全部清空。
 
 ```
   // A
@@ -619,7 +619,7 @@ return false;
    // D选项，修改后，经验证是正确的。
 ```
 
-#### 46. 要将页面的状态栏中显示"已经选中该文本框"，下列JavaScript语句正确的是（A）
+## 46. 要将页面的状态栏中显示"已经选中该文本框"，下列JavaScript语句正确的是（A）
 
 ```
     A. window.status = '已经选中';
@@ -630,7 +630,7 @@ return false;
     未验证，没有找到合适的验证方法。
 ```
 
-#### 47. 以下哪条语句会产生运行错误：AC
+## 47. 以下哪条语句会产生运行错误：AC
 
 ```
     A. var obj = ();
@@ -641,7 +641,7 @@ return false;
     和之前的42类似
 ```
 
-#### 48. 以下哪个单词不属于JavaScript保留字 B
+## 48. 以下哪个单词不属于JavaScript保留字 B
 ```
     A. with
     B. parent
@@ -649,7 +649,7 @@ return false;
     D. void
 ```
 
-#### 49. 选择结果为真的表达式：C
+## 49. 选择结果为真的表达式：C
 
 ```
     A. null instanceof Object
@@ -658,17 +658,17 @@ return false;
     D. NaN == NaN
 ```
 
-#### 51. typeof运算符返回值中返回值有一个跟JavaScript数据类型不一致，它是什么？
+## 51. typeof运算符返回值中返回值有一个跟JavaScript数据类型不一致，它是什么？
 ```
     function
 ```
 
-#### 52. 定义了一个变量，但未赋值，alert该变量，对话框中显示什么？
+## 52. 定义了一个变量，但未赋值，alert该变量，对话框中显示什么？
 ```
     undefined
 ```
 
-#### 53. 分析代码，得出正确结果。
+## 53. 分析代码，得出正确结果。
 ```
     var a =10,b =20,c= 30;
     ++a;
@@ -680,7 +680,7 @@ return false;
     e = 77
 ```
 
-#### 54. 写出函数DateDemo的返回结果，系统时间假定为今天
+## 54. 写出函数DateDemo的返回结果，系统时间假定为今天
 ```
     function DateDemo() {
       var d,s = '日期是：';
@@ -693,7 +693,7 @@ return false;
     // '日期是：3/21/2017'
 ```
 
-#### 55. 写出程序的运行结果
+## 55. 写出程序的运行结果
 ```
     for (var i = 0,j=0; i < 10,j<6; i++,j++) {
       k = i+j;
@@ -704,7 +704,7 @@ return false;
     // k = 10, i,j 循环结束前=5，结束后为6，不满足条件，循环结束。
 ```
 
-#### 56. 阅读以下代码，请分析出结果：
+## 56. 阅读以下代码，请分析出结果：
 ```
     var arr = new Array(1,3,5);
     //  arr = [1,3,5,,'z'];
@@ -720,7 +720,7 @@ return false;
     //  arr3 = [z',,5,3,1,z',,5,3,1];
 ```
 
-#### 57. 补充按钮点击事件函数，确认用户是否退出当前页面，确认之后关闭窗口。
+## 57. 补充按钮点击事件函数，确认用户是否退出当前页面，确认之后关闭窗口。
 ```
     function closeWin(){
       // 此处为问题答案
@@ -730,7 +730,7 @@ return false;
     }
 ```
 
-#### 58. 写出简单描述html标签(不带属性的开始标签和结束标签)的正则表达式，
+## 58. 写出简单描述html标签(不带属性的开始标签和结束标签)的正则表达式，
 并将以下字符串中的html标签去除掉。
 ```
     var str = '<div>这里是div<p>里面的段落</p></div>';
@@ -740,7 +740,7 @@ return false;
     alert(str.replace(reg," "));
 ```
 
-#### 59. 完成foo()函数的内容，要求能够弹出对话框，提示当前选中的是第几个单选框。
+## 59. 完成foo()函数的内容，要求能够弹出对话框，提示当前选中的是第几个单选框。
 ```
     <form class="" action="index.html" method="post" name="form1">
       <input type="radio" name="name" value="123">
@@ -759,7 +759,7 @@ return false;
     }
 ```
 
-#### 60. 完成showImg(),要求能够动态根据下拉列表的选项变化，更新图片的显示
+## 60. 完成showImg(),要求能够动态根据下拉列表的选项变化，更新图片的显示
 
 ```
     var select = document.getElementById('select');
@@ -784,7 +784,7 @@ return false;
     </select>
 ```
 
-#### 61. 截取字符串abcdefg的efg
+## 61. 截取字符串abcdefg的efg
 
 ```
     var s = 'abcdefg';
@@ -794,7 +794,7 @@ return false;
     // substring(start,[stop]);
 ```
 
-#### 62. 列举浏览器对象模型BOM里常用的至少4个对象，并列举window对象的常用方法至少5个
+## 62. 列举浏览器对象模型BOM里常用的至少4个对象，并列举window对象的常用方法至少5个
 
 ```
     对象：window，document，location, screen,history,navigator
