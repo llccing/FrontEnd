@@ -3,6 +3,9 @@ title: jQuery实践
 date: 2016-10-25 20:44:22
 tags: 知识点
 ---
+
+# jQuery实践
+
 ## input的change事件
 
 有个这样的一个需求，表格中有许多要输入的input，input有长度的控制，和数字控制。

@@ -39,15 +39,6 @@ MVVM模式将presenter改名为ViewModel，基本上与MVP模式完全一致。
 
 唯一区别是，他用了双向数据绑定（data-binding）:View的变动，自动反应到ViewModel，反之亦然。
 
-
-
-
-
-
-
-
-
-
 ## words
 
 	domain model

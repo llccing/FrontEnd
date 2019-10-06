@@ -28,7 +28,7 @@
 ### eslint 规则
 
 package.json下的eslintConfig
-```
+```json
 "eslintConfig": {
     "root": true,
     "env": {
@@ -61,7 +61,7 @@ package.json下的eslintConfig
 ```
 
 暂时去掉git hook，待将所有问题修改完，再次开启。
-```
+```json
 "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -76,7 +76,7 @@ npm run lint src/views/index/
 ```
 
 ### VS Code 配置
-```
+```json
 {
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",

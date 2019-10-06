@@ -1,15 +1,8 @@
 # 前端基础设施(gulp)
 
-### 目录
+[[toc]]
 
-- <a href="why">why</a>
-- <a href="#环境搭建">环境搭建<a>
-- <a href="#gulp">gulp<a>
-- <a href="#文件解析">gulpfile.js文件解析<a>
-- <a href="#开发流程">开发部署流程</a>
-- <a href="#讨论">讨论</a>
-
-## <a name="why">why</a>
+## why
 
 * 自动清除缓存，自动刷新，加速开发调试过程 [browserSync](https://www.browsersync.io/) or [browserSync国内](http://www.browsersync.cn/)
 
@@ -18,7 +11,7 @@
 * css文件，加入hash码，方便测试同学测试。（已知情况，js修改不用清缓存，css文件需要）
 
 
-##  <a name="环境搭建">环境搭建</a>
+## 环境搭建
 
 windows环境node安装,
 可以参考该[教程](http://www.jianshu.com/p/03a76b2e7e00)，Linux系统可以参考，
@@ -29,7 +22,7 @@ windows环境node安装,
 
 如果node下载速度过慢，可以考虑使用国内的[node下载站](http://nodejs.cn/download/)。
 
-## <a name="gulp">gulp</a>
+## gulp
 
 [中文官网](http://www.gulpjs.com.cn/)
 
@@ -62,11 +55,10 @@ $ gulp
 ```
 
 
-## <a name="文件解析">gulpfile.js文件解析</a>
+## gulpfile.js文件解析
 
 代码待优化
-
-```
+```js
 var gulp = require('gulp');
 
 var del = require('del'); // 文件删除
@@ -251,7 +243,7 @@ gulp.task('build', function (cb) {
 gulp.task('default', ['server']);
 ```
 
-## <a name="开发流程">开发部署流程</a>
+## 开发部署流程
 
 
 
@@ -264,8 +256,6 @@ npm install
 ### 注意事项
 
 如果 npm install 时速度过慢，可以翻墙，或者可以用cnpm，（cnpm需要安装，自行Google）。
-
-
 
 
 ### 开发：

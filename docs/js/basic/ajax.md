@@ -141,6 +141,7 @@ var ajax = (function(){
 
 ```
 
+<!-- 
 ## 附demo地址
 
-[https://github.com/llccing/FrontEnd/tree/master/demo/ajax](https://github.com/llccing/FrontEnd/tree/master/demo/ajax)
+[https://github.com/llccing/FrontEnd/tree/master/demo/ajax](https://github.com/llccing/FrontEnd/tree/master/demo/ajax) -->

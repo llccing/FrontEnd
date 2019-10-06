@@ -16,9 +16,37 @@ module.exports = {
       { text: 'About', link: '/about/' },
     ],
     sidebar: {
-      '/blog/': ['',
-        ...['for', 'why', 'vueComponent'].map(item => `./other/${item}`),
-      'ci'],
+      '/blog/': [
+        '',
+        {
+          title: '生活有感',
+          collapsable: false,
+          children: [
+            'SegmentFault',
+            'jQuery',
+            'gzip',
+            '我的第一家公司',
+            '国庆节',
+            '病',
+            '2018-dev-guide',
+            'for',
+            'calc-dev-time',
+            'ci',
+            'useGulp',
+            'FrontEndLive',
+            'architecture',
+            'vueComponent',
+            'vue-cli2-to-vue-cli3'
+          ].map(item => `./life/${item}`),
+        },
+        {
+          title: '那些年我面过的试',
+          collapsable: false,
+          children: [
+            '',
+          ].map(item => `./interview/${item}`)
+        }
+      ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
         '',
@@ -60,7 +88,7 @@ module.exports = {
         {
           title: 'basic',
           collapsable: false,
-          children: ['./basic/apply-call'],
+          children: ['apply-call', 'ajax'].map(item => `./basic/${item}`),
         },
       ],
       '/lib/': [

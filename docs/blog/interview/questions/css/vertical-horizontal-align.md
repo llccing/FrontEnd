@@ -1,6 +1,6 @@
 # 垂直水平居中
 
-![理解图](./imgs/vertical-horizontal/vertical-horizontal.png)
+<!-- ![理解图](./imgs/vertical-horizontal/vertical-horizontal.png) -->
 
 ## CSS布局分块：
 
@@ -31,7 +31,7 @@ __仅适合单行__
 
 ## 2.利用盒模型的垂直水平居中
 
-![理解图](./imgs/vertical-horizontal/box.png)
+<!-- ![理解图](./imgs/vertical-horizontal/box.png) -->
 
 一般我们说的盒模型指的是块级盒的盒模型，也只有块级盒的盒模型用的多一点，块级盒的block-level box又是分别由margin-box, border-box, padding-box, content-box。
 
