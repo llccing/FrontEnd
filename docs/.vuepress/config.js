@@ -47,6 +47,13 @@ module.exports = {
             ...['toutiao'].map(item => `./interview/company/${item}`),
           ],
         },
+        {
+          title: '数据结构',
+          collapsable: false,
+          children: [
+            ...[''].map(item => `./dataStructure/${item}`),
+          ]
+        }
       ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
