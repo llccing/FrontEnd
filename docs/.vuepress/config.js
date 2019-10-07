@@ -36,16 +36,17 @@ module.exports = {
             'FrontEndLive',
             'architecture',
             'vueComponent',
-            'vue-cli2-to-vue-cli3'
+            'vue-cli2-to-vue-cli3',
           ].map(item => `./life/${item}`),
         },
         {
           title: '那些年我面过的试',
           collapsable: false,
           children: [
-            '',
-          ].map(item => `./interview/${item}`)
-        }
+            ...['', 'js', 'css'].map(item => `./interview/${item}`),
+            ...['toutiao'].map(item => `./interview/company/${item}`),
+          ],
+        },
       ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
