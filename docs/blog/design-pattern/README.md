@@ -1,6 +1,10 @@
-# 23种设计模式中英文对照
+# 开篇
 
-Singleton 单件模式
+> 由JavaScript设计模式的这本书中引导，开始深入了解设计模式。
+
+## 23种设计模式
+
+Singleton 单例模式
 
 Abstract Factory 抽象工厂模式
 

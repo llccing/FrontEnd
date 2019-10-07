@@ -53,6 +53,12 @@ module.exports = {
           children: [
             ...[''].map(item => `./dataStructure/${item}`),
           ]
+        }, {
+          title: '设计模式',
+          collapsable: false,
+          children: [
+            ...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`),
+          ]
         }
       ],
       '/read/': [

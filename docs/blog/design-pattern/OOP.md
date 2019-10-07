@@ -1,4 +1,8 @@
-# 面向对象编程（Object-Oriented Programming）
+# OOP
+
+:::tip
+面向对象编程（Object-Oriented Programming）
+:::
 
 ## 面向过程编程
 
