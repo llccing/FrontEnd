@@ -24,11 +24,11 @@
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-import Home from '../../../node_modules/vuepress/lib/default-theme/Home.vue'
-import Navbar from '../../../node_modules/vuepress/lib/default-theme/Navbar.vue'
-import Page from '../../../node_modules/vuepress/lib/default-theme/Page.vue'
-import Sidebar from '../../../node_modules/vuepress/lib/default-theme/Sidebar.vue'
-import { resolveSidebarItems } from '../../../node_modules/vuepress/lib/default-theme/util'
+import Home from '../../../node_modules/@vuepress/default-theme/components/Home.vue'
+import Navbar from '../../../node_modules/@vuepress/default-theme/components/Navbar.vue'
+import Page from '../../../node_modules/@vuepress/default-theme/components/Page.vue'
+import Sidebar from '../../../node_modules/@vuepress/default-theme/components/Sidebar.vue'
+import { resolveSidebarItems } from '../../../node_modules/@vuepress/default-theme/util/index.js'
 import Valine from '../components/Valine'
 
 export default {
@@ -132,4 +132,4 @@ export default {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="../../../node_modules/vuepress/lib/default-theme/styles/theme.styl" lang="stylus"></style>
+<style src="../../../node_modules/@vuepress/default-theme/styles/index.styl" lang="stylus"></style>
