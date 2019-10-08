@@ -26,7 +26,6 @@ UI：“这个按钮太大了，改小一点。”
 
 
 error
-![error](../../images/iview-error.png)
 
 解决
 [https://stackoverflow.com/questions/46729091/enable-inline-javascript-in-less](https://stackoverflow.com/questions/46729091/enable-inline-javascript-in-less)
