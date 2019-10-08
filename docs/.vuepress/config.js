@@ -159,6 +159,9 @@ module.exports = {
           collapsable: false,
           children: ['./egg/init'],
         },
+        {
+          
+        }
       ],
     },
   },
