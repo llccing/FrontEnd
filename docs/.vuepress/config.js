@@ -50,16 +50,13 @@ module.exports = {
         {
           title: '数据结构',
           collapsable: false,
-          children: [
-            ...[''].map(item => `./dataStructure/${item}`),
-          ]
-        }, {
+          children: [...[''].map(item => `./dataStructure/${item}`)],
+        },
+        {
           title: '设计模式',
           collapsable: false,
-          children: [
-            ...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`),
-          ]
-        }
+          children: [...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`)],
+        },
       ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
@@ -159,9 +156,7 @@ module.exports = {
           collapsable: false,
           children: ['./egg/init'],
         },
-        {
-          
-        }
+        {},
       ],
     },
   },
@@ -172,4 +167,12 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    [
+      '@vuepress/google-analytics',
+      {
+        ga: 'UA-132988469-1',
+      },
+    ],
+  ],
 }

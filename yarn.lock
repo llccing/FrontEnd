@@ -783,6 +783,11 @@
     source-map "^0.7.3"
     vue-template-es2015-compiler "^1.6.0"
 
+"@vuepress/plugin-google-analytics@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/@vuepress/plugin-google-analytics/download/@vuepress/plugin-google-analytics-1.1.0.tgz#282309cf6071b42f57ce996f2b07e3a9eaefc727"
+  integrity sha1-KCMJz2BxtC9XzplvKwfjqervxyc=
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
