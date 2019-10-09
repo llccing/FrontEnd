@@ -35,9 +35,13 @@ GitHub的star数目，同事的评价，自己的使用体验等等。合理的�
 - [jqPagination](https://github.com/beneverard/jqPagination)
 - [noty](https://github.com/needim/noty)
 - [lightbox2](https://github.com/lokesh/lightbox2)
+- [mock](https://github.com/nuysoft/Mock)
 
 ## 工具库
 - [echarts](https://github.com/apache/incubator-echarts)
 - [js-xlsx](https://github.com/SheetJS/js-xlsx)
 - [excellentexport](https://github.com/jmaister/excellentexport)
 - [gulp](https://github.com/gulpjs/gulp)
+- [lodash](https://github.com/lodash/lodash)
+- [video.js](https://github.com/videojs/video.js)
+- [webpack](https://github.com/webpack/webpack)
