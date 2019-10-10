@@ -1,5 +1,6 @@
 module.exports = {
   title: '千里',
+  ga: 'UA-132988469-1',
   description: 'just do it! ',
   base: '/FrontEnd/',
   serviceWorker: true,
