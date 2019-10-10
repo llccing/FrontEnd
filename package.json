@@ -4,14 +4,13 @@
   "description": "开发过程中遇到的问题，尝试写个demo解决。\r 在以后的工作中遇到类似的问题也有一个参考的作用，同时也是作为blog的素材。",
   "main": "index.js",
   "dependencies": {
-    "http-server": "^0.11.1",
-    "leancloud-storage": "^3.11.1",
-    "valine": "^1.3.4",
-    "vuepress": "^1.1.0"
   },
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "leancloud-storage": "^3.11.1",
+    "valine": "^1.3.4",
+    "vuepress": "^1.1.0"
   },
   "scripts": {
     "dev": "vuepress dev docs",
