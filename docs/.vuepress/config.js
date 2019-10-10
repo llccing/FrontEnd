@@ -6,6 +6,7 @@ module.exports = {
   // theme: 'vue',
   themeConfig: {
     lastUpdated: 'Last Updated',
+    repo: 'https://github.com/llccing/FrontEnd',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
