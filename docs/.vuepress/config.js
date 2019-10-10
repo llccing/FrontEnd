@@ -1,6 +1,5 @@
 module.exports = {
   title: '千里',
-  ga: 'UA-132988469-1',
   description: 'just do it! ',
   base: '/FrontEnd/',
   serviceWorker: true,
@@ -162,13 +161,6 @@ module.exports = {
       ],
     },
   },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@img': 'assets',
-      },
-    },
-  },
   plugins: [
     [
       '@vuepress/google-analytics',
@@ -177,4 +169,12 @@ module.exports = {
       },
     ],
   ],
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@img': 'assets',
+      },
+    },
+  },
+  
 }
