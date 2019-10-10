@@ -8,5 +8,19 @@
 - [2018 Web开发,实用指南](https://llccing.github.io/FrontEnd/blog/life/2018-dev-guide.html)
 - [前端架构演进](https://llccing.github.io/FrontEnd/blog/life/architecture.html)
 
+## JS
+- [ES2015 知识点](https://llccing.github.io/FrontEnd/js/)
+
 ## Lib
-- [Vue](https://llccing.github.io/FrontEnd/lib/vue-analysis/00-vue.html)
+- [Vue源码被解读](https://llccing.github.io/FrontEnd/lib/vue-analysis/00-vue.html)
+- [Three.js](https://llccing.github.io/FrontEnd/lib/threejs/00-start/)
+
+## Read
+
+> 这个版块，计划有些脑图的总结在里面。
+
+- [豆瓣读书列表](https://book.douban.com/people/lcf33123/)
+
+## About Me
+
+- [前端开发工程师（颈椎病患者）](https://llccing.github.io/FrontEnd/about/)
