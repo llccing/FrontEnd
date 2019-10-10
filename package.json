@@ -10,7 +10,7 @@
     "vuepress": "^1.1.0"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.1.0",
+    "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "webpack": "^3.10.0"
   },
   "scripts": {
