@@ -72,7 +72,7 @@ module.exports = {
           children: ['./webpack/', './webpack/01'],
         },
       ],
-      '/css/': ['', 'flex'],
+      '/css/': ['', 'flex', 'selector'],
       '/js/': [
         '',
         {
