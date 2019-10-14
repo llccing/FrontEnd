@@ -6,6 +6,7 @@ module.exports = {
   // theme: 'vue',
   themeConfig: {
     lastUpdated: 'Last Updated',
+    repo: 'https://github.com/llccing/FrontEnd',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
@@ -160,13 +161,6 @@ module.exports = {
       ],
     },
   },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@img': 'assets',
-      },
-    },
-  },
   plugins: [
     [
       '@vuepress/google-analytics',
@@ -175,4 +169,12 @@ module.exports = {
       },
     ],
   ],
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@img': 'assets',
+      },
+    },
+  },
+  
 }

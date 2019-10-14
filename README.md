@@ -1,44 +1,26 @@
-# FontEnd-demo
+# FrontEnd [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
+> 知识点总结，成长过程记录。
 
+前端日新月异，力求在某一方面有所建树。
 
-## TODO
+## Blog
 
-- [ ] **整理现有文档格式、分类**
-- [ ] **增加docker实践文档**
-    - [ ] 基本操作
-    - [ ] docker nginx
-    - [ ] docker Jenkins
-- [ ] **shell文档整理**
-- [ ] **接入Jenkins自动部署**
-		- [*] FrontEnd项目
+- [2018 Web开发,实用指南](https://llccing.github.io/FrontEnd/blog/life/2018-dev-guide.html)
+- [前端架构演进](https://llccing.github.io/FrontEnd/blog/life/architecture.html)
 
-## List
+## JS
+- [ES2015 知识点](https://llccing.github.io/FrontEnd/js/)
 
-ES6(ECMAScript 6) 于2015年6月发布，它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业
-级开发语言。
+## Lib
+- [Vue源码被解读](https://llccing.github.io/FrontEnd/lib/vue-analysis/00-vue.html)
+- [Three.js](https://llccing.github.io/FrontEnd/lib/threejs/00-start/)
 
-- [ES6](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice)
+## Read
 
-	1. 	[异步操作和Async函数](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Async)
-	2. 	[函数的扩展](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/function-extension)
-	3. 	[Generator函数](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Generator)
-	4. 	[Iterator(遍历器)](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Iterator-for...of)
-	5. 	[ES6新增命令let和const](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/let-const)
-	6. 	[数值的扩展](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/number-extension)
-	7. 	[对象的扩展](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/object-extension)
-	8. 	[Promise](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/promise)
-	9. 	[Proxy-Reflect](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Proxy-Reflect)
-	10. [Set-Map](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Set-Map)
-	11. [string-extension](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/string-extension)
-	12. [Symbol](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/Symbol)
-	13. [Variable-destructor-assignment](https://github.com/llccing/FrontEnd-demo/tree/master/es6-practice/variable-destructor-assignment)
+> 这个版块，计划有些脑图的总结在里面。
 
-对于开发中用到的插件，了解其原理。
+- [豆瓣读书列表](https://book.douban.com/people/lcf33123/)
 
-- [插件使用总结](https://github.com/llccing/FrontEnd-demo/tree/master/plugins-summary)
+## About Me
 
-	1.  [jQuery](https://github.com/llccing/FrontEnd-demo/tree/master/plugins-summary/jQuery)
-
-- [Canvas](https://github.com/llccing/FrontEnd-demo/tree/master/canvas)
-
-
+- [前端开发工程师（颈椎病患者）](https://llccing.github.io/FrontEnd/about/)
