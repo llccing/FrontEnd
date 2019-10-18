@@ -8,6 +8,12 @@
 
 ## float与display: inline-block 对比
 
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="float vs inline-block" src="https://codepen.io/llccing/embed/dyypmZJ?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/dyypmZJ'>float vs inline-block</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 ### 共性：
 
 实现元素再一行展示，同时可以自由设置元素大小。
@@ -24,8 +30,6 @@
 - inline-block，当我们需要设置某些元素再一行展示，并且排列方向一致的情况下，尽可能使用inline-block。因为inline-block的元素仍然再文档流中占据位置，减少了程序对DOM的更改操作，因为DOM每次更改，浏览器就会重绘DOM树，增加性能消耗，同时也不用因为float而清除浮动。
 
 - float，inline-block作为首选，但是仍有float使用的场景，比如两个元素，一个左排列，一个右排列。这时只能用float实现。浏览器的解析顺序是逐行解析，当设置两个元素右浮动时，代码顺序在前的元素会被先解析。
-
-
 
 ## 参考
 
