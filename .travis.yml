@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-  - '10'
+  - lts/*
 install:
-  - npm install -g vuepress
+  - yarn ci
 script:
-  - npm run build
+  - yarn build
 cache:
   directories:
     - 'node_modules'
