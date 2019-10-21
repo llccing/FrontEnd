@@ -1,5 +1,7 @@
 # Grid
 
+## [兼容性](https://caniuse.com/#feat=css-grid)
+
 ## 概述
 网格布局是最强大的CSS布局方案。
 
@@ -10,7 +12,6 @@ Grid布局与Flex布局有一定的相似性，都可以指定容器内部多个
 Flex布局是轴线布局，只能指定“项目”针对轴线的位置，可以看作是一维布局。Grid布局则是将容器划分为“行”和“列”，产生单元格，然后指定“项目所在”的单元格，可以看做是而为布局。Grid布局远比Flex布局强大。
 
 ## 基本概念
-
 
 ### 容器和项目
 
@@ -116,7 +117,83 @@ minmax(最小值，最大值) 函数产生一个长度范围，表示长度就�
 
 - auto 关键字
 
+auto关键字表示由浏览器自己决定长度，基本上等于该列单元格的最大宽度。
 
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto" src="https://codepen.io/llccing/embed/gOOgaMG?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/gOOgaMG'>css-grid-auto</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+- 网格线的名称
+
+可以使用方括号指定每一根网格线的名称，方便以后的引用。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-rows-columns-name" src="https://codepen.io/llccing/embed/gOOgagX?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/gOOgagX'>css-grid-rows-columns-name</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+三行三列，有4根垂直网格线，4个水平网格线。方括号中依次是这八根的名字。
+
+网格布局允许同一根线有多个名字，比如[fifth-line row-5]。
+
+- 布局实例
+
+下面使用网格布局实现，左侧固定，右侧自适应。还实现了传统的12网格布局，很方便。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-layout" src="https://codepen.io/llccing/embed/zYYNvdG?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/zYYNvdG'>css-grid-layout</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+### row-gap/column-gap/gap
+
+row-gap属性设置行间距，column-gap属性设置列间距。
+gap属性是缩写，```grid-gap: <grid-row-gap> <grid-column-gap>```
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-rows-columns-name" src="https://codepen.io/llccing/embed/YzzNyvr?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/YzzNyvr'>css-grid-rows-columns-name</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+曾经的写法有
+```
+grid-row-gap/grid-column-gap/grid-gap
+```
+
+### grid-template-areas
+
+网格允许指定区域（area），一个区域由单个或多个单元格组成。grid-template-areas属性用于定义区域。
+
+搭配grid-area属性使用。
+
+能够将多个单元格合并成一个区域。
+
+同时能够使用很少的元素实现布局实例。
+
+某些区域不使用，可以用点（.）表示。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-template-areas" src="https://codepen.io/llccing/embed/zYYNvyB?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/zYYNvyB'>css-grid-template-areas</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+注意，区域的命名会影响网格线。每个区域的起始网格线自动命名为 区域名-start，终止网格线命名为 区域名-end。
+
+### grid-auto-flow
+
+grid-auto-flow: row | column | row dense | column dense
+
+row dense 表示先行后列，并且尽可能紧凑。
+
+表示网格放置顺序，默认是row，先行后列。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto-flow" src="https://codepen.io/llccing/embed/wvvgMJV?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/wvvgMJV'>css-grid-auto-flow</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+以上代码的实现需要用到后面讲到的属性，grid-column-start/grid-column-end;
 
 ## 参考
 
