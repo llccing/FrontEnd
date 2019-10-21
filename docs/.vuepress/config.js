@@ -2,7 +2,7 @@ module.exports = {
   title: '千里',
   description: 'just do it! ',
   base: '/FrontEnd/',
-  serviceWorker: true,
+  // serviceWorker: true,
   // theme: 'vue',
   themeConfig: {
     lastUpdated: 'Last Updated',
@@ -73,7 +73,16 @@ module.exports = {
           children: ['./webpack/', './webpack/01'],
         },
       ],
-      '/css/': ['', 'flex', 'selector'],
+      '/css/': [
+        '',
+        'selector',
+        'inline-block',
+        'Block-Formatting-Context',
+        'flex',
+        'grid',
+        'layout',
+        'responsive-web-design',
+      ],
       '/js/': [
         '',
         {
@@ -176,5 +185,4 @@ module.exports = {
       },
     },
   },
-  
 }
