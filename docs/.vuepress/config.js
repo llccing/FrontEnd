@@ -23,6 +23,7 @@ module.exports = {
           title: '生活有感',
           collapsable: false,
           children: [
+            'lerna',
             'SegmentFault',
             'jQuery',
             'gzip',
