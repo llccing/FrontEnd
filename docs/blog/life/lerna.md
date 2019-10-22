@@ -59,5 +59,5 @@ lerna ERR! lerna HEAD
 
 - [管理前端packages的最佳实践](https://juejin.im/post/5a989fb451882555731b88c2)
 
-- [frontEnd-and-backEnd])(https://medium.com/the-andela-way/using-lerna-to-manage-js-monorepos-b7b8611f2ff3) - 对于全栈项目的处理，提取公共依赖。
+- [frontEnd-and-backEnd](https://medium.com/the-andela-way/using-lerna-to-manage-js-monorepos-b7b8611f2ff3) - 对于全栈项目的处理，提取公共依赖。
 
