@@ -195,6 +195,135 @@ row dense 表示先行后列，并且尽可能紧凑。
 
 以上代码的实现需要用到后面讲到的属性，grid-column-start/grid-column-end;
 
+### justify-items/align-items/place-items
+
+justify-items属性设置单元格内容的水平位置，align-items属性设置单元格内容的垂直位置。
+```
+justify-items/ailgn-items: start | end | center | strech;
+
+// 注意，这里的先后顺序是先纵向然后横向。
+// 如果省略第二个值，则默认第一个值与第二个值相等。
+place-items: <align-items> <justify-items>; 
+```
+
+justify-items: start 形象说明
+
+![justify-items:start](https://www.wangbase.com/blogimg/asset/201903/bg2019032516.png)
+
+align-items: start 形象说明
+
+![align-items:start](https://www.wangbase.com/blogimg/asset/201903/bg2019032517.png)
+
+### justify-content/align-content/place-content
+
+justify-content属性是真个内容区域在容器里面的水平位置，align-content属性是整个内容区域的垂直位置
+
+```
+justify-content/align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+
+// 注意，缩写的形式，先纵向后横向，同样省略第二个值会假定第二个值等于第一个值。
+place-content: <align-content> <justify-content>
+```
+
+justify-content: start 对齐容器开始边框
+
+![justify-content: start](https://www.wangbase.com/blogimg/asset/201903/bg2019032519.png)
+
+justify-content: end 对齐容器结束边框
+
+![justify-content: end](https://www.wangbase.com/blogimg/asset/201903/bg2019032518.png)
+
+justify-content: center 容器内容居中
+
+![justify-content: center](https://www.wangbase.com/blogimg/asset/201903/bg2019032520.png)
+
+justify-content: stretch 项目没有指定大小时，拉伸占据整个网格容器
+
+![justify-content: stretch](https://www.wangbase.com/blogimg/asset/201903/bg2019032521.png)
+
+justify-content: space-around 每个项目的两侧间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。
+
+![justify-content: space-around](https://www.wangbase.com/blogimg/asset/201903/bg2019032522.png)
+
+
+justify-content: space-between 项目与项目的间隔相等，项目与容器边框之间没有间隔。
+
+![justify-content: space-between](https://www.wangbase.com/blogimg/asset/201903/bg2019032523.png)
+
+
+justify-content: space-evenly 项目与项目的间隔相等，项目与容器边框之间也是同样大小的间隔。
+
+![justify-content: space-evenly](https://www.wangbase.com/blogimg/asset/201903/bg2019032524.png)
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto-flow" src="https://codepen.io/llccing/embed/MWWprLj?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/MWWprLj'>css-grid-auto-flow</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+### grid-auto-columns/gird-auto-rows
+
+grid-auto-columns/grid-auto-rows用来设置自动创建的多余网格的列宽和行高。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto-flow" src="https://codepen.io/llccing/embed/gOOmzBq?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/gOOmzBq'>css-grid-auto-flow</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+### grid-template/grid
+
+grid-template是grid-template-columns/grid-template-rows/grid-template-areas三个属性的简写形式。
+
+grid属性是grid-template-rows/grid-template-columns/grid-template-areas/grid-auto-rows/grid-auto-columns/grid-auto-flow这六个属性的合并简写形式。
+
+## 项目属性
+
+### grid-column-start/grid-column-end/grid-row-start/grid-row-end
+
+项目的位置时可以指定的，通过指定项目的四个边框，分别定位在哪根网格线。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto-flow" src="https://codepen.io/llccing/embed/vYYxjoQ?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/vYYxjoQ'>css-grid-auto-flow</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+### grid-column/grid-row
+
+grid-column属性是grid-column-start和grid-column-end的合并形式。grid-row属性是grid-row-start和grid-column-end的合并形式。
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto-flow" src="https://codepen.io/llccing/embed/RwwpJPd?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/RwwpJPd'>css-grid-auto-flow</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+### grid-area
+
+grid-area属性指定项目放在哪一个区域。
+
+```
+grid-area: <row-start> / <column-start> / <row-end> / <column-end>;
+```
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="css-grid-auto-flow" src="https://codepen.io/llccing/embed/LYYWrxg?height=265&theme-id=0&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/LYYWrxg'>css-grid-auto-flow</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+### justify-self/align-self/place-self
+
+justify-self属性设置单元格内容的水平位置，同justify-items。align-self属性设置单元格内容的垂直位置，同align-items用法一致，但只作用于单个项目。
+
+```
+start 对齐单元格开始边缘
+end 对齐单元格结束边缘
+center 单元格内部居中
+stretch 拉伸，占满单元格的整个宽度（默认值）
+
+先纵后横，省略第二个值，则认为两个值相等。
+place-self: <align-self> <justify-self>
+```
+
 ## 参考
 
 - [阮一峰 - Gird网格布局教程](http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
+- [图解Flexbox属性](https://cythilya.github.io/2017/04/04/flexbox-basics/)
