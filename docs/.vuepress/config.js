@@ -76,6 +76,7 @@ module.exports = {
       ],
       '/css/': [
         '',
+        'rem',
         'selector',
         'inline-block',
         'Block-Formatting-Context',
