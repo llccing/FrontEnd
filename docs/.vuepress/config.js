@@ -179,6 +179,17 @@ module.exports = {
         ga: 'UA-132988469-1',
       },
     ],
+    [
+      'vuepress-plugin-comment',
+      {
+        choosen: 'valine', 
+        options: {
+          el: '#valine-vuepress-comment',
+          appId: 'BymNe0K8Dh17KslJuDuLyGup-gzGzoHsz',
+          appKey: 'Kex32glbNP9h5sLL81rTiWGm',
+        }
+      }
+    ]
   ],
   configureWebpack: {
     resolve: {
