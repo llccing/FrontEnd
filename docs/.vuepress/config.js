@@ -168,7 +168,14 @@ module.exports = {
           collapsable: false,
           children: ['./egg/init'],
         },
-        {},
+        {
+          'title': 'jQuery系列',
+          collapsable: false,
+          children: [
+            './jquery/',
+            './jquery/jqPagination'
+          ]
+        },
       ],
     },
   },
