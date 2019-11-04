@@ -173,7 +173,6 @@ module.exports = {
           collapsable: false,
           children: [
             './jquery/',
-            './jquery/jqPagination'
           ]
         },
       ],

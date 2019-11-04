@@ -22,6 +22,26 @@ jQuery的处境不得不说有点尴尬了。虽然说大趋势可能是去jQuer
 - [官网对于jQuery Migrate的说明](http://blog.jquery.com/2013/01/31/jquery-migrate-1-1-0-released/)
 - [Github Migrate](https://github.com/jquery/jquery-migrate/)
 
+## jquery生态库
+
+### [noty](https://github.com/needim/noty)
+
+一个jQuery提示插件
+
+#### [实践](https://github.com/llccing-demo/jquery-repo/tree/master/packages/noty)
+
+
+### [jqPagination](https://github.com/beneverard/jqPagination)
+
+一个jQuery系的分页插件，优点是代码量较少，方便修改。
+
+#### [实践](https://github.com/llccing-demo/jquery-repo/tree/master/packages/jpPagination)
+
+### [gulp](https://gulpjs.com/)
+
+压缩构建工具
+
+#### [实践](https://github.com/llccing-demo/jquery-repo/tree/master/packages/gulp)
 
 
 ## 参考资料
