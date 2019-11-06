@@ -44,6 +44,17 @@ jQuery的处境不得不说有点尴尬了。虽然说大趋势可能是去jQuer
 #### [实践](https://github.com/llccing-demo/jquery-repo/tree/master/packages/gulp)
 
 
+### [jQuery validate](https://github.com/jquery-validation/jquery-validation)
+
+jQuery表单验证库
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="jQuery validation" src="https://codepen.io/llccing/embed/mddxgrj?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/mddxgrj'>jQuery validation</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+
 ## 参考资料
 
 1. [jQuery发布1.9正式版，最后支持ie6/7/8](http://www.zreading.cn/ican/2013/01/jquery-1-9/)
