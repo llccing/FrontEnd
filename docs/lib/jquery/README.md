@@ -53,7 +53,14 @@ jQuery表单验证库
   (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+### [lightbox2](https://github.com/lokesh/lightbox2)
 
+图片弹窗展示
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="pooLmad" src="https://codepen.io/llccing/embed/pooLmad?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/pooLmad'>pooLmad</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## 参考资料
 
