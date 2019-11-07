@@ -8,6 +8,7 @@
 
 ## TODO
 
+* [ ] [react-30-days](https://github.com/llccing-demo/react-repo/tree/master/packages/react-30-days)
 * [ ] 搭建项目框架，了解并使用几个常用的脚手架。
 * [ ] 学习其他project，并建立管理系统架子。
 * [ ] 持续完善这个管理系统，与Vue的管理系统在功能上保持同步。
