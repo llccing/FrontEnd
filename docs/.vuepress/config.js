@@ -169,11 +169,9 @@ module.exports = {
           children: ['./egg/init'],
         },
         {
-          'title': 'jQuery系列',
+          title: 'jQuery系列',
           collapsable: false,
-          children: [
-            './jquery/',
-          ]
+          children: ['./jquery/'],
         },
       ],
     },
@@ -188,14 +186,26 @@ module.exports = {
     [
       'vuepress-plugin-comment',
       {
-        choosen: 'valine', 
+        choosen: 'valine',
         options: {
           el: '#valine-vuepress-comment',
           appId: 'BymNe0K8Dh17KslJuDuLyGup-gzGzoHsz',
           appKey: 'Kex32glbNP9h5sLL81rTiWGm',
-        }
-      }
-    ]
+        },
+      },
+    ],
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
+          return moment(timestamp)
+            .utcOffset('+08:00')
+            .format('YYYY-MM-DD HH:mm:SS')
+        },
+      },
+    ],
   ],
   configureWebpack: {
     resolve: {
