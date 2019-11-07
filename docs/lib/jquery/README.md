@@ -72,6 +72,14 @@ jQuery表单验证库
   (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+### [video.js](https://github.com/videojs/video.js)
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="video.js" src="https://codepen.io/llccing/embed/BaaxgvY?height=265&theme-id=default&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/BaaxgvY'>video.js</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 ## 参考资料
 
 1. [jQuery发布1.9正式版，最后支持ie6/7/8](http://www.zreading.cn/ican/2013/01/jquery-1-9/)
