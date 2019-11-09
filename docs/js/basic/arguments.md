@@ -43,7 +43,17 @@ function foo(){
 
 ### 剩余参数、默认参数和解构赋值参数
 
+```tip
+这三种情况，不能再函数内部通过arguments对象改变参数的值
 
+此外严格模式下，arguments和参数没有关联，而非严格模式下还是有关联的。
+```
+剩余参数（rest）能够部分程度模拟arguments参数
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="js-basic-arguments-3" src="https://codepen.io/llccing/embed/jOOKvxj?height=265&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/jOOKvxj'>js-basic-arguments-3</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## 参考
 
