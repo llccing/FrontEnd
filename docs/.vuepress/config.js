@@ -111,7 +111,12 @@ module.exports = {
         {
           title: 'basic',
           collapsable: false,
-          children: ['apply-call', 'ajax', 'arguments'].map(item => `./basic/${item}`),
+          children: [
+            'apply-call',
+            'ajax',
+            'arguments',
+            'calc-box-size',
+          ].map(item => `./basic/${item}`),
         },
       ],
       '/lib/': [
