@@ -22,7 +22,10 @@ document.cookie = newCookie;
 
 ## 实践 [js-cookie](https://github.com/js-cookie/js-cookie)
 
-
+<iframe height="265" style="width: 100%;" scrolling="no" title="js-basic-cookie" src="https://codepen.io/llccing/embed/wvvOebN?height=265&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/llccing/pen/wvvOebN'>js-basic-cookie</a> by llccing
+  (<a href='https://codepen.io/llccing'>@llccing</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## 参考
 - [https://github.com/js-cookie/js-cookie](https://github.com/js-cookie/js-cookie)
