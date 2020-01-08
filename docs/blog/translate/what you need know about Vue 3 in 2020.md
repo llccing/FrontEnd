@@ -146,3 +146,47 @@ return {
 
 第一次听说这些时，有很多反对声音，因为人们不想被迫重新考虑他们的开发策略。然而我们听说这将是纯净的添加，人们仍然可以没有任何问题的使用Options API。
 
+如果你想上手实践一下，你可以在你的项目中使用 [Vue Composition API](https://learnvue.co/2019/12/a-first-look-at-vue3-a-vue-composition-api-tutorial/)
+
+## 你可以在Vue中使用Suspense
+
+Suspense是[React的功能](https://reactjs.org/docs/concurrent-mode-suspense.html)，现在Vue3中也能使用。它能让你在页面准备好且页面载入完成后，在你的组件中展示后备内容。
+
+当你在setup方法中异步载入内容是很有用的。看一下Vue-Next仓库，看起来setup是一个异步方法并且返回Promise。这个Promise能够被Suspense组件捕获，渲染后备内容直到它返回。
+
+Suspense能够用来：
+
+- 创建loading页面
+- 等待 API 回调
+- 几乎任何类型的数据请求或者异步的setup方法
+
+这可能实现起来很简单，你要做的全部就是将你的代码包裹在Suspense组件中，定义你的主要内容和后备内容。
+
+```html
+<Suspense>
+  <template >
+    <Suspended-component />
+  </template>
+  <template #fallback>
+    Fallback Content
+  </template>
+</Suspense>
+```
+
+如果你想了解更多关于Suspense的内容，或者你想使用它，查看[VueSchool 文章](https://vueschool.io/articles/vuejs-tutorials/suspense-new-feature-in-vue-3/)
+
+## Vue3中的片段
+
+片段是没有根元素的组件。Vue2中，每一个组件必须有且仅能有一个根元素。
+
+这可能让人头疼。
+
+在一些用例中，使一个组件返回几个子元素是很简单的事情。例如，让我们用React举个例子，表格结构有一个叫Column的自定义组件。
+```js
+<table>
+  <tr>
+    <Columns />
+  </tr>
+</table>
+```
+
