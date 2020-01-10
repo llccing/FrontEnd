@@ -190,3 +190,46 @@ Suspense能够用来：
 </table>
 ```
 
+为了是编译的HTML有效，Columns组件需要返回<td>元素。但是目前，作为Vue的组件需要一个单独的根元素。
+
+Columns组件的模板可能像这样，这会引起问题。
+
+```html
+<div>
+  <td>Hello</td>
+  <td>World</td>
+</div>
+```
+
+这个时候片段就派上用场了，它允许你返回多个元素从而让上面的问题能够很简单的解决。
+
+在Vue3中片段组件可能像下面这样。
+
+```js
+<Fragment>
+  <td>Hello</td>
+  <td>World</td>
+</Fragment>
+```
+
+然后，因为这将返回两个<td>元素，所以表格将显示正常。
+
+```html
+<table>
+  <tr>
+    <td>Hello</td>
+    <td>World</td>
+  </tr>
+</table>
+```
+
+完美！
+
+现在，有一个非官方的[Vue 片段组件库](https://github.com/y-nk/vue-fragment)，它使用内部指令获取了组件的所有子元素然后移动到合适的位置。
+
+## 对了，还有 Portals
+
+Portals 是[React原生包含](https://reactjs.org/docs/portals.html)的另一个功能，现在计划在Vue3中实现。
+
+Portals 允许你跨组件发送内容，这意味着你能够在当前组件的作用域之外编辑内容。
+
