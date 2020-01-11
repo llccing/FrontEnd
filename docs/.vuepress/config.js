@@ -9,12 +9,37 @@ module.exports = {
     repo: 'https://github.com/llccing/FrontEnd',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/blog/' },
+      {
+        text: 'Blog',
+        link: '/blog/',
+        items: [
+          {
+            text: '生活有感',
+            link: '/blog/life/我的第一家公司.html'
+          },
+          {
+            text: '翻译',
+            link: '/blog/translate/'
+          },
+          {
+            text: '那些年',
+            link: '/blog/interview/'
+          },
+          {
+            text: '数据结构',
+            link: '/blog/dataStructure/'
+          },
+          {
+            text: '设计模式',
+            link: '/blog/design-pattern/'
+          }
+        ]
+      },
       { text: 'CSS', link: '/css/' },
       { text: 'JS', link: '/js/' },
       { text: 'lib', link: '/lib/' },
       { text: 'Read', link: '/read/' },
-      { text: 'About', link: '/about/' },
+      { text: 'About', link: '/about/' }
     ],
     sidebar: {
       '/blog/': [
@@ -38,27 +63,35 @@ module.exports = {
             'FrontEndLive',
             'architecture',
             'vueComponent',
-            'vue-cli2-to-vue-cli3',
-          ].map(item => `./life/${item}`),
+            'vue-cli2-to-vue-cli3'
+          ].map(item => `./life/${item}`)
+        },
+        {
+          title: '翻译',
+          collapsable: false,
+          children: [
+            ...['', 'what-you-need-know-about-Vue-3-in-2020'].map(item => `./translate/${item}`)
+          ]
         },
         {
           title: '那些年我面过的试',
           collapsable: false,
           children: [
             ...['', 'js', 'css'].map(item => `./interview/${item}`),
-            ...['toutiao'].map(item => `./interview/company/${item}`),
-          ],
+            ...['toutiao'].map(item => `./interview/company/${item}`)
+          ]
         },
         {
           title: '数据结构',
           collapsable: false,
-          children: [...[''].map(item => `./dataStructure/${item}`)],
+          children: [...[''].map(item => `./dataStructure/${item}`)]
         },
         {
           title: '设计模式',
           collapsable: false,
-          children: [...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`)],
+          children: [...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`)]
         },
+        
       ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
@@ -66,13 +99,13 @@ module.exports = {
         {
           title: 'CSS世界',
           collapsable: false,
-          children: ['./css-world/01-overview', './css-world/02-terminology-concept'],
+          children: ['./css-world/01-overview', './css-world/02-terminology-concept']
         },
         {
           title: '深入浅出Webpack',
           collapsable: false,
-          children: ['./webpack/', './webpack/01'],
-        },
+          children: ['./webpack/', './webpack/01']
+        }
       ],
       '/css/': [
         '',
@@ -83,7 +116,7 @@ module.exports = {
         'flex',
         'grid',
         'layout',
-        'responsive-web-design',
+        'responsive-web-design'
       ],
       '/js/': [
         '',
@@ -105,19 +138,16 @@ module.exports = {
             'Set-Map',
             'String-extension',
             'Symbol',
-            'variable-destructor-assignment',
-          ].map(item => `./ECMAScript6/${item}`),
+            'variable-destructor-assignment'
+          ].map(item => `./ECMAScript6/${item}`)
         },
         {
           title: 'basic',
           collapsable: false,
-          children: [
-            'apply-call',
-            'ajax',
-            'arguments',
-            'calc-box-size',
-          ].map(item => `./basic/${item}`),
-        },
+          children: ['apply-call', 'ajax', 'arguments', 'calc-box-size'].map(
+            item => `./basic/${item}`
+          )
+        }
       ],
       '/lib/': [
         '',
@@ -137,8 +167,8 @@ module.exports = {
             '14-virtual-DOM',
             '15-createElement',
             '16-update',
-            '20-components',
-          ].map(item => `./vue-analysis/${item}`),
+            '20-components'
+          ].map(item => `./vue-analysis/${item}`)
         },
         {
           title: 'threejs journey',
@@ -153,40 +183,40 @@ module.exports = {
             '06-high-geometry',
             '07-praticle',
             '08-import-high-geometry',
-            'webgl',
-          ].map(item => `./threejs/${item}/`),
+            'webgl'
+          ].map(item => `./threejs/${item}/`)
         },
         {
           title: 'react journey',
           collapsable: false,
           children: ['00-react', '01-start-project'].map(item => {
             return `./react/${item}`
-          }),
+          })
         },
         {
           title: 'vuepress',
           collapsable: false,
-          children: ['01-remark'].map(item => `./vuepress/${item}`),
+          children: ['01-remark'].map(item => `./vuepress/${item}`)
         },
         {
           title: 'egg',
           collapsable: false,
-          children: ['./egg/init'],
+          children: ['./egg/init']
         },
         {
           title: 'jQuery系列',
           collapsable: false,
-          children: ['./jquery/'],
-        },
-      ],
-    },
+          children: ['./jquery/']
+        }
+      ]
+    }
   },
   plugins: [
     [
       '@vuepress/google-analytics',
       {
-        ga: 'UA-132988469-1',
-      },
+        ga: 'UA-132988469-1'
+      }
     ],
     // [
     //   'vuepress-plugin-comment',
@@ -208,15 +238,15 @@ module.exports = {
           return moment(timestamp)
             .utcOffset('+08:00')
             .format('YYYY-MM-DD HH:mm:SS')
-        },
-      },
-    ],
+        }
+      }
+    ]
   ],
   configureWebpack: {
     resolve: {
       alias: {
-        '@img': 'assets',
-      },
-    },
-  },
+        '@img': 'assets'
+      }
+    }
+  }
 }
