@@ -175,9 +175,9 @@ Suspense能够用来：
 
 如果你想了解更多关于Suspense的内容，或者你想使用它，查看[VueSchool 文章](https://vueschool.io/articles/vuejs-tutorials/suspense-new-feature-in-vue-3/)
 
-## Vue3中的片段
+## Vue3中的片段(Fragments)
 
-片段是没有根元素的组件。Vue2中，每一个组件必须有且仅能有一个根元素。
+片段(Fragments)是没有根元素的组件。Vue2中，每一个组件必须有且仅能有一个根元素。
 
 这可能让人头疼。
 
@@ -201,9 +201,9 @@ Columns组件的模板可能像这样，这会引起问题。
 </div>
 ```
 
-这个时候片段就派上用场了，它允许你返回多个元素从而让上面的问题能够很简单的解决。
+这个时候片段(Fragments)就派上用场了，它允许你返回多个元素从而让上面的问题能够很简单的解决。
 
-在Vue3中片段组件可能像下面这样。
+在Vue3中片段(Fragments)组件可能像下面这样。
 
 ```js
 <Fragment>
@@ -225,11 +225,138 @@ Columns组件的模板可能像这样，这会引起问题。
 
 完美！
 
-现在，有一个非官方的[Vue 片段组件库](https://github.com/y-nk/vue-fragment)，它使用内部指令获取了组件的所有子元素然后移动到合适的位置。
+现在，有一个非官方的[Vue 片段(Fragments)组件库](https://github.com/y-nk/vue-fragment)，它使用内部指令获取了组件的所有子元素然后移动到合适的位置。
 
 ## 对了，还有 Portals
 
 Portals 是[React原生包含](https://reactjs.org/docs/portals.html)的另一个功能，现在计划在Vue3中实现。
 
-Portals 允许你跨组件发送内容，这意味着你能够在当前组件的作用域之外编辑内容。
+Portals 允许你跨组件传递内容，这意味着你能够在当前组件的作用域之外编辑内容。
 
+当你在向popup、sidebar或者其他类似组件发送内容时这是非常有帮助的。
+
+和片段(Fragments)一样，也有一个[非官方的Vue版本 Portal 库](https://github.com/LinusBorg/portal-vue)，它在Vue2中带来了这个功能。根据 [vue-next repo](https://github.com/vuejs/vue-next)，Portals将包含在Vue3中。
+
+这是一个来自 protal-vue 文档中的举例的代码截图。
+
+![code about Portals](https://miro.medium.com/max/1418/0*QwKa95vy_br7QOUJ.png)
+
+```js
+<template>
+  <div>
+    <div>
+      <p>
+        下面的内容渲染在PortalVue实现的右侧红色的容器中
+      </p>
+      <Portal to="right-baisc">
+        <p class="red">
+          这是左侧绿色容器的内容。
+          最酷的是，他能够跨组件，所以你能够向任何地方传递内容。
+        </p>
+      <Portal>
+    </div>
+  </div>
+</template>
+```
+
+Vue3中Portals的语法和使用方式现在任然不明确，但是应该会和这个相似。
+
+## Vue3优化了渲染
+
+Vue3中很大一块工作就是使它更快、更有效率。实际上，根据[尤雨溪在多伦多VueConf上的演讲](https://www.youtube.com/watch?v=WLpLYhnGqPA&feature=emb_title)，内部测试表明模板样式在Vue3中比Vue2速度提升了120%。
+
+有两个关键的优化帮助提升了Vue3的渲染速度：
+
+1. 块级树的优化
+2. 静态树的缓存(Hoisting, ^_^ 翻译成啥呢……)
+
+让我们详细说说上面的两点。
+
+### 块级树优化
+
+使用虚拟DOM渲染有一个自然的瓶颈，因为每个组件要跟踪自己的依赖。
+
+观察这些依赖非常慢，因为它递归的检查整个元素树去监测变化。
+
+Vue团队注意到在组件中的一件事，一个节点结构中大多数是静态的。如果一个某个部分实际上是动态的（因为v-if或者v-for指令），那么它内部的许多内容时静态的。
+
+![block tree optimizations](https://miro.medium.com/max/2048/0*N-UgJRDhC5c6qvZp.png)
+
+由此，Vue3将模板划分为静态和动态部分。现在渲染器知道哪些节点是动态的，它不会浪费时间去检查静态节点的变化。
+
+这真的减少了大量需要去被动观察的元素的数量。
+
+结合所有的节点去创建一个块级树，或者一个模板根据指令（v-if/v-for）划分为节点块。
+
+在块级树中，每个节点有以下：
+- 一个静态节点结构
+- 静态内容不需要被观察
+- 动态节点能够被存储在平级数组中
+
+![it's a block tree](https://miro.medium.com/max/2048/0*tgwHaVdtEBDaCkc-.png)
+
+这消除了需要去递归的检查每个元素的需求，大大改善了运行时。
+
+### 静态树缓存(Hoisting)
+
+静态树提升并不是新提出的（Vue2中已经存在），Vue3有更多颠覆性（aggressive ^_^）技术去提升项目速度。正如名字说表达，静态书提升不会重新渲染没有任何依赖的静态节点。相反，它会重用相同节点。
+
+这极大的减少了虚拟DOM的工作，同时节省了大量项目开销，主要是垃圾收集方面。
+
+在Vue3中，静态缓存更有颠覆性，以便尽可能高效的工作。
+
+## Typescript支持
+
+另一个变化是，Vue的代码库使用Typescript重新写了一遍。再次重申，一个主要的问题是强制用户学习Typescript将提高Vue3的上手门槛。
+
+所以Vue团队让他对我们来说很简单，如果你想要Typescript，使用他。如果你不想要，仍然可以使用JavaScript。两种都可以。
+
+![Typscript vs Javascript](https://miro.medium.com/max/1536/0*STCYeCVImtxjkR7x)
+
+如果你像我一样，你可能会问“为什么用Typescript”。
+
+先不说其他，Typescript允许你给变量添加类型信息。这能够极大的帮助你维护一个长期运行的项目。
+
+再者，当你工作的IDE支持Typescript，在开发过程中能够自动补全和展示类型信息。
+
+这都有你决定，事实上使用Typescript写Vue库开发者将受益，即使他们继续使用JavaScript。
+
+自从新的Vue代码库使用Typescript，即使你使用JavaScript，自动补全、类型信息和最终文档都能够从IDE中得到。这将节省你多次访问Vue文档的时间。
+
+## 它非常轻量
+
+现在，VueJS已经非常小（gzip后20Kb），但是Vue团队面临一个问题，无论用户是否使用，新功能将增加构建包的大小。
+
+为了修复这个问题，Vue3将更加模块化。当然这将增加你在开发时import的次数，这确保了你的项目中没有不使用的库。
+
+多亏了Tree shaking（消除非重要代码），Vue3中减少的代码大概有gzip后10Kb。当然，许多库将被重新引入，但是没关系，我们并不会被强迫使用所有东西。
+
+![vue3 modular](https://miro.medium.com/max/456/0*Rtg6p9OSDOd2DA-L)
+
+实际上，开发者不用为他们从不使用的功能付出代价。
+
+## 一些关于开始学习Vue3的资源
+
+老实说，我认为Vue核心团队在听取社区反馈上和通过官方文章提供不断的更新一些学习Vue3的最佳地方这点做的很棒。
+
+在写这篇文章时，我花了大量时间在[RFC](https://github.com/vuejs/rfcs)（Request For comment）和 [Vue-next](https://github.com/vuejs/vue-next)（官方Vue3）仓库。
+
+### 其他资源
+
+- [Vue Mastery —— Vue 3 Essentials ](https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api/) —— 这是一个很棒的课程介绍了Vue3的一些关键功能，例如 Composition API
+
+- [http://vuejsdevelopers.com/](http://vuejsdevelopers.com/) —— 我最喜欢的一个VueJS社区，有许多很棒的教程
+
+- [“Vue 3.0 的设计原则”](https://www.youtube.com/watch?v=WLpLYhnGqPA) —— 这个演讲中，作者尤雨溪讨论了许多[Vue 3.0 的设计选项](https://learnvue.co/2019/12/how-vue3-is-designed-for-both-hobby-devs-and-large-projects/)。讲的很棒。
+
+
+## 你准备好了吗？？
+
+如果你有Vue开发经验，很明显，Vue3将要到来的更新将使它更可用、更强大。
+
+从渲染优化到帮助开发者写更可读、可维护的代码，Vue3似乎要改善Vue2在体验上的很多痛点。
+
+希望这篇文章很好地解释Vue3的变化和如何工作。在Vue3官方推出之后，我将一定会更新这篇文章。
+
+## 感谢阅读
+感谢你阅读到这里，翻译的不好的地方，还请指点。希望我的内容能让你受用，再次感谢。[by llccing 千里](https://llccing.github.io/FrontEnd/)
