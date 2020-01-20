@@ -188,5 +188,35 @@ import "core-js/stage/2";
 
 如果无法安装规范的每个细节实现某个功能，`core-js` 增加了一个 `.sham` 属性，例如，IE11中 `Symbol.sham` 是 `true`。
 
+不再有 LiveScript! 当我开始写 `core-js` 时，我主要使用的是 [LiveScript](http://livescript.net/)；一段时间后，我用JavaScript重写了全部的polyfills。在 `core-js@2` 中测试和帮助的工具函数仍然使用 LiveScript：它是非常有趣的像CoffeeScript一样的语言，有强大的语法糖使你能够写非常紧凑的代码，但是它几乎已经死了。除此之外，它也是为 `core-js` 贡献的屏障，因为大多数 `core-js` 用户不知道这个语言。`core-js@3`测试和工具函数使用现代 ES 语法：它将成为为 `core-js` 贡献的好时机🙂。
 
+对于大多数用户，为了优化 `core-js` 导入，我建议使用 [babel](#Babel)。当然，有些情况下 [`core-js-builder`](http://npmjs.com/package/core-js-builder) 仍然有用。现在它支持 `target` 参数，使用带有目标引擎的[`浏览器列表`](https://github.com/browserslist/browserslist) 查询 - 你能够创建一个bundle，仅仅包含目标引擎需要的polyfills。对于这种情况，我做了 [`core-js-compat`](https://www.npmjs.com/package/core-js-compat)，更多关于它的信息，你能够从 [这篇文章的 `@babel/preset-env` 部分](#babelpreset-env)了解到。
+
+---
+
+这仅仅是冰山一角，更多的变化在内部。更多关于 `core-js` 变化可以在 [changelog](https://github.com/zloirock/core-js/blob/master/CHANGELOG.md#300) 中找到。
+
+## Babel
+
+正如上文提到的，`babel` 和 `core-js` 是紧密集成的：`babel` 提供了优化 `core-js` 优化导入的可能性。`core-js@3` 开发中很重要的一部分是改进`core-js`相关的 `babel` 功能（看[这个PR](https://github.com/babel/babel/pull/7646)）。这些变化在 [Babel 7.4.0](https://babeljs.io/blog/2019/03/19/7.4.0) 发布了。
+
+### babel/polyfill
+
+[`@babel/polyfill`](https://babeljs.io/docs/en/next/babel-polyfill.html) 是一个包裹的包，里面仅仅包含 `core-js` 稳定版的引入（在Babel 6 中也包含提案）和 `regenerator-runtime/runtime`，用来转译generators和async函数。这个包没有提供从 `core-js@2` 到 `core-js@3` 平滑升级路径：因为这个原因，决定弃用 `@babel/polyfill` 代之以分别引入需要的`core-js` 和 `regenerator-runtime`。
+
+原来
+```js
+import "@babel/polyfill";
+```
+
+现在使用两行：
+```js
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+```
+
+别忘记直接安装这两个依赖！
+```js
+npm i --save core-js regenerator-runtime
+```
 
