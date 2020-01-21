@@ -242,7 +242,7 @@ Babel 7.4.0 引入了两种模式的共同更改，以及每种模式的特定�
 
 在 Babel 7.3 之前，`@babel/preset-env` 有一些与polyfills注入顺序有关的问题。从 7.4.0开始，`@babel/preset-env` 只按推荐顺序增加需要的polyfills。
 
-#### useBuiltIns: entry with corejs: 3
+#### `useBuiltIns: entry` with `corejs: 3`
 
 当使用这个选项时，`@babel/preset-env` 代替直接引用 `core-js` 而是引入目标环境特定需要的模块。
 
@@ -257,4 +257,150 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 ```
 
-当目标浏览器是 `chrome 72` 时，
+当目标浏览器是 `chrome 72` 时，上面的内容将被 `@babel/preset-env` 转换为
+```js
+import "core-js/modules/es.array.unscopables.flat";
+import "core-js/modules/es.array.unscopaables.flat-map";
+import "core-js/modules/es.object.from-entries";
+import "core-js/modlues/web.immediate";
+```
+
+当目标浏览器是 `chrome 73`（它完全支持 ES2019 标准库），他将变为很少的引入：
+```js
+import "core-js/modules/web.immediate";
+```
+
+自从 `@babel/polyfill` 被弃用，转而使用分开的 `core-js` 和 `regenerator-runtime`，我们能够优化 `regenerator-runtime` 的导入。因为这个原因，如果目标浏览器原生支持 generators ，那么 `regenerator-runtime` 的导入将从源代码中移除。
+
+现在，设置 `useBuiltIns: entry` 模式的 `@babel/preset-env` 编译所有能够获得的 `core-js` 入口和他们的组合。这意味着你能够自定义，通过使用不同的 `core-js` 入口，它将根据的目标环境优化。
+
+例如，目标环境是 `chrome 72`，
+
+```js
+import "core-js/es";
+import "core-js/proposals/set-methods";
+import "core-js/features/set/map";
+```
+
+将被替换为
+
+```js
+import "core-js/modules/es.array.unscopables.flat";
+import "core-js/modules/es.array.unscopables.flat-map";
+import "core-js/modules/es.object.from-entries";
+import "core-js/modules/esnext.set.difference";
+import "core-js/modules/esnext.set.intersection";
+import "core-js/modules/esnext.set.is-disjoint-from";
+import "core-js/modules/esnext.set.is-subset-of";
+import "core-js/modules/esnext.set.is-superset-of";
+import "core-js/modules/esnext.set.map";
+import "core-js/modules/esnext.set.symmetric-difference";
+import "core-js/modules/esnext.set.union";
+```
+
+#### `useBuiltIns: usage` with `corejs: 3`
+
+当使用这个选项时，`@babel/preset-env` 在每个每个文件的开头引入目标环境不支持，仅在当前文件中使用的polyfills。
+
+例如，
+```js
+const set = new Set([1, 2, 3]);
+[1, 2, 3].includes(2);
+```
+
+当目标环境是老的浏览器例如 `ie 11`，将转换为
+```js
+import "core-js/modules/es.array.includes";
+import "core-js/modules/es.array.iterator";
+import "core-js/modules/es.object.to-string";
+import "core-js/modules/es.set";
+
+const set = new Set([1, 2, 3]);
+[1, 2, 3].includes(2);
+```
+
+当目标是 `chrome 72`时不需要导入，因为这个环境需要polyfills：
+```js
+const set = new Set([1, 2, 3]);
+[1, 2, 3].includes(2);
+```
+
+Babel 7.3 之前，`useBuiltIns: usage` 不稳定且不是足够可靠：许多 polyfills 不包函，并且添加了许多不是必须依赖的 polyfills。在 Babel 7.4 中，我尝试使它理解每种可能的使用模式。
+
+在属性访问器、对象解构、`in` 操作符、全局对象属性访问方面，我改进了确定使用哪个 polyfills 的技术。
+
+`@babel/preset-env` 现在注入语法特性所需的 polyfills：使用 `for-of`时的迭代器，解构、扩展运算符和 `yield` 委托；使用动态 `import` 时的 promises，异步函数和generators，等。
+
+Babel 7.4 支持注入提案 polyfills。默认，`@babel/preset-env` 不会注入他们，但是你能够通过 `proposals` 标志设置：`corejs: { version: 3, proposals: true }`。
+
+### @babel/runtime
+
+当使用 `core-js@3` 时， [`@babel/transform-runtime`](https://babeljs.io/docs/en/next/babel-plugin-transform-runtime#corejs) 现在通过 `core-js-pure`（`core-js`的一个版本，不会污染全局变量） 注入 polyfills。
+
+通过将`@babel/transform-runtime`设置 `corejs: 3` 选项和创建`@babel/runtime-corejs3`包，已经将 `core-js@3` 和 `@babel/runtime` 集成在一起。但是这将带来什么好处呢？
+
+`@babel/runtime` 的一个受欢迎的 issue 是它不支持实例方法。从 `@babel/runtime-corejs3`开始，这个问题已经解决。例如，
+
+```js
+array.includes(something);
+```
+
+将被编译为
+
+```js
+import _includesInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instance/includes";
+
+_includesInstanceProperty(array).call(array, something);
+```
+
+另一个值得关注的变化是支持 ECMAScript 提案。默认情况下的，`@babel/plugin-transform-runtime` 不会为提案注入 polyfills 并使用不包含提案的入口。但是正如你在 `@babel/preset-env` 中做的那样，你可以设置 `proposals` 标志去开启：`corejs: { version: 3, proposals: true }`。
+
+没有 `proposals` 标志，
+
+```js
+new Set([1, 2, 3, 2, 1]);
+string.matchAll(/something/g);
+```
+
+将被编译为：
+```js
+import _Set from "@babel/runtime-corejs/core-js-stable/set";
+
+new _set([1, 2, 3, 2, 1]);
+string.matchAll(/something/g);
+```
+
+当设置 `proposals` 后，将变为：
+
+```js
+import _Set from "@babel/runtime-corejs3/core-js/set";
+import _matchAllInstanceProperty from "@babel/runtime-corejs/core-js/instance/match-all";
+
+new _Set([1, 2, 3, 2, 1]);
+_matchAllInstanceProperty(string).call(string, /something/g);
+```
+
+有些老的问题已经被修复了。例如，下面这种流行的模式在 `@babel/runtime-corejs2` 不工作，但是在 `@babel/runtime-corejs3` 被支持。
+
+```js
+myArrayLikeObject[Symbol.tierator] = Array.prototype[Symbol.iterator];
+```
+
+尽管 `@babel/runtime` 早期版本不支持实例方法，但是使用一些自定义的帮助函数能够支持迭代（`[Symbol.iterator]()` 和他的presence）。之前不支持提取 `[Symbol.iterator]` 方法，但是现在支持了。
+
+作为意外收获，`@babel/runtime` 现在支持IE8-（是IE8及以上的意思吗……），但是有些限制，例如，IE8-不支持访问器、模块转换应该用松散的方式，`regenerator-runtime`（内部使用ES5+实现）需要通过这个插件转译。
+
+## 畅享未来
+
+做了许多工作，但是 `core-js` 距离完美还很远。这个库和工具将来应该如何改进？语言的变化将会如何影响它？
+
+### 老的引擎支持
+
+现在，`core-js` 试图去支持所有可能的引擎或者我们能够测试到的平台：甚至是IE8-，或者例如，早期版本的 Firefox。虽然它对某些用户有用，但是仅有一小部分使用 `core-js` 的开发者需要它。对于大多数用户，它将引起像包体积过大或者执行缓慢的问题。
+
+主要的问题源自于支持 ES3 引擎（首先是IE8-）：多数现代 ES 特性是基于 ES5，这些功能在老版本浏览器中均不可用。
+
+最大的缺失特性是属性描述符：当它缺失时，一些功能不能 polyfill，因为他们要么是访问器（像 `RegExp.prototype.flags` 或 `URL` 属性的 setters）要么就是基于访问器（像 typed array polyfill）。为了解决这个不足，我们需要使用不同的解决方法（例如，保持 `Set.prototype.size` 更新）。维护这些解决方法有时很痛苦，移除他们将极大的简化许多 polyfills。
+
+然而，描述符仅仅是问题的一部分。ES5 标准库包含了很多其他特性，他们被认为是现代 JavaScript 的基础：`Object.create`，`Object.getPrototypeOf`，`Array.prototype.forEach`，`Function.prototype.bind`，等等。和多数现代特性不同，`core-js` 内部依赖他们并且[为了实现一个简单的现代函数，`core-js` 需要加载其中一些"建筑模块"的实现](https://github.com/babel/babel/pull/7646#discussion_r179333093)。对于想要创建一个最大限度小的构建包和仅仅想要引入部分 `core-js` 的用户来说，这是个问题。
+
