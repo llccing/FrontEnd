@@ -220,3 +220,41 @@ import "regenerator-runtime/runtime";
 npm i --save core-js regenerator-runtime
 ```
 
+### @babe/preset-env
+
+[`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env#usebuiltins) 有两种不同的模式，通过 `useBuiltIns` 选项：`entry` 和 `usage` 优化 `core-js`的导入。
+
+Babel 7.4.0 引入了两种模式的共同更改，以及每种模式的特定的修改。
+
+由于现在 `@babel/preset-env` 支持 `core-js@2` 和 `core-js@3`，因此 `useBuiltIns` 需要新的选项 -- `corejs`，这个选项用来定义使用 `core-js` 的版本（`corejs: 2` or `corejs: 3`）。如果没有设置，`corejs: 2` 是默认值并且会有警告提示。
+
+为了使 babel 支持将来的次要版本中引入的 `core-js` 的新功能，你可以在项目中定义明确的次要版本号。例如，你想使用 `core-js@3.1` 使用这个版本的新特性，你可以设置 `corejs` 选项为 `3.1`：`corejs: '3.1'` 或者 `corejs: {version: '3.1'}`。
+
+`@babel/preset-env` 最重要的一个功能就是提供不同浏览器支持特性的数据来源，用来确定是否需要 `core-js` 填充某些内容。 [`caniuse`](https://caniuse.com/)，[`mdn`](https://developer.mozilla.org/en-US/) 和 [`compat-table`](http://kangax.github.io/compat-table/es6/) 是很好的教育资源，但是并不意味着他们能够作为数据源被开发者使用：只有 `compat-table` 包函好的 ES 相关数据集，它被 `@babel/preset-env` 使用，但是仍有些限制：
+
+- 它包含的数据仅仅关于 ECMAScript 特性和提案，和 web 平台特性例如 `setImmediate` 或者 DOM 集合迭代器没有关系。所以直到现在，`@babel/preset-env`仍然通过 `core-js` 添加全部的 web 平台特性即使他们已经支持了。
+- 它他不包含任何浏览器（甚至是严重的）bug信息：例如，上文提到的在Safari 12中 `Array#reverse`，但是 `compat-table` 并没有将它标记为不支持。另一方面，`core-js` 已经修复了这个错误实现，但是因为 `compat-table` 关系，并不能使用它。
+- 它仅包函一些基础的、幼稚的测试，没有检查功能在真实环境下是否可以正常工作。例如，老版本Safari的破坏的迭代器没有 `.next` 方法，但是 `compat-table` 表明Safari支持，因为它用 `typeof` 方法检测迭代器方法返回了 `"function"`。一些像 typed arrays 的功能几乎没有覆盖。
+
+- `compat-table` 不是为了向工具提供数据而设计的。我是 `compat-table` 的维护者之一，但是[其他的维护者反对为维护这个功能](https://github.com/kangax/compat-table/pull/1312)。
+
+因为这个原因，我创建了 [`core-js-compat`](https://github.com/zloirock/core-js/tree/master/packages/core-js-compat)：它提供了对于不同浏览器 `core-js` 模块的必要性数据。当使用 `core-js@3` 时，`@babel/preset-env` 将使用新的包取代 `compat-table`。[请帮助我们测试并提供缺少的引擎的数据的映射关系！](https://github.com/zloirock/core-js/blob/master/CONTRIBUTING.md#updating-core-js-compat-data)😊。
+
+在 Babel 7.3 之前，`@babel/preset-env` 有一些与polyfills注入顺序有关的问题。从 7.4.0开始，`@babel/preset-env` 只按推荐顺序增加需要的polyfills。
+
+#### useBuiltIns: entry with corejs: 3
+
+当使用这个选项时，`@babel/preset-env` 代替直接引用 `core-js` 而是引入目标环境特定需要的模块。
+
+在这个变化前，`@babel/preset` 仅替换 `import '@babel/polyfill'` 和 `import 'core-js'`，他们是同义词用来polyfill所有稳定的 JavaScript 特性。
+
+现在 `@babel/polyfill` 弃用了，当 `corejs` 设置为 3 时 `@babel/preset-env` 不会转译他。
+
+`core-js@3` 中等价替换 `@babel/polyfill`是
+
+```js
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+```
+
+当目标浏览器是 `chrome 72` 时，
