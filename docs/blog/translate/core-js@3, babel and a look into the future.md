@@ -412,7 +412,48 @@ myArrayLikeObject[Symbol.tierator] = Array.prototype[Symbol.iterator];
 
 `core-js` 使用 `CommonJS` 模块规范。长期以来，他是最受欢迎的 JavaScript 模块规范，但是现在 ECMAScript 提供了他自己的模块规范。许多引擎已经支持它了。一些构建工具（像rollup）基于它，其他的构建工具提供它作为 `CommonJS` 的替代。这意味提供了一个可选择的使用 ESMAScript 模块规范版本的 `core-js` 行得通。
 
-### 支持扩展
+### 支持 web 标准扩展？
+
+ `core-js` 当前专注在 ECMAScript 支持，但是也支持少量的跨平台以及和 ECMAScript 紧密联系的 web 标准功能。为 web 标准，像 `fetch` 增加polyfill是受欢迎的功能请求。
+
+ `core-js` 没有增加他们的主要原因是，他们将严重的增加构建包大小并且将强制 `core-js` 用户载入他们可能用不到的功能。现在 `core-js` 是最大限度的模块化，用户能够仅选择他们需要的功能，这就像 `@babel/preset-env` 和 `@babel/runtime` 能够帮助用户去减少没用到和不必要的polyfills。
+
+现在是时候重新审视这个决定了？
+
+### 针对目标环境的 `@babel/runtime`
+
+目前，我们不能像对 `@babel/preset-env` 那样为 `@babel/runtimne` 设置目标加环境。这意味即使目标是现代浏览器， `@babel/runtime` 也将注所有可能的 polyfills：这不必要的增加了最终构建包的大小。
+
+现在 `core-js-compat` 包函全部必要数据，将来，可以在 `@babel/runtime` 中添加对目标环境的编译支持，并且在 `@babel/preset-env` 中添加 `useBuiltIns: runtime` 选项。
+
+### 更好的优化 polyfill 加载
+
+正如上面解释的，Babel 插件给了我们不同的方式去优化 `core-js` 的使用，但是他并不完美：我们可以改进他们。
+
+通过 `useBuiltIns: usage` 选项，`@babe/preset-env` 能够做的比之前更好，但是针对一些不寻常的例子他们仍然会失败：当代码不能被静态分析。针对这个问题，我们需要为库开发者寻找一个方式去确定哪种 polyfill 是他们的库需要的，而不是直接载入他们：某种元数据 -- 将在创建最终构建包时注入 polyfill。
+
+另一个针对 `useBuiltIns: usage` 的问题是重复的 polyfills 导入。`useBuiltIns: usage` 能够在每个文件中注入许多 `core-js` 的导入。但如果我们的项目有数千个文件或者即使十分之一会怎么样呢？这种情况下，与导入 `core-js` 自身相比，导入 `core-js/...` 将有更多代码行：我们需要一种方式去收集所有的导入到一个文件中，这样才能够删除重复的。
+
+几乎每一个需要支持像 `IE11` 浏览器的 `@babel/preset-env` 用户都为每个浏览器使用同一个构建包。这意味着完全支持 ES2019 的现代浏览器将加载不必要的、仅仅是 IE11 需要的 polyfills。当然，我们可以为不同的浏览器创建不同的构建包来使用，例如，`type=module` /
+`nomodules` 属性：一个构建包给支持模块化的现代浏览器，另一个给传统浏览器。不幸的是，这不是针对这个问题的完整的解决方案：基于用户代理打包目标浏览器需要的 polyfill 的服务非常有用。我们已经有了一个 - [`polyfill-service`](https://github.com/Financial-Times/polyfill-service)。尽管很有趣也很流行，但是 polyfill 的质量还有很多不足。它不像几年前那么差：项目团队积极工作去改变它，但是如果你想用他们匹配原生实现，我不建议你通过这个项目使用 polyfill。许多年前我尝试通过这个项目将 `core-js` 作为 polyfill 的源，但是这不可能。因为 `polyfill-service` 依赖文件嵌套而不是模块化（就像 `core-js` 发布后的前几个月 😊）。
+
+像这样一个集成了一个很棒的 polyfill 源 -- `core-js` 的服务，通过像 Babel的 `useBuiltIns: usage` 选项，静态分析源代码真的能够引起我们对于 polyfill 思考方式的革命。
+
+### 来自 TC39 的新功能预案和 `core-js` 可能的问题
+
+TC39一直在努力工作去改进 ECMAScript：你可以通过查看 `core-js` 中实现所有新提案查看进度。然而，我认为有些新的提案功能在 polyfill 或者转译时可能引起严重的问题。关于这个足够可以写一篇新的文章，但是我将尝试在这总结一下我的想法。
+
+#### 标准库提案，stage 1
+
+现在，TC39 考虑给 ECMAScript 增加[内置模块](https://github.com/tc39/proposal-javascript-standard-library)：一个模块化的标准库。它将成为 JavaScript 的最佳补充，而 `core-js` 是它可以被 polyfill 的最佳位置。根据 `@babel/preset-env` 和 `@babel/runtime` 用到的技术，理论上我们可以通过一种简单的方式注入内置模块需要的 polyfill。然而，这个提案的当前版本会导致一些严重问题，这些问题并没有使其简单明了。
+
+内置模块的 polyfill，[根据作者的提案](https://github.com/tc39/proposal-javascript-standard-library/issues/2)，仅仅意味着退回到分层 API 或者 导入 maps。这表明如果原生模块缺失，它将能够通过提供的 url 载入一个polyfill。这绝对不是 polyfill 需要的，并且它与 `core-js` 的架构以及其他流行的 polyfill 都不兼容。导入 maps 不应该是 polyfill 内置模块的唯一方式。
+
+我们通过一个特定前缀使用 ES 模块语法就能够得到内置模块。这个语法在语言的早期版本并没有对等的 - 转译模块不可能在现在浏览器中与未转译的交互 - 这会导致包分发的问题。
+
+更进一步讲，他将异步工作。对于功能检测这是个严重的问题 - 当你要检测一个功能并且加载 polyfill 时脚本不会等待 - 功能检测应该同步的做。
+
+
 
 
 ## 可能用到的资料
