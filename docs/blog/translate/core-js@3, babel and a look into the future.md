@@ -402,5 +402,21 @@ myArrayLikeObject[Symbol.tierator] = Array.prototype[Symbol.iterator];
 
 最大的缺失特性是属性描述符：当它缺失时，一些功能不能 polyfill，因为他们要么是访问器（像 `RegExp.prototype.flags` 或 `URL` 属性的 setters）要么就是基于访问器（像 typed array polyfill）。为了解决这个不足，我们需要使用不同的解决方法（例如，保持 `Set.prototype.size` 更新）。维护这些解决方法有时很痛苦，移除他们将极大的简化许多 polyfills。
 
-然而，描述符仅仅是问题的一部分。ES5 标准库包含了很多其他特性，他们被认为是现代 JavaScript 的基础：`Object.create`，`Object.getPrototypeOf`，`Array.prototype.forEach`，`Function.prototype.bind`，等等。和多数现代特性不同，`core-js` 内部依赖他们并且[为了实现一个简单的现代函数，`core-js` 需要加载其中一些"建筑模块"的实现](https://github.com/babel/babel/pull/7646#discussion_r179333093)。对于想要创建一个最大限度小的构建包和仅仅想要引入部分 `core-js` 的用户来说，这是个问题。
+然而，描述符仅仅是问题的一部分。ES5 标准库包含了很多其他特性，他们被认为是现代 JavaScript 的基础：`Object.create`，`Object.getPrototypeOf`，`Array.prototype.forEach`，`Function.prototype.bind`，等等。和多数现代特性不同，`core-js` 内部依赖他们并且[为了实现一个简单的现代函数，`core-js` 需要加载其中一些"建筑模块"的实现](https://github.com/babel/babel/pull/7646#discussion_r179333093)。对于想要创建一个足够小的构建包和仅仅想要引入部分 `core-js` 的用户来说，这是个问题。
+
+在一些国家IE8仍很流行，但是为了让 web 向前发展，浏览器到了某些时候就应该消失了。 `IE8` 在2009年3月19日发布，到今天已经10年了。IE6 已经 18 岁了：几个月前新版的 `core-js` 已经不再测试IE6了。
+
+在 `core-js@4` 我们应该舍弃 IE8- 和其他不知道 ES5 的引擎。
+
+### ECMAScript 模块
+
+`core-js` 使用 `CommonJS` 模块规范。长期以来，他是最受欢迎的 JavaScript 模块规范，但是现在 ECMAScript 提供了他自己的模块规范。许多引擎已经支持它了。一些构建工具（像rollup）基于它，其他的构建工具提供它作为 `CommonJS` 的替代。这意味提供了一个可选择的使用 ESMAScript 模块规范版本的 `core-js` 行得通。
+
+### 支持扩展
+
+
+## 可能用到的资料
+
+- [CommonJS 模块规范](https://javascript.ruanyifeng.com/nodejs/module.html) 
+- [ECMAScript 模块规范](http://es6.ruanyifeng.com/#docs/module)
 
