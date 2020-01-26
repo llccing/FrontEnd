@@ -453,8 +453,41 @@ TC39一直在努力工作去改进 ECMAScript：你可以通过查看 `core-js` 
 
 更进一步讲，他将异步工作。对于功能检测这是个严重的问题 - 当你要检测一个功能并且加载 polyfill 时脚本不会等待 - 功能检测应该同步的做。
 
+[在没有转译和 polyfill 的情况下第一次实现内置模块](https://developers.google.com/web/updates/2019/03/kv-storage)。如果没有修改，在当前的 `core-js` 格式下内置模块将不可能 polyfill。建议的 polyfill 方式将使开发变得严重复杂。
 
+这个标准库的问题能够通过添加一个新的全局变量解决（这将是最后一个吗？）：一个内置模块的注册表将允许异步的设置和获取，例如：
 
+```js
+StandardLibraryRegistry.get(moduleName);
+StandardLibraryRegistry.set(moduleName, value);
+```
+异步回调，比如分层API应该全局注册表之后使用。
+
+值得一提的是，它将简化将本地模块导入到老的语法的转换。
+
+#### 装饰器提案，新的迭代器语法，stage 2
+
+这个提案中的 [新迭代器](https://github.com/tc39/proposal-decorators)，他被很认真的重做了。装饰器定义不再是语法糖，就像内置模块，我们不能在老版本的语言中编写装饰器并将其用作原生装饰器。除此之外，装饰器不仅仅是普通的标识符 - 他们生活在平行的词汇范围内：这意味着已经编译的装饰器不能喝原生装饰器交互。
+
+提案作者建议使用未编译的装饰器发布包，让包的使用者选择去编译他们的依赖。然而，在不同的情况下是不可能的。当他们被添加到 JS 标准库时，这个方法将阻止 `core-js` polyfill 新的内置装饰器。
+
+装饰器应该是在某些东西上应用功能的一种方法，他们应该仅仅是包裹的语法糖。为什么要复杂化呢？
+
+---
+
+如果引入的一个语言功能不是从根本上是新的，在语言的早期版本什么不应该实现是可以选择的，我们能够转译或者polyfill 它，被转译或者polyfill的代码应该能够和支持这个功能的浏览器原生交互。
+
+我希望根据提案作者和委员会的智慧，这些提案能够被采纳，这样才能够合理的转译或者 polyfill 他们。
+
+---
+
+如果你对 `core-js` 项目感兴趣，或者你在你日常工作中使用它，你可以成为 [OpenCollective](https://opencollective.com/core-js#sponsor) 或者 [Patreon](https://www.patreon.com/zloirock) 捐赠者。`core-js` 的背后不是一个公司：他的将来要靠你。
+
+---
+
+[这里](https://github.com/zloirock/core-js/issues/496) 可以评论这篇文章。
+
+[Denis Pushkarev](https://github.com/zloirock)，2019年3月19日，感谢 [Nicolò Ribaudo](https://github.com/nicolo-ribaudo) 编辑。
 
 ## 可能用到的资料
 
