@@ -1,5 +1,7 @@
 # core-js@3, babel展望未来
 
+> [https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md](https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md) 原文链接
+
 经过一年半的开发，数十个版本，许多不眠之夜，**[`core-js@3`](https://github.com/zloirock/core-js)** 终于发布了。这是 `core-js` 和 **[babel](https://babeljs.io/)** 补丁相关的功能的最大的一次变化。
 
 什么是 `core-js`?
