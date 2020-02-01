@@ -70,7 +70,11 @@ module.exports = {
           title: '翻译',
           collapsable: false,
           children: [
-            ...['', 'what-you-need-know-about-Vue-3-in-2020'].map(item => `./translate/${item}`)
+            ...[
+              '',
+              'what-you-need-know-about-Vue-3-in-2020',
+              'core-js@3, babel and a look into the future'
+            ].map(item => `./translate/${item}`)
           ]
         },
         {
@@ -91,7 +95,7 @@ module.exports = {
           collapsable: false,
           children: [...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`)]
         },
-        
+
       ],
       '/read/': [
         // ''空字符串表示当前目录的README文件
