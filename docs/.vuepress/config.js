@@ -63,7 +63,8 @@ module.exports = {
             'FrontEndLive',
             'architecture',
             'vueComponent',
-            'vue-cli2-to-vue-cli3'
+            'vue-cli2-to-vue-cli3',
+            'vue3'
           ].map(item => `./life/${item}`)
         },
         {
