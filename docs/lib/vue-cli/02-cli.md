@@ -379,7 +379,7 @@ Creator.js 的 `create(cliOptions, preset=null)`，cliOptions 参数就是我们
 8. 派发 `this.emit('creation', { event: 'done' })` 事件，执行完成。
 
 
-## 有意思的点加你
+## 有意思的点
 
 1. `vue craete .`
 
