@@ -336,16 +336,50 @@ Creator.js 的 `create(cliOptions, preset=null)`，cliOptions 参数就是我们
       }
 ```
 
-1. 然后直接注册了核心服务 `@vue/cli-service`
-2. 确定项目包管理器
-3. 向外派发了事件 `this.emit('creation', { event: 'creating' })`（TODO，暂记一下，后期看哪里监听了该事件）
-4. 生成 package.json 文件
-5. 初始化 git，派发事件 `this.emit('creation', { event: 'git-init' })`
-6. 安装插件，派发事件 `this.emit('creation', { evnet: 'plugins-install' })`
-7. 执行生成器，派发事件 `this.emit('creation', { event: 'invoking-generators' })`，通过 `resolvePlugins()` 载入插件，并且根据插件的提示通过命令行提问。
+1. 然后直接注册了核心服务 `@vue/cli-service`；确定项目包管理器；向外派发了事件 `this.emit('creation', { event: 'creating' })`（TODO，暂记一下，后期看哪里监听了该事件）；生成 package.json 文件
+
+2. 初始化 git，派发事件 `this.emit('creation', { event: 'git-init' })`
+
+3. 安装插件，派发事件 `this.emit('creation', { evnet: 'plugins-install' })`
+
+4. 执行生成器，派发事件 `this.emit('creation', { event: 'invoking-generators' })`，通过 `resolvePlugins()` 载入插件，并且根据插件的提示通过命令行提问。实例化 `Generator`，并且调用它的 `generate` 方法。
+
+5. `Generator` 在构造和函数中收集过滤了项目中插件的名字，接着在 `initPlugins` 方法中循环遍历所有的插件，每次循环都会生成 `GeneratorAPI` 实例，然后载入插件中的 `Generator.js` 或者 `Generator/index.js`，如果存在 `hooks` 方法则执行它，将 `cb` push 到 Generator 实例的 `afterAnyInvokeCbs` 属性中，接下来遍历 `plugins`，它的类型是个数组，我们从 Creator.js 的 create 方法中这一行 `const plugins = await this.resolvePlugins(preset.plugins)`，然后看 `resolvePlugins` 方法
+```js
+  // { id: options } => [{ id, apply, options }]
+  async resolvePlugins (rawPlugins) {
+    // ensure cli-service is invoked first
+    rawPlugins = sortObject(rawPlugins, ['@vue/cli-service'], true)
+    const plugins = []
+    for (const id of Object.keys(rawPlugins)) {
+      const apply = loadModule(`${id}/generator`, this.context) || (() => {})
+      let options = rawPlugins[id] || {}
+      if (options.prompts) {
+        const prompts = loadModule(`${id}/prompts`, this.context)
+        if (prompts) {
+          log()
+          log(`${chalk.cyan(options._isPreset ? `Preset options:` : id)}`)
+          options = await inquirer.prompt(prompts)
+        }
+      }
+      plugins.push({ id, apply, options })
+    }
+    return plugins
+  }
+```
+从这个方法中可以看到，每个 apply 函数其实是插件的 index.js 中返回的默认函数。
+
+然后 plugins 的循环中再次在每次循环中生成 GeneratorAPI 实例，作为 apply 方法的第一个参数出传入（所以我们这里可以知道，插件中的 cli 参数，其实是 GeneratorAPI 的实例），apply方法执行的过程中做了哪些事呢。比如 extendPackage（写入依赖）、render（初始化渲染函数）、injectImports（注入导入的资源）等等，但是重要的一点是，这些都只是初始化操作，实际的内容还没有开始写入。
+
+然后是 `generate` 函数执行，上面的初始化工作做完后。`await this.resolveFiles()` 这个函数做的是将插件初始化时收集的各种文件的处理数组进行执行，然后将返回的内容收集到files字段。最后调用 `writeFileTree()` 函数将之前的文件都写入。这样 `Generator` 的 `generate` 函数就执行完成了。
+
+6. 接下来派发 `this.emit('creation', { event: 'deps-intall' })` 事件，进行依赖的安装。完成安装后，派发 `this.emit('creation', { event: 'completion-hooks' })` 事件，然后将收集的钩子都执行完成。
+
+7. 生成 `README.md` 文件，进行 git 的 add、commit操作。
+8. 派发 `this.emit('creation', { event: 'done' })` 事件，执行完成。
 
 
-## 有意思的点
+## 有意思的点加你
 
 1. `vue craete .`
 
