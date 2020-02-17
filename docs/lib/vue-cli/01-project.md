@@ -36,3 +36,27 @@
 |-- yarn.lock // 通过 yarn 来管理依赖
 |-- .circleci // 通过 circleCI 测试、构建项目
 ```
+
+## 调试
+
+只有代码能够调试，我们才能够逐步跟踪代码执行，掌握脉络。
+
+[文档](https://github.com/vuejs/vue-cli/blob/dev/.github/CONTRIBUTING.md)中有说明如何参与开发，这和能够进行调试的原理是一致的，做如下调整，重要的是先卸载全局安装的 `@vue/cli` 和 `vue-cli` 因为你可能是 CLI2 版本的，然后进入到 `packages/@vue/cli` 目录，执行 `yarn link` 即可。
+
+```js
+# install dependencies
+yarn
+
+# link `vue` executable
+# if you have the old vue-cli installed globally, you may
+# need to uninstall it first.
+cd packages/@vue/cli
+yarn link
+
+# create test projects in /packages/test
+cd -
+cd packages/test
+vue create test-app
+cd test-app
+yarn serve
+```
