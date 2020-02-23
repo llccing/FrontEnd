@@ -74,7 +74,7 @@ add 函数开始的时候会判断当前项目是否是干净的 git 工作区�
     await pm.add(packageName)
   }
 ```
-这里初始化了 PackageManager 实例，来自 `@vue/cli/lib/util/ProjectPackageManager.js`。构造函数的逻辑比较简单，就是确定了够包管理工具，`add()` 方法的作用是安装依赖。
+这里初始化了 PackageManager 实例，来自 `@vue/cli/lib/util/ProjectPackageManager.js`。构造函数的逻辑比较简单，就是确定了够包管理工具，`pm.add()` 方法的作用是安装依赖，到此依赖已经安装完成了，接下来就要执行依赖中的逻辑。
 
 ```js
 
@@ -93,8 +93,10 @@ add 函数开始的时候会判断当前项目是否是干净的 git 工作区�
 `invoke()` 方法提供 3 个参数：pluginName（插件名字），options（配置项），context（路径）。主要的逻辑如下
 
 1. 判断如果当前项目目录 git 工作区是否有修改单未提交的内容，有则暂停。
-2. 载入当前项目目录的 package.json 文件，通过循环判断当前插件是否在依赖列表中，不存在则报错。
-3. 载入插件的 generator，执行 generator 方法，完成依赖的安装。
+2. 载入当前项目目录的 package.json 文件，从而取得 `devDependencies` 和 `dependecies` 两个依赖列表，从中判断当前插件是否已经通过包管理工具安装成功。
+3. 载入插件的 `generator.js` 或者 `generator/index.js`，然后拼一个 plugin 的结构 `{ id, apply: pluginGenerator, options: {...} }`，这里重点是 `pluginGenerator`，他是一个函数，就是plugin中默认返回的函数。
+4. 执行 `runGenerator()` 函数，将 plugin 传入，这里会再次生成 `Generator` 实例，然后执行 `Generator` 实例的 `generate` 方法完成文件的写入
+5. 如果插件中定义了 callback，那么再次执行callback，从而完成整个插件的添加。
 
 
 ## 留有疑问
