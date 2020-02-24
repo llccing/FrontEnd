@@ -43,6 +43,7 @@ Vue ClI 的文档开始就告诉我们全局安装脚手架，执行了 `npm ins
 - [minimist](https://github.com/substack/minimist) 命令行参数解析器
 - [didyoumean](https://github.com/dcporter/didyoumean.js) 一个简单的，经过优化的 js 库 和 node.js 模块，能够将人的个性化输入和各种可能性进行匹配
 - [debug](https://github.com/visionmedia/debug) 带有命名空间的日志输出工具，能够彩色打印，支持浏览器和node.js，使用的时候，需要设置以下代码 debug.enabled = true
+- [resolve](https://github.com/browserify/resolve) 实现 node.js require.resolve() 算法。
 
 ### 内部依赖
 
