@@ -53,3 +53,7 @@ todo 可以用一个vue的项目试试，应该会比 `console.log` 的方式舒
 ```
 
 - [调试js](https://juejin.im/post/5c1b8bf56fb9a049ea38eafe)
+
+- [Debug with VSCode](https://zhuanlan.zhihu.com/p/71928374) 非常详细的描述
+
+- [VSCode 调试中 launch.json 配置不完全指南](https://www.barretlee.com/blog/2019/03/18/debugging-in-vscode-tutorial/) 阿里大佬的文章
