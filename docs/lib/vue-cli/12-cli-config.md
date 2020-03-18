@@ -78,3 +78,33 @@ __解决 edit命令报错的问题__：[将code命令加入 PATH 中](https://ww
 // homedir 返回当前用户的胡目录的字符串格式路径
 const homedir = require('os').homedir()
 ```
+
+
+下面再看一段代码，这段代码来自 `@vue/cli-shared-utils/lib/object.js`，也就是工具库中对象操作的方法，这个方法厉害之处是：如果你想给取得 ` const obj = {a: {b: {c: { d: 123123, e: '我是eee' } } } }`，这个对象中 d 的值，只要执行`get(obj, 'a.b.c.d')` 即可。
+
+假设这样调用`get(obj, 'a.b.c.d')`，下面分析下逻辑：
+```js
+
+exports.get = function (target, path) {
+  // fields = ['a', 'b', 'c', 'd']
+  const fields = path.split('.')
+  // obj = {a: {b: {c: { d: 123123, e: '我是eee' } } } }
+  let obj = target
+  // l = 4
+  const l = fields.length
+  // 通过循环，逐层深入，这里i最大是2
+  for (let i = 0; i < l - 1; i++) {
+    const key = fields[i]
+    if (!obj[key]) {
+      return undefined
+    }
+    obj = obj[key]
+  }
+  // obj = { d: 123123, e: '我是eee' }
+  // fields[l - 1] = d
+  // 所以 obj[fields[l - 1]] = obj[d] = 123123
+  return obj[fields[l - 1]]
+}
+```
+
+这个写法在vue.js的源码中也能够看到。
