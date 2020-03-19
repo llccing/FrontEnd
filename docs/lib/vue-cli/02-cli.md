@@ -36,8 +36,6 @@ Vue ClI 的文档开始就告诉我们全局安装脚手架，执行了 `npm ins
 
 ## 项目依赖
 
-### 外部依赖
-
 - [commander](https://github.com/tj/commander.js) tj大神的node命令行工具，用于获取参数、设置默认值
 - [slash](https://github.com/sindresorhus/slash) 修改资源路径，保证 Unix 和 Windows 返回路径一致
 - [minimist](https://github.com/substack/minimist) 命令行参数解析器
@@ -45,11 +43,7 @@ Vue ClI 的文档开始就告诉我们全局安装脚手架，执行了 `npm ins
 - [debug](https://github.com/visionmedia/debug) 带有命名空间的日志输出工具，能够彩色打印，支持浏览器和node.js，使用的时候，需要设置以下代码 debug.enabled = true
 - [resolve](https://github.com/browserify/resolve) 实现 node.js require.resolve() 算法。
 - [dotenv](https://github.com/motdotla/dotenv) 载入项目根目录的环境变量
-
-### 内部依赖
-
-#### @vue/cli-shared-utils
-
+- [request](https://github.com/request/request)、[request-promise-native](https://github.com/request/request-promise-native) 这个两个库已经弃用了；`@vue/cli-share-utils/lib/request.js` 中有用到 `request-promise-native`，这个以后可以对应升级
 - [chalk](https://github.com/chalk/chalk) 为命令行字符串添加样式
 - [execa](https://github.com/sindresorhus/execa) 改善了 node.js 原来的 Child Process 进程，执行脚本命令
 - [semver](https://github.com/npm/node-semver) 语义化版本，同时能够进行版本的比较
