@@ -4,6 +4,30 @@ module.exports = {
     '/lib/': [
       '',
       {
+        title: 'Vue CLI',
+        collapsable: false,
+        children: [
+          '01-project',
+          '02-cli',
+          '03-cli-create',
+          '04-cli-add',
+          '05-cli-invoke',
+          '06-cli-inspect',
+          '07-vscode-debugger',
+          '08-cli-serve',
+          '09-cli-build',
+          '11-cli-init',
+          '12-cli-config',
+          '13-cli-outdated',
+          '14-cli-upgrade',
+          '15-cli-migrate',
+          '16-cli-info',
+          '17-cli-<command>',
+          '18-cli-help',
+          '99-cli-shared-utils',
+        ].map(item => `./vue-cli/${item}`)
+      },
+      {
         title: 'vue 源码被解读',
         collapsable: false,
         children: [
@@ -24,7 +48,7 @@ module.exports = {
       },
       {
         title: 'threejs journey',
-        collapsable: false,
+        collapsable: true,
         children: [
           '00-start',
           '01-hello-world',
@@ -40,24 +64,24 @@ module.exports = {
       },
       {
         title: 'react journey',
-        collapsable: false,
+        collapsable: true,
         children: ['00-react', '01-start-project'].map(item => {
           return `./react/${item}`
         })
       },
       {
         title: 'vuepress',
-        collapsable: false,
+        collapsable: true,
         children: ['01-remark'].map(item => `./vuepress/${item}`)
       },
       {
         title: 'egg',
-        collapsable: false,
+        collapsable: true,
         children: ['./egg/init']
       },
       {
         title: 'jQuery系列',
-        collapsable: false,
+        collapsable: true,
         children: ['./jquery/']
       }
     ]

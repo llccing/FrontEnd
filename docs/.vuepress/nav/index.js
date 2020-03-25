@@ -1,16 +1,13 @@
-const CONFIG_NAV = ['blog', 'css', 'js', 'lib', 'read']
+const CONFIG_NAV = ['home', 'blog', 'css', 'js', 'lib', 'read', 'about']
 
 function initNav() {
-  const nav = [
-    { text: 'Home', link: '/' }
-  ]
+  const nav = []
   const sidebar = {}
   CONFIG_NAV.forEach(item => {
     const config = require(`./${item}`)
     nav.push(config.nav)
-    Object.assign(sidebar, config.sidebar)
+    config.sidebar && Object.assign(sidebar, config.sidebar)
   })
-  nav.push({ text: 'About', link: '/about/' })
 
   return {
     nav,
