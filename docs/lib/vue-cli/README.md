@@ -25,8 +25,8 @@
 ### TODO
 
 - [x] 清晰整体结构
-- [ ] @vue/cli
-- [ ] @vue/cli-init
+- [x] @vue/cli
+- [x] @vue/cli-init
 - [ ] @vue/cli-plugin-xxx
 - [ ] 上面提到的特性的实现方式
 - [ ] 如何实现的插件机制
