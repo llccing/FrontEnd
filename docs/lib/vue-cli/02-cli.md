@@ -51,6 +51,7 @@ Vue ClI 的文档开始就告诉我们全局安装脚手架，执行了 `npm ins
 - [envinfo](https://github.com/tabrindle/envinfo) 为了调试和提 issue，针对当前的开发环境生成一个报告
 - [leven](https://github.com/sindresorhus/leven) 测量两个不同的字符串的差别，实现莱温斯坦距离算法最快的js实现，没有之一...
 - [ora](https://github.com/sindresorhus/ora) 优雅的终端旋转器
+- [portfinder](https://github.com/http-party/node-portfinder) 在当前机器找到空闲端口号的小工具，解决了项目启动端口号冲突的痛点
 
 ## 有意思的点
 
