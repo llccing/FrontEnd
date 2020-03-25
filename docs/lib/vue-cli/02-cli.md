@@ -48,6 +48,9 @@ Vue ClI 的文档开始就告诉我们全局安装脚手架，执行了 `npm ins
 - [execa](https://github.com/sindresorhus/execa) 改善了 node.js 原来的 Child Process 进程，执行脚本命令
 - [semver](https://github.com/npm/node-semver) 语义化版本，同时能够进行版本的比较
 - [lru-catch](https://github.com/isaacs/node-lru-cache) 高速缓存对象，用于删除最近最少使用的项目
+- [envinfo](https://github.com/tabrindle/envinfo) 为了调试和提 issue，针对当前的开发环境生成一个报告
+- [leven](https://github.com/sindresorhus/leven) 测量两个不同的字符串的差别，实现莱温斯坦距离算法最快的js实现，没有之一...
+- [ora](https://github.com/sindresorhus/ora) 优雅的终端旋转器
 
 ## 有意思的点
 
