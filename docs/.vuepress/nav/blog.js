@@ -33,15 +33,10 @@ const sidebar = {
       collapsable: false,
       children: [
         'lerna',
-        'SegmentFault',
         'jQuery',
         'gzip',
-        '我的第一家公司',
-        '国庆节',
-        '病',
         '2018-dev-guide',
         'for',
-        'calc-dev-time',
         'ci',
         'useGulp',
         'FrontEndLive',
@@ -66,8 +61,7 @@ const sidebar = {
       title: '那些年我面过的试',
       collapsable: false,
       children: [
-        ...['', 'js', 'css'].map(item => `./interview/${item}`),
-        ...['toutiao'].map(item => `./interview/company/${item}`)
+        ...['', 'js', 'css'].map(item => `./interview/${item}`)
       ]
     },
     {
