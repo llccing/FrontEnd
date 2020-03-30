@@ -1,4 +1,4 @@
-# vue <command>
+# `vue <command>`
 
 >  output help information on unknown commands
 
