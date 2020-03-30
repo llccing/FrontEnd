@@ -10,9 +10,9 @@
 |-- |-- |-- cli // 全局命令注册
 |-- |-- |-- cli-init
 |-- |-- |-- cli-overlay
-|-- |-- |-- cli-service
-|-- |-- |-- cli-service-global
-|-- |-- |-- cli-shared-utils
+|-- |-- |-- cli-service // vue-cli-service serve/build/inspect/help 命令的核心
+|-- |-- |-- cli-service-global // 壳，核心内容在 ../cli-service
+|-- |-- |-- cli-shared-utils // 封装的各种工具函数
 |-- |-- |-- cli-test-utils
 |-- |-- |-- babel-preset-app
 |-- |-- |-- cli-ui
