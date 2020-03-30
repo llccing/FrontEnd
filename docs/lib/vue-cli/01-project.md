@@ -2,6 +2,8 @@
 
 整个项目是通过 lerna 来管理，使用固定模式，所有包使用相同的版本。
 
+[https://github.com/llccing-demo/vue-cli](https://github.com/llccing-demo/vue-cli) 这里是fork项目，与文章中的代码相呼应。
+
 ## 目录结构
 
 ```js

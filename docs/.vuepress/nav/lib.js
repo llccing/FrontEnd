@@ -4,7 +4,7 @@ module.exports = {
     '/lib/': [
       '',
       {
-        title: 'Vue CLI',
+        title: 'Vue CLI源码探索',
         collapsable: false,
         children: [
           '01-project',
@@ -24,6 +24,7 @@ module.exports = {
           '16-cli-info',
           '17-cli-<command>',
           '18-cli-help',
+          '19-test',
           '99-cli-shared-utils',
         ].map(item => `./vue-cli/${item}`)
       },
