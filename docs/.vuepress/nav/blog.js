@@ -53,7 +53,8 @@ const sidebar = {
         ...[
           '',
           'what-you-need-know-about-Vue-3-in-2020',
-          'core-js@3, babel and a look into the future'
+          'core-js@3, babel and a look into the future',
+          'vue-cli-plugin-dev'
         ].map(item => `./translate/${item}`)
       ]
     },
