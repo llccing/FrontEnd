@@ -25,6 +25,8 @@ module.exports = {
           '17-cli-<command>',
           '18-cli-help',
           '19-test',
+          '20-plugin',
+          '21-plugin-vuex',
           '99-cli-shared-utils',
         ].map(item => `./vue-cli/${item}`)
       },

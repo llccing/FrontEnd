@@ -55,6 +55,7 @@ Vue ClI 的文档开始就告诉我们全局安装脚手架，执行了 `npm ins
 - [@hapi/joi](https://github.com/hapijs/hapi) 参数校验 'Build powerful, scalable applications, with minimal overhead and full out-of-the-box functionality'
 - [Inquirer](https://github.com/SBoudrias/Inquirer.js) 命令行的通用交互界面集合
 - [memfs](https://github.com/streamich/memfs) 内存型文件系统，在这里的用处主要是运行jest测试的时候使用
+- [对象的深度（递归）合并](https://github.com/TehShrike/deepmerge)
 
 ## 有意思的点
 
