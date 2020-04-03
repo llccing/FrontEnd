@@ -1,19 +1,20 @@
-# cli-plugin-vuex
+# @vue/cli-plugin-vuex
 
 这个插件是从 `@vue/cli@4.x` 开始增加的，规范化 vuex 的使用，同时提供更加完美的默认配置。
 
 ## 源码探索
 
-### 组成部分
+cli-plugin-vuex 插件由两个部分组成，Service 和 Generator。
 
-cli-plugin-vuex 插件由两个部分组成，一是必须有的 Service 插件：
+### Service 部分
 
-从 `package.json` 文件中可以看到，主文件是根目录的 `index.js`，文件内容如下 
+一是必须有的 Service 部分：从 `package.json` 文件中可以看到，主文件是根目录的 `index.js`，文件内容如下 
 ```js
 module.exports = (api, options = {}) => {}
 ```
 可以看到这里返回了一个空函数，这个是根据这个[文档](https://cli.vuejs.org/dev-guide/plugin-dev.html#service-plugin)来的。
 
+### Generator 部分
 还有一部分是 `Generator`，就是 `/generator/index.js`：
 
 ```js

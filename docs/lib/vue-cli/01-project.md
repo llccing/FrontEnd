@@ -1,4 +1,4 @@
-# 项目整体结构
+# Vue CLI 源码探索
 
 整个项目是通过 lerna 来管理，使用固定模式，所有包使用相同的版本。
 
@@ -84,4 +84,6 @@ yarn serve
 - [@hapi/joi](https://github.com/hapijs/hapi) 参数校验 'Build powerful, scalable applications, with minimal overhead and full out-of-the-box functionality'
 - [Inquirer](https://github.com/SBoudrias/Inquirer.js) 命令行的通用交互界面集合
 - [memfs](https://github.com/streamich/memfs) 内存型文件系统，在这里的用处主要是运行jest测试的时候使用
-- [对象的深度（递归）合并](https://github.com/TehShrike/deepmerge)
+- [deepmerge](https://github.com/TehShrike/deepmerge) 对象的深度（递归）合并
+- [yaml-front-matter](https://github.com/dworthen/js-yaml-front-matter) 从字符串或者文件中解析 [YAML](https://www.ruanyifeng.com/blog/2016/07/yaml.html) 或者 json
+- [ejs](https://github.com/mde/ejs) 嵌入式的 JavaScript 模板引擎

@@ -22,6 +22,10 @@
 └── ui.js         # Vue UI 集成（可选）
 ```
 
+## 安装并执行插件
+
+`vue add [plugin]`，这个命令我们已经在[前面](https://llccing.github.io/FrontEnd/lib/vue-cli/04-cli-add.html)讲过了。
+
 ## 插件列表
 
 **官方插件**
@@ -41,8 +45,8 @@
 
 * [x] 翻译 [plugin-dev](https://cli.vuejs.org/dev-guide/plugin-dev.html) 文档
 * [x] @vue/cli-plugin-vuex
-* [ ] @vue/cli-plugin-router
+* [x] @vue/cli-plugin-router
+* [ ] @vue/cli-plugin-babel
 * [ ] @vue/cli-plugin-typescript
 * [ ] @vue/cli-plugin-eslint
-* [ ] @vue/cli-plugin-babel
 * [ ] @vue/cli-plugin-pwa
