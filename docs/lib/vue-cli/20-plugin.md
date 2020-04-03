@@ -26,6 +26,21 @@
 
 `vue add [plugin]`，这个命令我们已经在[前面](https://llccing.github.io/FrontEnd/lib/vue-cli/04-cli-add.html)讲过了。
 
+插件包函几部分中，`generator` 和 `prompts` 是在 `vue add` 命令执行的时候执行的。
+
+`service` 插件的执行时机则是在运行 `vue-cli-service xxx` 命令时，如 `vue-cli-service serve`，得出这个结论可以看下 `@vue/cli-service/lib/Service.js` 的 `init` 方法：
+```js
+    // apply plugins.
+    // this.plugins 就是当前项目中的全部 Vue CLI 插件
+    this.plugins.forEach(({ id, apply }) => {
+      if (this.pluginsToSkip.has(id)) return
+      // apply 方法就是 插件中 Service 默认导出的函数
+      apply(new PluginAPI(id, this), this.projectOptions)
+    })
+```
+
+至于为什么 `vue-cli-service serve` 最终会走到上面的 `init` 方法，我们在之前在 [探索 vue inspect](https://llccing.github.io/FrontEnd/lib/vue-cli/06-cli-inspect.html) 时提到过的。
+
 ## 插件列表
 
 **官方插件**

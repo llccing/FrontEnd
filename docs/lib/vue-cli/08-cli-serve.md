@@ -71,7 +71,7 @@ function createService (entry, asLib) {
   })
 }
 ```
-被实例化的 `Serice` 是 `const Service = require('@vue/cli-service')` 引入进来的，所以后面最终做事的还是 `@vue/cli-servcie` 类， `@vue/cli-service` 的分析在 06-cli-inspect 中已经提到了，不赘述。
+被实例化的 `Serice` 是 `const Service = require('@vue/cli-service')` 引入进来的，所以后面最终做事的还是 `@vue/cli-servcie` 类， `@vue/cli-service` 的分析在 [vue inspect](https://llccing.github.io/FrontEnd/lib/vue-cli/06-cli-inspect.html) 中已经提到了，不赘述。
 
 
 ### @vue/cli-service/lib/commands/serve.js
