@@ -87,3 +87,6 @@ yarn serve
 - [deepmerge](https://github.com/TehShrike/deepmerge) 对象的深度（递归）合并
 - [yaml-front-matter](https://github.com/dworthen/js-yaml-front-matter) 从字符串或者文件中解析 [YAML](https://www.ruanyifeng.com/blog/2016/07/yaml.html) 或者 json
 - [ejs](https://github.com/mde/ejs) 嵌入式的 JavaScript 模板引擎
+- [hash-sum](https://github.com/bevacqua/hash-sum) 快速独特的哈希生成器
+- [vue-jscodeshift-adapter](https://github.com/psalaets/vue-jscodeshift-adapter) 在 Vue 单文件组件中执行 jscodeshift
+- [jscodeshift](https://github.com/facebook/jscodeshift) A JavaScript codemod toolkit。两个介绍：[jscodeshift 简易教程](https://github.com/whxaxes/blog/issues/10)、[代码重构利器-jscodeshift](https://imweb.io/topic/57b13b4f93d9938132cc8dfd)
