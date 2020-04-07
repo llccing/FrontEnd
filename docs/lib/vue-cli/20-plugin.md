@@ -61,7 +61,16 @@
 * [x] 翻译 [plugin-dev](https://cli.vuejs.org/dev-guide/plugin-dev.html) 文档
 * [x] @vue/cli-plugin-vuex
 * [x] @vue/cli-plugin-router
-* [ ] @vue/cli-plugin-babel
+* [x] @vue/cli-plugin-babel
 * [ ] @vue/cli-plugin-typescript
 * [ ] @vue/cli-plugin-eslint
 * [ ] @vue/cli-plugin-pwa
+
+
+
+## webpack loader
+
+- [vue-loader](https://github.com/vuejs/vue-loader) Vue.js 对应 webpack loader
+- [babel-loader](https://github.com/babel/babel-loader) 就是那个很厉害的工具对应的 webpack 插件
+- [thread-loader](https://github.com/webpack-contrib/thread-loader) 在一个工作池中运行接下来的 loader
+- [cache-loader](https://github.com/webpack-contrib/cache-loader) 在磁盘中缓存接下来的 loader

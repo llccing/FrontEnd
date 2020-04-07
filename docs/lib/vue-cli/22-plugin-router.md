@@ -20,7 +20,7 @@ module.exports = (api, options = {}) => {
   // 增加 router 选项
   api.injectRootOptions(api.entryFile, `router`)
 
-  // 扩展依赖
+  // 扩展项目的 package.json 文件中的依赖
   api.extendPackage({
     dependencies: {
       'vue-router': '^3.1.5'

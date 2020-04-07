@@ -108,7 +108,7 @@ new Vue({
 ```
 
 
-`extendPackage` 方法是用来扩展依赖的，
+`extendPackage` 方法是用来扩展项目的 package.json 文件，
 
 ```js
 /**
