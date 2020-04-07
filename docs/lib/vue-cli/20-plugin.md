@@ -58,13 +58,19 @@
 
 ## todo
 
-* [x] 翻译 [plugin-dev](https://cli.vuejs.org/dev-guide/plugin-dev.html) 文档
-* [x] @vue/cli-plugin-vuex
-* [x] @vue/cli-plugin-router
-* [x] @vue/cli-plugin-babel
-* [ ] @vue/cli-plugin-typescript
-* [ ] @vue/cli-plugin-eslint
-* [ ] @vue/cli-plugin-pwa
+[x] 翻译 [plugin-dev](https://cli.vuejs.org/dev-guide/plugin-dev.html) 文档
+
+[x] @vue/cli-plugin-vuex
+
+[x] @vue/cli-plugin-router
+
+[x] @vue/cli-plugin-babel
+
+[ ] @vue/cli-plugin-typescript
+
+[ ] @vue/cli-plugin-eslint
+
+[ ] @vue/cli-plugin-pwa
 
 
 
