@@ -88,3 +88,95 @@ const { stdout } = await execa('git', ['status', '--porcelain'], { cwd: context 
     return true
   }
 ```
+
+`@vue/cli/lib/Upgrader.js` 这里我们看下 `Upgrader` 类的 `upgrade` 方法：
+
+```js
+async upgrade (pluginId, options) {
+  ...
+
+  // 这里是说如果要升级的包存在 migrator（升级器）则调用它
+  const pluginMigrator = loadModule(`${packageName}/migrator`, this.context) || noop
+
+  await runMigrator(
+      this.context,
+      {
+        id: packageName,
+        apply: pluginMigrator,
+        baseVersion: installed
+      },
+      this.pkg
+    )
+}
+```
+`runMigrator` 来自 `@vue/cli/lib/migrate.js`
+```js
+async function runMigrator (context, plugin, pkg = getPkg(context)) {
+  const afterInvokeCbs = []
+  // 这里实例化了迁移器
+  const migrator = new Migrator(context, {
+    plugin,
+    pkg,
+    files: await readFiles(context),
+    afterInvokeCbs
+  })
+  
+  await migrator.generate({
+    extractConfigFiles: true,
+    checkExisting: true
+  })
+}
+```
+
+看下 `Migrator` 的真面目，`@vue/cli/lib/Migrator.js`：
+```js
+// 这里 Migrator 继承了 Generator，所以可以使用 Generator 的方法
+module.exports = class Migrator extends Generator {
+  ...
+  // 这里是对原有方法的覆盖
+  async generate (...args) {
+    const plugin = this.migratorPlugin
+
+    // apply migrators from plugins
+    // 调用插件的 migrator
+    const api = new MigratorAPI(
+      plugin.id,
+      plugin.baseVersion,
+      this,
+      plugin.options,
+      this.rootOptions
+    )
+
+    // 这里是调用了 插件中的 migrator 方法
+    await plugin.apply(api, plugin.options, this.rootOptions, this.invoking)
+
+    // 这里仍然调用父类的方法
+    await super.generate(...args)
+  }
+}
+```
+
+我们看上面实例化了 `MigratorAPI`，我们看下他的本来面目 `@vue/cli/lib/MigratorAPI` ：
+
+```js
+class MigratorAPI extends GeneratorAPI {
+  /**
+   * @param {string} id - Id of the owner plugin
+   * @param {Migrator} migrator - The invoking Migrator instance
+   * @param {object} options - options passed to this plugin
+   * @param {object} rootOptions - root options (the entire preset)
+   */
+  constructor (id, baseVersion, migrator, options, rootOptions) {
+    super(id, migrator, options, rootOptions)
+
+    this.baseVersion = baseVersion
+    this.migrator = this.generator
+  }
+
+  fromVersion (range) {
+    return semver.satisfies(this.baseVersion, range)
+  }
+}
+```
+
+`MigratorAPI` 继承了 `GeneratorAPI`，所以她就拥有了 `GeneratorAPI` 所有的方法
