@@ -68,6 +68,10 @@
 
 使用Markdown语法来写 todo list 还有个小插曲：[不展示 todo list的原因见此](https://github.com/vuejs/vuepress/issues/986)
 
+## 插件开发
+
+插件开发部分的文档可以见我[翻译的内容](https://llccing.github.io/FrontEnd/blog/translate/vue-cli-plugin-dev.html)，相信会对你有所帮助。
+
 
 ## webpack loader
 
