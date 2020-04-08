@@ -3,16 +3,8 @@ const nav = {
   link: '/blog/',
   items: [
     {
-      text: '生活有感',
-      link: '/blog/life/我的第一家公司.html'
-    },
-    {
       text: '翻译',
       link: '/blog/translate/'
-    },
-    {
-      text: '那些年',
-      link: '/blog/interview/'
     },
     {
       text: '数据结构',
