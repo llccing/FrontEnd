@@ -56,22 +56,17 @@
 - @vue/cli-plugin-e2e-cypress
 - @vue/cli-plugin-e2e-nightwatch
 
-## todo
+## TODO
 
-[x] 翻译 [plugin-dev](https://cli.vuejs.org/dev-guide/plugin-dev.html) 文档
+* [x] 翻译 [plugin-dev](https://cli.vuejs.org/dev-guide/plugin-dev.html) 文档
+* [x] @vue/cli-plugin-vuex
+* [x] @vue/cli-plugin-router
+* [x] @vue/cli-plugin-babel
+* [ ] @vue/cli-plugin-typescript
+* [ ] @vue/cli-plugin-eslint
+* [ ] @vue/cli-plugin-pwa
 
-[x] @vue/cli-plugin-vuex
-
-[x] @vue/cli-plugin-router
-
-[x] @vue/cli-plugin-babel
-
-[ ] @vue/cli-plugin-typescript
-
-[ ] @vue/cli-plugin-eslint
-
-[ ] @vue/cli-plugin-pwa
-
+使用Markdown语法来写 todo list 还有个小插曲：[不展示 todo list的原因见此](https://github.com/vuejs/vuepress/issues/986)
 
 
 ## webpack loader

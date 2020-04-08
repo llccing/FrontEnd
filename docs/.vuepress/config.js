@@ -11,6 +11,11 @@ module.exports = {
     nav,
     sidebar
   },
+  markdown: {
+    extendMarkdown: md => {
+      md.use(require('markdown-it-task-lists'))
+    }
+  },
   plugins: [
     [
       '@vuepress/google-analytics',
