@@ -62,8 +62,8 @@
 * [x] @vue/cli-plugin-vuex
 * [x] @vue/cli-plugin-router
 * [x] @vue/cli-plugin-babel
-* [ ] @vue/cli-plugin-typescript
-* [ ] @vue/cli-plugin-eslint
+* [x] @vue/cli-plugin-typescript
+* [x] @vue/cli-plugin-eslint
 * [ ] @vue/cli-plugin-pwa
 
 使用Markdown语法来写 todo list 还有个小插曲：[不展示 todo list的原因见此](https://github.com/vuejs/vuepress/issues/986)
@@ -79,3 +79,7 @@
 - [babel-loader](https://github.com/babel/babel-loader) 就是那个很厉害的工具对应的 webpack 插件
 - [thread-loader](https://github.com/webpack-contrib/thread-loader) 在一个工作池中运行接下来的 loader
 - [cache-loader](https://github.com/webpack-contrib/cache-loader) 在磁盘中缓存接下来的 loader
+
+## webpack plugin
+
+- [fork-ts-checker-webpack-plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin) 在单独的进程中运行 typescirpt 类型检查器
