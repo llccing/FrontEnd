@@ -47,7 +47,8 @@ const sidebar = {
           'what-you-need-know-about-Vue-3-in-2020',
           'core-js@3, babel and a look into the future',
           'vue-cli-plugin-dev',
-          'vue-cli-plugin-typescript-readme'
+          'vue-cli-plugin-typescript-readme',
+          'vue-cli-plugin-eslint-readme'
         ].map(item => `./translate/${item}`)
       ]
     },

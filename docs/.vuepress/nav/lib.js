@@ -29,6 +29,8 @@ module.exports = {
           '21-plugin-vuex',
           '22-plugin-router',
           '23-plugin-babel',
+          '24-plugin-typescript',
+          '25-plugin-eslint',
           '99-cli-shared-utils',
         ].map(item => `./vue-cli/${item}`)
       },
