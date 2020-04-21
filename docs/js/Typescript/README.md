@@ -4,12 +4,12 @@ JavaScript 类型化逐渐成为了主流。
 
 # TODO
 
-- [ ] [文档学习](https://www.tslang.cn/docs/handbook/basic-types.html)
-  - [x] [基本类型](https://github.com/llccing-demo/Typescript-simple/blob/b95002880a8e9f45cf5678b6e692d835fa2b681d/src/basic-types/index.ts#L1)
-  - [ ] [变量声明](https://github.com/llccing-demo/Typescript-simple/blob/b95002880a8e9f45cf5678b6e692d835fa2b681d/src/variable-declarations/index.ts#L2)
-  - [ ] 接口
-  - [ ] 类
-  - [ ] 函数
+- [ ] [文档学习](https://github.com/llccing-demo/Typescript-simple)
+  - [x] [基本类型](https://github.com/llccing-demo/Typescript-simple/tree/master/src/basic-types)
+  - [x] [变量声明](https://github.com/llccing-demo/Typescript-simple/tree/master/src/variable-declarations)
+  - [x] [接口](https://github.com/llccing-demo/Typescript-simple/tree/master/src/interface)
+  - [x] [类](https://github.com/llccing-demo/Typescript-simple/tree/master/src/classes)
+  - [x] [函数](https://github.com/llccing-demo/Typescript-simple/tree/master/src/functions)
   - [ ] 泛型
   - [ ] 枚举
   - [ ] 类型推论
