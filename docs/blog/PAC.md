@@ -11,6 +11,21 @@ Proxy Auto Config，代理自动配置，PAC 类似配置文件，通过这个�
 - [https://llccing.cn/proxy-home.pac](https://llccing.cn/proxy-home.pac) 这是对应家里的 IP 设置
 - [https://llccing.cn/proxy.pac](https://llccing.cn/proxy.pac) 这是对应公司的 IP 配置
 
+
+proxy.pac 文件内容
+```js
+function FindProxyForURL(url, host) {
+  return "PROXY 172.25.154.23:8888; DIRECT";
+}
+```
+
+proxy-home.pac 文件内容
+```js
+function FindProxyForURL(url, host) {
+  return "PROXY 192.168.199.203:8888; DIRECT";
+}
+```
+
 ## 参考文章
 
 - [Android 代理自动配置 PAC 研究](https://juejin.im/post/5a93cfebf265da4e951908af)
