@@ -3,37 +3,7 @@ module.exports = {
   sidebar: {
     '/lib/': [
       '',
-      {
-        title: 'Vue CLI源码探索',
-        collapsable: false,
-        children: [
-          '01-project',
-          '02-cli',
-          '03-cli-create',
-          '04-cli-add',
-          '05-cli-invoke',
-          '06-cli-inspect',
-          '07-vscode-debugger',
-          '08-cli-serve',
-          '09-cli-build',
-          '11-cli-init',
-          '12-cli-config',
-          '13-cli-outdated',
-          '14-cli-upgrade',
-          '15-cli-migrate',
-          '16-cli-info',
-          '17-cli-<command>',
-          '18-cli-help',
-          '19-test',
-          '20-plugin',
-          '21-plugin-vuex',
-          '22-plugin-router',
-          '23-plugin-babel',
-          '24-plugin-typescript',
-          '25-plugin-eslint',
-          '99-cli-shared-utils',
-        ].map(item => `./vue-cli/${item}`)
-      },
+      './vue-cli/',
       {
         title: 'vue 源码被解读',
         collapsable: false,
