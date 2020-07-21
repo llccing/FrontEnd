@@ -48,7 +48,8 @@ const sidebar = {
           'core-js@3, babel and a look into the future',
           'vue-cli-plugin-dev',
           'vue-cli-plugin-typescript-readme',
-          'vue-cli-plugin-eslint-readme'
+          'vue-cli-plugin-eslint-readme',
+          'making-vue-3'
         ].map(item => `./translate/${item}`)
       ]
     },
