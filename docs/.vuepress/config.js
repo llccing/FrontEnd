@@ -2,7 +2,7 @@ const { nav, sidebar } = require('./nav/index.js')
 module.exports = {
   title: '千里',
   description: 'just do it! ',
-  base: '/',
+  base: '/FrontEnd/',
   // serviceWorker: true,
   // theme: 'vue',
   themeConfig: {
