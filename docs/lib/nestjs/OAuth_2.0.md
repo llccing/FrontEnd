@@ -96,8 +96,35 @@ client_id 和 client_secret 参数用来让 B 确认 A 的身份（client_secret
 
 适用于没有前端的命令行应用。
 
+## 令牌使用
+
+在请求头上增加 `Authorization` 字段，令牌就放在这个字段里面。
+
+```js
+{
+  header: {
+    Authorization: `Bearer ACCESS_TOKEN`
+  }
+}
+```
+前端请求时，需要提供这个header。
+
+## 更新令牌
+
+一次性颁发两个令牌，一个 `access_token`，一个 `refresh_token`，到期后通过 `refresh_token` 发送一个请求来更新令牌。
+
+示例请求如下：
+```js
+https://b.com/oauth/token?
+  grant_type=refresh_token&
+  client_id=CLIENT_ID&
+  client_secret=CLIENT_SECRET&
+  refresh_token=REFRESH_TOKEN
+```
+
 ## 相关文章
 
+- [http://www.ruanyifeng.com/blog/2019/04/github-oauth.html](http://www.ruanyifeng.com/blog/2019/04/github-oauth.html) Github OAuth 第三方登录示例教程
 - [http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html) 授权的 4 种方式
 - [http://www.ruanyifeng.com/blog/2019/04/oauth_design.html](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html) 快递员进入小区的授权机制
 - [https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html) 理解 OAuth 2.0
