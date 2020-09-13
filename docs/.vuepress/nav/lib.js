@@ -60,6 +60,11 @@ module.exports = {
         title: 'jQuery系列',
         collapsable: true,
         children: ['./jquery/']
+      },
+      {
+        title: 'nestjs',
+        collapsable: true,
+        children: ['01-OAuth_2.0'].map(item => `./nestjs/${item}`)
       }
     ]
   }
