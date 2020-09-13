@@ -1,6 +1,8 @@
 
 # OAuth 2.0
 
+OAuth 2.0 是一种授权机制，主要用来颁发令牌。
+
 ## 快递员进入小区的例子
 
 给快递员一个7天的授权码，这样不提供自己的密码即可让快递员进入小区，这样的授权机制是安全的，当时间到了之后如果仍然有需求可以二次授权，否则就自动过期
@@ -86,15 +88,72 @@ client_id 和 client_secret 参数用来让 B 确认 A 的身份（client_secret
 
 ### 2. 隐藏式 implicit
 
-允许直接向前端颁发令牌，没有授权码的步骤。
+有些 Web 应用是纯前端的应用，没有后端，令牌存储在前端。允许直接向前端颁发令牌，没有授权码的步骤。
+
+第一步，A 网站提供一个连接，要求用户跳转 B 网站，授权用户数据给 A 使用。
+
+```js
+https://b.com/oauth/authorize?
+  response_type=token&
+  client_id=CLIENT_ID&
+  redirect_uri=CALLBACK_URL&
+  scope=read
+```
+
+注意，response_type 为 token，表示要求直接返回令牌。
+
+第二步，用户在 B 网站登录后同意给 A 网站授权。B 就会跳转回 redirect_uri 指定的网址，并把令牌作为 URL 参数，传给 A 网站。
+
+```js
+https://a.com/callback#token=ACCESS_TOKEN
+```
+
+注意，令牌是做为了 URL 锚点（fragment），而不是查询字符串，因为 OAuth 2.0 允许跳转网址是 HTTP 协议（不是HTTPS），所以存在 “中间人攻击风险”，而浏览器跳转时，锚点不会发送到服务器，就减少了令牌泄露的风险。
+
+把令牌直接给前端是非常不安全的。所以，只能用在安全性不高的场景，并且令牌的有效期需要非常短，通常是会话期间有效。浏览器关掉，令牌就失效了。
+
+![https://www.wangbase.com/blogimg/asset/201904/bg2019040906.jpg](https://www.wangbase.com/blogimg/asset/201904/bg2019040906.jpg)
+
+一图胜千言。
 
 ### 3. 密码式 password
 
 用户需要提供给A网站用户名和密码，A 拿着用户名和密码自己到 B 申请令牌。
 
+第一步，A 网站要求用户提供 B 网站的用户名和密码，拿到以后，A 就直接向 B 请求令牌。
+
+```js
+https://oauth.b.com/token?
+  grant_type=password&
+  username=USERNAME&
+  password=PASSWORD&
+  client_id=CLIENT_ID
+```
+grant_type 为授权方式。
+
+第二步，B 网站验证身份通过后，直接给出令牌。注意，这时不需要跳转，而是把数据放到 JSON 中，作为 HTTP 回应，A 因此拿到令牌。
+
+注意，这种方式需要给 用户名 和 密码，风险很大，只适用于其他授权方式都无法采用的情况，而且必须是用户高度信任的应用。
+
 ### 4. 凭证式 client credentials
 
-适用于没有前端的命令行应用。
+适用于没有前端的命令行应用，即在命令行下请求令牌。
+
+第一步，A 应用在命令行向 B 发出请求：
+
+```js
+https://oauth.b.com/token?
+  grant_type=client_credentials&
+  client_id=CLIENT_ID&
+  client_secret=CLIENT_SECRET
+```
+
+注意，`grant_type` 为 `client_credentials` 表示凭证式。
+
+第二步，B 网站验证通过后，直接返回令牌。
+
+这种方式给出的令牌是针对第三方应用的，不是针对用户，即有可能多个用户共享同一个令牌。
+
 
 ## 令牌使用
 
@@ -128,3 +187,4 @@ https://b.com/oauth/token?
 - [http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html) 授权的 4 种方式
 - [http://www.ruanyifeng.com/blog/2019/04/oauth_design.html](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html) 快递员进入小区的授权机制
 - [https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html) 理解 OAuth 2.0
+- [https://www.cnblogs.com/gordon0918/p/5237717.html](https://www.cnblogs.com/gordon0918/p/5237717.html) http/https/ssl/中间人攻击/加密，简介
