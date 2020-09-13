@@ -11,13 +11,14 @@ features:
 - title: 业内信息
   details: 前端领域内的最新消息，了解趋势。
 
-footer: llccing Copyright © 2019
+footer: llccing Copyright © 2020
 ---
 
 
 # 推荐文章
 
-* [我的经历](/about/) 菜鸟程序员，挣扎求生路。
+* [OAuth 2.0](/lib/nestjs/01-OAuth_2.0.html) 后端开发之 OAuth 2.0
+* [Vue CLI 探索](https://llccing.github.io/vue-learn-share/vue-cli/) Vue CLI 探索
 
 
 
