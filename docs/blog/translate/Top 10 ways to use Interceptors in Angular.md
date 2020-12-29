@@ -467,3 +467,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
 - [驼峰拼写法](https://www.ruanyifeng.com/blog/2007/06/camelcase.html)
 - [XSRF/CSRF](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0)
+
+## 感谢阅读
+感谢你阅读到这里，翻译的不好的地方，还请指点。希望我的内容能让你受用，再次感谢。[by llccing 千里](https://llccing.github.io/FrontEnd/)
