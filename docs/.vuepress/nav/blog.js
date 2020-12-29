@@ -44,12 +44,13 @@ const sidebar = {
       children: [
         ...[
           '',
+          'Top 10 ways to use Interceptors in Angular',
           'what-you-need-know-about-Vue-3-in-2020',
           'core-js@3, babel and a look into the future',
           'vue-cli-plugin-dev',
           'vue-cli-plugin-typescript-readme',
           'vue-cli-plugin-eslint-readme',
-          'making-vue-3'
+          'making-vue-3',
         ].map(item => `./translate/${item}`)
       ]
     },
