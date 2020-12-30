@@ -33,7 +33,7 @@
 在示例的 HTTP 请求中，我使用了 [JSONPlaceholder](https://jsonplaceholder.typicode.com/) 这个网站。如果你想看代码，你可以从这里找到：
 
 - 10.x 版本，译者版本
-[GitHub 示例代码 10.x版本](https://github.com/) 📜
+[GitHub 示例代码 10.x版本](https://github.com/llccing-demo/ng-interceptors) 📜
 [StackBlitz 线上运行](https://stackblitz.com/github/) 🏃
 
 - 8.x 版本，作者版本
@@ -445,7 +445,7 @@ export class AuthInterceptor implements HttpInterceptor {
 ![15](http://static.llccing.cn/front-end/top-10-ways-to-use-interceptors/15.jfif)
 
 - 10.x 版本，译者版本
-[GitHub 示例代码 10.x版本](https://github.com/) 📜
+[GitHub 示例代码 10.x版本](https://github.com/llccing-demo/ng-interceptors) 📜
 [StackBlitz 线上运行](https://stackblitz.com/github/) 🏃
 
 - 8.x 版本，作者版本
