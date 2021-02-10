@@ -6,9 +6,7 @@
 
 Passport 是一个简单、低调的 nodejs 身份验证中间件。它是弹性的、模块化的，能够集成到任何基于 express 的 web 应用。支持一系列权限策略：账号密码、Facebook、Twitter 等。
 
-
-
-
+详情请浏览我的翻译内容。
 
 ## passport-jwt | passport-local | bcrypt
 
