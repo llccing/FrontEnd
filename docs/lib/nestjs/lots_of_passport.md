@@ -8,6 +8,8 @@ Passport 是一个简单、低调的 nodejs 身份验证中间件。它是弹性
 
 详情请浏览我的翻译内容。
 
+### OpenID / OAuth
+
 ## passport-jwt | passport-local | bcrypt
 
 ### 参考
