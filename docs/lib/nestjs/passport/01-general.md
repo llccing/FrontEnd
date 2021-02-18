@@ -12,7 +12,7 @@ Passport 认识到每个应用有自己独特的认证需求。认证机制，�
 app.post('/login', passport.authentication('local', {successRedirect: '/', failureRedirect: '/login'}));
 ```
 
-__install__
+__安装__
 
 ```js
 npm install passport
@@ -254,7 +254,7 @@ passport.deserializeUser(function(id, done) {
 
 最广泛使用的网站认证用户的方式是通过用户名和密码。对这种机制的支持是通过提供 [passport-local](https://github.com/jaredhanson/passport-local) 模块。
 
-## install
+## 安装
 
 ```js
 npm install passport-local
@@ -343,7 +343,7 @@ function(username, password, done) {
 
 OpenID 的支持通过 [passport-openid](https://github.com/jaredhanson/passport-openid) 模块提供。
 
-## install
+## 安装
 
 ```js
 npm install passport-openid
@@ -441,7 +441,7 @@ OAuth 初始版本被一群组织松散的 Web 开发者开发作为开放标准
 
 OAuth 的支持通过 [passport-oauth](https://github.com/jaredhanson/passport-oauth) 模块实现
 
-## install
+## 安装
 
 ```js
 npm install passport-oauth
