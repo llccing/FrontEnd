@@ -593,6 +593,43 @@ Web 页面的链接或者按钮，当点击的时候能够开始认证过程。
 
 `provider` {String}
 
+&emsp; 提供者，用户认证的地方（`facebook`, `twitter`, 等）。  
+
+
+`id` {String}
+
+&emsp; 用户的唯一标识，通常由服务提供者生成。
+
+
+`displayName` {String}
+
+&emsp; 用户名，适合展示
+
+
+`name` {Object}
+
+&emsp; `familyName` 用户的 family name，或者大多数西方语言的 “last name”。
+
+&emsp; `givenName` 用户的 given name，或者大多数西方语言的 “first name”。
+
+&emsp; `middleName` 用户的 middle name。
+
+
+`emails` {Array} [n]
+
+&emsp; `value` {String} 地址的 email 地址。
+
+&emsp; `type` {String} email 地址的类型（家里、工作单位，等）。
+
+
+`photos` {Array} [n]
+
+&emsp; `value` {String} 图片地址
+
+
+注意，上面的字段不是全部都能从每个服务提供者处获得。一些提供者可能包含没在这列出的其他信息。参考特定提供者的文档来了解更多详细信息。
+
+
 
 ## 参考
 
