@@ -164,6 +164,142 @@ app.get('/auth/twitter/callback',
 
 # Google
 
+Google 策略允许用户使用 Google 账户登录一个 web 应用。Google [过去一直在内部支持 OpenID](https://developers.google.com/identity/protocols/OpenID2Migration#shutdown-timetable)，但是现在基于 [OpenID Connect](https://developers.google.com/identity/protocols/OpenIDConnect) 工作，并且支持 OAuth 1.0 和 OAuth 2.0。
+
+Google 支持通过 [passport-google-oauth](https://github.com/jaredhanson/passport-google-oauth) 模块实现。
+
+## 安装
+
+```js
+npm install passport-google-oauth
+```
+
+## 配置
+
+用来去 Google 认证的 Client ID 和 Client Secret 能够在 [Google 开发者控制台](https://console.developers.google.com/) 获得。你可能也需要在开发者控制台开启 Google+ API，否则用户信息可能获取不到。Google 同时支持 OAuth 1.0 和 OAuth 2.0 的认证。
+
+### OAuth 1.0
+
+Google 的 OAuth 1.0 认证策略使用一个 Google 账户和 OAuth token 认证用户。这个策略需要一个 `verfiy` 回调，它接受这些凭证和调用 `done` 方法来提供 user。还有 `options` 参数定义了 消费者 key，消费者 secret 和回调 URL。
+
+#### 配置
+
+```js
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+
+// 在 Passport 中使用 Google 策略。
+// Passport 的策略需要一个 `verify` 函数，它接收凭证（本例中有：token，tokenSecret 和 Google 提供的个人信息），然后将 user 传入回调函数中。
+passport.use(new GoogleStrategy({
+    consumerKey: GOOGLE_CONSUMER_KEY,
+    consumerSecret: GOOGLE_CONSUMER_SECRET,
+    callbackURL: 'http://www.example.com/auth/google/callback'
+},
+function (token, tokenSecret, profile, done) {
+    User.findOrCreate({googleId: profile.id}, function(err, user) {
+        return done(err, user);
+    })
+}
+))
+
+```
+
+#### 路由
+
+使用 passport.authenticate() 定义 Google 策略，来认证请求。Google 认证需要一个额外的 `scope` 参数。了解更多信息，请去[这里](https://developers.google.com/identity/protocols/OpenIDConnect#scope-param)。
+
+```js
+// GET /auth/google
+//  使用 passport.authenticate() 作为路由中间件来认证请求。Google 认证的第一步是重定向用户到 google.com。授权后，Google 将重定向用户返回应用的 /auth/google/callback 接口。
+
+app.get('/auth/google',
+    passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' })
+)
+
+// GET /auth/google/callback
+//  使用 passport.authenticate() 作为路由中间件来认证请求。
+//  如果认证失败，用户将被重重定向会登录页。否则，基本路由函数将被调用，在本例中，将重定向用户到主页。
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    // 注意，这里和 passport.authenticate() 函数同级
+    function(req, res) {
+        res.redirect('/');
+    }
+)
+```
+
+### OAuth 2.0
+
+Google OAuth 2.0 认证策略使用 Google 账户和 OAuth 2.0 token 认证用户。这个策略需要一个 `verify` 回调，它接受这些凭证和调用 `done` 方法来提供 user。还有 `options` 参数定义了 Client ID，Client secret 和回调 URL。
+
+#### 配置
+
+```js
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+// 在 Passport 中使用 Google 策略。
+// Passport 的策略需要一个 `verify` 函数，它接收凭证（本例中有：accessToken，refreshToken 和 Google 提供的个人信息），然后将 user 传入回调函数中。
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: 'http://www.example.com/auth/google/callback',
+},
+// 注意，OAuth 2.0 策略的配置中，function 作为策略的第二个参数
+// 和 OAuth 1.0 略有不同。
+function (accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ google: profile.id }, function(err, user) {
+        return done(err, user)
+    })
+}
+))
+
+```
+
+#### 路由
+
+使用 passport.authenticate() 定义 Google 策略，来认证请求。Google 认证需要一个额外的 `scope` 参数。了解更多信息，请去[这里](https://developers.google.com/identity/protocols/OpenIDConnect#scope-param)。
+
+
+```js
+// GET /auth/google
+//  使用 passport.authenticate() 作为路由中间件来认证请求。Google 认证的第一步是重定向用户到 google.com。授权后，Google 将重定向用户返回应用的 /auth/google/callback 接口。
+
+app.get('/auth/google',
+    passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' })
+)
+
+// GET /auth/google/callback
+//  使用 passport.authenticate() 作为路由中间件来认证请求。
+//  如果认证失败，用户将被重重定向会登录页。否则，基本路由函数将被调用，在本例中，将重定向用户到主页。
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    // 注意，这里和 passport.authenticate() 函数同级
+    function(req, res) {
+        res.redirect('/');
+    }
+)
+```
+
+## 链接
+
+页面上的一个链接或者按钮，允许点击登录 Google。
+
+```js
+<a href="/auth/facebook" >登录 Google</a>
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
