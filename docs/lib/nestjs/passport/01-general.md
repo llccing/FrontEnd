@@ -1,4 +1,8 @@
-# 概览
+# [译]Passport 文档（一）入门
+
+[http://www.passportjs.org/docs/downloads/html/](http://www.passportjs.org/docs/downloads/html/) 原文地址
+
+## 概览
 
 Passport 是 NodeJS 的认证中间件。他的唯一设计目的是：验证请求。书写模块化的、封装代码是一种美德，所以 Passport 将除了验证请求之外的功能都分发给应用程序来实现。关注点分离使代码能够更加整洁、可维护，同时也使 Passport 能够极易集成到应用中。
 
@@ -37,7 +41,7 @@ app.post('/login',
 
 注意：在路由使用策略时，一定要预先配置。继续阅读详细[配置 todo ](http://www.passportjs.org/guide/configure/)章节。
 
-## 重定向
+### 重定向
 
 重定向通常是在认证请求之后发出的。
 
@@ -52,7 +56,7 @@ app.post('/login',
 
 这种情况下，重定向选项将覆盖默认行为。若成功认证，用户将重定向到主页。若认证失败，用户将重定向返回到登录页去再次尝试。
 
-## 即时消息（Flash Messages）
+### 即时消息（Flash Messages）
 
 重定向通常和即时消息结合来展示用户的状态信息。
 
@@ -86,7 +90,7 @@ passport.authenticate('local', {
 
 注意：使用即时消息需要 `req.flash()` 函数。Express 2.x 提供了这个功能，不过 Express 3.x 移除了。在使用 Express 3.x 时，建议使用 [connect-flash](https://github.com/jaredhanson/connect-flash) 中间件，它提供了这个功能。
 
-## 禁止 Sessions
+### 禁止 Sessions
 
 成功授权后，Passport 将建立一个持久的登录 session。对于用户通过浏览器访问 web 应用的场景这是有用的。然后，其他情况下，不需要 session 支持。例如，API 服务器通常需要每个请求携带凭证。这种情况下，session 支持能够通过设置 session 选项为 false 来安全的禁用。
 
@@ -99,7 +103,7 @@ app.get('/api/users/me',
 )
 ```
 
-## 自定义回调
+### 自定义回调
 
 如果内部选项不足够处理认证请求，自定义回调能够让应用处理成功和失败的情况。
 
@@ -196,7 +200,7 @@ return done(err);
 
 验证回调通过委派的方式使 Passport 可以无需数据库支持。应用可以自己决定如何存储用户信息，没有验证层强加的任何假设。
 
-#### 中间件
+##### 中间件
 
 在基于 [Connect](http://senchalabs.github.com/connect/) 或者 [Express](http://expressjs.com/) 的应用中，需要使用 `passport.initialize()` 中间件来初始化 Passport。如果你的应用使用了持久化登录 Session，`passport.session()` 中间件也需要使用。
 
@@ -227,7 +231,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 ```
 
-#### sessions 会话
+##### sessions 会话
 
 在常规的 web 应用中，用于认证用户的凭证仅在登录请求时被发送。如果认证成功，一个session 将被建立和保持，通过设置在浏览器中的 cookie。
 
@@ -250,17 +254,17 @@ passport.deserializeUser(function(id, done) {
 
 序列化和反序列化逻辑由应用来提供，允许应用选择一个合适的数据库和（或者）对象mapper，无需认证层强加。
 
-# 用户名 和 密码
+## 用户名 和 密码
 
 最广泛使用的网站认证用户的方式是通过用户名和密码。对这种机制的支持是通过提供 [passport-local](https://github.com/jaredhanson/passport-local) 模块。
 
-## 安装
+### 安装
 
 ```js
 npm install passport-local
 ```
 
-## 配置
+### 配置
 
 ```js
 var passport = require('passport'),
@@ -286,7 +290,7 @@ passport.use(new LocalStrategy(
 
 这个本地认证的验证回调接受 `username` 和 `password` 参数，通过应用的登录表单提交上来的。
 
-## 表单
+### 表单
 
 Web 页面的一个表单，允许用户输入他们凭证然后登录。
 
@@ -306,7 +310,7 @@ Web 页面的一个表单，允许用户输入他们凭证然后登录。
 </form>
 ```
 
-## 路由
+### 路由
 
 登录表单通过 `POST` 方法提交到服务器。使用 `local` 策略的 `authenticate` 函数来处理登录请求。
 
@@ -322,7 +326,7 @@ app.post('/login',
 
 设置 `failureFlash` 选项为 `true` 表明 Passport 使用验证回调提供的 `message` 选项来发送一个 `error` 消息。这对于提示用户再试一次很有用。
 
-## 参数
+### 参数
 
 默认的，`LocalStrategy` 预期在参数中找到命名为 `username` 和 `password` 的凭证。如果你的网站更喜欢用其他字段命名，有可用的选项支持修改默认值。
 
@@ -337,19 +341,19 @@ function(username, password, done) {
 ))
 ```
 
-# OpenID
+## OpenID
 
 [OpenID](http://openid.net/) 是一个联合认证的开放标准。当访问网站时，用户使用 OpenID 登录。用户通过他们选择 OpenID 提供者（它发出一个断言来确认用户身份）来认证。网站验证这个断言来让用户登录。
 
 OpenID 的支持通过 [passport-openid](https://github.com/jaredhanson/passport-openid) 模块提供。
 
-## 安装
+### 安装
 
 ```js
 npm install passport-openid
 ```
 
-## 配置
+### 配置
 
 当使用 OpenID 时，返回地址和领域必须设置。 `returnURL` 是用户在使用 OpenID 提供者认证后重定向的地址。`realm` 表明 URL空间中验证有效的部分。通常它会是网站的根 URL。
 
@@ -371,7 +375,7 @@ function(identifier, done) {
 
 OpenID认证的验证回调接受一个 `identifier` 参数，包含用户的声明识别码。
 
-## 表单
+### 表单
 
 web 页面的表单，允许用户输入 OpenID 然后登录。
 
@@ -387,7 +391,7 @@ web 页面的表单，允许用户输入 OpenID 然后登录。
 </form>
 ```
 
-## 路由
+### 路由
 
 OpenID 认证需要2个路由。第一个路由接受表单提交中包含的 OpenId 识别码。认证期间，用户将被重定向到 OpenID 提供者。第二个路由是用户在使用 OpenID 提供者认证后，将返回的 URL。
 
@@ -408,7 +412,7 @@ app.get('/auth/openid/return',
 
 ```
 
-## 个人资料交换
+### 个人资料交换
 
 OpenID 能够可选择的设置为取回已认证用户的个人信息。个人资料交换通过设置 `profile` 选项为 `true` 开启。
 
@@ -426,7 +430,7 @@ function(identifier, profile, done) {
 
 当个人资料交换开启后，验证回调函数签名接收额外的 `profile` 参数，包含 OpenID 提供者提供的用户个人信息；通过 [User Profile](http://www.passportjs.org/guide/profile/) 来了解更多信息。
 
-# OAuth
+## OAuth
 
 [OAuth](http://oauth.net/) 是个标准协议，它允许用户授权 API 使用权给网站、桌面程序或者移动应用。一旦被授权，被授权的应用能够代表用户使用 API。OAuth 也已经成为流行的[委托授权](http://hueniverse.com/2009/04/introducing-sign-in-with-twitter-oauth-style-connect/)机制。
 
@@ -441,17 +445,17 @@ OAuth 初始版本被一群组织松散的 Web 开发者开发作为开放标准
 
 OAuth 的支持通过 [passport-oauth](https://github.com/jaredhanson/passport-oauth) 模块实现
 
-## 安装
+### 安装
 
 ```js
 npm install passport-oauth
 ```
 
-### OAuth 1.0
+#### OAuth 1.0
 
 OAuth 1.0 是包含多个步骤的代理认证策略。首先，需要获得请求 token。然后，用户被重定向到服务提供者处授权。最后，授权后，用户被重定向回应用并且请求 token 能够用来交换访问 token。请求访问的应用程序（称为消费者）由消费者 key 和 消费者 secret 标识。
 
-## 配置
+### 配置
 
 当使用通用 OAuth 策略时，key, secret 和 endpoints 作为选项定义。
 
@@ -476,7 +480,7 @@ function(token, tokenSecret, profile, done) {
 ```
 基于 OAuth 策略的验证回调接受 `token`，`tokenSecret` 和 `profile` 参数。`token` 是访问 token，`tokenSecret` 是它对应的秘钥。`profile` 包含服务提供者提供的用户个人信息。通过 [User Profile](http://www.passportjs.org/guide/profile/) 了解更多信息。
 
-## 路由
+### 路由
 
 OAuth 认证需要2个路由。第一个路由发起一个 OAuth 交换和重定向用户到服务提供者处。第二个路由是个URL，用户在提供者认证后重定向的 URL。
 
@@ -497,7 +501,7 @@ app.get('/auth/provider/callback',
 )
 ```
 
-## 链接
+### 链接
 
 在网页中可以放置一个链接或者按钮，它们在点击时将开始认证过程。
 
@@ -505,11 +509,11 @@ app.get('/auth/provider/callback',
 <a href="/auth/provider">使用 OAuth 提供者登录</a>
 ```
 
-### OAuth 2.0
+#### OAuth 2.0
 
 OAuth 2.0 是 OAuth 1.0 的接班人，被设计来克服早期版本的已知缺陷。认证流程本质上是一样的。用户首先被重定向到服务提供者处授权，授权后，用户携带一个能够获取访问 token 的码被重定向回应用。请求访问的应用（作为客户端）由 ID 和 秘钥标识。
 
-## 配置
+### 配置
 
 使用通用 OAuth 2.0 策略时，client ID，client secret 和 endpoints 作为选项定义。
 
@@ -534,7 +538,7 @@ function(accessToken, refreshToken, profile, done) {
 ```
 基于 OAuth 2.0 策略的验证回调接受 `accessToken`，`refreshToken` 和 `profile` 参数。`refreshToken` 能够用来获取新的访问 token，也有可能是 `undefined` 如果提供者不发行刷新 token。`profile` 将包含服务提供者提供的用户个人信息。查看 [User Profile](http://www.passportjs.org/guide/profile/) 了解更多信息。
 
-## 路由
+### 路由
 
 OAuth 2.0 认证需要两个路由。第一个路由重定向用户到服务提供者。第二个路由是个 URL，用户在提供者处认证后重定向的URL。
 
@@ -557,7 +561,7 @@ app.get('/auth/provider/callback',
 
 ```
 
-## 作用域
+### 作用域
 
 当使用 OAuth 2.0 请求访问时，访问的作用域通过 scope 选项控制。
 
@@ -577,7 +581,7 @@ app.get('/auth/provider',
 
 `scope` 选项的值时提供者特定的。详情参考提供者文档，了解支持的作用域。
 
-## 链接
+### 链接
 
 Web 页面的链接或者按钮，当点击的时候能够开始认证过程。
 
@@ -585,7 +589,7 @@ Web 页面的链接或者按钮，当点击的时候能够开始认证过程。
 <a href="/auth/provider">使用 OAuth 2.0 提供者登录</a>
 ```
 
-# 用户个人信息
+## 用户个人信息
 
 当使用第三方服务，例如 Facebook 或者 Twitter 认证时，用户个人信息通常会可用。每个服务倾向于有个不同的方式编码这些信息。为了更易集成，Passport 尽可能规范化个人信息。
 
@@ -634,3 +638,6 @@ Web 页面的链接或者按钮，当点击的时候能够开始认证过程。
 ## 参考
 
 - [https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function](https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function) function signature
+
+## 感谢阅读
+感谢你阅读到这里，翻译的不好的地方，还请指点。希望我的内容能让你受用，再次感谢。[by llccing 千里](https://llccing.github.io/FrontEnd/)

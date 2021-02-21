@@ -1,16 +1,19 @@
-# Facebook
+# [译]Passport 文档（二）提供者
+
+[http://www.passportjs.org/docs/downloads/html/](http://www.passportjs.org/docs/downloads/html/) 原文地址
+## Facebook
 
 Facebook 策略允许用户使用他们的 Facebook 账户登录一个 web 应用。在内部，Facebook 认证使用 OAuth 2.0 进行工作。
 
 Facebook 支持通过 [passport-facebook](https://github.com/jaredhanson/passport-facebook) 模块实现。
 
-## 安装 
+### 安装 
 
 ```js
 npm install passport-facebook
 ```
 
-## 配置
+### 配置
 
 使用 Facebook 认证前，你必须在 [Facebook 开发者平台](https://developers.facebook.com/) 创建一个应用。创建完成后，这个应用会有 App ID 和 App Secret。你的应用也必须实现一个重定向 URL，当用户批准了你的应用访问权限后，Facebook 会将用户重定向到该 URL。
 
@@ -39,7 +42,7 @@ Facebook 认证的验证回调接受 `accessToken`，`refreshToken` 和 `profile
 
 注意：为了安全，重定向 URL 必须和在 Facebook 注册的是相同主机名。（译者注：不包含协议和端口）
 
-## 路由
+### 路由
 
 Facebook 认证需要两个路由。第一个重定向用户到 Facebook。第二个是个URL，Facebook 将在用户登录后，将用户重定向到该 URL。
 
@@ -63,7 +66,7 @@ app.get('/auth/facebook/callback',
 
 注意，回调的 URL 需要匹配配置策略时指定的 `callbackURL` 选项。
 
-## 权限
+### 权限
 
 如果你的应用需要扩展权限，可以通过设置 `scope` 选项来请求该权限。
 
@@ -81,7 +84,7 @@ app.get('/auth/facebook',
 )
 ```
 
-## 链接
+### 链接
 
 页面上的一个链接或者按钮，允许点击登录 Facebook。
 
@@ -89,19 +92,19 @@ app.get('/auth/facebook',
 <a href="/auth/facebook" >登录 Facebook</a>
 ```
 
-# Twitter
+## Twitter
 
 Twitter 策略允许用户使用他们的 Twitter 账户登录一个 web 网站。在内部，Twitter 认证使用 OAuth 1.0a 进行工作。
 
 Twitter 支持通过 [passport-twitter](https://github.com/jaredhanson/passport-twitter) 模块实现。
 
-## 安装
+### 安装
 
 ```js
 npm install passport-twitter
 ```
 
-## 配置
+### 配置
 
 使用 Twitter 认证前，你首先需要在 [Twitter 开发者平台](https://dev.twitter.com/) 创建应用。创建完成后，应用会被授予一个 消费者 key 和 消费者 secret。你的应用必须实现一个回调 URL，当用户为你的应用授权后，Twitter 将重定向用户到该 URL。
 
@@ -127,7 +130,7 @@ function (token, toeknSecret, profile, done) {
 
 Twitter 认证的验证回调接受 `token`，`tokenSecret` 和 `profile` 参数。`profile` 包含 Twitter 提供的用户个人信息。查看 [User Profile](http://www.passportjs.org/guide/profile/) 了解更多详细信息
 
-## 路由
+### 路由
 
 Twitter 认证需要两个路由。第一个是初始化一个 OAuth 交换和重定向用户到 Twitter。第二个用户登录成功后，Twitter 将重定向用户到该 URL。
 
@@ -153,7 +156,7 @@ app.get('/auth/twitter/callback',
 
 注意，回调的 URL 需要匹配配置策略时指定的 `callbackURL` 选项。
 
-## 链接
+### 链接
 
 页面上的一个链接或者按钮，允许点击登录 Twitter。
 
@@ -162,27 +165,27 @@ app.get('/auth/twitter/callback',
 ```
 
 
-# Google
+## Google
 
 Google 策略允许用户使用 Google 账户登录一个 web 应用。Google [过去一直在内部支持 OpenID](https://developers.google.com/identity/protocols/OpenID2Migration#shutdown-timetable)，但是现在基于 [OpenID Connect](https://developers.google.com/identity/protocols/OpenIDConnect) 工作，并且支持 OAuth 1.0 和 OAuth 2.0。
 
 Google 支持通过 [passport-google-oauth](https://github.com/jaredhanson/passport-google-oauth) 模块实现。
 
-## 安装
+### 安装
 
 ```js
 npm install passport-google-oauth
 ```
 
-## 配置
+### 配置
 
 用来去 Google 认证的 Client ID 和 Client Secret 能够在 [Google 开发者控制台](https://console.developers.google.com/) 获得。你可能也需要在开发者控制台开启 Google+ API，否则用户信息可能获取不到。Google 同时支持 OAuth 1.0 和 OAuth 2.0 的认证。
 
-### OAuth 1.0
+#### OAuth 1.0
 
 Google 的 OAuth 1.0 认证策略使用一个 Google 账户和 OAuth token 认证用户。这个策略需要一个 `verfiy` 回调，它接受这些凭证和调用 `done` 方法来提供 user。还有 `options` 参数定义了 消费者 key，消费者 secret 和回调 URL。
 
-#### 配置
+##### 配置
 
 ```js
 var passport = require('passport');
@@ -204,7 +207,7 @@ function (token, tokenSecret, profile, done) {
 
 ```
 
-#### 路由
+##### 路由
 
 使用 passport.authenticate() 定义 Google 策略，来认证请求。Google 认证需要一个额外的 `scope` 参数。了解更多信息，请去[这里](https://developers.google.com/identity/protocols/OpenIDConnect#scope-param)。
 
@@ -228,11 +231,11 @@ app.get('/auth/google/callback',
 )
 ```
 
-### OAuth 2.0
+#### OAuth 2.0
 
 Google OAuth 2.0 认证策略使用 Google 账户和 OAuth 2.0 token 认证用户。这个策略需要一个 `verify` 回调，它接受这些凭证和调用 `done` 方法来提供 user。还有 `options` 参数定义了 Client ID，Client secret 和回调 URL。
 
-#### 配置
+##### 配置
 
 ```js
 var passport = require('passport');
@@ -256,7 +259,7 @@ function (accessToken, refreshToken, profile, done) {
 
 ```
 
-#### 路由
+##### 路由
 
 使用 passport.authenticate() 定义 Google 策略，来认证请求。Google 认证需要一个额外的 `scope` 参数。了解更多信息，请去[这里](https://developers.google.com/identity/protocols/OpenIDConnect#scope-param)。
 
@@ -281,39 +284,13 @@ app.get('/auth/google/callback',
 )
 ```
 
-## 链接
+### 链接
 
 页面上的一个链接或者按钮，允许点击登录 Google。
 
 ```js
 <a href="/auth/facebook" >登录 Google</a>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 相关地址
 
@@ -322,3 +299,6 @@ app.get('/auth/google/callback',
 - [https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html) 微信 OAuth2.0 接入文档
 
 - [https://wiki.open.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91OAuth2.0%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3](https://wiki.open.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91OAuth2.0%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3) QQ OAuth 2.0 接入文档
+
+## 感谢阅读
+感谢你阅读到这里，翻译的不好的地方，还请指点。希望我的内容能让你受用，再次感谢。[by llccing 千里](https://llccing.github.io/FrontEnd/)

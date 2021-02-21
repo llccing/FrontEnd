@@ -1,4 +1,6 @@
-# 基本 & 摘要
+# [译]Passport 文档（三）基本 & 摘要
+
+[http://www.passportjs.org/docs/downloads/html/](http://www.passportjs.org/docs/downloads/html/) 原文地址
 
 连同定义 HTTP 的身份验证框架，[RFC 2617](http://tools.ietf.org/html/rfc2617) 也定义了基本和摘要认证方案。这两种方案都使用用户名和密码作为凭证来认证用户，并且通常用于保护 API 端点。
 
@@ -6,17 +8,17 @@
 
 通过提供 [passport-http](https://github.com/jaredhanson/passport-http) 模块来支持基本和摘要方案
 
-## 安装
+### 安装
 
 ```js
 npm install passport-http
 ```
 
-### 基本
+#### 基本
 
 基本方案使用用户名和密码来认证用户。这凭证将以明文方式传输，所以建议使用 HTTPS 来实施该方案。
 
-## 配置
+### 配置
 
 ```js
 passport.use(new BasicStrategy(
@@ -38,7 +40,7 @@ passport.use(new BasicStrategy(
 ```
 基本认证的验证回调接收 `username` 和 `password` 参数。
 
-## 保护端点
+### 保护端点
 
 ```js
 app.get('/api/me', 
@@ -51,11 +53,11 @@ app.get('/api/me',
 
 `基本` 策略中定义 `passport.authenticate()` 来保护 API 端点。sessions 通常不被API 需要，所以能够禁止。
 
-### 摘要
+#### 摘要
 
 摘要策略使用用户名和密码来认证用户。与基本策略相比，它的主要优势是使用挑战响应式（challenge-response ）范例来避免明文发送密码。
 
-## 配置
+### 配置
 
 ```js
 passport.use(new DigestStrategy(
@@ -84,7 +86,7 @@ passport.use(new DigestStrategy(
 
 第二个“验证回调”接受与随机数相关的参数，能够用来校验从而避免重播攻击。
 
-## 保护端点
+### 保护端点
 
 ```js
 app.get('/api/me',
@@ -98,7 +100,7 @@ app.get('/api/me',
 
 `摘要` 策略中定义 `passport.authenticate()` 来保护 API 端点。sessions 通常不被API 需要，所以能够禁止。
 
-# OAuth
+## OAuth
 
 [OAuth](http://oauth.net/)（[RFC 5849](http://tools.ietf.org/html/rfc5849) 正式定义）提供了一种方法 -- 用户授权第三方应用访问他们的数据，而不需要暴露他们的密码给这个应用。
 
@@ -112,7 +114,7 @@ OAuth 1.0 仍然被大范围使用，现在已经被 [OAuth 2.0](http://www.pass
 2. 如果用户授权许可，token 将发送给应用。
 3. 应用使用 token 认证来访问被保护资源。
 
-## 发送 Token
+### 发送 Token
 
 [OAuthorize](https://github.com/jaredhanson/oauthorize)，Passport 的一个同级项目，提供了一个实现 OAuth 提供者服务的工具包。
 
@@ -122,7 +124,7 @@ OAuth 1.0 仍然被大范围使用，现在已经被 [OAuth 2.0](http://www.pass
 
 作为工具包，OAuthorize 没有视图实现这个决定。这个指南不包括这个问题，但是强烈建议部署 OAuth 服务需要全面了解涉及的安全注意事项。
 
-## 认证 Token
+### 认证 Token
 
 一旦发送，OAuth token 能够使用 [passport-http-oauth](https://github.com/jaredhanson/passport-http-oauth) 模块认证。
 
@@ -130,7 +132,7 @@ OAuth 1.0 仍然被大范围使用，现在已经被 [OAuth 2.0](http://www.pass
 npm install passport-http-oauth
 ```
 
-## 配置
+### 配置
 
 ```js
 passport.use('token', new TokenStrategy(
@@ -179,7 +181,7 @@ passport.use('token', new TokenStrategy(
 
 最后一个“验证回调”是可选的，通过检查时间戳和请求使用的随机数来组织重播攻击。
 
-## 保护端点
+### 保护端点
 
 ```js
 app.get('/api/me', 
@@ -192,7 +194,7 @@ app.get('/api/me',
 
 `token` 策略中定义 `passport.authenticate()` 来保护 API 端点。sessions 通常不被API 需要，所以能够禁止。
 
-# OAuth 2.0
+## OAuth 2.0
 
 OAuth 2.0（[RFC 6749](http://tools.ietf.org/html/rfc6749) 正式定义）提供了授权框架，允许用户授予访问权限给第三方应用。当授权后，应用将发送一个 token 作为 认证凭证使用。这有两点主要的安全好处：
 
@@ -207,7 +209,7 @@ OAuth 2.0（[RFC 6749](http://tools.ietf.org/html/rfc6749) 正式定义）提供
 2. 如果用户授权许可，token 将发送给应用。
 3. 应用使用 token 认证来访问被保护资源。
 
-## 发送 token
+### 发送 token
 
 [OAuth2orize](https://github.com/jaredhanson/oauth2orize)，Passport 的一个同级项目，提供了一个实现 OAuth 2.0 认证服务的工具包。
 
@@ -217,24 +219,24 @@ OAuth 2.0（[RFC 6749](http://tools.ietf.org/html/rfc6749) 正式定义）提供
 
 作为工具包，OAuth2orize 没有视图实现这个决定。这个指南不包括这个问题，但是强烈建议部署 OAuth 2.0 服务需要全面了解涉及的安全注意事项。
 
-## 认证 token
+### 认证 token
 
 OAuth 2.0 提供了一个框架，可以在其中发布可任意扩展的 token 集合。实际上，只有特定的 token 类型得到广泛使用。
 
 
-## Bearer token （不记名 token）
+### Bearer token （不记名 token）
 
 Bearer token 是 OAuth 2.0 中最广泛发行的 token 类型。事实上，许多实现假定 bearer token 是唯一发行的 token 类型。
 
 Bearer token 能够使用 [passport-http-bearer](https://github.com/jaredhanson/passport-http-bearer) 模块认证。
 
-## 安装
+### 安装
 
 ```js
 npm install passport-http-bearer
 ```
 
-## 配置
+### 配置
 
 ```js
 passport.use(new BearerStrategy(
@@ -254,7 +256,7 @@ passport.use(new BearerStrategy(
 
 bearer token 的验证回调接受 `token` 作为参数。当调用 `done` 方法时，可选的 `info` 参数能够被传入，将被设置在 `req.authInfo` 属性上。这个通常用来传达 token 的作用域，并且可以在进行访问控制检查时使用。
 
-## 保护端点
+### 保护端点
 
 ```js
 app.get('/api/me', 
@@ -267,7 +269,7 @@ app.get('/api/me',
 
 使用 `bearer` 策略指定 `passport.authenticate()` 方法来保护 API 端点。API 常不使用 session，所以可以禁止。
 
-# API 方案
+## API 方案
 
 下面的策略列表实现了当保护 API 端点时用到的认证方案。
 
@@ -285,3 +287,6 @@ app.get('/api/me',
 | [OAuth 2.0 JWT Client Assertion](https://github.com/xtuple/passport-oauth2-jwt-bearer) | [draft-jones-oauth-jwt-bearer](http://tools.ietf.org/html/draft-jones-oauth-jwt-bearer) | [xTuple](https://github.com/xtuple) |
 | [OAuth 2.0 Public Client](https://github.com/timshadel/passport-oauth2-public-client) | [RFC 6749](http://tools.ietf.org/html/rfc6749) | [Tim Shadel](https://github.com/timshadel) |
 s
+
+## 感谢阅读
+感谢你阅读到这里，翻译的不好的地方，还请指点。希望我的内容能让你受用，再次感谢。[by llccing 千里](https://llccing.github.io/FrontEnd/)

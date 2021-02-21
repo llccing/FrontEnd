@@ -64,7 +64,13 @@ module.exports = {
       {
         title: 'nestjs',
         collapsable: true,
-        children: ['01-OAuth_2.0'].map(item => `./nestjs/${item}`)
+        children: [
+          '01-OAuth_2.0',
+          './passport/01-general',
+          './passport/02-providers',
+          './passport/03-apis',
+          './passport/04-operations'
+        ].map(item => `./nestjs/${item}`)
       }
     ]
   }

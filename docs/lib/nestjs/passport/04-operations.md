@@ -1,4 +1,7 @@
-# 登录
+# [译]Passport 文档（四）操作
+
+[http://www.passportjs.org/docs/downloads/html/](http://www.passportjs.org/docs/downloads/html/) 原文地址
+## 登录
 
 Passport 暴露一个 `login()` 函数在 `req`（也有 `logIn()` 这个别名）上，它能够在建立登录 session 时使用。
 
@@ -14,7 +17,7 @@ req.login(user, function(err) {
 
 注意：`passport.authenticate()` 中间件会自动调用 `req.login()` 方法。这个函数主要是用户注册时使用，在此期间可以调用 `req.login()` 来自动登录新注册的用户。
 
-# 登出
+## 登出
 
 Passport 暴露一个 `logout()` 函数在 `req`（也有 `logOut()` 这个别名）上，它能够被任何需要结束登录 session  的路由处理器调用。调用 `logout()` 方法将会移除 `req.user` 属性同时清理登录 session （如果存在）。
 
@@ -25,7 +28,7 @@ app.get('/logout', function (req, res) {
 })
 ```
 
-# 授权
+## 授权
 
 一个应用可能需要包含来自多个第三方平台的信息。这种情况下，应用需要请求用户去“链接”，例如，同时链接 Facebook 和 Twitter 账户。
 
@@ -59,7 +62,7 @@ app.get('/connect/twitter/callback',
 
 在回调路由中，你可以同时看见 `req.user` 和 `req.account`。新链接的账户已经和登录用户相关联并且被存储到数据库中。
 
-## 配置
+### 配置
 
 认证使用的策略和授权使用的策略是一样的。然而，应用可能需要同时提供认证和授权第三方服务。这种情况，可以使用命名策略，通过覆盖在调用 `use()` 方法时使用的默认策略名字。
 
@@ -94,7 +97,7 @@ function (token, tokenSecret, profile, done) {}
 
 上面这个例子，你可以看见 `twitter-authz` 策略找到或者创建一个 `Account` 实例来存储 Twitter 账号信息。结果将设置到 `req.account` 属性，允许路由处理器将账户与经过认证的用户关联。
 
-### 验证回调中的关联
+#### 验证回调中的关联
 
 上述描述的缺点是，它需要相同策略和支持路由的两个实例。
 
@@ -120,3 +123,6 @@ function (req, token, tokenSecret, profile, done) {
 ```
 
 将 `req` 作为参数传入，验证回调能够使用请求状态来定制认证过程，使用一个单独的策略实例和路由集合来处理认证和授权。例如，如果用户已经登录，一个新的“链接”账户能够被关联。任何添加的设置到 `req` 上的特定应用的属性，包括 `req.session`，也能够被使用。
+
+## 感谢阅读
+感谢你阅读到这里，翻译的不好的地方，还请指点。希望我的内容能让你受用，再次感谢。[by llccing 千里](https://llccing.github.io/FrontEnd/)
