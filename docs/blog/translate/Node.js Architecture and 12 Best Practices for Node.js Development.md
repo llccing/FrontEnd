@@ -145,10 +145,102 @@ Node.js 因为 __“异步事件驱动、非阻塞 I/O”__ 处理而受欢迎�
 
 这三层的设置对大多数 Node.js 应用来说都是可靠的脚手架，使你的应用能够易于编写，可维护，便于调试和测试。现在我们看下如何在我们的项目中实现这些层。
 
-### 最佳实践 #2: 目录结构
+### 最佳实践 #2: 目录结构，恰当的组织你的代码文件
+
+上一部分，我们已经看到如何从逻辑上以模块化的方式将我们项目分为 3 层。这个抽象结构能够通过恰当的目录结构实现，即将不同的模块放到不同的目录。
+
+这里清晰的描述了每个功能应该放到哪个位置，允许我们将类和方法放到不同的易于管理的目录中。下面是一个通用的（也是高效的）目录结构，能够作为我们开始新的 Node.js 项目的模板。
+
+```js
+   src
+      ├── app.js			app entry point 入口
+      ├── /api			    controller layer: api routes 路由
+      ├── /config			config settings, env variables 配置，环境变量
+      ├── /services		    service layer: business logic 服务层：业务逻辑
+      ├── /models			data access layer: database models 数据访问层：数据模型
+      ├── /scripts		    miscellaneous NPM scripts 各种的 npm 脚本
+      ├── /subscribers		async event handlers 异步事件处理
+      └── /test             test suites 测试
+```
+
+这里，目录 - __/API__(controller 层)，__/services__，和 __/models__（数据访问层）代表了我们在上一节讨论的 3 层。__/scripts__ 目录用来存储构建（或者部署）工作流自动化脚本，__/test__ 目录用于存储测试用例。我们将在后面的文章中讨论配置文件、环境变量和 发布/订阅模型时，看下 __/config__ 和 __/subscriber__ 目录的目的。
+
+作为开发者，没有什么比以清晰、整洁的结构读（写）代码、组织规划目录更让我开心的了。这能够让我们将下一个重要的开发实践记在脑中 - 整洁代码和易读性。
 
 ### 最佳实践 #3: 发布订阅模型
+
+发布者/订阅者模型是用于在发布者和订阅者这两个持续沟通的实体间的一种流行的数据交换模型。发布者（数据发送方）在对于接收实体没有任何了解的情况下通过特定的频道发送消息。另一方面，订阅者（消息接收方）表示对于一个或者多个这样的频道感兴趣，在对发送实体一无所知的情况下。
+
+在你的项目中包含这个模型来管理针对一个事件的多个子操作是个好主意。例如，你的 APP 中，当新的用户注册时，将做一些列事情 - 数据库创建用户实体，生成授权 key，发送确认邮件等等。如果通过单个服务函数做这些，不仅会使处理时间边长，也会违反单一职责原则。这里是相同的示例代码 - 
+
+```js
+export default class UserService() {		
+
+      async function signup(user) {
+
+        // 1. Create user record 创建用户记录
+        // 2. Generate auth key 生成授权 key
+        // 3. Send confirmation email 发送确认邮件
+        // ...  
+
+      }
+
+    }
+```
+让我们看下如何使用发布/订阅模型高效的简化和模块化它。
+
+在 Node.js 中，发布/订阅模型能够通过 Events API 来设置。上面的例子中，当收到请求时你可以编码，来触发第一个“signup”事件。这时，你的服务模块仅需要一次调用即可触发相应事件，与之相对的是非发布订阅模型下需要操作多个函数。
+
+```js
+ var events = require('events');
+      var eventEmitter = new events.EventEmitter();		
+
+      export default class UserService() {
+
+        async function signup(user) {
+          // emit 'signup' event
+          eventEmitter.emit('signup', user.data)
+        }
+
+      }
+
+```
+为了处理这样的事件，你可以定义多个订阅者，本质上他们是事件监听者，等待特定的事件的触发。这些订阅者能够基于他们的目的规划到不同的文件中，并存储到 /subscribers 目录中，正如我们上面看到的目录。
+让我们为上面的例子创建一个订阅者文件的例子 - 
+
+```js
+// email.js
+
+    // ...
+
+    eventEmitter.on('signup', async ({ data }) => {  // event listener 
+      // send email 
+    })
+
+    // ...
+```
+
+```js
+// auth.js
+
+    // ...
+
+    eventEmitter.on('signup', async ({ data }) => {	// event listener
+      // generate auth key
+    })
+
+    // ...
+```
+如你所见，这个方法非常整洁、灵活，因此适合维护和扩展。
+
 ### 最佳实践 #4: 整洁代码和易读性
+
+__使用代码格式化工具、样式规范；添加注释__
+
+#### lint & 格式化
+
+主要是目的是改善代码质量和使其更易读。大多数代码设置工作流总是包含代码 lint 和格式化工具。linter 在语法（甚至语义上）查找错误代码并发出警告。代码格式化（正如名字所示）工具注重格式方面，
+确保格式和样式规范在整个项目中一致。 一些流行的 linter 工具如 [ESLint](https://eslint.org/)，[JSLint](https://jslint.com/) 和 [JSHint](https://jshint.com/)
 
 ### 最佳实践 #5: 写异步代码
 ### 最佳实践 #6: 配置文件和环境变量
