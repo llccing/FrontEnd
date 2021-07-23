@@ -106,7 +106,7 @@ Node.js 因为 __“异步事件驱动、非阻塞 I/O”__ 处理而受欢迎�
 
 ## Node.js 开发的最佳实践
 
-网络上充满了关于 web 开发基础的教程、文档、blog和视频。但是通常，关于最佳实践的（重要的）信息是我们在开发过程中不断学习的东西，随着我们构建更多的应用程序，随着我们一路上失败和成功。、
+网络上充满了关于 web 开发基础的教程、文档、blog和视频。但是通常，关于最佳实践的（重要的）信息是我们在开发过程中不断学习的东西，随着我们构建更多的应用程序，随着我们一路上失败和成功。
 
 这个部分，我想将 web 开发中最重要的方面提取为一系列关键点，来在使用 Node.js 开发 web 应用时考虑。这些要点提供了有关某些设计决策如何在您的 web 开发生命周期过程中带来巨大收益的见解。
 
@@ -240,9 +240,70 @@ __使用代码格式化工具、样式规范；添加注释__
 #### lint & 格式化
 
 主要是目的是改善代码质量和使其更易读。大多数代码设置工作流总是包含代码 lint 和格式化工具。linter 在语法（甚至语义上）查找错误代码并发出警告。代码格式化（正如名字所示）工具注重格式方面，
-确保格式和样式规范在整个项目中一致。 一些流行的 linter 工具如 [ESLint](https://eslint.org/)，[JSLint](https://jslint.com/) 和 [JSHint](https://jshint.com/)
+确保格式和样式规范在整个项目中一致。 几个最流行的 linter 工具如 [ESLint](https://eslint.org/)，[JSLint](https://jslint.com/) 和 [JSHint](https://jshint.com/).代码格式化，可以看下[Prettier](http://prettier.io/)。大多数的 IDE 或者代码编辑器如 VS Code，Atom 等，懂得写高质量代码的重要性并且提供了 lint 和 格式化插件，他们很直观并且很容易设置。
+
+![lint format](https://cdn.buttercms.com/GMv3pRThQLyZNfZU9jAN)
+
+这些 IDEs 也提供了一些有用的功能，如智能补全，自动导入，鼠标浮上去的文档支持，调试工具，代码跳转，重构等等。所以，我强烈建议你使用这样的 IDE（VSCode 很完美）作为你的代码编辑器。
+
+#### 样式指南
+
+除了 lint 和格式化，你也可以参考被 [Google](https://google.github.io/styleguide/jsguide.html) 和 [Airbnb](https://github.com/airbnb/javascript) 这些巨人公司采用的 JavaScript 代码风格和标准。这些指南被包括从命名转换（对 文件、变量、类等）到文件编码的格式细节等等。
+这能够帮助你写高质量代码，符合世界上顶级开发者的编码实践和标准。
+
+![google javascirpt style guide](https://cdn.buttercms.com/X9WBAAf4SOSZt5TtalVr)
+
+#### Add comments
+
+当你写代码时，另一个重要的事是勤奋的添加一些有用的注释，这样你团队的其他成员将获益。即使是最复杂的代码片段，仅用五六个单词的句子也能使你的队友更了解你的代码。这节省了每个人很多时间和省去了困惑，是个双赢的方案。
+
+要注意的一个事是，我们应该更加聪明的添加注释，既不太多，也不太少。担心不知如何找到平衡？使用 Michael Gary Scott的话来说就是，"You'll learn baby. You'll learn"。
+
+注释也是一种给你的项目api写文档的方式（从上层来看，版权信息、作者信息等），他的类（描述和参数），方法和函数名（描述、参数、和返回类型等）。
+这些可以通过文档生成工具如 [JSDoc](https://jsdoc.app/) 来完成。
+
 
 ### 最佳实践 #5: 写异步代码
+
+__使用 promise、async/await 语法__
+
+JavaScript 因他的回调函数而出名（将函数作为参数传给另一个函数）。你也可以在 JavaScript 中定义异步行为。这个回调问题是 - 随着链式操作增加，
+代码将变得笨重且臃肿，导致臭名昭著的回调地狱。为了解决这个问题，ES 6（ECMAScript 2015）带来了 Promise API，从而使在 JavaScript 中写异步代码变得更加简单。在此之上，ES 8（2017），__async/await__ 语法的引入进一步简化且使 API 更加直观自然。
+
+因此，提倡抛弃笨重的回调函数，使用 async/await 和基于 Promise 的语法在你的 nodejs 项目中。这有利于代码整洁、可读性、更简单的错误处理和测试；
+这一切将同时保持清晰地控制流和更连贯的功能编程设置。
+
+使用 async/await 能够使感觉编码更加简单自然，这有个写异步代码的两种方式比较。
+
+```js
+<script>
+    function get_data() {
+        $.get('https://url.com/one', () => {
+            $.get('https://url.com/two', () => {
+                $.get('https://url.com/three', (res) => {
+                    console.log(res)
+                })
+            })
+        })
+    }
+</script>
+```
+回调函数的例子。
+
+```js
+<script>
+    async function get_data() { // async function
+        await $.get('https://url.com/one')
+        await $.get('https://url.com/two')
+        let res = await $.get('https://url.com/three')
+        console.log(res)
+    }
+</script>
+```
+async/await 的例子。
+
+正如前面提到的，我们已经在之前的文章 [JavaScript 异步编程](https://scoutapm.com/blog/async-javascript) 中包含异步编程涉及到的知识。如果你感兴趣，你可以查看这个， -> 异步 JavaScript: 从 Promises 到 Async/Await。
+
 ### 最佳实践 #6: 配置文件和环境变量
 
 ### 最佳实践 #7: 测试、日志和错误处理
