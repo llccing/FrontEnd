@@ -1,6 +1,6 @@
 const { nav, sidebar } = require('./nav/index.js')
 module.exports = {
-  title: '千里',
+  title: 'Rowan Liu',
   description: 'just do it! ',
   base: '/FrontEnd/',
   // serviceWorker: true,
