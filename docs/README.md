@@ -13,7 +13,3 @@ features:
 
 footer: llccing Copyright © 2022
 ---
-
-## 友情提示 ^_^
-
-内容已经迁移到语雀，[点击跳转到语雀](https://www.yuque.com/uov16w)。
