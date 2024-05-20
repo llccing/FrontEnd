@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'  # 使用最新的 LTS 版本
+        node-version: '18.12.0'  # 更新到满足要求的版本
 
     - name: Install dependencies
       run: |
