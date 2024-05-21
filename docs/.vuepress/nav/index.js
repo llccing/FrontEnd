@@ -1,4 +1,4 @@
-const CONFIG_NAV = ['home', 'blog', 'css', 'js', 'lib', 'read', 'about']
+const CONFIG_NAV = ['home', 'blog', 'css', 'js', 'lib', 'read']
 
 function initNav() {
   const nav = []
@@ -8,6 +8,10 @@ function initNav() {
     nav.push(config.nav)
     config.sidebar && Object.assign(sidebar, config.sidebar)
   })
+
+  nav.push(
+    { text: 'About', link: 'https://rowanliu.com/about' }
+  )
 
   return {
     nav,

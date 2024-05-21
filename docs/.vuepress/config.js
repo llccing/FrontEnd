@@ -1,13 +1,12 @@
 const { nav, sidebar } = require('./nav/index.js')
 module.exports = {
-  title: 'Rowan Liu',
+  title: 'Rowan Liu\'s Tech',
   description: 'just do it! ',
   base: '/FrontEnd/',
   // serviceWorker: true,
   // theme: 'vue',
   themeConfig: {
     lastUpdated: 'Last Updated',
-    repo: 'https://github.com/llccing/FrontEnd',
     nav,
     sidebar
   },

@@ -11,5 +11,5 @@ features:
 - title: 技术分享
   details: 总结归纳工作、学习中用到的知识点。
 
-footer: llccing Copyright © 2022
+footer: Rowan Liu Copyright © 2024
 ---
