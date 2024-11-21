@@ -1,5 +1,8 @@
-
 ## Agenda
 
 - Questions
-- Knowledge
+- Basic
+
+## Tips
+- Region
+- Cross-Region Replication
