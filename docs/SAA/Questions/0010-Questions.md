@@ -165,3 +165,22 @@ B. 创建一个 Amazon S3 File Gateway 以扩展公司的存储空间。创建�
 C. 创建一个 Amazon FSx for Windows File Server 文件系统以扩展公司的存储空间。
 D. 在每个用户的计算机上安装一个实用程序以访问 Amazon S3。创建一个 S3 生命周期策略，将数据转换为 S3 Glacier Flexible Retrieval 7 天后。
 
+## Q10
+
+A company is building an ecommerce web application on AWS. The application sends information about new orders to an Amazon API Gateway REST API to process. The company wants to ensure that orders are processed in the order that they are received.
+Which solution will meet these requirements?
+
+A. Use an API Gateway integration to publish a message to an Amazon Simple Notification Service (Amazon SNS) topic when the application receives an order. Subscribe an AWS Lambda function to the topic to perform processing.
+B. Use an API Gateway integration to send a message to an Amazon Simple Queue Service (Amazon SQS) FIFO queue when the application receives an order. Configure the SQS FIFO queue to invoke an AWS Lambda function for processing.
+C. Use an API Gateway authorizer to block any requests while the application processes an order.
+D. Use an API Gateway integration to send a message to an Amazon Simple Queue Service (Amazon SQS) standard queue when the application receives an order. Configure the SQS standard queue to invoke an AWS Lambda function for processing.
+
+Chinese Version:
+一个公司正在 AWS 上构建一个电子商务网络应用程序。应用程序将有关新订单的信息发送到 Amazon API Gateway REST API 以进行处理。公司希望确保订单按接收顺序处理。
+哪种解决方案将满足这些要求？
+
+A. 使用 API Gateway 集成在应用程序收到订单时发布消息到 Amazon Simple Notification Service (Amazon SNS) 主题。订阅 AWS Lambda 函数以执行处理。
+B. 使用 API Gateway 集成在应用程序收到订单时发送消息到 Amazon Simple Queue Service (Amazon SQS) FIFO 队列。配置 SQS FIFO 队列以调用 AWS Lambda 函数进行处理。
+C. 使用 API Gateway 授权器阻止任何请求，直到应用程序处理订单。
+D. 使用 API Gateway 集成在应用程序收到订单时发送消息到 Amazon Simple Queue Service (Amazon SQS) 标准队列。配置 SQS 标准队列以调用 AWS Lambda 函数进行处理。
+

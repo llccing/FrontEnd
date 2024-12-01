@@ -86,3 +86,8 @@ Amazon S3 File Gateway provides a seamless way to connect to the cloud to store 
 It can be used for on-premises data-intensive Amazon EC2-based applications that need file protocol access to S3 object storage. Lifecycle policies can then transition the data to S3 Glacier Deep Archive after 7 days.
 
 D is wrong because is involves too much extra configuration which is unnecessary.
+
+## Q10
+**Answer:** B
+
+AnswerB - SQS FIFO queues ensure that messages are processed in the order they are received, which perfectly matches the requirement of maintaining order.
