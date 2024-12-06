@@ -33,3 +33,23 @@ A. 创建一个 Amazon CloudFront 分发，其中包含 S3 存储桶和 ALB 作�
 B. 创建一个 Amazon CloudFront 分发，其中包含 ALB 作为源。创建一个 AWS Global Accelerator 标准加速器，其中包含 S3 存储桶作为端点。配置 Route 53 将流量路由到 CloudFront 分发。
 C. 创建一个 Amazon CloudFront 分发，其中包含 S3 存储桶作为源。创建一个 AWS Global Accelerator 标准加速器，其中包含 ALB 和 CloudFront 分发作为端点。创建一个指向加速器 DNS 名称的自定义域名。将自定义域名用作 Web 应用程序的端点。
 D. 创建一个 Amazon CloudFront 分发，其中包含 ALB 作为源。创建一个 AWS Global Accelerator 标准加速器，其中包含 S3 存储桶作为端点。创建两个域名。将一个域名指向 CloudFront DNS 名称以进行动态内容。将另一个域名指向加速器 DNS 名称以进行静态内容。将域名用作 Web 应用程序的端点。
+
+## Q13
+A company performs monthly maintenance on its AWS infrastructure. During these maintenance activities, the company needs to rotate the credentials for its Amazon RDS for MySQL databases across multiple AWS Regions.
+Which solution will meet these requirements with the LEAST operational overhead?
+
+A. Store the credentials as secrets in AWS Secrets Manager. Use multi-Region secret replication for the required Regions. Configure Secrets Manager to rotate the secrets on a schedule.
+B. Store the credentials as secrets in AWS Systems Manager by creating a secure string parameter. Use multi-Region secret replication for the required Regions. Configure Systems Manager to rotate the secrets on a schedule.
+C. Store the credentials in an Amazon S3 bucket that has server-side encryption (SSE) enabled. Use Amazon EventBridge (Amazon CloudWatch Events) to invoke an AWS Lambda function to rotate the credentials.
+D. Encrypt the credentials as secrets by using AWS Key Management Service (AWS KMS) multi-Region customer managed keys. Store the secrets in an Amazon DynamoDB global table. Use an AWS Lambda function to retrieve the secrets from DynamoDB. Use the RDS API to rotate the secrets.
+
+Chinese Version:
+一个公司每月对其 AWS 基础设施进行维护。在这些维护活动中，公司需要跨多个 AWS 区域轮换其 Amazon RDS for MySQL 数据库的凭证。
+哪个解决方案在操作开销方面最不繁琐？
+
+A. 将凭证作为 AWS Secrets Manager 中的秘密存储。使用多区域秘密复制所需的区域。配置 Secrets Manager 以按计划轮换秘密。
+B. 将凭证作为 AWS Systems Manager 中的安全字符串参数存储。使用多区域秘密复制所需的区域。配置 Systems Manager 以按计划轮换秘密。
+C. 将凭证存储在具有服务器端加密 (SSE) 的 Amazon S3 存储桶中。使用 Amazon EventBridge (Amazon CloudWatch Events) 调用 AWS Lambda 函数来轮换凭证。
+D. 使用 AWS Key Management Service (AWS KMS) 多区域客户管理密钥加密凭证。将秘密存储在 Amazon DynamoDB 全局表中。使用 AWS Lambda 函数从 DynamoDB 检索秘密。使用 RDS API 轮换秘密。
+
+## Q14

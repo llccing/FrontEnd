@@ -22,3 +22,18 @@ B: Incorrect - AWS Global Accelerator don't have cache function, so static file 
 C: Incorrect - Global Accelerator can configure CloudFront as the endpoint.
 D: Incorrect - We already have domain name. Why will we use new domain name? Will we change to new domain name? How everyone know you new domain name?
 
+## Q13
+**Answer:** A
+
+Keywords:
+- rotate the credentials for its Amazon RDS for MySQL databases across multiple AWS Regions
+- LEAST operational overhead
+
+A: Correct - AWS Secrets Manager supports
+- Encrypt credential for RDS, DocumentDb, Redshift, other DBs and key/value secret.
+- multi-region replication.
+- Remote base on schedule
+B: Incorrect - Secure string parameter only apply for Parameter Store. All the data in AWS Secrets Manager is encrypted
+C: Incorrect - don't mention about replicate S3 across region.
+D: Incorrect - So many steps compare to answer A =))
+
