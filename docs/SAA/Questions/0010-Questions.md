@@ -53,3 +53,21 @@ C. 将凭证存储在具有服务器端加密 (SSE) 的 Amazon S3 存储桶中�
 D. 使用 AWS Key Management Service (AWS KMS) 多区域客户管理密钥加密凭证。将秘密存储在 Amazon DynamoDB 全局表中。使用 AWS Lambda 函数从 DynamoDB 检索秘密。使用 RDS API 轮换秘密。
 
 ## Q14
+A company runs an ecommerce application on Amazon EC2 instances behind an Application Load Balancer. The instances run in an Amazon EC2 Auto Scaling group across multiple Availability Zones. The Auto Scaling group scales based on CPU utilization metrics. The ecommerce application stores the transaction data in a MySQL 8.0 database that is hosted on a large EC2 instance.
+The database's performance degrades quickly as application load increases. The application handles more read requests than write transactions. The company wants a solution that will automatically scale the database to meet the demand of unpredictable read workloads while maintaining high availability.
+Which solution will meet these requirements?
+
+A. Use Amazon Redshift with a single node for leader and compute functionality.
+B. Use Amazon RDS with a Single-AZ deployment Configure Amazon RDS to add reader instances in a different Availability Zone.
+C. Use Amazon Aurora with a Multi-AZ deployment. Configure Aurora Auto Scaling with Aurora Replicas.
+D. Use Amazon ElastiCache for Memcached with EC2 Spot Instances.
+
+Chinese Version:
+一个公司在其 Application Load Balancer 后面的 EC2 实例上运行一个电商应用程序。实例在多个可用区中的 Amazon EC2 Auto Scaling 组中运行。Auto Scaling 组根据 CPU 利用率指标扩展。电商应用程序将事务数据存储在运行在大型 EC2 实例上的 MySQL 8.0 数据库中。
+随着应用程序负载的增加，数据库的性能迅速下降。应用程序处理更多的读取请求而不是写入事务。公司希望一个解决方案能够自动扩展数据库以满足不可预测的读取工作负载的需求，同时保持高可用性。
+哪个解决方案将满足这些要求？
+
+A. 使用 Amazon Redshift 与单节点用于领导和计算功能。
+B. 使用 Amazon RDS 与单可用区部署。配置 Amazon RDS 以在不同的可用区中添加读取器实例。
+C. 使用 Amazon Aurora 与多可用区部署。配置 Aurora Auto Scaling 与 Aurora Replicas。
+D. 使用 Amazon ElastiCache for Memcached 与 EC2 Spot 实例。

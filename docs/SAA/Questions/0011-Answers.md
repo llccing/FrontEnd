@@ -37,3 +37,10 @@ B: Incorrect - Secure string parameter only apply for Parameter Store. All the d
 C: Incorrect - don't mention about replicate S3 across region.
 D: Incorrect - So many steps compare to answer A =))
 
+## Q14
+**Answer:** C
+
+Option C, using Amazon Aurora with a Multi-AZ deployment and configuring Aurora Auto Scaling with Aurora Replicas, would be the best solution to meet the requirements.
+
+Aurora is a fully managed, MySQL-compatible relational database that is designed for high performance and high availability. Aurora Multi-AZ deployments automatically maintain a synchronous standby replica in a different Availability Zone to provide high availability. Additionally, Aurora Auto Scaling allows you to automatically scale the number of Aurora Replicas in response to read workloads, allowing you to meet the demand of unpredictable read workloads while maintaining high availability. This would provide an automated solution for scaling the database to meet the demand of the application while maintaining high availability.
+
