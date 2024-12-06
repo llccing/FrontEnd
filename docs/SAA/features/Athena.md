@@ -1,3 +1,5 @@
+## AWS Athena
+
 AWS Athena is a serverless, interactive query service provided by Amazon Web Services (AWS) that allows you to analyze data directly in Amazon S3 using standard SQL. Here's an overview of its features and how to use it:
 
 Athena is an interactive analytics service that makes it simple to analyze data in Amazon Simple Storage Service (S3) using SQL. Athena is serverless, so there is no infrastructure to set up or manage, and you can start analyzing data immediately. You don’t even need to load your data into Athena; it works directly with data stored in Amazon S3. Amazon Athena for SQL uses Trino and Presto with full standard SQL support and works with various standard data formats, including CSV, JSON, Apache ORC, Apache Parquet, and Apache Avro. Athena for Apache Spark supports SQL and allows you to use Apache Spark, an open-source, distributed processing system used for big data workloads. To get started, log in to the Athena Management Console and start interacting with your data using the query editor or notebooks.

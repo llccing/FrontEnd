@@ -71,3 +71,39 @@ A. 使用 Amazon Redshift 与单节点用于领导和计算功能。
 B. 使用 Amazon RDS 与单可用区部署。配置 Amazon RDS 以在不同的可用区中添加读取器实例。
 C. 使用 Amazon Aurora 与多可用区部署。配置 Aurora Auto Scaling 与 Aurora Replicas。
 D. 使用 Amazon ElastiCache for Memcached 与 EC2 Spot 实例。
+
+## Q15
+A company recently migrated to AWS and wants to implement a solution to protect the traffic that flows in and out of the production VPC. The company had an inspection server in its on-premises data center. The inspection server performed specific operations such as traffic flow inspection and traffic filtering. The company wants to have the same functionalities in the AWS Cloud.
+Which solution will meet these requirements?
+
+A. Use Amazon GuardDuty for traffic inspection and traffic filtering in the production VPC.
+B. Use Traffic Mirroring to mirror traffic from the production VPC for traffic inspection and filtering.
+C. Use AWS Network Firewall to create the required rules for traffic inspection and traffic filtering for the production VPC.
+D. Use AWS Firewall Manager to create the required rules for traffic inspection and traffic filtering for the production VPC.
+
+Chinese Version:
+一个公司最近迁移到 AWS，并希望实施一个解决方案来保护进出生产 VPC 的流量。公司在其本地数据中心有一个检查服务器。检查服务器执行特定的操作，例如流量流检查和流量过滤。公司希望在 AWS 云中拥有相同的功能。
+哪个解决方案将满足这些要求？
+
+A. 使用 Amazon GuardDuty 进行生产 VPC 中的流量检查和流量过滤。
+B. 使用 Traffic Mirroring 将生产 VPC 的流量镜像用于流量检查和过滤。
+C. 使用 AWS Network Firewall 为生产 VPC 创建所需的流量检查和流量过滤规则。
+D. 使用 AWS Firewall Manager 为生产 VPC 创建所需的流量检查和流量过滤规则。
+
+## Q16
+A company hosts a data lake on AWS. The data lake consists of data in Amazon S3 and Amazon RDS for PostgreSQL. The company needs a reporting solution that provides data visualization and includes all the data sources within the data lake. Only the company's management team should have full access to all the visualizations. The rest of the company should have only limited access.
+Which solution will meet these requirements?
+
+A. Create an analysis in Amazon QuickSight. Connect all the data sources and create new datasets. Publish dashboards to visualize the data. Share the dashboards with the appropriate IAM roles.
+B. Create an analysis in Amazon QuickSight. Connect all the data sources and create new datasets. Publish dashboards to visualize the data. Share the dashboards with the appropriate users and groups.
+C. Create an AWS Glue table and crawler for the data in Amazon S3. Create an AWS Glue extract, transform, and load (ETL) job to produce reports. Publish the reports to Amazon S3. Use S3 bucket policies to limit access to the reports.
+D. Create an AWS Glue table and crawler for the data in Amazon S3. Use Amazon Athena Federated Query to access data within Amazon RDS for PostgreSQL. Generate reports by using Amazon Athena. Publish the reports to Amazon S3. Use S3 bucket policies to limit access to the reports.
+
+Chinese Version:
+一个公司在其 AWS 云中托管了一个数据湖。数据湖由 Amazon S3 中的数据和 Amazon RDS for PostgreSQL 中的数据组成。公司需要一个提供数据可视化并包含数据湖中所有数据源的报告解决方案。只有公司管理层应完全访问所有可视化。其余公司员工应仅有限访问。
+哪个解决方案将满足这些要求？
+
+A. 在 Amazon QuickSight 中创建分析。连接所有数据源并创建新数据集。发布仪表板以可视化数据。与适当的 IAM 角色共享仪表板。
+B. 在 Amazon QuickSight 中创建分析。连接所有数据源并创建新数据集。发布仪表板以可视化数据。与适当的用户和组共享仪表板。
+C. 为 Amazon S3 中的数据创建一个 AWS Glue 表和爬虫。创建一个 AWS Glue 提取、转换和加载 (ETL) 作业以生成报告。将报告发布到 Amazon S3。使用 S3 存储桶策略限制对报告的访问。
+D. 为 Amazon S3 中的数据创建一个 AWS Glue 表和爬虫。使用 Amazon Athena Federated Query 访问 Amazon RDS for PostgreSQL 中的数据。使用 Amazon Athena 生成报告。将报告发布到 Amazon S3。使用 S3 存储桶策略限制对报告的访问。

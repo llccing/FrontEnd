@@ -44,3 +44,33 @@ Option C, using Amazon Aurora with a Multi-AZ deployment and configuring Aurora 
 
 Aurora is a fully managed, MySQL-compatible relational database that is designed for high performance and high availability. Aurora Multi-AZ deployments automatically maintain a synchronous standby replica in a different Availability Zone to provide high availability. Additionally, Aurora Auto Scaling allows you to automatically scale the number of Aurora Replicas in response to read workloads, allowing you to meet the demand of unpredictable read workloads while maintaining high availability. This would provide an automated solution for scaling the database to meet the demand of the application while maintaining high availability.
 
+## Q15
+**Answer:** C
+
+I would recommend option C: Use AWS Network Firewall to create the required rules for traffic inspection and traffic filtering for the production VPC.
+
+AWS Network Firewall is a managed firewall service that provides filtering for both inbound and outbound network traffic. It allows you to create rules for traffic inspection and filtering, which can help protect your production VPC.
+
+Option A: Amazon GuardDuty is a threat detection service, not a traffic inspection or filtering service.
+
+Option B: Traffic Mirroring is a feature that allows you to replicate and send a copy of network traffic from a VPC to another VPC or on-premises location. It is not a service that performs traffic inspection or filtering.
+
+Option D: AWS Firewall Manager is a security management service that helps you to centrally configure and manage firewalls across your accounts. It is not a service that performs traffic inspection or filtering.
+
+## Q16
+**Answer:** B
+
+Keywords:
+- Data lake on AWS.
+- Consists of data in Amazon S3 and Amazon RDS for PostgreSQL.
+- The company needs a reporting solution that provides data VISUALIZATION and includes ALL the data sources within the data lake.
+
+A - Incorrect: Amazon QuickSight only support users(standard version) and groups (enterprise version). users and groups only exists without QuickSight. QuickSight don't support IAM. We use users and groups to view the QuickSight dashboard
+B - Correct: as explained in answer A and QuickSight is used to created dashboard from S3, RDS, Redshift, Aurora, Athena, OpenSearch, Timestream
+C - Incorrect: This way don't support visulization and don't mention how to process RDS data
+D - Incorrect: This way don't support visulization and don't mention how to combine data RDS and S3
+
+--- 
+
+The question requires a solution for data visualization, which means it focuses solely on downstream consumption. Therefore, any solution that includes upstream processing is off the table (C & D). This leaves us with two options: A and B. Essentially, they are the same with one key difference: A manages access through IAM Roles, while B manages it through an IAM group. Since only the management team is granted permission, using a group will be more efficient, as it scales better with changes in personnel and provides a centralized point for managing permissions.
+
