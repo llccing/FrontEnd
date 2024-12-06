@@ -74,3 +74,35 @@ D - Incorrect: This way don't support visulization and don't mention how to comb
 
 The question requires a solution for data visualization, which means it focuses solely on downstream consumption. Therefore, any solution that includes upstream processing is off the table (C & D). This leaves us with two options: A and B. Essentially, they are the same with one key difference: A manages access through IAM Roles, while B manages it through an IAM group. Since only the management team is granted permission, using a group will be more efficient, as it scales better with changes in personnel and provides a centralized point for managing permissions.
 
+## Q17
+**Answer:** A
+
+Always remember that you should associate IAM roles to EC2 instances.
+
+----------
+
+The correct option to meet this requirement is A: Create an IAM role that grants access to the S3 bucket and attach the role to the EC2 instances.
+
+An IAM role is an AWS resource that allows you to delegate access to AWS resources and services. You can create an IAM role that grants access to the S3 bucket and then attach the role to the EC2 instances. This will allow the EC2 instances to access the S3 bucket and the documents stored within it.
+
+Option B is incorrect because an IAM policy is used to define permissions for an IAM user or group, not for an EC2 instance.
+
+Option C is incorrect because an IAM group is used to group together IAM users and policies, not to grant access to resources.
+
+Option D is incorrect because an IAM user is used to represent a person or service that interacts with AWS resources, not to grant access to resources.
+
+## Q18
+**Answer:** A, B
+
+To design a solution that uses durable, stateless components to process images automatically, a solutions architect could consider the following actions:
+
+Option A involves creating an SQS queue and configuring the S3 bucket to send a notification to the queue when an image is uploaded. This allows the application to decouple the image upload process from the image processing process and ensures that the image processing process is triggered automatically when a new image is uploaded.
+
+Option B involves configuring the Lambda function to use the SQS queue as the invocation source. When the SQS message is successfully processed, the message is deleted from the queue. This ensures that the Lambda function is invoked only once per image and that the image is not processed multiple times.
+
+---
+Option C is incorrect because it involves storing state (the file name) in memory, which is not a durable or scalable solution.
+
+Option D is incorrect because it involves launching an EC2 instance to monitor the SQS queue, which is not a stateless solution.
+
+Option E is incorrect because it involves using Amazon EventBridge (formerly Amazon CloudWatch Events) to send an alert to an Amazon Simple Notification Service (Amazon SNS) topic, which is not related to the image processing process.

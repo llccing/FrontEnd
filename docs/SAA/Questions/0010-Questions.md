@@ -107,3 +107,43 @@ A. 在 Amazon QuickSight 中创建分析。连接所有数据源并创建新数�
 B. 在 Amazon QuickSight 中创建分析。连接所有数据源并创建新数据集。发布仪表板以可视化数据。与适当的用户和组共享仪表板。
 C. 为 Amazon S3 中的数据创建一个 AWS Glue 表和爬虫。创建一个 AWS Glue 提取、转换和加载 (ETL) 作业以生成报告。将报告发布到 Amazon S3。使用 S3 存储桶策略限制对报告的访问。
 D. 为 Amazon S3 中的数据创建一个 AWS Glue 表和爬虫。使用 Amazon Athena Federated Query 访问 Amazon RDS for PostgreSQL 中的数据。使用 Amazon Athena 生成报告。将报告发布到 Amazon S3。使用 S3 存储桶策略限制对报告的访问。
+
+## Q17
+A company is implementing a new business application. The application runs on two Amazon EC2 instances and uses an Amazon S3 bucket for document storage. A solutions architect needs to ensure that the EC2 instances can access the S3 bucket.
+What should the solutions architect do to meet this requirement?
+
+A. Create an IAM role that grants access to the S3 bucket. Attach the role to the EC2 instances.
+B. Create an IAM policy that grants access to the S3 bucket. Attach the policy to the EC2 instances.
+C. Create an IAM group that grants access to the S3 bucket. Attach the group to the EC2 instances.
+D. Create an IAM user that grants access to the S3 bucket. Attach the user account to the EC2 instances.
+
+Chinese Version:
+一个公司正在实施一个新的业务应用程序。该应用程序在两个 Amazon EC2 实例上运行，并使用 Amazon S3 存储桶存储文档。解决方案架构师需要确保 EC2 实例可以访问 S3 存储桶。
+解决方案架构师应采取什么措施来满足此要求？
+
+A. 创建一个授予对 S3 存储桶访问权限的 IAM 角色。将角色附加到 EC2 实例。
+B. 创建一个授予对 S3 存储桶访问权限的 IAM 策略。将策略附加到 EC2 实例。
+C. 创建一个授予对 S3 存储桶访问权限的 IAM 组。将组附加到 EC2 实例。
+D. 创建一个授予对 S3 存储桶访问权限的 IAM 用户。将用户帐户附加到 EC2 实例。
+
+## Q18
+An application development team is designing a microservice that will convert large images to smaller, compressed images. When a user uploads an image through the web interface, the microservice should store the image in an Amazon S3 bucket, process and compress the image with an AWS Lambda function, and store the image in its compressed form in a different S3 bucket.
+A solutions architect needs to design a solution that uses durable, stateless components to process the images automatically.
+Which combination of actions will meet these requirements? (Choose two.)
+
+A. Create an Amazon Simple Queue Service (Amazon SQS) queue. Configure the S3 bucket to send a notification to the SQS queue when an image is uploaded to the S3 bucket.
+B. Configure the Lambda function to use the Amazon Simple Queue Service (Amazon SQS) queue as the invocation source. When the SQS message is successfully processed, delete the message in the queue.
+C. Configure the Lambda function to monitor the S3 bucket for new uploads. When an uploaded image is detected, write the file name to a text file in memory and use the text file to keep track of the images that were processed.
+D. Launch an Amazon EC2 instance to monitor an Amazon Simple Queue Service (Amazon SQS) queue. When items are added to the queue, log the file name in a text file on the EC2 instance and invoke the Lambda function.
+E. Configure an Amazon EventBridge (Amazon CloudWatch Events) event to monitor the S3 bucket. When an image is uploaded, send an alert to an Amazon ample Notification Service (Amazon SNS) topic with the application owner's email address for further processing.
+
+Chinese Version:
+一个应用程序开发团队正在设计一个将大图像转换为较小、压缩图像的微服务。当用户通过 Web 界面上传图像时，微服务应将图像存储在 Amazon S3 存储桶中，使用 AWS Lambda 函数处理和压缩图像，并将图像以压缩形式存储在不同的 S3 存储桶中。
+解决方案架构师需要设计一个使用持久、无状态组件自动处理图像的解决方案。
+哪些组合操作将满足这些要求？（选择两个。）
+
+A. 创建一个 Amazon Simple Queue Service (Amazon SQS) 队列。配置 S3 存储桶，当图像上传到 S3 存储桶时向 SQS 队列发送通知。
+B. 配置 Lambda 函数以将 Amazon Simple Queue Service (Amazon SQS) 队列用作调用源。当 SQS 消息成功处理后，从队列中删除消息。
+C. 配置 Lambda 函数以监控 S3 存储桶中的新上传。当检测到上传的图像时，将文件名写入内存中的文本文件，并使用文本文件跟踪已处理的图像。
+D. 启动一个 Amazon EC2 实例来监控 Amazon Simple Queue Service (Amazon SQS) 队列。当项目添加到队列时，在 EC2 实例上的文本文件中记录文件名，并调用 Lambda 函数。
+E. 配置一个 Amazon EventBridge (Amazon CloudWatch Events) 事件来监控 S3 存储桶。当上传图像时，向包含应用程序所有者电子邮件地址的 Amazon 简单通知服务 (Amazon SNS) 主题发送警报，以进行进一步处理。
