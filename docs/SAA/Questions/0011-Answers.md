@@ -106,3 +106,21 @@ Option C is incorrect because it involves storing state (the file name) in memor
 Option D is incorrect because it involves launching an EC2 instance to monitor the SQS queue, which is not a stateless solution.
 
 Option E is incorrect because it involves using Amazon EventBridge (formerly Amazon CloudWatch Events) to send an alert to an Amazon Simple Notification Service (Amazon SNS) topic, which is not related to the image processing process.
+
+## Q19
+**Answer:** D
+
+It's D, Coz.. Gateway Load Balancer is a new type of load balancer that operates at layer 3 of the OSI model and is built on Hyperplane, which is capable of handling several thousands of connections per second. Gateway Load Balancer endpoints are configured in spoke VPCs originating or receiving traffic from the Internet. This architecture allows you to perform inline inspection of traffic from multiple spoke VPCs in a simplified and scalable fashion while still centralizing your virtual appliances.
+
+Keywords:Third-party virtual firewall appliance from AWS Marketplace in an inspection VPC -> only Gateway Load Balancer support it
+
+A: Incorrect - Network Load Balancer don't support to route traffic to third-party virtual firewall appliance.
+B: Incorrect - Application Load Balancer don't support to route traffic to third-party virtual firewall appliance.
+C: Incorrect - Transit Gateway is use as connect center to connect all VPC, Direct Connect Gateway and VPN Connection. Routes Tables in Trasit Gateway only limit which VPC can talk to other VPCs.
+D: Correct - Gateway Load Balancer support route traffic to third-party virtual firewall appliance in layer 3 that make it different from ALB and NLB.
+
+## Q20
+**Answer:** D
+
+https://docs.aws.amazon.com/ebs/latest/userguide/ebs-fast-snapshot-restore.html
+Amazon EBS fast snapshot restore (FSR) enables you to create a volume from a snapshot that is fully initialized at creation. This eliminates the latency of I/O operations on a block when it is accessed for the first time. Volumes that are created using fast snapshot restore instantly deliver all of their provisioned performance.

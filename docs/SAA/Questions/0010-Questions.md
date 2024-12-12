@@ -147,3 +147,43 @@ B. 配置 Lambda 函数以将 Amazon Simple Queue Service (Amazon SQS) 队列用
 C. 配置 Lambda 函数以监控 S3 存储桶中的新上传。当检测到上传的图像时，将文件名写入内存中的文本文件，并使用文本文件跟踪已处理的图像。
 D. 启动一个 Amazon EC2 实例来监控 Amazon Simple Queue Service (Amazon SQS) 队列。当项目添加到队列时，在 EC2 实例上的文本文件中记录文件名，并调用 Lambda 函数。
 E. 配置一个 Amazon EventBridge (Amazon CloudWatch Events) 事件来监控 S3 存储桶。当上传图像时，向包含应用程序所有者电子邮件地址的 Amazon 简单通知服务 (Amazon SNS) 主题发送警报，以进行进一步处理。
+
+## Q19
+A company has a three-tier web application that is deployed on AWS. The web servers are deployed in a public subnet in a VPC. The application servers and database servers are deployed in private subnets in the same VPC. The company has deployed a third-party virtual firewall appliance from AWS Marketplace in an inspection VPC. The appliance is configured with an IP interface that can accept IP packets.
+A solutions architect needs to integrate the web application with the appliance to inspect all traffic to the application before the traffic reaches the web server.
+Which solution will meet these requirements with the LEAST operational overhead?
+
+A. Create a Network Load Balancer in the public subnet of the application's VPC to route the traffic to the appliance for packet inspection.
+B. Create an Application Load Balancer in the public subnet of the application's VPC to route the traffic to the appliance for packet inspection.
+C. Deploy a transit gateway in the inspection VPConfigure route tables to route the incoming packets through the transit gateway.
+D. Deploy a Gateway Load Balancer in the inspection VPC. Create a Gateway Load Balancer endpoint to receive the incoming packets and forward the packets to the appliance.
+
+Chinese Version:
+一个公司在其 AWS 云中部署了一个三层 Web 应用程序。Web 服务器部署在应用程序 VPC 中的公共子网中。应用程序服务器和数据库服务器部署在同一 VPC 中的私有子网中。公司在其检查 VPC 中部署了来自 AWS Marketplace 的第三方虚拟防火墙设备。该设备配置了一个 IP 接口，可以接受 IP 数据包。
+解决方案架构师需要将 Web 应用程序与设备集成，以检查所有到达应用程序的流量，在流量到达 Web 服务器之前。
+哪个解决方案在操作开销方面最不繁琐？
+
+A. 在应用程序 VPC 的公共子网中创建一个 Network Load Balancer，将流量路由到设备进行数据包检查。
+B. 在应用程序 VPC 的公共子网中创建一个 Application Load Balancer，将流量路由到设备进行数据包检查。
+C. 在检查 VPC 中部署一个 Transit Gateway，配置路由表以将传入的数据包通过 Transit Gateway 路由。
+D. 在检查 VPC 中部署一个 Gateway Load Balancer。创建一个 Gateway Load Balancer 端点以接收传入的数据包，并将数据包转发到设备。
+
+## Q20
+A company wants to improve its ability to clone large amounts of production data into a test environment in the same AWS Region. The data is stored in Amazon EC2 instances on Amazon Elastic Block Store (Amazon EBS) volumes. Modifications to the cloned data must not affect the production environment. The software that accesses this data requires consistently high I/O performance.
+A solutions architect needs to minimize the time that is required to clone the production data into the test environment.
+Which solution will meet these requirements?
+
+A. Take EBS snapshots of the production EBS volumes. Restore the snapshots onto EC2 instance store volumes in the test environment.
+B. Configure the production EBS volumes to use the EBS Multi-Attach feature. Take EBS snapshots of the production EBS volumes. Attach the production EBS volumes to the EC2 instances in the test environment.
+C. Take EBS snapshots of the production EBS volumes. Create and initialize new EBS volumes. Attach the new EBS volumes to EC2 instances in the test environment before restoring the volumes from the production EBS snapshots.
+D. Take EBS snapshots of the production EBS volumes. Turn on the EBS fast snapshot restore feature on the EBS snapshots. Restore the snapshots into new EBS volumes. Attach the new EBS volumes to EC2 instances in the test environment.
+
+Chinese Version:
+一个公司希望提高其将大量生产数据克隆到同一 AWS 区域测试环境的能力。数据存储在 Amazon EC2 实例上的 Amazon Elastic Block Store (Amazon EBS) 卷中。对克隆数据所做的修改不得影响生产环境。访问此数据的应用程序需要一致的高 I/O 性能。
+解决方案架构师需要最小化将生产数据克隆到测试环境所需的时间。
+哪个解决方案将满足这些要求？
+
+A. 对生产 EBS 卷进行 EBS 快照。将快照恢复到测试环境中的 EC2 实例存储卷。
+B. 配置生产 EBS 卷以使用 EBS 多重附加功能。对生产 EBS 卷进行 EBS 快照。将生产 EBS 卷附加到测试环境中的 EC2 实例。
+C. 对生产 EBS 卷进行 EBS 快照。创建并初始化新 EBS 卷。在从生产 EBS 快照恢复卷之前，将新 EBS 卷附加到测试环境中的 EC2 实例。
+D. 对生产 EBS 卷进行 EBS 快照。在 EBS 快照上启用 EBS 快速快照恢复功能。将快照恢复到新 EBS 卷中。将新 EBS 卷附加到测试环境中的 EC2 实例。

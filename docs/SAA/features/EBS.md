@@ -25,3 +25,20 @@ Amazon EBS 提供以下功能和优势：
 
 EFS is network file system, so it can be mounted to multiple EC2 instances across different AZs.
 EBS is block storage, so it can only be mounted to one EC2 instance.
+
+### EBS fast snapshot restore
+
+#### 我何时应使用快速快照还原（FSR）？
+如果您担心将数据从快照还原到卷时存在数据访问延迟，并且希望在初始化过程中避免初始性能下降，则应对快照启用 FSR。FSR 适合在多种使用案例中提供帮助，例如虚拟桌面基础设施 (VDI)、备份和还原、测试/开发卷副本以及从自定义 AMI 启动。通过在您的快照上启用 FSR，当您需要从该快照还原数据时，将会获得提高且可预测的性能。
+
+#### 快速快照还原（FSR）如何工作？
+
+快速快照还原（FSR）通过在创建卷时预先初始化卷来提高性能。在创建卷时，FSR 会预先初始化卷，以便在卷创建后立即提供全额性能。
+
+#### 快速快照还原（FSR）有哪些优势？
+
+- 提高性能：通过预先初始化卷，FSR 可以立即提供全额性能，而无需等待卷初始化。
+- 减少延迟：FSR 可以减少从快照还原卷所需的时间，从而提高应用程序的响应速度。
+- 提高可用性：FSR 可以提高应用程序的可用性，因为卷在创建后立即可用。
+- 减少成本：FSR 可以减少从快照还原卷所需的时间，从而减少应用程序的停机时间。
+
