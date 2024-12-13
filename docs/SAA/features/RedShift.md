@@ -6,3 +6,4 @@ Amazon Redshift 是云中一种完全托管的 PB 级数据仓库服务。Amazon
 ### RedShift Serverless 数据仓库入门
 Amazon Redshift Serverless 的基本流程是创建无服务器资源，连接到 Amazon Redshift Serverless，加载示例数据，然后对数据运行查询。在本指南中，您可以选择从 Amazon Redshift Serverless 或 Amazon S3 存储桶加载示例数据。在 Amazon Redshift 文档中，会使用示例数据来演示功能。要开始使用 Amazon Redshift 预置数据仓库，请参阅 Amazon Redshift 预置数据仓库入门。
 [More information](https://docs.aws.amazon.com/zh_cn/redshift/latest/gsg/new-user-serverless.html)
+

@@ -144,3 +144,40 @@ B. 从 AWS SSO 控制台启用 AWS Single Sign-On (AWS SSO)。创建一个双向
 C. 使用 AWS Directory Service。创建一个双向信任关系，与公司自管理 Microsoft Active Directory。
 D. 在本地部署一个身份提供者 (IdP)。从 AWS SSO 控制台启用 AWS Single Sign-On (AWS SSO)。
 
+## Q29
+A company provides a Voice over Internet Protocol (VoIP) service that uses UDP connections. The service consists of Amazon EC2 instances that run in an Auto Scaling group. The company has deployments across multiple AWS Regions.
+The company needs to route users to the Region with the lowest latency. The company also needs automated failover between Regions.
+Which solution will meet these requirements?
+
+A. Deploy a Network Load Balancer (NLB) and an associated target group. Associate the target group with the Auto Scaling group. Use the NLB as an AWS Global Accelerator endpoint in each Region.
+B. Deploy an Application Load Balancer (ALB) and an associated target group. Associate the target group with the Auto Scaling group. Use the ALB as an AWS Global Accelerator endpoint in each Region.
+C. Deploy a Network Load Balancer (NLB) and an associated target group. Associate the target group with the Auto Scaling group. Create an Amazon Route 53 latency record that points to aliases for each NLB. Create an Amazon CloudFront distribution that uses the latency record as an origin.
+D. Deploy an Application Load Balancer (ALB) and an associated target group. Associate the target group with the Auto Scaling group. Create an Amazon Route 53 weighted record that points to aliases for each ALB. Deploy an Amazon CloudFront distribution that uses the weighted record as an origin.
+
+Chinese Version:
+一家公司提供一个基于互联网协议的语音 (VoIP) 服务，使用 UDP 连接。该服务由运行在 Auto Scaling 组中的 Amazon EC2 实例组成。公司在全球多个 AWS 区域中部署了服务。
+公司需要将用户路由到延迟最低的区域。公司还需要在区域之间自动故障转移。
+哪个解决方案将满足这些要求？
+
+A. 部署一个 Network Load Balancer (NLB) 和一个关联的目标组。将目标组与 Auto Scaling 组关联。将 NLB 用作每个区域中的 AWS Global Accelerator 端点。
+B. 部署一个 Application Load Balancer (ALB) 和一个关联的目标组。将目标组与 Auto Scaling 组关联。将 ALB 用作每个区域中的 AWS Global Accelerator 端点。
+C. 部署一个 Network Load Balancer (NLB) 和一个关联的目标组。将目标组与 Auto Scaling 组关联。创建一个 Amazon Route 53 延迟记录，指向每个 NLB 的别名。创建一个使用延迟记录作为源的 Amazon CloudFront 分发。
+D. 部署一个 Application Load Balancer (ALB) 和一个关联的目标组。将目标组与 Auto Scaling 组关联。创建一个 Amazon Route 53 加权记录，指向每个 ALB 的别名。部署一个使用加权记录作为源的 Amazon CloudFront 分发。
+
+## Q30
+A development team runs monthly resource-intensive tests on its general purpose Amazon RDS for MySQL DB instance with Performance Insights enabled. The testing lasts for 48 hours once a month and is the only process that uses the database. The team wants to reduce the cost of running the tests without reducing the compute and memory attributes of the DB instance.
+Which solution meets these requirements MOST cost-effectively?
+
+A. Stop the DB instance when tests are completed. Restart the DB instance when required.
+B. Use an Auto Scaling policy with the DB instance to automatically scale when tests are completed.
+C. Create a snapshot when tests are completed. Terminate the DB instance and restore the snapshot when required.
+D. Modify the DB instance to a low-capacity instance when tests are completed. Modify the DB instance again when required.
+
+Chinese Version:
+一个开发团队每月对其通用目的 Amazon RDS for MySQL DB 实例进行资源密集型测试，启用 Performance Insights。测试持续 48 小时，仅使用数据库。团队希望在不降低 DB 实例的计算和内存属性的情况下减少运行测试的成本。
+哪个解决方案最符合这些要求？
+
+A. 测试完成后停止 DB 实例。需要时重新启动 DB 实例。
+B. 使用 DB 实例的自动扩展策略，在测试完成后自动扩展。
+C. 测试完成后创建快照。需要的时候终止 DB 实例并恢复快照。
+D. 测试完成后将 DB 实例修改为低容量实例。需要的时候再次修改 DB 实例。

@@ -96,3 +96,24 @@ Scenario 2: https://aws.amazon.com/es/blogs/security/everything-you-wanted-to-kn
 
 AWS IAM Identity Center requires a two-way trust so that it has permissions to read user and group information from your domain to synchronize user and group metadata. IAM Identity Center uses this metadata when assigning access to permission sets or applications. User and group metadata is also used by applications for collaboration, like when you share a dashboard with another user or group. The trust from AWS Directory Service for Microsoft Active Directory to your domain permits IAM Identity Center to trust your domain for authentication. The trust in the opposite direction grants AWS permissions to read user and group metadata.
 
+## Q29
+**Answer:** A
+
+agree with A,
+Global Accelerator has automatic failover and is perfect for this scenario with VoIP
+https://aws.amazon.com/global-accelerator/faqs/
+
+----------------
+CloudFront uses Edge Locations to cache content while Global Accelerator uses Edge Locations to find an optimal pathway to the nearest regional endpoint. CloudFront is designed to handle HTTP protocol meanwhile Global Accelerator is best used for both HTTP and non-HTTP protocols such as TCP and UDP. so i think A is a better answer
+
+## Q30
+**Answer:** C
+
+C - Create a manual Snapshot of DB and shift to S3- Standard and Restore form Manual Snapshot when required.
+
+Not A - By stopping the DB although you are not paying for DB hours you are still paying for Provisioned IOPs , the storage for Stopped DB is more than Snapshot of underlying EBS vol. and Automated Back ups .
+Not D - Is possible but not MOST cost effective, no need to run the RDS when not needed.
+
+----------
+Answer C, you still pay for storage when an RDS database is stopped
+

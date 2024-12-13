@@ -12,3 +12,18 @@ AWS Config 可为您提供资源配置历史记录的访问权。您可以将配
 
 AWS CloudTrail 会记录您账户上的用户 API 活动，协助您访问有关该活动的信息。您将获得有关 API 操作的完整详细信息，如调用者的身份、该 API 调用的时间、请求参数和 AWS 服务返回的响应元素。AWS Config 将您的 AWS 资源的时间点配置详细信息记录为配置项（CI）。您可以使用 CI 在某个时间点回答“我的 AWS 资源是什么样的？”您可以使用 CloudTrail 回答“谁进行了 API 调用来修改此资源？” 例如，您可以对 AWS Config 使用 AWS 管理控制台以检测安全组“生产数据库”过去的配置是否不正确。使用集成的 CloudTrail 信息，您可以发现是哪个用户错误配置了“生产数据库”安全组。
 
+### what is the difference between AWS Config and AWS CloudTrail and AWS CloudWatch?
+
+Simple answer from AI:
+AWS Config - Track configuration changes and API calls.
+AWS CloudTrail - Track user activity and API call history.
+AWS CloudWatch - Monitor, store, and access logs from AWS resources and applications.
+
+AWS CloudTrail is a service that provides the event history of your AWS account activity, including actions taken through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. This service simplifies security analysis, resource change tracking, and troubleshooting.
+
+CloudWatch is a monitoring and observability service. It collects and tracks metrics, collects and monitors log files, and responds to system-wide performance changes. It provides data and actionable insights to monitor your applications, respond to system-wide performance changes, and optimise resource utilisation.
+
+AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources. It provides a detailed view of the configuration of AWS resources in your account and tracks changes over time.
+
+https://medium.com/trendfingers/distinguishing-aws-cloudtrail-cloudwatch-and-config-ae8e1277e55c
+
