@@ -42,3 +42,9 @@ EBS is block storage, so it can only be mounted to one EC2 instance.
 - 提高可用性：FSR 可以提高应用程序的可用性，因为卷在创建后立即可用。
 - 减少成本：FSR 可以减少从快照还原卷所需的时间，从而减少应用程序的停机时间。
 
+
+### is EBS HA and why?
+
+EBS is not HA, because it is block storage, so it can only be mounted to one EC2 instance.
+
+

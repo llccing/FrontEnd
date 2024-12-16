@@ -8,10 +8,13 @@ Amazon EFS file systems can automatically scale from gigabytes to petabytes of d
 
 ### When should I use Amazon EFS vs. Amazon Elastic Block Store (Amazon EBS) vs. Amazon S3?
 
-AWS offers cloud storage services to support a wide range of storage workloads.
 EFS is a file storage service  for use with Amazon compute (EC2, containers, serverless) and on-premises servers. EFS provides a file system interface, file system access semantics (such as strong consistency and file locking), and concurrently accessible storage for up to thousands of EC2 instances.
+
 Amazon EBS  is a block-level storage service for use with EC2. EBS can deliver performance for workloads that require the lowest-latency access to data from a single EC2 instance.
+
 Amazon S3  is an object storage service. S3 makes data available through an internet API that can be accessed anywhere.
+
+https://zesty.co/blog/ebs-vs-efs-which-is-right/
 
 #### Next Result from AI
 

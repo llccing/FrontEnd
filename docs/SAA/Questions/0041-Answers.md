@@ -71,3 +71,28 @@ An On-Demand Capacity Reservation is a type of Amazon EC2 reservation that enabl
 Option A, purchasing Reserved Instances that specify the Region needed, would not guarantee capacity in specific Availability Zones.
 Option B, creating an On-Demand Capacity Reservation that specifies the Region needed, would not guarantee capacity in specific Availability Zones.
 Option C, purchasing Reserved Instances that specify the Region and three Availability Zones needed, would not guarantee capacity in specific Availability Zones as Reserved Instances do not provide capacity reservations.
+
+## Q48
+**Answer:** D
+
+durable chinese version: 耐用的, 持久的
+keyword is "durable" location
+A and B is ephemeral storage
+C takes forever so is not HA,
+that leaves D
+
+## Q49
+**Answer:** B
+
+I think the answer is B:
+Users access the files randomly
+
+S3 Intelligent-Tiering is the ideal storage class for data with unknown, changing, or unpredictable access patterns, independent of object size or retention period. You can use S3 Intelligent-Tiering as the default storage class for virtually any workload, especially data lakes, data analytics, new applications, and user-generated content.
+
+## Q50
+**Answer:** D 
+
+AWS Systems Manager Run Command allows the company to run commands or scripts on multiple EC2 instances. By using Run Command, the company can quickly and easily apply the patch to all 1,000 EC2 instances to remediate the security vulnerability.
+
+Creating an AWS Lambda function to apply the patch to all EC2 instances would not be a suitable solution, as Lambda functions are not designed to run on EC2 instances. Configuring AWS Systems Manager Patch Manager to apply the patch to all EC2 instances would not be a suitable solution, as Patch Manager is not designed to apply third-party software patches. Scheduling an AWS Systems Manager maintenance window to apply the patch to all EC2 instances would not be a suitable solution, as maintenance windows are not designed to apply patches to third-party software
+

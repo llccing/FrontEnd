@@ -133,3 +133,54 @@ A. 购买指定所需区域的保留实例。
 B. 创建指定所需区域的按需容量预留。
 C. 购买指定所需区域和三个可用区的保留实例。
 D. 创建指定所需区域和三个可用区的按需容量预留。
+
+## Q48
+A company's website uses an Amazon EC2 instance store for its catalog of items. The company wants to make sure that the catalog is highly available and that the catalog is stored in a durable location.
+What should a solutions architect do to meet these requirements?
+
+A. Move the catalog to Amazon ElastiCache for Redis.
+B. Deploy a larger EC2 instance with a larger instance store.
+C. Move the catalog from the instance store to Amazon S3 Glacier Deep Archive.
+D. Move the catalog to an Amazon Elastic File System (Amazon EFS) file system.
+
+Chinese Version:
+一家公司的网站使用 Amazon EC2 实例存储来存储其商品目录。公司希望确保目录高度可用，并存储在耐用位置。解决方案架构师应采取哪些措施来满足这些要求？
+
+A. 将目录移动到 Amazon ElastiCache for Redis。
+B. 部署一个具有更大实例存储的更大 EC2 实例。
+C. 将目录从实例存储移动到 Amazon S3 Glacier Deep Archive。
+D. 将目录移动到 Amazon Elastic File System (Amazon EFS) 文件系统。
+
+## Q49
+A company stores call transcript files on a monthly basis. Users access the files randomly within 1 year of the call, but users access the files infrequently after 1 year. The company wants to optimize its solution by giving users the ability to query and retrieve files that are less than 1-year-old as quickly as possible. A delay in retrieving older files is acceptable.
+Which solution will meet these requirements MOST cost-effectively?
+
+A. Store individual files with tags in Amazon S3 Glacier Instant Retrieval. Query the tags to retrieve the files from S3 Glacier Instant Retrieval.
+B. Store individual files in Amazon S3 Intelligent-Tiering. Use S3 Lifecycle policies to move the files to S3 Glacier Flexible Retrieval after 1 year. Query and retrieve the files that are in Amazon S3 by using Amazon Athena. Query and retrieve the files that are in S3 Glacier by using S3 Glacier Select.
+C. Store individual files with tags in Amazon S3 Standard storage. Store search metadata for each archive in Amazon S3 Standard storage. Use S3 Lifecycle policies to move the files to S3 Glacier Instant Retrieval after 1 year. Query and retrieve the files by searching for metadata from Amazon S3.
+D. Store individual files in Amazon S3 Standard storage. Use S3 Lifecycle policies to move the files to S3 Glacier Deep Archive after 1 year. Store search metadata in Amazon RDS. Query the files from Amazon RDS. Retrieve the files from S3 Glacier Deep Archive.
+
+Chinese Version:
+一家公司按月存储通话转录文件。用户在通话后 1 年内随机访问这些文件，但在通话后 1 年之后很少访问这些文件。公司希望通过提供用户查询和检索 1 年以内文件的能力，以最经济的方式满足这些要求。检索较旧文件的延迟是可以接受的。哪种解决方案最符合这些要求？
+
+A. 将单个文件存储在 Amazon S3 Glacier Instant Retrieval 中，并使用标签查询这些文件。
+B. 将单个文件存储在 Amazon S3 Intelligent-Tiering 中。使用 S3 生命周期策略将文件移动到 Amazon S3 Glacier Flexible Retrieval 中，1 年后。使用 Amazon Athena 查询和检索 Amazon S3 中的文件。使用 S3 Glacier Select 查询和检索 S3 Glacier 中的文件。
+C. 将单个文件存储在 Amazon S3 Standard 存储中。使用 S3 生命周期策略将文件移动到 Amazon S3 Glacier Instant Retrieval 中，1 年后。使用 Amazon S3 中的元数据搜索查询和检索文件。
+D. 将单个文件存储在 Amazon S3 Standard 存储中。使用 S3 生命周期策略将文件移动到 Amazon S3 Glacier Deep Archive 中，1 年后。将搜索元数据存储在 Amazon RDS 中。从 Amazon RDS 查询文件。从 Amazon S3 Glacier Deep Archive 检索文件。
+
+## Q50
+A company has a production workload that runs on 1,000 Amazon EC2 Linux instances. The workload is powered by third-party software. The company needs to patch the third-party software on all EC2 instances as quickly as possible to remediate a critical security vulnerability.
+What should a solutions architect do to meet these requirements?
+
+A. Create an AWS Lambda function to apply the patch to all EC2 instances.
+B. Configure AWS Systems Manager Patch Manager to apply the patch to all EC2 instances.
+C. Schedule an AWS Systems Manager maintenance window to apply the patch to all EC2 instances.
+D. Use AWS Systems Manager Run Command to run a custom command that applies the patch to all EC2 instances.
+
+Chinese Version:
+一家公司有一个生产工作负载，运行在 1,000 个 Amazon EC2 Linux 实例上。该工作负载由第三方软件提供支持。公司需要尽快在所有 EC2 实例上应用第三方软件的补丁，以解决一个关键的安全漏洞。解决方案架构师应采取哪些措施来满足这些要求？
+
+A. 创建一个 AWS Lambda 函数，以应用补丁到所有 EC2 实例。
+B. 配置 AWS Systems Manager Patch Manager 以应用补丁到所有 EC2 实例。
+C. 安排一个 AWS Systems Manager 维护窗口，以应用补丁到所有 EC2 实例。
+D. 使用 AWS Systems Manager Run Command 运行一个自定义命令，以应用补丁到所有 EC2 实例。

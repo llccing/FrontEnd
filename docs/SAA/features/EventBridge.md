@@ -6,3 +6,8 @@ To get started, you can choose an event source on the EventBridge console. You c
 
 [AWS EventBridge FAQs](https://aws.amazon.com/eventbridge/faqs/)
 
+### AWS CloudWatch Events
+
+EventBridge was formerly called Amazon CloudWatch Events. The default event bus and the rules you created in CloudWatch Events also display in the EventBridge console. EventBridge uses the same CloudWatch Events API, so your code that uses the CloudWatch Events API stays the same.
+
+[EventBridge was formerly called Amazon CloudWatch Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cwe-now-eb.html)
