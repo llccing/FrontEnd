@@ -32,3 +32,35 @@ Amazon EBS 提供当前一代的四种卷类型，且被分为两大类：
 #### Amazon Elastic File System (Amazon EFS)
 
 #### NVMe Instance Store
+
+
+### What is the difference between Reserved Instances and On-Demand Capacity Reservation?
+
+
+- Reserved Instances
+
+Reserved Instances (RIs) are a pricing model offered by cloud providers like AWS, allowing you to commit to using a specific instance type in a particular region for a one- or three-year term. By doing so, you receive a significant discount compared to On-Demand pricing. RIs are ideal for predictable workloads and can help reduce costs if you know you'll need certain resources long-term. They do not guarantee capacity but offer cost savings.
+
+- On-Demand Capacity Reservations
+
+On-Demand Capacity Reservations allow you to reserve compute capacity for your instances in a specific Availability Zone for any duration. This ensures that you have the capacity you need when you need it, without a long-term commitment. You pay the On-Demand rate, and capacity is available immediately and guaranteed for as long as the reservation is active.
+
+- Key Differences
+
+1. **Commitment**:
+   - **Reserved Instances**: Require a one- or three-year commitment.
+   - **On-Demand Capacity Reservations**: No long-term commitment; you can reserve capacity as needed.
+
+2. **Pricing**:
+   - **Reserved Instances**: Offer lower pricing due to the long-term commitment.
+   - **On-Demand Capacity Reservations**: Charged at the On-Demand rate.
+
+3. **Capacity Guarantee**:
+   - **Reserved Instances**: Do not guarantee capacity.
+   - **On-Demand Capacity Reservations**: Guarantee capacity in the specified Availability Zone.
+
+4. **Flexibility**:
+   - **Reserved Instances**: Less flexible due to the commitment period.
+   - **On-Demand Capacity Reservations**: More flexible, as they can be created and canceled at any time.
+
+In summary, choose Reserved Instances for cost savings with predictable workloads and On-Demand Capacity Reservations for guaranteed capacity without long-term commitments.
