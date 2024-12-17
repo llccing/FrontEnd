@@ -50,3 +50,7 @@ NLB 的主要特点包括：
 
 NLB 适用于需要高性能和低延迟的应用程序，如游戏、视频流和实时通信。
 
+### ALB Application Load Balancer
+
+- https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html
+- https://repost.aws/knowledge-center/elb-redirect-http-to-https-using-alb
