@@ -7,7 +7,15 @@ Just as Amazon Simple Storage Service (Amazon S3) enables storage in the cloud, 
 [Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/?nc=sn&loc=5)
 
 
-### auto scaling
+### What is the difference between On-Demand Instances and Reserved Instances?
+
+On-Demand and Reserved Instances are two pricing models for Amazon Elastic Compute Cloud (EC2) instances you can provision in the AWS cloud. Functionally, both types are the same. You can choose from several different compute and memory configurations for different workloads. The difference exists only in pricing. With On-Demand Instances, you pay for computing capacity by the hour or second (with a minimum of 60 seconds) with no long-term commitment. You pay only for what you use, and the instance automatically scales up or down with changing workloads. In contrast, Reserved Instances provide a discounted rate and an optional capacity reservation for your instances. You rent the Reserved Instance for a fixed period at a lower per-second or per-hour rate than the equivalent On-Demand Instance. Spot Instances provide an additional instance pricing model with strict conditions.
+
+https://aws.amazon.com/compare/the-difference-between-on-demand-instances-and-reserved-instances/
+
+### What is the Spot Instances?
+
+竞价实例, 运行容错工作负载，节省高达 90%. Amazon EC2 Spot Instances let you take advantage of unused EC2 capacity in the AWS cloud and are available at up to a 90% discount compared to On-Demand prices. You can use Spot Instances for various stateless, fault-tolerant, or flexible applications such as big data, containerized workloads, CI/CD, web servers, high-performance computing (HPC), and test & development workloads development workloads.  
 
 Amazon EC2 Auto Scaling is a fully managed service designed to launch or terminate Amazon EC2 instances automatically to help ensure you have the correct number of Amazon EC2 instances available to handle the load for your application. Amazon EC2 Auto Scaling helps you maintain application availability through fleet management for EC2 instances, which detects and replaces unhealthy instances, and by scaling your Amazon EC2 capacity up or down automatically according to conditions you define. You can use Amazon EC2 Auto Scaling to automatically increase the number of Amazon EC2 instances during demand spikes to maintain performance and decrease capacity during lulls to reduce costs.
 

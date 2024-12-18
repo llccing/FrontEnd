@@ -9,3 +9,9 @@ You can easily customize the network configuration for your Amazon VPC. For exam
 Amazon VPC traffic mirroring makes it easy for customers to replicate network traffic to and from an Amazon EC2 instance and forward it to out-of-band security and monitoring appliances for use-cases such as content inspection, threat monitoring, and troubleshooting. These appliances can be deployed on an individual EC2 instance or a fleet of instances behind a Network Load Balancer (NLB) with User Datagram Protocol (UDP) listener.
 
 [Amazon VPC FAQs](https://aws.amazon.com/vpc/faqs/)
+
+### Gateway Endpoints
+
+Gateway endpoints provide reliable connectivity to Amazon S3 and DynamoDB without requiring an internet gateway or a NAT device for your VPC.
+
+https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html
