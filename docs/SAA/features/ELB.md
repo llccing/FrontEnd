@@ -54,3 +54,8 @@ NLB 适用于需要高性能和低延迟的应用程序，如游戏、视频流�
 
 - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html
 - https://repost.aws/knowledge-center/elb-redirect-http-to-https-using-alb
+
+
+## tips from Questions
+1. ALB. Q70, Replace the NLB with an Application Load Balancer. Enable HTTP health checks by supplying the URL of the company's application. Configure an Auto Scaling action to replace unhealthy instances.
+

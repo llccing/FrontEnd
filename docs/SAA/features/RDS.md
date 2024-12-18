@@ -5,3 +5,12 @@ Amazon Relational Database Service (Amazon RDS) is a managed service that makes 
 Amazon RDS gives you access to the capabilities of a familiar RDS for PostgreSQL, RDS for MySQL, RDS for MariaDB, RDS for SQL Server, RDS for Oracle, or RDS for Db2 database. This means that the code, applications, and tools you already use today with your existing databases should work seamlessly with Amazon RDS. Amazon RDS can automatically back up your database and keep your database software up to date with the latest version. You benefit from the flexibility of being able to scale the compute resources or storage capacity associated with your relational database instance. In addition, Amazon RDS makes it easy to use replication to enhance database availability, improve data durability, or scale beyond the capacity constraints of a single database instance for read-heavy database workloads. As with all AWS services, there are no upfront investments required, and you pay only for the resources you use.
 
 [Amazon RDS FAQs](https://aws.amazon.com/rds/faqs/)
+
+### RDS Proxy for Aurora
+
+By using Amazon RDS Proxy, you can allow your applications to pool and share database connections to improve their ability to scale. RDS Proxy makes applications more resilient to database failures by automatically connecting to a standby DB instance while preserving application connections. By using RDS Proxy, you can also enforce AWS Identity and Access Management (IAM) authentication for databases, and securely store credentials in AWS Secrets Manager.
+
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy.html
+
+### tips from Questoins
+1. RDS Proxy for Aurora. Q69, configure the Auto Scaling group to use multiple Availability Zones. Configure the database as Multi-AZ. Configure an Amazon RDS Proxy instance for the database.

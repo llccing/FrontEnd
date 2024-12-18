@@ -56,3 +56,7 @@ Amazon SQS 提供标准队列作为默认队列类型，每秒支持、和等Sen
 
 
 [SQS Standard](https://docs.aws.amazon.com/zh_cn/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html)
+
+
+### tips from Questoins
+1. ChangeMessageVisibility API call to increase the visibility timeout. Q67, resolve one message can be consumed multiple times by different consumers at the same time.
