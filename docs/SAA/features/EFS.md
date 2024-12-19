@@ -20,7 +20,7 @@ https://zesty.co/blog/ebs-vs-efs-which-is-right/
 
 In AWS, Elastic Block Store (EBS) and Elastic File System (EFS) are both storage solutions, but they serve different purposes and have distinct characteristics:
 
-### Amazon EBS (Elastic Block Store)
+Amazon EBS (Elastic Block Store)
 
 - **Type**: Block storage.
 - **Use Case**: Ideal for use as the primary storage for file systems, databases, or any application that requires granular updates and access to raw, unformatted, and block-level storage.
@@ -30,7 +30,7 @@ In AWS, Elastic Block Store (EBS) and Elastic File System (EFS) are both storage
 - **Scalability**: Must manually resize volumes.
 - **Backup**: Supports snapshots for backups, which can be used to create new volumes.
 
-### Amazon EFS (Elastic File System)
+Amazon EFS (Elastic File System)
 
 - **Type**: File storage.
 - **Use Case**: Designed for applications that require shared file access, such as content management, web serving, and home directories.
@@ -40,7 +40,7 @@ In AWS, Elastic Block Store (EBS) and Elastic File System (EFS) are both storage
 - **Scalability**: Automatically scales up or down as you add or remove files.
 - **Backup**: Supports AWS Backup for file-level backups.
 
-### Key Differences
+Key Differences
 
 - **Accessibility**: EBS is limited to a single EC2 instance, while EFS can be accessed by multiple instances simultaneously.
 - **Use Case Suitability**: EBS is suited for high-performance applications requiring block storage, whereas EFS is optimal for shared file storage across multiple instances.
@@ -53,7 +53,7 @@ These differences make EBS and EFS suitable for different scenarios depending on
 
 Block storage and file storage are two different storage architectures that serve distinct purposes:
 
-### Block Storage
+Block Storage
 
 - **Structure**: Data is stored in fixed-size blocks. Each block has a unique address, and the storage system does not manage a file system structure.
 - **Use Case**: Suitable for applications requiring high-performance and low-latency access, such as databases and virtual machine file systems.
@@ -61,7 +61,7 @@ Block storage and file storage are two different storage architectures that serv
 - **Performance**: Typically provides higher performance and efficiency for transactional data and I/O-intensive applications.
 - **Example**: AWS Elastic Block Store (EBS).
 
-### File Storage
+File Storage
 
 - **Structure**: Data is stored as files in a hierarchical structure (directories and subdirectories).
 - **Use Case**: Ideal for shared access scenarios, such as collaboration tools, content management systems, and home directories.
@@ -69,7 +69,7 @@ Block storage and file storage are two different storage architectures that serv
 - **Simplicity**: Easier to manage for applications that naturally work with files and directories.
 - **Example**: AWS Elastic File System (EFS).
 
-### Key Differences
+Key Differences
 
 - **Data Management**: Block storage requires the client to manage the file system, while file storage manages the file system for you.
 - **Performance**: Block storage generally offers better performance for high I/O operations, while file storage is better for shared access and simpler use cases.
@@ -77,5 +77,30 @@ Block storage and file storage are two different storage architectures that serv
 
 These differences make block storage and file storage suitable for different types of applications and workloads.
 
+### what is the difference between NFS AND CIFS?
+
+#### Initial target operating system
+NFS and CIFS were initially designed for different operating systems. CIFS targets the Windows operating system, while NFS targets Unix. This means they were built to leverage their respective operating system kernels for optimal operations. While it’s possible to use CIFS with Linux-based operating systems (via Samba) and NFS with Windows operating systems (via third-party packages), they aren’t natively supported.
+
+#### Authentication
+
+NFS traditionally relies on host-based authentication, where access to shared files is controlled based on the IP address or hostname of the client machine. It has limited built-in security mechanisms, which can be a concern in open networks.
+
+CIFS, on the other hand, provides more advanced authentication and security features. It supports user-based authentication, so individual users can access shared resources with their credentials. CIFS also supports encryption and other security mechanisms, which makes it more suitable for secure environments.
+
+#### File locking
+
+NFS uses a stateless design, which means it does not keep track of open files on the server. As a result, file locking is handled by the client, and conflicts occur when multiple clients attempt to write to the same file simultaneously.
+
+CIFS, on the other hand, supports file locking on the server side. It provides better coordination and avoids conflicts when multiple clients access the same file.
+
+#### Performance, NFS is better for performance, CIFS is better for performance.
+
+NFS uses a lightweight protocol with less overhead, which results in faster file access and transfer speeds.
+
+Conversely, CIFS has more protocol overhead due to its support for various Windows-specific features. This can impact performance, especially in high-latency networks.
+
+
+https://aws.amazon.com/compare/the-difference-between-nfs-and-cifs/
 
 [Amazon EFS FAQs](https://aws.amazon.com/efs/faq/)
