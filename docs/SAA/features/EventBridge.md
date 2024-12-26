@@ -1,4 +1,4 @@
-## AWS EventBridge
+## AWS EventBridge (old name CloudWatch Events)
 
 Amazon EventBridge is a service that provides real-time access to changes in data in AWS services, your own applications, and software as a service (SaaS) applications without writing code.
 
