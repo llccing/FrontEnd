@@ -19,6 +19,14 @@ https://aws.amazon.com/compare/the-difference-between-on-demand-instances-and-re
 
 Amazon EC2 Auto Scaling is a fully managed service designed to launch or terminate Amazon EC2 instances automatically to help ensure you have the correct number of Amazon EC2 instances available to handle the load for your application. Amazon EC2 Auto Scaling helps you maintain application availability through fleet management for EC2 instances, which detects and replaces unhealthy instances, and by scaling your Amazon EC2 capacity up or down automatically according to conditions you define. You can use Amazon EC2 Auto Scaling to automatically increase the number of Amazon EC2 instances during demand spikes to maintain performance and decrease capacity during lulls to reduce costs.
 
+### What is the On-Demand Instances?
+
+On-Demand Instances are a pricing model for Amazon Elastic Compute Cloud (EC2) instances you can provision in the AWS cloud. With On-Demand Instances, you pay for computing capacity by the hour or second (with a minimum of 60 seconds) with no long-term commitment. You pay only for what you use, and the instance automatically scales up or down with changing workloads. In contrast, Reserved Instances provide a discounted rate and an optional capacity reservation for your instances. You rent the Reserved Instance for a fixed period at a lower per-second or per-hour rate than the equivalent On-Demand Instance. Spot Instances provide an additional instance pricing model with strict conditions.
+
+### What is the Dedicated Instances?
+
+Dedicated Instances are physical servers with a single tenant model. Dedicated Instances are available with On-Demand, Reserved, and Spot Instance pricing. Dedicated Instances are available in the following instance families: C5, C5a, C5ad, C5d, C5n, H1, I3, I3en, M5, M5a, M5ad, M5d, M5n, R5, R5a, R5ad, R5d, R5n, T3, T3a, and X1.
+
 [Amazon EC2 Auto Scaling FAQs](https://aws.amazon.com/ec2/autoscaling/faqs/)
 
 ### Storage
