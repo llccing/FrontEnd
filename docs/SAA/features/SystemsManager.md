@@ -18,3 +18,26 @@ Parameter Store 是 AWS Systems Manager 的一项功能，可为配置数据提�
 OpsCenter, a capability of AWS Systems Manager, provides a central location where operations engineers and IT professionals can view, investigate, and resolve operational work items (OpsItems) related to AWS resources. OpsCenter is designed to reduce mean time to resolution for issues impacting AWS resources. OpsCenter aggregates and standardizes OpsItems across services while providing contextual investigation data about each OpsItem, related OpsItems, and related resources. OpsCenter also provides Systems Manager Automation runbooks that you can use to quickly resolve issues. You can specify searchable, custom data for each OpsItem. You can also view automatically-generated summary reports about OpsItems by status and source.
 
 https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
+
+
+### State Manager 
+
+State Manager, a capability of AWS Systems Manager, is a secure and scalable configuration management service that automates the process of keeping your managed nodes and other AWS resources in a state that you define.
+
+with State Manager to perform the following types of tasks:
+
+- Attach a Systems Manager role to Amazon Elastic Compute Cloud (Amazon EC2) instances to make them managed nodes.
+- Enforce desired ingress and egress rules for a security group.
+- Create or delete Amazon DynamoDB backups.
+- Create or delete Amazon Elastic Block Store (Amazon EBS) snapshots.
+- Turn off read and write permissions on Amazon Simple Storage Service (Amazon S3) buckets.
+- Start, restart, or stop managed nodes and Amazon Relational Database Service (Amazon RDS) instances.
+- Apply patches to Linux, macOS, and Window AMIs.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state.html
+
+### Session Manager
+
+Session Manager is a fully managed AWS Systems Manager capability. With Session Manager, you can manage your Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, on-premises servers, and virtual machines (VMs). You can use either an interactive one-click browser-based shell or the AWS Command Line Interface (AWS CLI). Session Manager provides secure node management without the need to open inbound ports, maintain bastion hosts, or manage SSH keys. Session Manager also allows you to comply with corporate policies that require controlled access to managed nodes, strict security practices, and logs with node access details, while providing end users with simple one-click cross-platform access to your managed nodes.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html
