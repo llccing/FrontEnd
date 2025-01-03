@@ -15,3 +15,4 @@ AWS Auto Scaling is a new AWS service that helps you optimize the performance of
 With target tracking, you select a load metric for your application, such as “Average CPU Utilization” or the new “Request Count Per Target” metric from Application Load Balancer, set the target value, and Auto Scaling adjusts the number of EC2 instances in your Auto Scaling group as needed to maintain that target. It acts like a home thermostat, automatically adjusting the system to keep the environment at your desired temperature. For example, you can configure target tracking to keep CPU utilization for your fleet of web servers at 50%. From there, Auto Scaling launches or terminates EC2 instances as required to keep the average CPU utilization at 50%.
 
 https://aws.amazon.com/about-aws/whats-new/2017/07/introducing-target-tracking-scaling-policies-for-auto-scaling/
+``

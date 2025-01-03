@@ -12,3 +12,22 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 CloudFront OAI is a security feature that allows you to restrict access to your S3 bucket to only CloudFront.
 
 https://repost.aws/knowledge-center/cloudfront-access-to-amazon-s3
+
+### Field-level encryption
+
+Field-level encryption allows you to enable your users to securely upload sensitive information to your web servers. The sensitive information provided by your users is encrypted at the edge, close to the user, and remains encrypted throughout your entire application stack. This encryption ensures that only applications that need the data—and have the credentials to decrypt it—are able to do so.
+
+you can use a new Amazon CloudFront capability called Field-Level Encryption to further enhance the security of sensitive data, such as credit card numbers or personally identifiable information (PII) like social security numbers. CloudFront’s field-level encryption further encrypts sensitive data in an HTTPS form using field-specific encryption keys (which you supply) before a POST request is forwarded to your origin. This ensures that sensitive data can only be decrypted and viewed by certain components or services in your application stack.
+
+https://aws.amazon.com/about-aws/whats-new/2017/12/introducing-field-level-encryption-on-amazon-cloudfront/
+
+Steps to implement field-level encryption:
+
+1. Create a field-level encryption configuration.
+2. Create a field-level encryption profile.
+3. Create a field-level encryption policy.
+4. Create a distribution with the field-level encryption configuration.
+5. Create a POST request with the field-level encryption policy.
+6. Create a GET request with the field-level encryption policy.
+
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html

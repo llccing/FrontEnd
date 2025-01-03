@@ -42,9 +42,22 @@ EBS is block storage, so it can only be mounted to one EC2 instance.
 - 提高可用性：FSR 可以提高应用程序的可用性，因为卷在创建后立即可用。
 - 减少成本：FSR 可以减少从快照还原卷所需的时间，从而减少应用程序的停机时间。
 
+### Data Lifecycle Manager (DLM)
+
+Automate lifecycle management of EBS Snapshots and EBS-backed AMIs
+
+https://aws.amazon.com/ebs/data-lifecycle-manager/
+
+
+You can use Amazon Data Lifecycle Manager to automate the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs. When you automate snapshot and AMI management, it helps you to:
+
+- Protect valuable data by enforcing a regular backup schedule.
+- Create standardized AMIs that can be refreshed at regular intervals.
+- Retain backups as required by auditors or internal compliance.
+- Reduce storage costs by deleting outdated backups.
+- Create disaster recovery backup policies that back up data to isolated Regions or accounts.
 
 ### is EBS HA and why?
 
 EBS is not HA, because it is block storage, so it can only be mounted to one EC2 instance.
-
 
