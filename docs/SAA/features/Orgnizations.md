@@ -22,3 +22,4 @@ Active Directory 通常用于企业环境中，以确保网络的安全性和高
 Service Control Policies (SCPs) are a type of policy that you can use to manage access to AWS resources. SCPs are used to manage access to AWS resources within an organization. They allow you to define rules that control which AWS resources can be created, modified, or deleted.
 
 [AWS Organizations Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+

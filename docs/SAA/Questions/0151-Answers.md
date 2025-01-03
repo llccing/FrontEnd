@@ -101,4 +101,24 @@ Ans A - CloudFront delivers video on demand or live streaming video using any HT
 
 **Answer:** AC
 
+Agree A and C
+
+I don't see how E is feasible as its a public API. How would you create an IAM role for each user?
+
+## Q160
+
+**Answer:** C
+
+Ans C:
+Cost-effective solution with milliseconds of retrieval -> it should be s3 standard
+
+----
+S3 Standard provides high durability and availability for storage
+It allows millisecond access to retrieve objects
+Objects can be stored for any duration, meeting the 30 day retention need
+Storage costs are low, around $0.023 per GB/month
+OpenSearch and RDS require running and managing a cluster for DR storage
+Glacier has lower cost but retrieval time is too high at 3-5 hours
+S3 Standard's simplicity, high speed access, and low cost make it optimal for this small DR dataset that needs to be accessed quickly
+
 

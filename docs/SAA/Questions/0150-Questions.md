@@ -87,3 +87,12 @@ C. Implement an AWS WAF rule to target malicious requests and trigger actions to
 D. Convert the existing public API to a private API. Update the DNS records to redirect users to the new API endpoint.
 E. Create an IAM role for each user attempting to access the API. A user will assume the role when making the API call.
 
+## Q160
+An ecommerce company hosts its analytics application in the AWS Cloud. The application generates about 300 MB of data each month. The data is stored in JSON format. The company is evaluating a disaster recovery solution to back up the data. The data must be accessible in milliseconds if it is needed, and the data must be kept for 30 days.
+
+Which solution meets these requirements MOST cost-effectively?
+
+A. Amazon OpenSearch Service (Amazon Elasticsearch Service)
+B. Amazon S3 Glacier
+C. Amazon S3 Standard
+D. Amazon RDS for PostgreSQL

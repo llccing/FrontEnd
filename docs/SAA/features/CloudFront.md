@@ -6,3 +6,9 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 - If the content is not in that edge location, CloudFront retrieves it from an origin that you've defined—such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server (for example, a web server) that you have identified as the source for the definitive version of your content.
 
 [more about CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+
+### CloudFront OAI - origin access identity (OAI)
+
+CloudFront OAI is a security feature that allows you to restrict access to your S3 bucket to only CloudFront.
+
+https://repost.aws/knowledge-center/cloudfront-access-to-amazon-s3

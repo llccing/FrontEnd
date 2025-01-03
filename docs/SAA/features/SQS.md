@@ -58,5 +58,16 @@ Amazon SQS 提供标准队列作为默认队列类型，每秒支持、和等Sen
 [SQS Standard](https://docs.aws.amazon.com/zh_cn/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html)
 
 
+### SQS DLQ Dead-Letter Queue
+
+Amazon SQS supports dead-letter queues (DLQs), which source queues can target for messages that are not processed successfully. DLQs are useful for debugging your application because you can isolate unconsumed messages to determine why processing did not succeed. For optimal performance, it is a best practice to keep the source queue and DLQ within the same AWS account and Region. Once messages are in a dead-letter queue, you can:
+
+- Examine logs for exceptions that might have caused messages to be moved to a dead-letter queue.
+- Analyze the contents of messages moved to the dead-letter queue to diagnose application issues.
+- Determine whether you have given your consumer sufficient time to process messages.
+- Move messages out of the dead-letter queue using dead-letter queue redrive.
+
+[SQS DLQ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+
 ### tips from Questoins
 1. ChangeMessageVisibility API call to increase the visibility timeout. Q67, resolve one message can be consumed multiple times by different consumers at the same time.
