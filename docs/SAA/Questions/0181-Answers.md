@@ -46,3 +46,53 @@ B. Create an IAM role with S3 permissions, and then specify that role as the tas
 
 ---
 The short name or full Amazon Resource Name (ARN) of the AWS Identity and Access Management role that grants containers in the task permission to call AWS APIs on your behalf.
+
+## Q186
+
+**Answer:** B
+Correct is B
+FSx --> shared Windows file system（SMB）
+EFS --> Linux NFS
+
+## Q187
+
+**Answer:**  AD
+
+Highly available application - Amazon RDS DB instance in Multi-AZ
+little manual intervention - Fargate
+
+## Q188
+
+**Answer:** A
+
+Answer is A
+AWS Transfer Family securely scales your recurring business-to-business file transfers to AWS Storage services using SFTP, FTPS, FTP, and AS2 protocols.
+https://aws.amazon.com/aws-transfer-family/
+
+## Q189
+
+**Answer:** BD
+
+should be BD
+C could have been fine, but key rotation is activate per default on SSE-S3, and no way to deactivate it if I am not wrong
+
+---------
+Answer: BD:
+B: S3 Compliance Mode ensures no one can overwrite or delete the object.
+D: Customer-managed KMS Key: (must be enabled) automatic every 1 year
+
+Options not right:
+A: Governance mode allows override and delete.
+C: SSE-S3 customer do not have control on rotation of keys(Which is once a year in our requirement)
+E: As per AWS Documentation, Customer Imported keys cannot be auto rotated.
+
+## Q190
+
+**Answer:** B
+
+Elastic Beanstalk can test Blue/Green deployment. Switching Dev to prod/ prod to dev easily.
+
+---
+A and C are not allowing for feature testing.
+B and D allow feature testing. D requires overhead of containerisation as well as the LB controller to selectively chose containers for features (assuming on how this might be implemented). EBS allows switching between environment like A/B testing but on whole site. Expensive but cost is not a concern for this question.
+
