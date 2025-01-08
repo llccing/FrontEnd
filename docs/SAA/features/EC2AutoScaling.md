@@ -12,3 +12,10 @@ EC2 Auto Scaling groups are regional constructs. They can span Availability Zone
 You should use Amazon EC2 Auto Scaling when you need to scale your EC2 instances. AWS Auto Scaling is a newer service that allows you to scale multiple AWS resources, including EC2 instances, RDS instances, and Lambda functions.
 
 https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html
+
+### Predictive Scaling
+
+Predictive Scaling is a feature of Amazon EC2 Auto Scaling that uses machine learning to predict the future capacity requirements of your application.
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html
+

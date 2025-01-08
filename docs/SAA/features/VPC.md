@@ -15,3 +15,18 @@ Amazon VPC traffic mirroring makes it easy for customers to replicate network tr
 Gateway endpoints provide reliable connectivity to Amazon S3 and DynamoDB without requiring an internet gateway or a NAT device for your VPC.
 
 https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html
+
+
+### NAT Gateways
+
+A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances.
+
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html
+
+
+what is the difference between NAT Gateway and NAT Instance? https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html
+
+NAT instance is like EC2, no HA, Cheaper and tough to scale.
+
+NAT gateway is HA plus scalable, hence costly. It’s a managed AWS service. You can’t SSH to NAT gateway and it’s very stable. Never seen any trouble in last 4-5 years
+

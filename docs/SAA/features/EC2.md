@@ -80,3 +80,11 @@ On-Demand Capacity Reservations allow you to reserve compute capacity for your i
    - **On-Demand Capacity Reservations**: More flexible, as they can be created and canceled at any time.
 
 In summary, choose Reserved Instances for cost savings with predictable workloads and On-Demand Capacity Reservations for guaranteed capacity without long-term commitments.
+
+
+### Placement Groups
+
+Placement groups are a way to group EC2 instances together in a single Availability Zone or across multiple Availability Zones.
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+

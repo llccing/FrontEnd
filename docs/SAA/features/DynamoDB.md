@@ -29,3 +29,11 @@ https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-global-table
 ### tips from Questions
 1. DynamoDB. Q71, Configure DynamoDB point-in-time recovery. For RPO recovery, restore to the desired point in time.
 
+
+### DynamoDB TTL
+
+There is no set expiration or deletion time for data stored in an Amazon DynamoDB table by default. Data will remain in the table indefinitely unless explicitly deleted by the customer or through Time to Live (TTL) deletes if TTL is enabled.
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html
