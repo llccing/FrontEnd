@@ -13,3 +13,11 @@ Secrets Manager 和 Parameter Store 都是 AWS Systems Manager 的一部分，�
 
 [AWS Secrets Manager vs Systems Manager Parameter Store](https://tutorialsdojo.com/aws-secrets-manager-vs-systems-manager-parameter-store/)
 
+## What is the difference between AWS Secrets Manager and AWS KMS?
+
+The main difference between AWS KMS and Secrets Manager is what they are hiding. KMS hides encryption keys, while Secrets Manager hides credentials. 
+
+KMS is used to manage encryption keys. Other services integrate with KMS to provide data encryption capabilities.
+
+Secrets Manager is used to store secrets, like passwords. Secrets Manager uses KMS to encrypt your passwords when it stores them.
+

@@ -2,7 +2,6 @@
 
 Provide on-premises applications with access to virtually unlimited cloud storage. You can deploy Storage Gateway as a virtual machine (VM) within your VMware, Hyper-V, or Linux KVM virtual environment, or as an Amazon EC2 instance within your Amazon Virtual Private Cloud (Amazon VPC).
 
-
 ### Types of Storage Gateway
 
 - **S3 File Gateway**

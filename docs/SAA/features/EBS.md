@@ -21,6 +21,21 @@ Amazon EBS 提供以下功能和优势：
 
 [More information](https://docs.aws.amazon.com/zh_cn/ebs/latest/userguide/what-is-ebs.html)
 
+### EBS Volume Types
+
+#### SSD-backed volumes (IOPS-intensive)
+- io2, io1
+- gp3, gp2, general purpose
+
+#### HDD-backed volumes (MB/s-effective)
+- st1, sc1; sc1 is Cold HDD(sc1).
+
+#### EBS Magnetic 
+
+EBS Magnetic volumes are backed by hard disk drives (HDDs) and can be used for workloads with smaller datasets where data is accessed infrequently or when performance consistency isn't of primary importance. EBS Magnetic volumes provide approximately 100 IOPS on average, with an ability to burst to hundreds of IOPS, and support volumes from 1GB to 1TB in size. If you need higher performance or performance consistency than EBS Magnetic can provide, we recommend that you consider Amazon EBS General Purpose SSD (gp2) or other volume types. 
+
+https://aws.amazon.com/ebs/previous-generation/
+
 ### diff between EBS and EFS
 
 EFS is network file system, so it can be mounted to multiple EC2 instances across different AZs.
