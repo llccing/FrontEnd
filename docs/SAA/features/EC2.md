@@ -106,3 +106,58 @@ Placement groups are a way to group EC2 instances together in a single Availabil
 
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 
+
+### Hibernation
+
+Hibernation is a feature that allows you to save the state of your instance and resume it later.
+
+When you hibernate an instance, Amazon EC2 signals the operating system to perform hibernation (suspend-to-disk). Hibernation saves the contents from the instance memory (RAM) to your Amazon Elastic Block Store (Amazon EBS) root volume. Amazon EC2 persists the instance's EBS root volume and any attached EBS data volumes. When your instance is started:
+
+- The EBS root volume is restored to its previous state
+- The RAM contents are reloaded
+- The processes that were previously running on the instance are resumed
+- Previously attached data volumes are reattached and the instance retains its instance ID
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation
+
+
+### Placement groups 
+
+To meet the needs of your workload, you can launch a group of interdependent EC2 instances into a placement group to influence their placement.
+
+Depending on the type of workload, you can create a placement group using one of the following placement strategies:
+
+- Cluster – Packs instances close together inside an Availability Zone. This strategy enables workloads to achieve the low-latency network performance necessary for tightly-coupled node-to-node communication that is typical of high-performance computing (HPC) applications.
+
+- Partition – Spreads your instances across logical partitions such that groups of instances in one partition do not share the underlying hardware with groups of instances in different partitions. This strategy is typically used by large distributed and replicated workloads, such as Hadoop, Cassandra, and Kafka.
+
+- Spread – Strictly places a small group of instances across distinct underlying hardware to reduce correlated failures.
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-cluster
+
+### Instance Recovery
+
+If AWS detects that an instance is unavailable due to an underlying hardware or software issue, there are two mechanisms that can automatically restore instance availability—simplified automatic recovery and Amazon CloudWatch action based recovery. Restoring instance availability is also known as instance recovery.
+
+During the instance recovery process, AWS will attempt to move your instance from the host with the underlying hardware or software issue to a different host. If successful, the instance recovery process will appear to the instance as an unplanned reboot. 
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html
+
+#### Relates questions: is EC2 default High Availability?
+
+No, EC2 is not default High Availability.
+
+
+there are several possibilities to achieve HA with EC2:
+
+create an autoscaling group with min capacity=1 and max capacity=1. So whenever your instance fails, the autoscaling group will create a new one. The autoscaling group comes for free, so this is not a bad solution depending on your SLA.
+use ec2 auto-recovery feature by creating a cloudwatch alarm that would replace your instance if failed.
+create two EC2 instances and use Route 53 DNS failover to resolve to an healthy instance
+Last but not least: the best solution is definitely to create several instances across several availability zones and to use an elastic load balancer to distribute the traffic. This way, even if an instance fails, you already have other ones available. AWS recommends this solution as they have an SLA of 99.95% for their instance in an AZ. By putting in several AZs you can have 100% availability.
+
+----
+EDIT: adding information why there is no such native feature for EC2.
+
+there is no native HA feature in EC2 compared to RDS, because EC2 is pure IaaS when RDS is more PaaS. So for RDS when you select HA, behind the scene it actually spawns a slave database in another availabilty zone and replicates your master. Whenever the master fails, you have an automatic DNS failover to the slave database, which is elected master, and a new slave database is getting created.
+
+https://stackoverflow.com/questions/36709830/ec2-amazon-high-availability-always-on

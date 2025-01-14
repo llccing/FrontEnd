@@ -16,6 +16,20 @@ Gateway endpoints provide reliable connectivity to Amazon S3 and DynamoDB withou
 
 https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html
 
+#### Endpoints for S3
+You can access Amazon S3 from your VPC using gateway VPC endpoints. After you create the gateway endpoint, you can add it as a target in your route table for traffic destined from your VPC to Amazon S3.
+
+There is no additional charge for using gateway endpoints.
+
+Amazon S3 supports both gateway endpoints and interface endpoints. With a gateway endpoint, you can access Amazon S3 from your VPC, without requiring an internet gateway or NAT device for your VPC, and with no additional cost. However, gateway endpoints do not allow access from on-premises networks, from peered VPCs in other AWS Regions, or through a transit gateway. For those scenarios, you must use an interface endpoint, which is available for an additional cost. 
+
+#### Endpoints for DynamoDB
+
+You can access Amazon DynamoDB from your VPC using gateway VPC endpoints. After you create the gateway endpoint, you can add it as a target in your route table for traffic destined from your VPC to DynamoDB.
+
+There is no additional charge for using gateway endpoints.
+
+DynamoDB supports both gateway endpoints and interface endpoints. With a gateway endpoint, you can access DynamoDB from your VPC, without requiring an internet gateway or NAT device for your VPC, and with no additional cost. However, gateway endpoints do not allow access from on-premises networks, from peered VPCs in other AWS Regions, or through a transit gateway. For those scenarios, you must use an interface endpoint, which is available for an additional cost.
 
 ### NAT Gateways
 
@@ -29,4 +43,39 @@ what is the difference between NAT Gateway and NAT Instance? https://docs.aws.am
 NAT instance is like EC2, no HA, Cheaper and tough to scale.
 
 NAT gateway is HA plus scalable, hence costly. It’s a managed AWS service. You can’t SSH to NAT gateway and it’s very stable. Never seen any trouble in last 4-5 years
+
+### VPC NACLs
+
+A network access control list (ACL) allows or denies specific inbound or outbound traffic at the subnet level. You can use the default network ACL for your VPC, or you can create a custom network ACL for your VPC with rules that are similar to the rules for your security groups in order to add an additional layer of security to your VPC.
+
+There is no additional charge for using network ACLs.
+
+The following diagram shows a VPC with two subnets. Each subnet has a network ACL. When traffic enters the VPC (for example, from a peered VPC, VPN connection, or the internet), the router sends the traffic to its destination. Network ACL A determines which traffic destined for subnet 1 is allowed to enter subnet 1, and which traffic destined for a location outside subnet 1 is allowed to leave subnet 1. Similarly, network ACL B determines which traffic is allowed to enter and leave subnet 2.
+
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html
+
+#### The difference between NACL and Security Group
+
+the Security Group do not support deny rules.
+
+#### and why Security Group don't support deny rules?
+
+There is no "reason" other than "because that's how it was designed."
+
+Security groups deny everything by default, and traffic matching any rule allows that traffic to pass, so there is no need for rule precedence as there would be for a mix of allow/deny. This in turn is means a simpler interface and likely a simpler and more lightweight implementation, though the actual reason may not be related to that but may simply be that NACL already provides this feature.
+
+https://stackoverflow.com/questions/61675211/why-there-is-no-concept-of-deny-in-security-groups
+
+
+### VPC peering 
+
+A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can launch AWS resources, such as Amazon EC2 instances, into your VPC.
+
+A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs, or with a VPC in another AWS account. The VPCs can be in different Regions (also known as an inter-Region VPC peering connection).
+
+AWS uses the existing infrastructure of a VPC to create a VPC peering connection; it is neither a gateway nor a VPN connection, and does not rely on a separate piece of physical hardware. There is no single point of failure for communication or a bandwidth bottleneck.
+
+A VPC peering connection helps you to facilitate the transfer of data. For example, if you have more than one AWS account, you can peer the VPCs across those accounts to create a file sharing network. You can also use a VPC peering connection to allow other VPCs to access resources you have in one of your VPCs.
+
+https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html
 
