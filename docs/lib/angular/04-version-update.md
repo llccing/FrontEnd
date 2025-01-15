@@ -61,10 +61,26 @@ https://medium.com/bitsrc/whats-new-in-angular-17-f618ba59226a
 
 ### Angular 17 to 18
 
-- @defer is stable
-- Control flow is stable
-- Enhanced Forms API
+- New zoneless change detection with signals.
+- Routes redirect as a function.
+- New Signal APIs in developer preview.
+- Material 3, signals, deferable views, and built-in control flow from version 17 are now stable in version 18.
+- Application robust hosting with Firebase.
+- Fallback content for ng-content.
+- Form’s new control state change events.
+- SSR improvements and event replay.
+- Typescript 5.4 features.
 
+
+### Angular 18 to 19
+
+1. Standalone Components: Simplify Everything
+2. Enhanced Signal APIs
+3. Performance Enhancements: SSR and Hydration
+4. Event Replay
+5. Improved Dependency Injection (DI) with Type Inference
+6. Performance Boosts
+7. Updated Angular Material Components
 
 
 https://medium.com/gitconnected/angular-new-features-4bdbbe47a986
