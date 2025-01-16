@@ -6,3 +6,11 @@ Aurora features a distributed, fault-tolerant, and self-healing storage system t
 
 Aurora is also a fully managed service that automates time-consuming administration tasks such as hardware provisioning, database setup, patching, and backups while providing the security, availability, and reliability of commercial databases at one-tenth of the cost.
 
+### Aurora Serverless
+
+Amazon Aurora Serverless is an on-demand, autoscaling configuration for Amazon Aurora. It automatically starts up, shuts down, and scales capacity up or down based on your application's needs. You can run your database in the cloud without managing any database instances. You can also use Aurora Serverless v2 instances along with provisioned instances in your existing or new database clusters.
+
+Manually managing database capacity can take up valuable time and can lead to inefficient use of database resources. With Aurora Serverless, you create a database, specify the desired database capacity range, and connect your applications. You pay on a per-second basis for the database capacity that you use when the database is active, and migrate between standard and serverless configurations with a few steps in the Amazon Relational Database Service (Amazon RDS) console.
+
+https://aws.amazon.com/rds/aurora/serverless/?nc2=type_a
+

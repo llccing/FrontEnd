@@ -79,3 +79,9 @@ A VPC peering connection helps you to facilitate the transfer of data. For examp
 
 https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html
 
+### Elastic network interfaces or Network interfaces
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
+
+An elastic network interface is a logical networking component in a VPC that represents a virtual network card. You can create and configure network interfaces and attach them to instances that you launch in the same Availability Zone. The attributes of a network interface follow it as it's attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected from the original instance to the new instance.
+
