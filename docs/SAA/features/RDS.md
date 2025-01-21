@@ -53,3 +53,9 @@ There are a variety of scenarios where deploying one or more read replicas for a
 
 ### tips from Questoins
 1. RDS Proxy for Aurora. Q69, configure the Auto Scaling group to use multiple Availability Zones. Configure the database as Multi-AZ. Configure an Amazon RDS Proxy instance for the database.
+
+### Restoring from a snapshot
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RestoreFromSnapshot.html
+
+you can create a DB snapshot from a DB instance or a DB cluster. Then this will save costs and don't reduce the capacity of the DB instance, when your requirement is only for a short period. such as continuous running about 48 hours once a month.
+

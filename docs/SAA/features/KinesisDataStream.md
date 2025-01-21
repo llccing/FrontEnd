@@ -74,3 +74,9 @@ Amazon Kinesis is a powerful service for real-time data streaming and processing
 **Conclusion**
 
 Amazon Kinesis is versatile and can handle a broad spectrum of real-time data types beyond just user click events. Its ability to ingest, process, and analyze data in motion makes it an invaluable tool for businesses aiming to gain immediate insights, respond swiftly to changes, and maintain a competitive edge in their respective markets. Whether it's enhancing user experiences, ensuring system reliability, or driving data-driven decision-making, Kinesis provides the infrastructure necessary to support a wide array of real-time data applications.
+
+### Kinesis Data Streams with interface VPC endpoint
+
+You can use an interface VPC endpoint to prevent traffic between your Amazon VPC and Kinesis Data Streams from leaving the Amazon network. Interface VPC endpoints don't require an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. Interface VPC endpoints are powered by AWS PrivateLink, an AWS technology that enables private communication between AWS services using an elastic network interface with private IPs in your Amazon VPC.
+
+https://docs.aws.amazon.com/streams/latest/dev/vpc.html

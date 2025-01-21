@@ -55,3 +55,16 @@ IAM users are identities with long-term credentials. You might be using IAM user
 ### What are IAM policies?
 
 IAM policies define permissions for the entities you attach them to. For example, to grant access to an IAM role, attach a policy to the role. The permissions defined in the policy determine whether requests are allowed or denied. You also can attach policies to some resources, such as Amazon S3 buckets, to grant direct, cross-account access. And you can attach policies to an AWS organization or organizational unit to restrict access across multiple accounts. AWS evaluates these policies when an IAM role makes a request. For more information, see Identity-based policies.
+
+### Delegate access across AWS accounts using IAM roles
+https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html
+
+This tutorial teaches you how to use a role to delegate access to resources in different AWS accounts called Destination and Originating. You share resources in one account with users in a different account. By setting up cross-account access in this way, you don't have to create individual IAM users in each account. In addition, users don't have to sign out of one account and sign in to another account to access resources in different AWS accounts.
+
+In this tutorial, the Destination account manages application data accessed by different applications and teams. In each account, you store application information in Amazon S3 buckets. You manage IAM users in the Originating account, where you have two IAM user roles: Developers and Analysts. Developers and Analysts use the Originating account to generate data shared by multiple microservices. Both roles have permissions to work in the Originating account and access resources there. From time to time, a developer must update the shared data in the Destination account. The developers store this data in an Amazon S3 bucket called amzn-s3-demo-bucket-shared-container.
+
+At the end of this tutorial, you have the following:
+
+- Users in the Originating account (the trusted account) allowed to assume a specific role in the Destination account.
+- A role in the Destination account (the trusting account) allowed to access a specific Amazon S3 bucket.
+- The amzn-s3-demo-bucket-shared-container bucket in the Destination account.

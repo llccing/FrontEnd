@@ -10,26 +10,40 @@ Amazon VPC traffic mirroring makes it easy for customers to replicate network tr
 
 [Amazon VPC FAQs](https://aws.amazon.com/vpc/faqs/)
 
-### Gateway Endpoints
+### VPC Endpoint
+
+#### Gateway Endpoints
 
 Gateway endpoints provide reliable connectivity to Amazon S3 and DynamoDB without requiring an internet gateway or a NAT device for your VPC.
 
 https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html
 
-#### Endpoints for S3
+**Endpoints for S3**
 You can access Amazon S3 from your VPC using gateway VPC endpoints. After you create the gateway endpoint, you can add it as a target in your route table for traffic destined from your VPC to Amazon S3.
 
 There is no additional charge for using gateway endpoints.
 
 Amazon S3 supports both gateway endpoints and interface endpoints. With a gateway endpoint, you can access Amazon S3 from your VPC, without requiring an internet gateway or NAT device for your VPC, and with no additional cost. However, gateway endpoints do not allow access from on-premises networks, from peered VPCs in other AWS Regions, or through a transit gateway. For those scenarios, you must use an interface endpoint, which is available for an additional cost. 
 
-#### Endpoints for DynamoDB
+**Endpoints for DynamoDB**
 
 You can access Amazon DynamoDB from your VPC using gateway VPC endpoints. After you create the gateway endpoint, you can add it as a target in your route table for traffic destined from your VPC to DynamoDB.
 
 There is no additional charge for using gateway endpoints.
 
 DynamoDB supports both gateway endpoints and interface endpoints. With a gateway endpoint, you can access DynamoDB from your VPC, without requiring an internet gateway or NAT device for your VPC, and with no additional cost. However, gateway endpoints do not allow access from on-premises networks, from peered VPCs in other AWS Regions, or through a transit gateway. For those scenarios, you must use an interface endpoint, which is available for an additional cost.
+
+#### Interface Endpoints
+
+With a VPC endpoint, you can establish a private connection to specific AWS services and VPC endpoint services through AWS PrivateLink. It eliminates the need for public IP addresses for communication between these services and your Amazon VPC instances. Furthermore, a secure connection is maintained since no information leaves the Amazon network while traveling between your Amazon VPC and the service.
+
+**Interface Endpoints for Kinesis Data Streams**
+
+You can use an interface VPC endpoint to prevent traffic between your Amazon VPC and Kinesis Data Streams from leaving the Amazon network. Interface VPC endpoints don't require an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. Interface VPC endpoints are powered by AWS PrivateLink, an AWS technology that enables private communication between AWS services using an elastic network interface with private IPs in your Amazon VPC.
+
+https://docs.aws.amazon.com/streams/latest/dev/vpc.html
+
+In conclusion, we have identified the difference between the VPC Interface endpoint and the gateway endpoint, where Interface Endpoints enable connectivity to a wider range of services, while Gateway Endpoints are specifically designed for routing traffic to Amazon S3 and DynamoDB. 
 
 ### NAT Gateways
 
@@ -85,3 +99,9 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
 
 An elastic network interface is a logical networking component in a VPC that represents a virtual network card. You can create and configure network interfaces and attach them to instances that you launch in the same Availability Zone. The attributes of a network interface follow it as it's attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected from the original instance to the new instance.
 
+
+### VPC sharing
+
+VPC subnet sharing allows multiple AWS accounts to create their application resources, such as Amazon EC2 instances, Amazon Relational Database Service (RDS) databases, Amazon Redshift clusters, and AWS Lambda functions, into shared, centrally-managed virtual private clouds (VPCs). In this model, the account that owns the VPC (owner) shares one or more subnets with other accounts (participants) that belong to the same organization from AWS Organizations. After a subnet is shared, the participants can view, create, modify, and delete their application resources in the subnets shared with them. Participants cannot view, modify, or delete resources that belong to other participants or the VPC owner.
+
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html
