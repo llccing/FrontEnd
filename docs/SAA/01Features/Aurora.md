@@ -14,3 +14,10 @@ Manually managing database capacity can take up valuable time and can lead to in
 
 https://aws.amazon.com/rds/aurora/serverless/?nc2=type_a
 
+
+### Using switchover or failover in Amazon Aurora Global Database
+
+https://docs.amazonaws.cn/en_us/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html
+
+The Aurora Global Database feature provides more business continuity and disaster recovery (BCDR) protection than the standard high availability provided by an Aurora DB cluster in a single Amazon Web Services Region. By using Aurora Global Database, you can plan for faster recovery from rare, unplanned Regional disasters or complete service-level outages quickly.
+

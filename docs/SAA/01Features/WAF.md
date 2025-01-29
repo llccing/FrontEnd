@@ -15,3 +15,8 @@ AWS WAF helps protects your website from common attack techniques like SQL injec
 Today, we are excited to announced new Geographic (Geo) Match Conditions in AWS WAF. This new condition type allows you to use AWS WAF to restrict application access based on the geographic location of your viewers. With geo match conditions you can choose the countries from which AWS WAF should allow access. 
 
 https://aws.amazon.com/about-aws/whats-new/2017/10/aws-waf-now-supports-geographic-match/
+
+### WAF Block Common Attacks
+
+Configure IP match conditions to block common attacks.
+

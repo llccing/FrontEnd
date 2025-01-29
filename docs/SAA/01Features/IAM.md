@@ -68,3 +68,11 @@ At the end of this tutorial, you have the following:
 - Users in the Originating account (the trusted account) allowed to assume a specific role in the Destination account.
 - A role in the Destination account (the trusting account) allowed to access a specific Amazon S3 bucket.
 - The amzn-s3-demo-bucket-shared-container bucket in the Destination account.
+
+### NotAction
+
+#### NotAction with Deny
+You can use the NotAction element in a statement with "Effect": "Deny" to deny access to all of the listed resources except for the actions specified in the NotAction element. This combination does not allow the listed items, but instead explicitly denies the actions not listed. You must still allow actions that you want to allow.
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_notaction.html
+

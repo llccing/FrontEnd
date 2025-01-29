@@ -49,3 +49,14 @@ The primary differences between an alias record and a CNAME record are as follow
 
 These differences make alias records particularly useful for AWS environments where integration and performance are key considerations.
 
+### Route 53 Failover Types
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-types.html
+
+You can use Route 53 health checking to configure active-active and active-passive failover configurations. You configure active-active failover using any routing policy (or combination of routing policies) other than failover, and you configure active-passive failover using the failover routing policy.
+
+#### Active-active failover
+Use this failover configuration when you want all of your resources to be available the majority of the time. When a resource becomes unavailable, Route 53 can detect that it's unhealthy and stop including it when responding to queries.
+
+#### Active-passive failover
+Use an active-passive failover configuration when you want a primary resource or group of resources to be available the majority of the time and you want a secondary resource or group of resources to be on standby in case all the primary resources become unavailable. When responding to queries, Route 53 includes only the healthy primary resources. If all the primary resources are unhealthy, Route 53 begins to include only the healthy secondary resources in response to DNS queries.
