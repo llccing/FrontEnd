@@ -63,3 +63,6 @@ D
 ## Result
 
 60% correct
+
+## Analysis, the wrong part
+- 
