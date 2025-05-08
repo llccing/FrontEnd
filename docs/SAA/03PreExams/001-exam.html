@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Questionnaire</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 2em auto; padding: 0 1em; }
+  h1 { text-align: center; }
+  .question { margin-bottom: 2em; }
+  .question h2 { font-size: 1.2em; margin-bottom: 0.5em; }
+  .options label { display: block; margin: 0.3em 0; cursor: pointer; }
+  .save-msg { color: green; margin-top: 1em; font-style: italic; }
+  button#clearBtn { margin-top: 1em; }
+</style>
+</head>
+<body>
+
+<h1>Quiz</h1>
+<div id="quiz"></div>
+<div style="text-align:center;">
+  <button id="clearBtn">Clear All Answers</button>
+</div>
+
+<script>
+fetch('./001-wrongQuestions-1.json')
+  .then(response => response.json())
+  .then(data => {
+    questions = data;
+    renderQuiz();
+  })
+  .catch(error => {
+    console.error('Error loading questions:', error);
+  });
+
+
+// Utilities: repeatable seeded shuffle based on a simple seed
+function seededShuffle(array, seed) {
+  const result = array.slice();
+  let random = mulberry32(seed);
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+// Simple deterministic PRNG
+function mulberry32(a) {
+  return function() {
+    var t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+}
+
+function saveAnswer(qIndex, selectedOption) {
+  const saved = JSON.parse(localStorage.getItem('quizAnswers') || '{}');
+  saved[qIndex] = selectedOption;
+  localStorage.setItem('quizAnswers', JSON.stringify(saved));
+}
+
+function loadAnswers() {
+  try {
+    return JSON.parse(localStorage.getItem('quizAnswers') || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function clearAnswers() {
+  localStorage.removeItem('quizAnswers');
+  location.reload();
+}
+
+function createQuestionElement(q, index, savedAnswers) {
+  const container = document.createElement('div');
+  container.classList.add('question');
+
+  const qTitle = document.createElement('h2');
+  qTitle.textContent = `Q${index + 1}. ${q.question}`;
+  container.appendChild(qTitle);
+
+  const optionsDiv = document.createElement('div');
+  optionsDiv.classList.add('options');
+
+  q.options.forEach(opt => {
+    const label = document.createElement('label');
+
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = `question${index}`;
+    radio.value = opt.option;
+    radio.checked = (savedAnswers[index] === opt.option);
+
+    radio.addEventListener('change', () => {
+      saveAnswer(index, radio.value);
+    });
+
+    const optionText = document.createTextNode(` (${opt.option}) ${opt.text}`);
+
+    label.appendChild(radio);
+    label.appendChild(optionText);
+    optionsDiv.appendChild(label);
+  });
+
+  container.appendChild(optionsDiv);
+
+  return container;
+}
+
+window.onload = function() {
+  const quizDiv = document.getElementById('quiz');
+
+  // Fixed shuffle based on number of questions
+  const seed = questions.length;
+  const questionsShuffled = seededShuffle(questions, seed);
+  // Save shuffled questions to localStorage
+  localStorage.setItem('shuffledQuestions', JSON.stringify(questionsShuffled));
+
+  const savedAnswers = loadAnswers();
+
+  // Render questions
+  questionsShuffled.forEach((q, i) => {
+    const qElem = createQuestionElement(q, i, savedAnswers);
+    quizDiv.appendChild(qElem);
+  });
+
+  // Clear button
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    if(confirm('Are you sure you want to clear all saved answers?')) {
+      clearAnswers();
+    }
+  });
+};
+</script>
+
+</body>
+</html>
