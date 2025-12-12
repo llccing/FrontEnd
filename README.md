@@ -2,4 +2,4 @@
 
 前端日新月异，力求在某一方面有所建树。
 
-:point_right::point_right:文章已经迁移到[语雀](https://www.yuque.com/uov16w):point_left::point_left:
+=.= [https://rowanliu.com/](https://rowanliu.com/)

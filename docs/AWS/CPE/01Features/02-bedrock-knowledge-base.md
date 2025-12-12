@@ -1,3 +1,7 @@
+## Amazon Bedrock
+
+The platform for building generative AI applications and agents at production scale
+
 ## Bedrock knowledge base
 
 aws link https://aws.amazon.com/bedrock/knowledge-bases/
