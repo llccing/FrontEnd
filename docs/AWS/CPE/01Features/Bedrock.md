@@ -91,3 +91,8 @@ Choose Bedrock if you want to integrate GenAI fast using managed foundation mode
 Choose SageMaker if you need to build/own the ML lifecycle, train/fine-tune with maximum flexibility, or run highly customized inference.
 
 If you tell me your target scenario (e.g., chatbot for customer service, automated email/ticket summarization, forecasting, anomaly detection), I can recommend which one fits better and a typical architecture.
+
+## PartyRock
+
+an Amazon Bedrock Playground
+

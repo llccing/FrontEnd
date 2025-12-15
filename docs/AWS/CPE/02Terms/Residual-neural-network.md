@@ -1,0 +1,1 @@
+A residual neural network (also referred to as a residual network or ResNet)[1] is a deep learning architecture in which the layers learn residual functions with reference to the layer inputs. It was developed in 2015 for image recognition, and won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) of that year.

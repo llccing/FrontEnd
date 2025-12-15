@@ -95,3 +95,14 @@ Additionally, SageMaker Model Monitor is integrated with Amazon SageMaker Clarif
 ### Amazon SageMaker Serverless Inference
 
 Amazon SageMaker Serverless Inference is a purpose-built inference option that makes it easy for you to deploy and scale machine learning (ML) models. It provides a pay-per-use model, which is ideal for services where endpoint invocations are infrequent and unpredictable. Unlike a real-time hosting endpoint, which is backed by a long-running instance, compute resources for serverless endpoints are provisioned on demand, thereby eliminating the need to choose instance types or manage scaling policies.
+
+### Amazon SageMaker JumpStart
+
+Machine learning (ML) hub with foundation models, built-in algorithms, and prebuilt ML solutions that you can deploy with just a few clicks
+
+Amazon SageMaker JumpStart is a machine learning (ML) hub that can help you accelerate your ML journey. With SageMaker JumpStart, you can evaluate, compare, and select FMs quickly based on predefined quality and responsibility metrics to perform tasks like article summarization and image generation. Pretrained models are fully customizable for your use case with your data, and you can easily deploy them into production with the user interface or SDK. You can also share artifacts, including models and notebooks, within your organization to accelerate model building and deployment, and admins can control which models are visible to users within their organization.
+
+### Amazon SageMaker Endpoints
+
+Amazon SageMaker Endpoints are secure HTTPS URLs for deploying trained ML models, making them accessible for real-time predictions (inference) at scale, managed by AWS for auto-scaling, instance management (CPU/GPU), and hosting your model artifacts within containers on EC2 instances, allowing seamless integration with applications via standard HTTP requests. They handle the heavy lifting of infrastructure, letting you focus on model serving, with options for custom containers and various instance types for different workloads, like large language models (LLMs).
+
