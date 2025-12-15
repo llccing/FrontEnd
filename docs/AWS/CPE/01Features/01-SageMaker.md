@@ -84,7 +84,6 @@ Model cards provide prescriptive guidance on what information to document and in
 
 Keep machine learning models accurate over time
 
-
 Amazon SageMaker Model Monitor helps you maintain high quality machine learning (ML) models by automatically detecting and alerting on inaccurate predictions from models deployed in production.
 
 The accuracy of ML models can deteriorate over time, a phenomenon known as model drift. Many factors can cause model drift such as changes in model features. The accuracy of ML models can also be affected by concept drift, the difference between data used to train models and data used during inference.
