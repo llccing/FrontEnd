@@ -106,3 +106,15 @@ Amazon SageMaker JumpStart is a machine learning (ML) hub that can help you acce
 
 Amazon SageMaker Endpoints are secure HTTPS URLs for deploying trained ML models, making them accessible for real-time predictions (inference) at scale, managed by AWS for auto-scaling, instance management (CPU/GPU), and hosting your model artifacts within containers on EC2 instances, allowing seamless integration with applications via standard HTTP requests. They handle the heavy lifting of infrastructure, letting you focus on model serving, with options for custom containers and various instance types for different workloads, like large language models (LLMs).
 
+### Amazon SageMaker Canvas
+
+Build highly accurate ML models using a visual interface, no code required
+
+Amazon SageMaker Canvas gives you the ability to use machine learning to generate predictions without needing to write any code. The following are some use cases where you can use SageMaker Canvas:
+- Predict customer churn
+- Plan inventory efficiently
+- Optimize price and revenue
+- Improve on-time deliveries
+- Classify text or images based on custom categories
+- Identify objects and text in images
+- Extract information from documents

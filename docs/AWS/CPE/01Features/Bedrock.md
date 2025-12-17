@@ -96,3 +96,9 @@ If you tell me your target scenario (e.g., chatbot for customer service, automat
 
 an Amazon Bedrock Playground
 
+## Amazon Bedrock Guardrails
+
+Implement safeguards customized to your application requirements and responsible AI policies
+
+Amazon Bedrock Guardrails helps you safely build and deploy responsible generative AI applications with confidence. With industry-leading safety protections that block up to 88% of harmful content and deliver auditable, mathematically verifiable explanations for validation decisions with 99% accuracy, Guardrails provides configurable safeguards to help detect and filter harmful text and image content, redact sensitive information, detect model hallucinations, and more. Guardrails work consistently across any foundation model whether you're using models in Amazon Bedrock or self-hosted models including third-party models such as OpenAI and Google Gemini — giving you the same safety, privacy, and responsible AI controls across all your generative AI applications. 
+

@@ -1,0 +1,3 @@
+## WaveNet
+
+WaveNet is a deep neural network for generating raw audio. It was created by researchers at London-based AI firm DeepMind. The technique, outlined in a paper in September 2016, is able to generate relatively realistic-sounding human-like voices by directly modelling waveforms using a neural network method trained with recordings of real speech. Tests with US English and Mandarin reportedly showed that the system outperforms Google's best existing text-to-speech (TTS) systems, although as of 2016 its text-to-speech synthesis still was less convincing than actual human speech. WaveNet's ability to generate raw waveforms means that it can model any kind of audio, including music.
