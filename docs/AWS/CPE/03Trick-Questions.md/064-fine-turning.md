@@ -1,0 +1,30 @@
+A research company implemented a chatbot by using a foundation model （FM） from Amazon Bedrock. The chatbot searches for answers to questions from a large  database of research papers. After multiple prompt engineering attempts, the  company notices that the FM is performing poorly because of the complex scientific  terms in the research papers. How can the company improve the performance of the  chatbot? 
+A.Use few-shot prompting to define how the FM can answer the questions. B.Use domain adaptation fine-tuning to adapt the FM to complex scientific terms. C.Change the FM inference parameters. 
+D.Clean the research paper data to remove complex scientific terms. 
+
+
+
+The correct answer is B. Use domain adaptation fine-tuning to adapt the FM to complex scientific terms.
+
+Here is the detailed explanation for each option and why B is the best choice:
+
+Reason for the Correct Answer (B)
+Domain Adaptation Fine-tuning: This process involves taking a pre-trained Foundation Model (FM) and training it further on a specific, smaller dataset (in this case, the scientific research papers). 
+Why it works: When a model struggles with "complex scientific terms," it means those terms were likely not well-represented in its original training data. Fine-tuning allows the model to learn the specific vocabulary, context, and relationships between terms in a specialized field. Amazon Bedrock supports fine-tuning for specific models to handle exactly this kind of "domain-specific" knowledge gap.
+
+Analysis of the Other Options (Why they are incorrect)
+
+A. Use few-shot prompting to define how the FM can answer the questions.
+Reasoning: Few-shot prompting involves giving the model a few examples of "Question and Answer" pairs within the prompt to show it how to behave. 
+Why it fails here: While few-shot prompting is great for teaching the model a specific format or style, it is not effective for teaching a model a massive library of complex scientific terminology. If the model doesn’t "understand" the underlying language of the research papers, a few examples won't be enough to fix its lack of specialized knowledge.
+
+C. Change the FM inference parameters.
+Reasoning: Inference parameters include things like Temperature (randomness), Top P (diversity), and Max Tokens (length). 
+Why it fails here: These parameters control the creativity and output style of the model, but they do not add new knowledge. Changing the temperature will not help the model understand a scientific term it doesn't recognize; it will simply make the model guess more or less creatively.
+
+D. Clean the research paper data to remove complex scientific terms.
+Reasoning: This involves "dumbing down" the source data so the model can read it more easily.
+Why it fails here: This is counterproductive for a research company. If you remove the complex scientific terms, you are removing the actual substance and technical accuracy of the research. The chatbot's answers would become vague, oversimplified, or medically/scientifically incorrect.
+
+Summary for your Exam
+When you see a question where Prompt Engineering has already been tried and the problem is highly specialized vocabulary (medical, legal, scientific), the answer is almost always Fine-tuning (specifically Domain Adaptation).
