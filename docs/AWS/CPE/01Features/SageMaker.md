@@ -118,3 +118,9 @@ Amazon SageMaker Canvas gives you the ability to use machine learning to generat
 - Classify text or images based on custom categories
 - Identify objects and text in images
 - Extract information from documents
+
+### SageMaker Experiments
+
+Amazon SageMaker Experiments Classic is a capability of Amazon SageMaker AI that lets you create, manage, analyze, and compare your machine learning experiments in Studio Classic. Use SageMaker Experiments to view, manage, analyze, and compare both custom experiments that you programmatically create and experiments automatically created from SageMaker AI jobs.
+
+Experiments Classic automatically tracks the inputs, parameters, configurations, and results of your iterations as runs. You can assign, group, and organize these runs into experiments. SageMaker Experiments is integrated with Amazon SageMaker Studio Classic, providing a visual interface to browse your active and past experiments, compare runs on key performance metrics, and identify the best performing models. SageMaker Experiments tracks all of the steps and artifacts that went into creating a model, and you can quickly revisit the origins of a model when you are troubleshooting issues in production, or auditing your models for compliance verifications.
