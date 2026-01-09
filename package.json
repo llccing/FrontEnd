@@ -1,18 +1,23 @@
 {
   "name": "fontenddemo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "开发过程中遇到的问题，尝试写个demo解决。\r 在以后的工作中遇到类似的问题也有一个参考的作用，同时也是作为blog的素材。",
   "main": "index.js",
-  "dependencies": {},
+  "type": "module",
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.1.0",
+    "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "@vuepress/client": "2.0.0-rc.26",
+    "@vuepress/plugin-google-analytics": "2.0.0-rc.118",
+    "@vuepress/theme-default": "2.0.0-rc.121",
     "markdown-it-task-lists": "^2.1.1",
-    "moment": "^2.24.0",
-    "vuepress": "^1.1.0"
+    "moment": "^2.30.1",
+    "sass-embedded": "^1.97.2",
+    "vue": "^3.5.13",
+    "vuepress": "2.0.0-rc.26"
   },
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
