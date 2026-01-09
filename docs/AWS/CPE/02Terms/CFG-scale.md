@@ -1,0 +1,7 @@
+The CFG scale determines how much weight the model gives to your text description during the image generation process.
+
+- Low CFG Scale (e.g., 1–6): The model has more creative freedom. It may ignore parts of your prompt, leading to images that are more "random" or artistic but lack specific details requested.
+
+- High CFG Scale (e.g., 7–15): The model is forced to follow the text prompt more strictly. Increasing this value is the direct solution for a company that wants to ensure the specific details in their text description (like product features or colors) are accurately reflected in the output.
+
+- Extremely High CFG Scale (>15): While this makes the model follow the prompt very closely, it can sometimes lead to "burnt" or overly saturated images with artifacts.
