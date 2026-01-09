@@ -1,3 +1,3 @@
-module.exports = {
+export default {
   nav: { text: 'About', link: '/about/' }
 }

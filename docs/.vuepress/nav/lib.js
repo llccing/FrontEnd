@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   nav: { text: 'lib', link: '/lib/' },
   sidebar: {
     '/lib/': [

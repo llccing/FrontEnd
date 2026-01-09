@@ -75,7 +75,7 @@ const sidebar = {
   ]
 }
 
-module.exports = {
+export default {
   nav,
   sidebar
 }

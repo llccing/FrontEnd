@@ -1,13 +1,16 @@
 const CONFIG_NAV = ['home', 'blog', 'css', 'js', 'lib', 'read']
 
-function initNav() {
+async function initNav() {
   const nav = []
   const sidebar = {}
-  CONFIG_NAV.forEach(item => {
-    const config = require(`./${item}`)
-    nav.push(config.nav)
-    config.sidebar && Object.assign(sidebar, config.sidebar)
-  })
+  
+  for (const item of CONFIG_NAV) {
+    const config = await import(`./${item}.js`)
+    nav.push(config.default.nav)
+    if (config.default.sidebar) {
+      Object.assign(sidebar, config.default.sidebar)
+    }
+  }
 
   nav.push(
     { text: 'About', link: 'https://rowanliu.com/about' }
@@ -19,4 +22,4 @@ function initNav() {
   }
 }
 
-module.exports = initNav()
+export default await initNav()
