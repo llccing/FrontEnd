@@ -3,7 +3,6 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import navConfig from './nav/index.js'
-import moment from 'moment'
 import markdownItTaskLists from 'markdown-it-task-lists'
 
 const { nav, sidebar } = navConfig
