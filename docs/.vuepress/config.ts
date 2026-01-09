@@ -13,6 +13,12 @@ export default defineUserConfig({
   description: 'just do it! ',
   base: '/FrontEnd/',
 
+  // 配置 head 标签
+  head: [
+    ['meta', { charset: 'utf-8' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
+  ],
+
   // 配置打包工具
   bundler: viteBundler(),
 

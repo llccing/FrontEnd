@@ -21,55 +21,61 @@ const sidebar = {
   '/blog/': [
     '',
     {
-      title: '生活有感',
-      collapsable: false,
+      text: '生活有感',
+      collapsible: true,
       children: [
-        'lerna',
-        'jQuery',
-        'gzip',
-        '2018-dev-guide',
-        'for',
-        'ci',
-        'useGulp',
-        'FrontEndLive',
-        'architecture',
-        'vueComponent',
-        'vue-cli2-to-vue-cli3',
-        'vue3'
-      ].map(item => `./life/${item}`)
-    },
-    {
-      title: '翻译',
-      collapsable: false,
-      children: [
-        ...[
-          '',
-          'Top 10 ways to use Interceptors in Angular',
-          'what-you-need-know-about-Vue-3-in-2020',
-          'core-js@3, babel and a look into the future',
-          'vue-cli-plugin-dev',
-          'vue-cli-plugin-typescript-readme',
-          'vue-cli-plugin-eslint-readme',
-          'making-vue-3',
-        ].map(item => `./translate/${item}`)
+        '/blog/life/lerna.md',
+        '/blog/life/jQuery.md',
+        '/blog/life/gzip.md',
+        '/blog/life/2018-dev-guide.md',
+        '/blog/life/for.md',
+        '/blog/life/ci.md',
+        '/blog/life/useGulp.md',
+        '/blog/life/FrontEndLive.md',
+        '/blog/life/architecture.md',
+        '/blog/life/vueComponent.md',
+        '/blog/life/vue-cli2-to-vue-cli3.md',
+        '/blog/life/vue3.md'
       ]
     },
     {
-      title: '那些年我面过的试',
-      collapsable: false,
+      text: '翻译',
+      collapsible: true,
       children: [
-        ...['', 'js', 'css'].map(item => `./interview/${item}`)
+        '/blog/translate/',
+        '/blog/translate/Top 10 ways to use Interceptors in Angular.md',
+        '/blog/translate/what-you-need-know-about-Vue-3-in-2020.md',
+        '/blog/translate/core-js@3, babel and a look into the future.md',
+        '/blog/translate/vue-cli-plugin-dev.md',
+        '/blog/translate/vue-cli-plugin-typescript-readme.md',
+        '/blog/translate/vue-cli-plugin-eslint-readme.md',
+        '/blog/translate/making-vue-3.md',
       ]
     },
     {
-      title: '数据结构',
-      collapsable: false,
-      children: [...[''].map(item => `./dataStructure/${item}`)]
+      text: '那些年我面过的试',
+      collapsible: true,
+      children: [
+        '/blog/interview/',
+        '/blog/interview/js.md',
+        '/blog/interview/css.md'
+      ]
     },
     {
-      title: '设计模式',
-      collapsable: false,
-      children: [...['', 'OOP', 'validateForm'].map(item => `./design-pattern/${item}`)]
+      text: '数据结构',
+      collapsible: true,
+      children: [
+        '/blog/dataStructure/'
+      ]
+    },
+    {
+      text: '设计模式',
+      collapsible: true,
+      children: [
+        '/blog/design-pattern/',
+        '/blog/design-pattern/OOP.md',
+        '/blog/design-pattern/validateForm.md'
+      ]
     },
 
   ]
