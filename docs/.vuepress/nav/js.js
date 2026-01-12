@@ -4,37 +4,39 @@ const sidebar = {
   '/js/': [
     '',
     {
-      title: 'ES2015',
-      collapsable: false,
+      text: 'ES2015',
+      collapsible: true,
       children: [
-        '',
-        // 'Async',
-        'let-const',
-        'function-extension',
-        'Generator-async',
-        'Generator',
-        'Iterator-for...of',
-        'number-extension',
-        'object-extension',
-        'Promise',
-        'Proxy-Reflect',
-        'Set-Map',
-        'String-extension',
-        'Symbol',
-        'variable-destructor-assignment'
-      ].map(item => `./ECMAScript6/${item}`)
+        '/js/ECMAScript6/',
+        '/js/ECMAScript6/let-const.md',
+        '/js/ECMAScript6/function-extension.md',
+        '/js/ECMAScript6/Generator-async.md',
+        '/js/ECMAScript6/Generator.md',
+        '/js/ECMAScript6/Iterator-for...of.md',
+        '/js/ECMAScript6/number-extension.md',
+        '/js/ECMAScript6/object-extension.md',
+        '/js/ECMAScript6/Promise.md',
+        '/js/ECMAScript6/Proxy-Reflect.md',
+        '/js/ECMAScript6/Set-Map.md',
+        '/js/ECMAScript6/String-extension.md',
+        '/js/ECMAScript6/Symbol.md',
+        '/js/ECMAScript6/variable-destructor-assignment.md'
+      ]
     },
     {
-      title: 'basic',
-      collapsable: false,
-      children: ['apply-call', 'ajax', 'arguments', 'calc-box-size'].map(
-        item => `./basic/${item}`
-      )
+      text: 'basic',
+      collapsible: true,
+      children: [
+        '/js/basic/apply-call.md',
+        '/js/basic/ajax.md',
+        '/js/basic/arguments.md',
+        '/js/basic/calc-box-size.md'
+      ]
     }
   ]
 }
 
-module.exports = {
+export default {
   nav,
   sidebar
 }

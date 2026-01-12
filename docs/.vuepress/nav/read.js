@@ -1,18 +1,24 @@
-module.exports = {
+export default {
   nav: { text: 'Read', link: '/read/' },
   sidebar: {
     '/read/': [
       // ''空字符串表示当前目录的README文件
       '',
       {
-        title: 'CSS世界',
-        collapsable: false,
-        children: ['./css-world/01-overview', './css-world/02-terminology-concept']
+        text: 'CSS世界',
+        collapsible: true,
+        children: [
+          '/read/css-world/01-overview.md',
+          '/read/css-world/02-terminology-concept.md'
+        ]
       },
       {
-        title: '深入浅出Webpack',
-        collapsable: false,
-        children: ['./webpack/', './webpack/01']
+        text: '深入浅出Webpack',
+        collapsible: true,
+        children: [
+          '/read/webpack/',
+          '/read/webpack/01.md'
+        ]
       }
     ]
   }
