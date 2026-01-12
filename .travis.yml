@@ -9,6 +9,7 @@ script:
   - pnpm run docs:build
 cache:
   directories:
+    - '~/.pnpm-store'
     - 'node_modules'
 deploy:
   provider: pages
