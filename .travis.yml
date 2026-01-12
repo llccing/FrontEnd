@@ -10,7 +10,6 @@ script:
 cache:
   directories:
     - '~/.pnpm-store'
-    - 'node_modules'
 deploy:
   provider: pages
   skip-cleanup: true
