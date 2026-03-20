@@ -1,12 +1,22 @@
 # FrontEnd [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
 
-前端日新月异，力求在某一方面有所建树。
-
-📚 个人前端学习笔记与实践项目集合，包含核心技术文档、框架库学习、后端知识、技术博客和阅读笔记。
-
-🔗 在线文档：[https://rowanliu.com/](https://rowanliu.com/)
+> ⚠️ **本仓库已归档（Archived）**，不再维护。所有内容已迁移至新博客。
 
 ---
+
+## 📢 博客迁移通知
+
+本仓库的所有学习笔记和技术文章已迁移至新博客：
+
+### 🌐 **[https://rowanliu.com/](https://rowanliu.com/)**
+
+欢迎访问新博客获取更好的阅读体验！
+
+---
+
+
+
+
 
 ## 📑 目录
 
